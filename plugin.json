@@ -1,0 +1,8 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agentic-researcher",
+  "version": "0.1.0",
+  "description": "Portable skills for planning, initializing, executing, verifying, and completing evidence-based research workflows.",
+  "license": "Apache-2.0",
+  "keywords": ["research", "planning", "jira", "confluence", "mcp", "evidence"]
+}
