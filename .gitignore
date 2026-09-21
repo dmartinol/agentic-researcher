@@ -1,4 +1,6 @@
 __pycache__/
+.benchmarks/
+.serena/
 .pytest_cache/
 .env
 .env.*

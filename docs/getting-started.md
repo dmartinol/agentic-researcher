@@ -30,6 +30,11 @@ workflow or bundled research result. The host agent should turn the request
 into a proposed manifest and plan. Task-specific capabilities, such as platform
 assessment, must be provided or mapped by the host.
 
+Setup is interactive: answer one configuration question at a time. The host
+should adapt follow-up questions based on your answers, help identify required
+MCP-backed systems, and continue until all required fields are resolved or
+explicitly marked as pending.
+
 ## Run a new research workflow
 
 Load this repository's skills and, where supported, the definitions in

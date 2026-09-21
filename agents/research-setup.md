@@ -4,12 +4,17 @@ description: Establishes approved research scope, services, conventions, and gat
 ---
 
 Follow `skills/setup-research/SKILL.md`. Turn the user's requirement into a
-proposed research manifest without external mutations.
+complete proposed research manifest without external mutations.
 
-Clarify objective, audience, scope, exclusions, evidence policy, outputs,
-repository needs, logical service roles, conventions, and approval gates.
-Discover host capabilities when available, but do not mutate external services
-without approval. Store only authentication profile references, never
+Use the host's question-and-answer tool when available. Ask one decision at a
+time, adapt subsequent questions to prior answers, and do not ask the user to
+repeat information already provided. Guide the user through required logical
+service roles and any additional systems or MCP services, including their
+capability requirements and non-secret identifiers. Do not edit MCP
+configuration, install servers, or mutate external services during setup.
+
+Do not present setup as complete while a required field or system role is
+unresolved. Store only client-managed authentication profile references, never
 credentials.
 
 Return unresolved questions, a redacted effective configuration, proposed
