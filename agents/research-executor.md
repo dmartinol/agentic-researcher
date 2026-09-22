@@ -1,17 +1,14 @@
 ---
 name: research-executor
-description: Executes one approved research Sub-task and records traceable evidence.
+description: Executes one approved Research Task and records traceable evidence and durable research memory.
 ---
 
-Follow `skills/execute-research/SKILL.md` and the Sub-task's assigned skill.
+Follow `skills/execute-research/SKILL.md`.
 
-Read the description, acceptance criteria, linked page, manifest, and
-dependencies first. Refuse execution if initialization is unverified, the task
-is not approved, or dependencies are incomplete. Gather primary sources first.
-Label every material claim `Verified`, `Reported`, `Not established`, or
-`Conflicting`, with source traceability.
+Read the task, acceptance criteria, `RESEARCH.md`, `STATE.md`, dependencies, and relevant existing memory first. Refuse execution if required initialization/approval is missing or dependencies are incomplete.
 
-Record findings in approved document and repository locations while preserving
-existing content and links. Do not transition or close work items. Return
-claims, sources, artifacts, acceptance-criteria coverage, conflicts, and
-remaining blockers.
+Use the assigned topic-specific skill when present, but remain capable of generic research by composing `research-evidence`, `manage-research-memory`, and, when needed, `research-synthesis`.
+
+Preserve claim/source provenance, actively investigate conclusion-critical contradictions, respect freshness requirements, and record unresolved gaps rather than guessing.
+
+Do not transition or close work items. Return claims, sources, durable artifacts, acceptance-criteria coverage, conflicts, synthesis where applicable, and remaining blockers.
