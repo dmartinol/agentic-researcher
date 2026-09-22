@@ -55,6 +55,12 @@ Lifecycle skills:
 - `verify-research`
 - `complete-research`
 
+Research capabilities:
+
+- `research-evidence`: source quality, claims, contradiction search, freshness
+- `manage-research-memory`: durable claims/sources/episodes and selective retrieval
+- `research-synthesis`: traceable synthesis across evidence and dependent tasks
+
 Provider specializations:
 
 - `jira-research`

@@ -95,7 +95,13 @@ Lifecycle skills currently include:
 - `verify-research`
 - `complete-research`
 
-Additional skills may implement cross-cutting research capabilities such as evidence management, research memory, synthesis, or provider-specific conventions.
+Cross-cutting portable research capabilities include:
+
+- `research-evidence`: evidence discovery/evaluation, atomic claims, contradiction search, and freshness;
+- `manage-research-memory`: durable claims, sources, episodes, relationships, and selective retrieval;
+- `research-synthesis`: traceable synthesis across evidence and dependent tasks.
+
+Provider-specific conventions remain separate specializations.
 
 ### Logical Subsystems
 
@@ -201,7 +207,9 @@ Important findings should be represented as claims with provenance to their supp
 
 Binary databases, SQLite indexes, embeddings, or vector databases may be used as derived retrieval layers, but they must not be the only authoritative representation of research knowledge.
 
-The detailed memory model is defined in `docs/research-memory.md`.
+The detailed memory model is defined in `docs/research-memory.md`; canonical object templates live under `templates/memory/`.
+
+Do not use numeric confidence scores for claims. Express evidence state with the canonical labels, provenance, scope qualifications, conflicts, freshness, and unresolved gaps.
 
 Core principle:
 

@@ -68,16 +68,16 @@ Provide opinionated defaults and ask the researcher to confirm or override them.
 
 ## P2 - Research quality and memory
 
-- Turn the memory model into an executable portable research capability.
-- Define canonical claim/source/episode formats.
-- Strengthen source discovery and source-quality guidance.
-- Define evidence acquisition and claim extraction behavior.
-- Require contradiction search for conclusion-critical claims.
-- Define freshness/revalidation behavior.
-- Strengthen synthesis across dependent research tasks.
-- Define selective retrieval from research memory.
-- Keep SQLite/vector indexes optional and derived.
-- Ensure research can execute competently without a topic-specific skill.
+- [x] Turn the memory model into an executable portable research capability.
+- [x] Define canonical claim/source/episode formats.
+- [x] Strengthen source discovery and source-quality guidance.
+- [x] Define evidence acquisition and claim extraction behavior.
+- [x] Require contradiction search for conclusion-critical claims.
+- [x] Define freshness/revalidation behavior.
+- [x] Strengthen synthesis across dependent research tasks.
+- [x] Define selective retrieval from research memory.
+- [x] Keep SQLite/vector indexes optional and derived.
+- [x] Ensure research can execute competently without a topic-specific skill.
 
 ## P3 - Product integration, validation, and demo
 
