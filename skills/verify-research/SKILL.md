@@ -19,6 +19,6 @@ Perform a read-only verification pass using generic subsystem checks plus the se
 - Existing meaningful content has not been replaced by initialization skeletons.
 - No timeline, budget, staffing, or implementation-roadmap content was added unless explicitly in scope.
 
-Apply `jira-research` and/or `confluence-research` verification rules when those providers are selected.
+Apply the verification rules from each configured provider specialization when available. Otherwise verify only the generic capability contract and approved research configuration.
 
 Return pass, warning, and blocking findings. Do not mutate resources during verification.
