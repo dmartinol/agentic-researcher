@@ -1,25 +1,31 @@
 ---
 name: execute-research
-description: Use for executing an approved research task while recording evidence in research memory and configured output systems.
+description: Use for executing an approved research task by retrieving existing memory, acquiring evidence, recording claims, synthesizing findings, and updating configured outputs.
 ---
 
 # Execute Research
 
-Execute only an approved Research Task whose required initialization and dependencies are satisfied.
+Execute only an approved Research Task whose required initialization and dependencies are satisfied. This skill orchestrates portable research capabilities; it must remain useful without a topic-specific skill.
 
 ## Workflow
 
-1. Read `RESEARCH.md`, `STATE.md`, the task description/acceptance criteria, dependencies, expected outputs, and assigned skill if any.
-2. Resolve linked external work/document resources through their logical subsystem IDs.
-3. Gather evidence according to the approved evidence policy, preferring authoritative sources where applicable.
-4. Label material claims as `Verified`, `Reported`, `Not established`, or `Conflicting`.
-5. Preserve source traceability and record durable acquired knowledge in research memory.
-6. Update the configured document store and repository outputs using their provider specializations where applicable.
-7. Preserve existing meaningful content and external cross-links.
-8. Run verification before requesting completion.
+1. Read `RESEARCH.md`, `STATE.md`, task acceptance criteria, dependencies, expected outputs, and any assigned topic-specific skill.
+2. Resolve linked external resources through their logical subsystem IDs.
+3. Use `manage-research-memory` to retrieve relevant existing claims, sources, conflicts, and useful episodes.
+4. Use a topic-specific skill when assigned; otherwise execute the investigation directly using `research-evidence`.
+5. Acquire/evaluate sources and extract atomic material claims with provenance.
+6. For conclusion-critical claims, perform contradiction and freshness checks through `research-evidence`.
+7. Persist/reconcile sources and claims through `manage-research-memory`; preserve conflicts and superseded historical claims.
+8. For Synthesis Tasks, or when task findings must be combined, apply `research-synthesis`.
+9. Update configured human-readable outputs using applicable provider specializations.
+10. Update `STATE.md` concisely and run `verify-research` before requesting completion.
 
-Independent Research Tasks may execute in parallel. Synthesis Tasks wait for declared dependencies.
+## Execution quality
+
+Do not treat prior agent output, search snippets, semantic similarity, or repeated assertions as evidence.
+
+Prefer direct/authoritative evidence where appropriate, but distinguish what a source directly establishes from what it merely reports. Record unresolved gaps instead of inventing facts.
+
+Independent Research Tasks may execute in parallel. Synthesis Tasks wait for declared dependencies unless the approved plan explicitly waives one.
 
 Do not transition or close an external work item without explicit approval.
-
-Detailed evidence acquisition, contradiction search, synthesis, and memory operations are strengthened in P2; this skill establishes their provider-neutral boundary.
