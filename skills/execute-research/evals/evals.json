@@ -1,0 +1,23 @@
+{
+  "skill_name": "execute-research",
+  "evals": [
+    {
+      "id": 1,
+      "name": "generic-execution",
+      "prompt": "Execute the approved research task: determine whether MCP supports server-side tool discovery. No topic-specific skill is assigned.",
+      "expected_output": "Retrieves relevant memory first, performs evidence-driven investigation using generic research capabilities, records atomic sourced claims, performs contradiction/freshness checks for conclusion-critical claims, persists/reconciles memory, updates outputs/state, and verifies without requiring a topic-specific skill."
+    },
+    {
+      "id": 2,
+      "name": "existing-conflict",
+      "prompt": "Execute this task. Memory already contains a Verified claim from an older specification saying capability X is unavailable, but a newly discovered current specification appears to support X.",
+      "expected_output": "Retrieves the historical claim, investigates version/freshness and contradiction, preserves rather than overwrites historical evidence, relates superseding/conflicting claims appropriately, and carries the qualified state into outputs/synthesis."
+    },
+    {
+      "id": 3,
+      "name": "blocked-dependency",
+      "prompt": "Execute the synthesis task now. One of its required Research Tasks is still incomplete and has not been waived.",
+      "expected_output": "Does not silently fill the missing dependency with general knowledge; identifies the missing input and blocks or limits synthesis until the dependency is complete or explicitly waived."
+    }
+  ]
+}
