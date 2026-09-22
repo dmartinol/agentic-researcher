@@ -1,0 +1,23 @@
+{
+  "skill_name": "research-synthesis",
+  "evals": [
+    {
+      "id": 1,
+      "name": "multi-task-synthesis",
+      "prompt": "Synthesize the completed discovery, security and operations research tasks into an architecture comparison.",
+      "expected_output": "Retrieves durable claims/sources and dependency outputs, groups evidence by decision criterion, distinguishes established/reported/unresolved evidence, links conclusions to claims/sources, and clearly preserves limitations and unknowns."
+    },
+    {
+      "id": 2,
+      "name": "unresolved-conflict",
+      "prompt": "Most sources favor approach A, but two credible current sources materially contradict a conclusion-critical claim. Synthesize the result.",
+      "expected_output": "Does not resolve disagreement by majority vote or numeric confidence; preserves genuine unresolved conflict, explains its effect on conclusions/applicability, and identifies follow-up evidence if material."
+    },
+    {
+      "id": 3,
+      "name": "missing-dependency",
+      "prompt": "Synthesize the final recommendation now even though the security Research Task has not finished.",
+      "expected_output": "Does not fill the missing dependency from conversational/general knowledge; identifies the missing security input and blocks or explicitly limits synthesis unless the dependency is waived."
+    }
+  ]
+}
