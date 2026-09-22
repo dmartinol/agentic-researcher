@@ -12,7 +12,7 @@ This backlog follows the architecture contract in `AGENTS.md`. P0 establishes th
 - [x] Add `templates/STATE.md`.
 - [x] Move the research-memory model to `docs/research-memory.md`.
 - [x] Define greenfield versus existing/brownfield research behavior.
-- [ ] Validate the P0 documentation as a coherent package contract.
+- [x] Validate the P0 documentation as a coherent package contract.
 
 ## P1 - Provider separation and integrations
 
@@ -20,14 +20,17 @@ Refactor existing lifecycle skills so generic behavior uses logical subsystem te
 
 ### Capability contracts
 
-- Define ticketing capabilities.
-- Define document-store capabilities.
-- Define repository capabilities.
-- Define identity/capability-discovery behavior.
-- Resolve the relationship between portable `mcp.json` and current host-specific MCP configuration.
-- Revisit/remove `opencode.json` once portable/default integration behavior is implemented.
+- [x] Define ticketing capabilities.
+- [x] Define document-store capabilities.
+- [x] Define repository capabilities.
+- [x] Define identity/capability-discovery behavior.
+- [x] Refactor lifecycle skills to use logical subsystem terminology.
+- [x] Declare the default Atlassian integration in portable `mcp.json`.
+- [x] Remove the obsolete `opencode.json` adapter.
 
 ### Jira specialization
+
+- [x] Add `jira-research` provider specialization.
 
 Provide opinionated defaults and ask the researcher to confirm or override them.
 
@@ -39,6 +42,8 @@ Provide opinionated defaults and ask the researcher to confirm or override them.
 - Verify issue type, parent, assignee, metadata, status, and links after mutation.
 
 ### Confluence specialization
+
+- [x] Add `confluence-research` provider specialization.
 
 Provide opinionated defaults and ask the researcher to confirm or override them.
 
