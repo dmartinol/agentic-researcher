@@ -68,4 +68,12 @@ Provider specializations:
 
 `agents/` contains the IDE-neutral orchestrator and specialized phase-agent definitions.
 
+## Install and validate
+
+Researchers install the package using their host's plugin/skill installation mechanism; cloning this development repository is not part of the research workflow. See `docs/getting-started.md`.
+
+Contributors can run `python scripts/validate.py` and `pytest -q`. CI enforces package structure and the generic/provider architecture boundary.
+
+The reproducible product demo is documented in `docs/demo-script.md` and `examples/demo-research/`.
+
 See `AGENTS.md` for the authoritative project contract, `docs/architecture.md` for the architecture model, and `TODO.md` for the remaining roadmap.
