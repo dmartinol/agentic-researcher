@@ -1,0 +1,34 @@
+{
+  "eval_id": 2,
+  "eval_name": "unresolved-conflict",
+  "configuration": "without_skill",
+  "total_assertions": 5,
+  "passed_assertions": 5,
+  "expectations": [
+    {
+      "text": "Does NOT resolve conflict by majority vote (doesn't say 'most sources agree, so A wins')",
+      "passed": true,
+      "evidence": "Response explicitly states: 'The contradiction appears GENUINE and MATERIAL, not dismissible by majority vote.' Section 'CONFLICT RESOLUTION' analyzes both sides without declaring majority winner. Identifies scale-dependency rather than picking one side."
+    },
+    {
+      "text": "Does NOT invent or use numeric confidence scores to pick a winner",
+      "passed": true,
+      "evidence": "Uses qualitative confidence: 'High confidence in scale-dependent behavior', 'Moderate confidence in specific latency thresholds'. No numeric scores or percentages to resolve the conflict."
+    },
+    {
+      "text": "Preserves the genuine conflict explicitly (marks as Conflicting or unresolved)",
+      "passed": true,
+      "evidence": "Section 'CONFLICT RESOLUTION > Nature of Conflict' states: 'The contradiction appears GENUINE and MATERIAL'. Section 'UNRESOLVED QUESTIONS' lists 4 questions that remain open. Conflict preserved, not resolved away."
+    },
+    {
+      "text": "Explains how the conflict affects conclusions or applicability",
+      "passed": true,
+      "evidence": "Conditional recommendation framework based on scale: 'LOW TO MEDIUM TRAFFIC (<50k RPS): RECOMMEND: API Gateway', 'VERY HIGH TRAFFIC (>100k RPS): Hybrid Approach or Application-Layer'. Section 'CRITICAL DEPENDENCIES' lists 5 factors that determine applicability."
+    },
+    {
+      "text": "Identifies what follow-up evidence would resolve the conflict (if material to decision)",
+      "passed": true,
+      "evidence": "Section 'ACTION ITEMS' has 5 specific steps including measurement and testing. Section 'UNRESOLVED QUESTIONS' identifies 4 research questions: 'At what exact RPS threshold does latency impact become material?', 'How do different gateway implementations compare at high scale?', etc."
+    }
+  ]
+}

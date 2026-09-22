@@ -1,0 +1,28 @@
+{
+  "eval_id": 2,
+  "eval_name": "unresolved-conflict",
+  "prompt": "Most sources favor approach A, but two credible current sources materially contradict a conclusion-critical claim. Synthesize the result.",
+  "expected_output": "Does not resolve disagreement by majority vote or numeric confidence; preserves genuine unresolved conflict, explains its effect on conclusions/applicability, and identifies follow-up evidence if material.",
+  "assertions": [
+    {
+      "text": "Does NOT resolve conflict by majority vote (doesn't say 'most sources agree, so A wins')",
+      "rationale": "Majority vote is inappropriate for conflicting technical evidence"
+    },
+    {
+      "text": "Does NOT invent or use numeric confidence scores to pick a winner",
+      "rationale": "Arbitrary confidence numbers mask genuine uncertainty"
+    },
+    {
+      "text": "Preserves the genuine conflict explicitly (marks as Conflicting or unresolved)",
+      "rationale": "Unresolved conflicts must remain visible in synthesis"
+    },
+    {
+      "text": "Explains how the conflict affects conclusions or applicability",
+      "rationale": "Decision-makers need to understand the impact of uncertainty"
+    },
+    {
+      "text": "Identifies what follow-up evidence would resolve the conflict (if material to decision)",
+      "rationale": "Actionable next steps for resolving critical uncertainties"
+    }
+  ]
+}

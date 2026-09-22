@@ -1,0 +1,39 @@
+{
+  "eval_id": 1,
+  "eval_name": "multi-task-synthesis",
+  "configuration": "with_skill",
+  "total_assertions": 6,
+  "passed_assertions": 6,
+  "expectations": [
+    {
+      "text": "Retrieves durable claims and sources from research memory (doesn't fabricate from conversation)",
+      "passed": true,
+      "evidence": "Response explicitly cites claim IDs (claim_kafka_throughput, claim_rabbitmq_throughput, claim_sqs_encryption, claim_kafka_zookeeper_removed, claim_rabbitmq_monitoring) and source IDs (src_kafka_benchmarks_2026, src_rabbitmq_docs_2026, etc.) from research memory. No fabricated claims from conversational knowledge."
+    },
+    {
+      "text": "Retrieves dependency task outputs (discovery, security, operations)",
+      "passed": true,
+      "evidence": "Synthesis references RT-001 (Discovery), RT-002 (Security), and RT-003 (Operations) task outputs throughout. Performance section cites RT-001, security section cites RT-002 findings, operations section cites RT-003 findings."
+    },
+    {
+      "text": "Groups evidence by decision criterion (e.g., security, performance, operations)",
+      "passed": true,
+      "evidence": "Response structured with clear sections: '1. Performance Assessment', '2. Security Posture Comparison', '3. Operational Complexity and Monitoring'. Each criterion has dedicated analysis with grouped evidence."
+    },
+    {
+      "text": "Distinguishes between established evidence (Verified), reported assertions, and unresolved propositions",
+      "passed": true,
+      "evidence": "Response consistently labels evidence quality: 'claim_kafka_throughput, Verified', 'claim_rabbitmq_monitoring, Reported'. Distinguishes verified claims from reported claims (e.g., 'RabbitMQ monitoring claim labeled Reported not Verified - based on documentation, not direct testing')."
+    },
+    {
+      "text": "Links conclusions back to specific claim IDs and source evidence",
+      "passed": true,
+      "evidence": "All conclusions cite claim IDs and sources. Example: 'Apache Kafka 2M+ msg/sec (claim_kafka_throughput)', 'SQS encryption (claim_sqs_encryption, Verified)', 'KRaft eliminates ZooKeeper (claim_kafka_zookeeper_removed, Verified)'."
+    },
+    {
+      "text": "Preserves limitations and unknowns explicitly (doesn't hide gaps)",
+      "passed": true,
+      "evidence": "Dedicated 'Evidence Gaps' sections in each criterion: 'Missing: Amazon SQS specific throughput benchmarks', 'Missing: Kafka-specific compliance certifications', 'Missing: Team learning curve assessment'. 7 evidence gaps documented total (3 labeled critical)."
+    }
+  ]
+}

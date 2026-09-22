@@ -1,0 +1,129 @@
+RESEARCH SYNTHESIS: API Rate Limiting Strategy
+===============================================
+
+Research Question: Should we implement rate limiting at the API gateway layer or application layer?
+
+EXECUTIVE SUMMARY
+-----------------
+The research reveals a scale-dependent performance trade-off that requires a nuanced recommendation. While the majority of sources (5 of 7) favor API gateway rate limiting for its centralization benefits, recent credible evidence from high-scale operators (Cloudflare, Netflix) contradicts earlier claims about negligible performance impact.
+
+EVIDENCE ANALYSIS
+-----------------
+
+Majority Position (5 sources, 2023-2025):
+Gateway-level rate limiting has negligible performance impact (<1ms latency overhead)
+- AWS API Gateway (2025): <1ms overhead
+- Kong Gateway (2024): 0.5ms median increase
+- Nginx (2023): "lightweight operation"
+- Envoy (2024): "minimal overhead"
+- Azure API Management (2025): "sub-millisecond execution"
+
+Contradicting Evidence (2 sources, September 2026):
+Gateway rate limiting adds measurable latency at high scale (100k+ RPS)
+- Cloudflare whitepaper (Sept 15, 2026): 5-8ms P50, 10-12ms P99 latency increase at 100k+ RPS
+- Netflix blog (Sept 18, 2026): 7-15ms P99 latency increase during peak traffic
+
+CONFLICT RESOLUTION
+-------------------
+
+Nature of Conflict:
+The contradiction appears GENUINE and MATERIAL, not dismissible by majority vote.
+
+Credibility Assessment:
+Both contradicting sources are highly authoritative:
+- Cloudflare: Operates one of world's largest edge networks with production data
+- Netflix: 200M+ subscribers, massive streaming traffic volumes
+- Both published September 2026 (most current evidence available)
+- Both report PRIMARY production measurements, not vendor benchmarks
+
+Root Cause Analysis:
+The conflict is likely SCALE-DEPENDENT:
+1. Earlier sources (2023-2025) may be based on:
+   - Lower-scale benchmarks
+   - Vendor marketing claims
+   - Single-node gateway deployments
+
+2. Recent sources (2026) identify specific high-scale challenges:
+   - Distributed state synchronization overhead (Netflix)
+   - Multi-node coordination costs
+   - Performance degradation only manifests at 100k+ RPS
+
+The older claims may remain valid for low-to-medium traffic APIs, while the 2026 evidence reveals limitations at extreme scale.
+
+RECOMMENDATION
+--------------
+
+Conditional Strategy Based on Scale:
+
+LOW TO MEDIUM TRAFFIC (<50k RPS):
+✓ RECOMMEND: API Gateway Rate Limiting
+Rationale:
+- Negligible performance impact confirmed by multiple sources
+- Centralization benefits (consistency, policy management)
+- Simpler operations and monitoring
+- Clear separation of concerns
+
+HIGH TRAFFIC (50k-100k RPS):
+⚠ RECOMMEND: Gateway with Performance Validation
+Rationale:
+- Approaching the scale where latency impact may emerge
+- Requires load testing with realistic traffic patterns
+- Monitor P99 latency closely
+- Have application-layer fallback plan ready
+
+VERY HIGH TRAFFIC (>100k RPS):
+⚠ RECOMMEND: Hybrid Approach or Application-Layer
+Rationale:
+- Cloudflare/Netflix evidence directly applicable
+- 5-12ms latency increase may violate SLAs
+- Consider:
+  Option A: Application-layer rate limiting (distributed but accurate)
+  Option B: Local (per-gateway-instance) rate limiting with reduced accuracy
+  Option C: Hybrid - coarse gateway limits + fine-grained app limits
+
+CRITICAL DEPENDENCIES
+---------------------
+
+The recommendation depends on:
+1. Your actual traffic volume and growth trajectory
+2. Your P99 latency SLA requirements
+3. Whether 5-12ms additional latency is acceptable
+4. Gateway deployment topology (single vs multi-node)
+5. Rate limiting accuracy requirements
+
+ACTION ITEMS
+------------
+
+1. MEASURE: Determine your current and projected peak RPS
+2. DEFINE: Establish P99 latency SLA requirements
+3. TEST: If >50k RPS, conduct load testing with rate limiting enabled
+4. MONITOR: Track latency distribution (P50, P95, P99) in production
+5. VALIDATE: Confirm distributed state synchronization overhead in your stack
+
+CONFIDENCE ASSESSMENT
+---------------------
+
+High confidence in scale-dependent behavior:
+- Recent authoritative sources (Cloudflare, Netflix) provide credible production data
+- Distributed state synchronization is known to add overhead
+- Conflict explained by workload differences, not measurement error
+
+Moderate confidence in specific latency thresholds:
+- 5-12ms range is Cloudflare/Netflix-specific
+- Your actual overhead depends on gateway implementation and topology
+- Load testing required for definitive answer
+
+UNRESOLVED QUESTIONS
+--------------------
+
+1. At what exact RPS threshold does latency impact become material?
+2. How do different gateway implementations (Kong, Envoy, etc.) compare at high scale?
+3. What is the accuracy trade-off of local vs distributed rate limiting?
+4. Can the synchronization overhead be mitigated with optimized algorithms?
+
+CONCLUSION
+----------
+
+The majority view favoring gateway rate limiting remains valid for most use cases. However, the 2026 evidence from Cloudflare and Netflix reveals important limitations at extreme scale (>100k RPS) that cannot be ignored. The conflict is resolved by recognizing scale-dependent behavior rather than choosing one perspective over the other.
+
+For most teams, API gateway rate limiting is the right starting point. For high-scale systems approaching or exceeding 100k RPS, the recent evidence warrants serious consideration of alternative approaches or hybrid strategies, validated through load testing specific to your infrastructure.

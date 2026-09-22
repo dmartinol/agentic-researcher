@@ -1,0 +1,203 @@
+# Database Selection Recommendation: PostgreSQL vs MongoDB
+## Research Synthesis (RT-104)
+
+**Date:** 2026-09-22
+**Status:** PRELIMINARY - Security research incomplete
+**Research Question:** Should we use PostgreSQL or MongoDB for the new user service database?
+
+---
+
+## ⚠️ IMPORTANT LIMITATION
+
+This synthesis is based on **incomplete research**. The security and compliance assessment (RT-102) is still in progress. Security considerations may significantly impact the final recommendation, especially if compliance requirements (HIPAA, SOC 2) impose specific constraints on database selection.
+
+**Proceed with caution:** This recommendation should be treated as preliminary until RT-102 is complete.
+
+---
+
+## Executive Summary
+
+**Preliminary Recommendation: PostgreSQL**
+
+Based on available research on performance (RT-101) and operational complexity (RT-103), PostgreSQL is the recommended choice. Both databases meet performance requirements, but PostgreSQL presents significantly lower operational risk given current team expertise.
+
+**Confidence Level:** Medium (pending security research completion)
+
+---
+
+## Detailed Analysis
+
+### 1. Performance Evaluation (RT-101 - COMPLETE)
+
+**Acceptance Criterion:** Evaluate performance for our read-heavy workload (90% reads, 10% writes)
+
+#### PostgreSQL Performance
+✅ **Strengths:**
+- Sub-10ms P95 latency with proper indexing (verified: claim_postgres_read_performance)
+- Excellent performance for structured queries
+- Predictable latency characteristics
+
+⚠️ **Limitations:**
+- Vertical scaling limits for single-node writes
+- Performance requires proper index maintenance
+
+**Evidence:** PostgreSQL 16 Performance Tuning Guide (official documentation)
+
+#### MongoDB Performance
+✅ **Strengths:**
+- Horizontal scaling via sharding with automatic balancing (verified: claim_mongodb_horizontal_scaling)
+- Good performance for document retrieval
+- Better scaling path for future growth beyond single-node capacity
+
+⚠️ **Limitations:**
+- Inconsistent performance across shard keys
+- Sharding requires upfront shard key design
+- Poorly chosen shard keys can cause hotspots
+
+**Evidence:** MongoDB Sharding Documentation (official documentation)
+
+#### Performance Verdict
+**Both databases meet requirements**, but PostgreSQL offers more predictable performance for the current workload, while MongoDB provides better horizontal scaling for potential future growth.
+
+---
+
+### 2. Operational Complexity (RT-103 - COMPLETE)
+
+**Acceptance Criterion:** Consider operational complexity and team expertise
+
+#### PostgreSQL Operations
+✅ **Major Advantages:**
+- Team has **5 years PostgreSQL experience** (strong operational foundation)
+- Mature backup/restore tools (pg_dump, WAL archiving)
+- Well-understood monitoring (pg_stat_statements)
+
+⚠️ **Minor Considerations:**
+- Requires manual partitioning for very large tables
+- Standard operational complexity for relational databases
+
+#### MongoDB Operations
+⚠️ **Significant Concerns:**
+- **Limited team expertise**: Only 1 developer with 6 months MongoDB experience
+- Sharding adds substantial operational complexity (config servers, mongos routers)
+- Query optimization less intuitive for SQL-trained team
+
+✅ **Mitigation Available:**
+- Atlas managed service can reduce operational burden
+- Native sharding support with automatic balancing
+
+#### Operational Verdict
+**PostgreSQL presents significantly lower operational risk.** The team's 5 years of PostgreSQL experience vs. 6 months of MongoDB experience from a single developer creates a substantial knowledge gap that would increase incident response time, operational errors, and onboarding friction.
+
+---
+
+### 3. Security and Compliance (RT-102 - INCOMPLETE ⚠️)
+
+**Acceptance Criterion:** Assess security posture and compliance requirements
+
+**Status:** Research in progress, expected completion tomorrow
+
+**Known Unknowns:**
+- Security posture comparison between PostgreSQL and MongoDB
+- Compliance requirements (HIPAA, SOC 2) impact on database selection
+- Encryption key management requirements
+- Audit logging capabilities and requirements
+- Security operational constraints
+
+**Risk Assessment:**
+If compliance requirements impose specific database constraints, this could override performance and operational considerations. For example:
+- HIPAA may require specific encryption or audit capabilities
+- SOC 2 may mandate certain security controls
+- Industry-specific regulations may limit database choices
+
+---
+
+## Preliminary Recommendation
+
+### Choose PostgreSQL
+
+**Primary Rationale:**
+1. **Operational Safety:** Team expertise alignment dramatically reduces operational risk
+2. **Performance Adequacy:** Meets all performance requirements for current workload
+3. **Predictability:** More consistent latency characteristics
+4. **Reduced Complexity:** Lower operational overhead
+
+**Trade-offs Accepted:**
+- Limited horizontal scaling (mitigated: current workload fits single-node capacity)
+- Manual partitioning for very large tables (mitigated: not needed for foreseeable user base)
+
+**Confidence Factors:**
+- ✅ Performance analysis complete and favorable
+- ✅ Operational analysis complete and strongly favorable
+- ⚠️ Security analysis incomplete (could change recommendation)
+
+---
+
+## Risk Assessment
+
+### Risks of Proceeding Without RT-102
+
+**High-Risk Scenarios:**
+1. Compliance requirements mandate MongoDB (e.g., document audit trails)
+2. Security posture analysis reveals critical PostgreSQL vulnerabilities
+3. Encryption or audit logging requirements favor MongoDB
+
+**Medium-Risk Scenarios:**
+1. Both databases meet security requirements, but operational costs differ
+2. Managed service options (RDS vs. Atlas) have different security characteristics
+
+**Low-Risk Scenarios:**
+1. Both databases have equivalent security postures
+2. Security requirements are database-agnostic
+
+### Mitigation Strategy
+
+**If decision must be made immediately:**
+1. Choose PostgreSQL based on strong operational advantage
+2. Plan for potential migration if security research reveals blockers
+3. Use managed service (AWS RDS) to reduce security operational burden
+
+**Recommended approach:**
+**Wait for RT-102 completion** (expected tomorrow) to make fully informed decision. The operational advantage of PostgreSQL is significant, but security/compliance requirements could be overriding factors.
+
+---
+
+## Next Steps
+
+### Immediate (Before Final Decision)
+1. ✅ Complete RT-102 security and compliance assessment
+2. Review final recommendation incorporating all three research dimensions
+
+### If PostgreSQL Selected
+1. Provision AWS RDS PostgreSQL 16 instance
+2. Configure automated backups and WAL archiving
+3. Establish monitoring with pg_stat_statements
+4. Design indexing strategy for user lookup queries
+
+### If MongoDB Selected (based on security findings)
+1. Engage MongoDB expert for sharding design review
+2. Plan team training program
+3. Provision MongoDB Atlas cluster
+4. Design shard key strategy before implementation
+
+---
+
+## Conclusion
+
+**Preliminary recommendation: PostgreSQL** based on strong operational advantages and adequate performance. However, this is a **medium-confidence recommendation** pending security research completion.
+
+**The security dimension may override this recommendation.** Compliance requirements (HIPAA, SOC 2) could mandate specific database capabilities that favor one database over the other, regardless of performance or operational considerations.
+
+**Recommended action:** Wait for RT-102 completion before making final decision, unless business urgency requires immediate selection. If immediate selection is required, PostgreSQL is the lower-risk choice based on available data, but plan for potential migration if security research reveals blockers.
+
+---
+
+**Research Artifacts Referenced:**
+- RT-101-performance-output.md (Complete)
+- RT-103-operations-output.md (Complete)
+- claim_postgres_read_performance.md (Verified)
+- claim_mongodb_horizontal_scaling.md (Verified)
+- src_postgres_benchmark_2026.md (PostgreSQL official docs)
+- src_mongodb_docs_2026.md (MongoDB official docs)
+
+**Missing Research:**
+- RT-102-security (In progress - security and compliance assessment)
