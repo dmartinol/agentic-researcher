@@ -1,25 +1,25 @@
 ---
 name: execute-research
-description: Use for executing an approved research Sub-task through a task-specific skill while recording evidence in the configured document store and repository.
+description: Use for executing an approved research task while recording evidence in research memory and configured output systems.
 ---
 
 # Execute Research
 
-Execute only an approved Sub-task whose initialization has been verified.
+Execute only an approved Research Task whose required initialization and dependencies are satisfied.
 
 ## Workflow
 
-1. Read the Jira description, acceptance criteria, linked page, research
-   manifest, and assigned skill.
-2. Confirm the task's dependencies are complete or explicitly approved.
-3. Gather primary sources first and label material claims as `Verified`,
-   `Reported`, `Not established`, or `Conflicting`.
-4. Record findings in the linked Confluence page and supporting repository
-   paths using the configured templates.
-5. Preserve the Jira card, source traceability, and existing content.
-6. Run the task-specific verification skill before requesting completion.
+1. Read `RESEARCH.md`, `STATE.md`, the task description/acceptance criteria, dependencies, expected outputs, and assigned skill if any.
+2. Resolve linked external work/document resources through their logical subsystem IDs.
+3. Gather evidence according to the approved evidence policy, preferring authoritative sources where applicable.
+4. Label material claims as `Verified`, `Reported`, `Not established`, or `Conflicting`.
+5. Preserve source traceability and record durable acquired knowledge in research memory.
+6. Update the configured document store and repository outputs using their provider specializations where applicable.
+7. Preserve existing meaningful content and external cross-links.
+8. Run verification before requesting completion.
 
-Independent Sub-tasks may execute in parallel. Synthesis tasks must wait for
-their declared dependencies.
+Independent Research Tasks may execute in parallel. Synthesis Tasks wait for declared dependencies.
 
-Do not transition or close the Jira item without explicit approval.
+Do not transition or close an external work item without explicit approval.
+
+Detailed evidence acquisition, contradiction search, synthesis, and memory operations are strengthened in P2; this skill establishes their provider-neutral boundary.

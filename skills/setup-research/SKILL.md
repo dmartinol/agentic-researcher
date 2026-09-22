@@ -1,155 +1,71 @@
 ---
 name: setup-research
-description: Use when starting a new research initiative and the user needs objectives, scope, service roles, conventions, approvals, and persistent settings clarified before planning.
+description: Use when starting or adopting a research initiative and the user needs objectives, scope, subsystem roles, conventions, approvals, and persistent settings clarified before planning.
 ---
 
 # Set Up Research
 
-Turn an initial research requirement into a complete, approved research
-configuration. Use the host's structured question-and-answer tool when
-available. Do not create tickets, pages, files, or MCP connections during
-setup, and do not proceed to planning until the user approves the configuration.
-The portable plugin must never receive user-specific MCP configuration. When
-the user authorizes external mutations, configure required MCP services in the
-active research repository's host adapter or the host-level configuration, not
-in this plugin repository.
+Turn an initial research requirement into a complete, approved research configuration. Do not create external work items, documents, repository artifacts, or connections during setup, and do not proceed to planning until the user approves the configuration.
+
+Use `RESEARCH.md` as the stable configuration contract and `STATE.md` for current workflow state. For existing research, discover and reconcile those artifacts before proposing replacements.
 
 ## Interactive intake
 
-Run the intake as a conversation, not as a single questionnaire. Ask one
-decision at a time using a structured question with concise options when the
-choice is bounded. Ask a free-form question when the answer cannot be safely
-represented by options. After each answer:
+Run intake as a conversation. Do not ask the user to repeat information already supplied. Resolve, where applicable:
 
-1. Record the answer in the draft configuration.
-2. Use it to choose the next relevant question.
-3. Skip questions that are no longer applicable.
-4. Explain any consequential default before applying it.
+1. objective and audience;
+2. scope and exclusions;
+3. evidence expectations and freshness;
+4. expected outputs;
+5. execution mode and mutation boundary;
+6. required logical subsystems;
+7. provider-specific conventions;
+8. approval gates.
 
-Do not ask the user to repeat information already supplied in the request. If a
-single answer resolves multiple fields, record all of them and continue with
-the next missing decision. If the user says “I don't know,” offer a safe
-default, explain its impact, and mark it as an assumption requiring approval.
+Explain consequential defaults before applying them. Mark unresolved assumptions explicitly.
 
-Use this order unless earlier answers require a different branch:
+## Subsystem discovery
 
-1. Objective: What decision or understanding should this research produce?
-2. Audience: Who will use the result and at what level of technical detail?
-3. Scope: Which questions, subjects, markets, versions, or time range are in scope?
-4. Exclusions: What must not be investigated or concluded?
-5. Evidence: Which sources are acceptable, how current must they be, and how
-   should conflicts be handled?
-6. Outputs: Which findings, comparisons, recommendations, or artifacts are
-   required?
-7. Execution mode: dry-run/mock, read-only external services, or approved
-   mutations?
-8. Systems: Which external systems are needed and what role does each serve?
-9. Conventions: How should work items, pages, labels, assignments, and files be
-   named and organized?
-10. Approvals: Which gates are required before planning, mutation, execution,
-    and closure?
+Resolve logical roles before provider details:
 
-Ask follow-up questions conditionally. Examples:
+- `ticketing`: work items, hierarchy, assignments, links, comments, transitions;
+- `document_store`: durable documents, hierarchy, content, and links;
+- `repository`: optional source or research-artifact repository;
+- `identity`: current-user and capability discovery;
+- additional source/search systems when required by the research.
 
-- If the user requests recommendations, ask which decision criteria and
-  constraints should govern them.
-- If the scope includes multiple platforms or products, ask for the selection
-  method or offer a bounded sample.
-- If the user requests current information, ask for a recency threshold.
-- If a repository output is requested, ask for the approved repository root and
-  artifact format.
-- If an external system is needed, run the systems-discovery flow below.
-- If dry-run is selected, do not ask for production project, space, or page IDs
-  unless the user wants realistic mock identifiers.
+For each required role:
 
-## Systems discovery
+1. select a provider;
+2. discover whether the host exposes the required capabilities;
+3. resolve non-secret identifiers such as project, space, repository, or root;
+4. classify the role as `ready`, `pending host configuration`, `not needed`, or `mock/dry-run`.
 
-Help the user define the systems needed for the workflow instead of assuming
-that MCP servers already exist. First ask which logical roles are needed:
+Use the capability contracts in `docs/subsystem-capabilities.md`. Do not assume a particular MCP server, tool name, or host configuration format.
 
-- `ticketing`: issues, assignments, links, comments, and transitions
-- `document_store`: pages, hierarchy, content, and page links
-- `repository`: research artifacts, sources, and deliverables
-- `identity`: current user, permissions, and capability discovery
-- `source_search` or another additional role when the research requires a
-  specialized system
+Apply the provider specialization selected in the approved research configuration when one is available. Provider defaults are configuration concerns and must not be hardcoded into this generic lifecycle skill.
 
-For each selected role, ask individually:
-
-1. Which host-provided service or MCP server should implement the role?
-2. Is it already configured in the host environment?
-3. Which capabilities are required for this research?
-4. Which non-secret project, space, repository, root, or account identifier is
-   needed?
-5. Which client-managed authentication profile should the host use, if any?
-
-If the service is not configured, explain the required capability contract and
-ask whether the user wants the host adapter configured. With explicit approval,
-the host may add or update the server in the active research repository's
-client-specific configuration (for example, that repository's `opencode.json`)
-or in the host-level configuration. Use an official server endpoint or package
-when available, preserve existing settings, and do not put the configuration in
-this plugin's `mcp.json`, `skills/`, or `agents/`. Do not install servers, open
-authorization flows, or test external mutations until the user authorizes that
-action. The setup result must record the adapter location, server name,
-capabilities, endpoint or package reference, and client-managed authentication
-profile reference, but never credentials.
-
-For every role, classify it as `ready`, `pending host configuration`, `not
-needed`, or `mock/dry-run`. A research setup is incomplete if a required role
-is unresolved. If the user chooses dry-run, provide mock adapters for required
-mutation roles and state clearly that no external records will change.
-
-## Configuration conventions
-
-Use logical roles rather than vendor names. Jira and Confluence are defaults
-only; replace them when the host supplies compatible services.
-
-Confirm, when applicable:
-
-- Ticket hierarchy, components, labels, assignment rules, and status conventions
-- Document root, page hierarchy, layouts, work-item cards, reciprocal links, and
-  closure comments
-- Repository root, research-state directory, artifact naming, and shared-memory
-  policy
-- Evidence labels: `Verified`, `Reported`, `Not established`, and `Conflicting`
-- Approval gates before planning, mutation, execution, and closure
-
-Do not invent project keys, space keys, repository roots, users, capabilities,
-or status transitions. Resolve them with the user or mark them as pending.
+Do not put user credentials or host-specific authentication profiles in the research project.
 
 ## Completeness check
 
-Before presenting setup for approval, verify that the draft contains:
+Before approval verify that the draft contains:
 
-- A stable research ID and title
-- Objective, audience, scope, exclusions, and decision context
-- Evidence policy and source-quality expectations
-- Expected outputs and repository needs
-- Execution mode and mutation boundary
-- Every required logical role with adapter status and capability requirements
-- Non-secret identifiers or explicit pending configuration items
-- Host adapter location and MCP configuration status for every external role
-- Naming, hierarchy, link, evidence, and approval conventions
-- Open assumptions and unresolved questions
+- stable research title/ID where needed;
+- objective, audience, scope, exclusions, and decision context;
+- evidence policy and expected outputs;
+- execution mode and mutation boundary;
+- every required logical role, provider, capability status, and non-secret identifier;
+- applicable provider conventions;
+- approval gates;
+- open assumptions and unresolved questions.
 
-If a required field is missing, ask the next individual question. Do not hand an
-incomplete setup to planning. If no further question is needed, present the
-complete redacted configuration, assumptions, pending system configuration, and
-unresolved optional choices.
+A required unresolved role blocks initialization.
 
 ## Persistence and output
 
-After approval, persist the configuration in the host's approved shared
-research-state location, separate from conversation context and research
-findings. The state must be reusable by later phases and other authorized
-developers. At minimum, preserve the stable research ID, service role mappings,
-capability names, non-secret identifiers, conventions, approval decisions, and
-phase status. Do not overwrite existing research state without confirming the
-research ID and ownership.
+After approval, persist stable configuration in `RESEARCH.md` and current phase/restart information in `STATE.md`. Preserve existing research state when adopting an existing project.
 
-Never store tokens, passwords, private keys, authorization headers, or raw
-secrets in the research configuration, repository, pages, or persistent memory.
+Never store tokens, passwords, private keys, authorization headers, or raw secrets.
 
-Present the final configuration summary and an exact approval request. Require
-explicit approval before handing the result to `plan-research`.
+Present the effective configuration and request explicit approval before handing the result to `plan-research`.

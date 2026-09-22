@@ -1,38 +1,45 @@
 ---
 name: initialize-research
-description: Use after a research plan is approved to initialize Jira work items, Confluence pages, repository paths, assignments, and reciprocal links without starting or closing work.
+description: Use after a research plan is approved to create or reuse configured external work items, documents, and repository artifacts idempotently without starting or closing work.
 ---
 
 # Initialize Research
 
-Initialize approved research structure idempotently. The host client supplies
-the ticketing, document-store, repository, and identity tools through its
-configured adapters or MCP servers.
+Initialize the approved research structure through configured logical subsystems. Use the capability contracts in `docs/subsystem-capabilities.md` and compose provider-specific skills for selected providers.
 
-## Jira requirements
+## Ticketing
 
-- Validate issue type, hierarchy, project, component, and current status.
-- Create or reuse Stories and Sub-tasks rather than creating duplicates.
-- Every Story and Sub-task must have a meaningful non-empty description.
-- Assign according to the approved user/workspace convention.
-- Never change workflow status during initialization.
+- Discover existing work items before creation.
+- Create or reuse the approved work hierarchy.
+- Preserve meaningful descriptions and metadata.
+- Apply approved assignment and classification conventions.
+- Do not change workflow status unless initialization explicitly requires and approves it.
+- Record stable external IDs and URLs in the research configuration/state as appropriate.
 
-## Confluence requirements
+## Document store
 
-- Create or reuse the approved root and child page hierarchy.
-- Align page titles with Jira summaries.
-- Start every page with a Jira link rendered as a block card, not a plain URL.
-- Preserve existing content after verifying the page ID, title, parent, version,
-  and Jira reference.
-- Add the reciprocal Jira remote link to the exact Confluence page URL.
+- Discover existing documents before creation.
+- Create or reuse the approved document hierarchy.
+- Preserve existing meaningful content.
+- Apply approved title, parent, template, and cross-link conventions.
+- Record stable document IDs and URLs.
 
-## Repository requirements
+## Repository
 
-- Create only approved directories and placeholder files.
-- Preserve existing content and do not commit credentials.
+- Create only approved directories/artifacts.
+- Preserve existing content.
+- Never write credentials or secrets.
+
+## Provider composition
+
+For each configured logical subsystem, apply the provider specialization selected in the approved research configuration when one is available.
+
+Provider specializations may add provider-specific conventions, validation, linking, and mutation requirements, but must not weaken the generic safety, approval, idempotency, or verification rules.
+
+If no provider specialization is available, operate only through the generic capability contract and do not infer provider-specific behavior.
 
 ## Verification
 
-Verify all descriptions, assignments, page parents, Jira cards, remote links,
-repository paths, and unchanged statuses. Report missing or conflicting items;
-do not silently repair ambiguous records. Require approval before execution.
+After each mutation, read back enough state to verify identity, hierarchy, metadata, links, and unchanged fields that matter. Report ambiguous or conflicting resources rather than guessing or silently replacing them.
+
+Update `STATE.md` with initialized/blocked work and require approval before execution.
