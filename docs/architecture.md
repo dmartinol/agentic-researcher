@@ -23,6 +23,13 @@ Jira and Confluence are the default logical service choices described by the
 skills. A client can supply a different service through its MCP configuration
 when it satisfies the capability contract required by the workflow.
 
+MCP placement is host-specific: research setup may configure an approved
+server in the active research repository's client adapter or in host-level
+configuration. The included OpenCode adapter enables the official Atlassian Rovo
+MCP server as a non-secret default for Jira and Confluence. The portable
+plugin's `mcp.json`, skills, and agents remain credential-free and must not
+contain user-specific authentication profiles.
+
 ## Configuration precedence
 
 Settings resolve in this order:

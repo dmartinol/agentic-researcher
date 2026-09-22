@@ -19,13 +19,17 @@ the definitions do not require a particular vendor, runtime, command format,
 MCP server, or credential layout.
 
 The included `opencode.json` is an optional OpenCode adapter. It registers the
-portable skills and loads the root instructions and agent definitions as
-context; it does not configure MCP servers or credentials.
+portable skills, loads the root instructions and agent definitions as context,
+and enables the official Atlassian Rovo MCP server for Jira and Confluence
+operations. OpenCode handles OAuth authentication; this repository contains no
+credentials or authorization headers.
 
 Jira and Confluence are the default logical service choices described by the
 skills. Users may provide alternative ticketing, document, repository, or
 identity services through their client-managed MCP configuration and persistent
-user settings.
+user settings. For a specific research run, setup may configure the active
+research repository's host adapter after explicit approval; it must not place
+user-specific MCP settings in this portable plugin.
 
 ## Skills
 

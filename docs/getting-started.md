@@ -9,8 +9,10 @@ explicit approval before closure.
 
 The plugin does not itself provide Jira, Confluence, repository, identity, web
 search, or delegation tools. The host client supplies those capabilities and
-authentication. `mcp.json` is empty by default, so configure services in the
-host client when an external run is required.
+authentication. `mcp.json` is empty by default. This repository's optional
+OpenCode adapter enables the official Atlassian Rovo MCP server for Jira and
+Confluence; other hosts should configure an equivalent server in their own
+client configuration.
 
 ## Try the demonstration scenario
 
@@ -70,6 +72,17 @@ explicit mutation approval.
 
 ## External-service run
 
+For the included OpenCode adapter, authenticate the configured Atlassian server
+before the first mutation:
+
+```text
+opencode mcp auth atlassian
+```
+
+OAuth credentials are stored by OpenCode outside this repository. Authentication
+only makes mutation tools available; the research workflow still requires the
+explicit plan and mutation approvals described below.
+
 Before an external run, provide the host client with logical service roles:
 
 - `ticketing`
@@ -80,7 +93,10 @@ Before an external run, provide the host client with logical service roles:
 The agent must resolve and display the effective configuration, redact
 authentication data, verify capabilities, and reuse existing records where
 possible. Do not put tokens, passwords, private keys, or authorization headers
-in this repository or in a research manifest.
+in this repository or in a research manifest. If the user authorizes MCP setup,
+record the adapter location, server name, endpoint or package reference, and
+client-managed authentication profile; require host authorization before
+opening the authentication flow.
 
 ## Further reading
 

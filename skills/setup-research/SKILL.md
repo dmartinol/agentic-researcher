@@ -9,6 +9,10 @@ Turn an initial research requirement into a complete, approved research
 configuration. Use the host's structured question-and-answer tool when
 available. Do not create tickets, pages, files, or MCP connections during
 setup, and do not proceed to planning until the user approves the configuration.
+The portable plugin must never receive user-specific MCP configuration. When
+the user authorizes external mutations, configure required MCP services in the
+active research repository's host adapter or the host-level configuration, not
+in this plugin repository.
 
 ## Interactive intake
 
@@ -80,11 +84,16 @@ For each selected role, ask individually:
 5. Which client-managed authentication profile should the host use, if any?
 
 If the service is not configured, explain the required capability contract and
-ask whether the user wants to configure it outside this workflow. Do not edit
-MCP configuration, install servers, open authorization flows, or test external
-mutations during setup. The setup result may record a pending configuration
-action, a server name, capability names, and an authentication profile
-reference, but never credentials.
+ask whether the user wants the host adapter configured. With explicit approval,
+the host may add or update the server in the active research repository's
+client-specific configuration (for example, that repository's `opencode.json`)
+or in the host-level configuration. Use an official server endpoint or package
+when available, preserve existing settings, and do not put the configuration in
+this plugin's `mcp.json`, `skills/`, or `agents/`. Do not install servers, open
+authorization flows, or test external mutations until the user authorizes that
+action. The setup result must record the adapter location, server name,
+capabilities, endpoint or package reference, and client-managed authentication
+profile reference, but never credentials.
 
 For every role, classify it as `ready`, `pending host configuration`, `not
 needed`, or `mock/dry-run`. A research setup is incomplete if a required role
@@ -120,6 +129,7 @@ Before presenting setup for approval, verify that the draft contains:
 - Execution mode and mutation boundary
 - Every required logical role with adapter status and capability requirements
 - Non-secret identifiers or explicit pending configuration items
+- Host adapter location and MCP configuration status for every external role
 - Naming, hierarchy, link, evidence, and approval conventions
 - Open assumptions and unresolved questions
 
