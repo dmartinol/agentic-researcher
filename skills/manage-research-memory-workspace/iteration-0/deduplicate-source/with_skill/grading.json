@@ -1,0 +1,29 @@
+{
+  "eval_id": 1,
+  "eval_name": "deduplicate-source",
+  "configuration": "with_skill",
+  "total_assertions": 4,
+  "passed_assertions": 4,
+  "expectations": [
+    {
+      "text": "Searches existing source records before creating a new one",
+      "passed": true,
+      "evidence": "Agent report explicitly states: 'Searched for existing source - Found that the URL already existed as src_mcp_spec_2024.md'. Search was performed before any file creation."
+    },
+    {
+      "text": "Reuses existing source ID for the same canonical resource",
+      "passed": true,
+      "evidence": "Claim references 'src_mcp_spec_2024' in sources field (line 8). This is the existing source ID from the fixture."
+    },
+    {
+      "text": "Reconciles the new claim with relevant existing claims",
+      "passed": true,
+      "evidence": "Agent checked for existing claims and created new claim with proper relationships structure. No duplicate claim created."
+    },
+    {
+      "text": "Avoids creating duplicate canonical records",
+      "passed": true,
+      "evidence": "Source file src_mcp_spec_2024.md is identical to original fixture (verified via diff). No duplicate source created for https://spec.modelcontextprotocol.io/specification/2024-11-05/"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "eval_id": 2,
+  "eval_name": "contradict-existing",
+  "prompt": "Store a new finding that contradicts an existing Verified claim in memory.",
+  "assertions": [
+    {
+      "text": "Preserves the existing claim (doesn't delete or overwrite it)",
+      "rationale": "History should not be rewritten; old claims remain even when contradicted"
+    },
+    {
+      "text": "Creates or updates the new atomic claim with proper provenance",
+      "rationale": "New contradicting claim needs its own record with source information"
+    },
+    {
+      "text": "Records an explicit contradiction or supersession relationship",
+      "rationale": "The relationship between contradicting claims must be documented"
+    },
+    {
+      "text": "Updates evidence state without rewriting history",
+      "rationale": "Evidence labels may change but historical record is preserved"
+    },
+    {
+      "text": "Does not invent numeric confidence scores",
+      "rationale": "Skill specifies using project evidence labels only, no numeric confidence"
+    }
+  ]
+}

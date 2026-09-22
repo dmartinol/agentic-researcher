@@ -1,0 +1,24 @@
+{
+  "eval_id": 3,
+  "eval_name": "routine-episode",
+  "configuration": "with_skill",
+  "total_assertions": 3,
+  "passed_assertions": 3,
+  "expectations": [
+    {
+      "text": "Does not create an episode for routine tool calls",
+      "passed": true,
+      "evidence": "No episode files created in research/memory/episodes/ directory. Agent correctly recognized routine searches as not warranting episode creation."
+    },
+    {
+      "text": "Does not store transcript history or chain-of-thought as an episode",
+      "passed": true,
+      "evidence": "No files created. Agent did not attempt to record tool-call history or conversation transcripts."
+    },
+    {
+      "text": "Only creates episodes when research trajectory has reusable investigative value",
+      "passed": true,
+      "evidence": "Agent explicitly stated: 'For routine searches that simply found expected documentation, no episode creation is warranted.' Correctly applied the skill's criteria."
+    }
+  ]
+}

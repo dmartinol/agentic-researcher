@@ -1,0 +1,29 @@
+{
+  "eval_id": 1,
+  "eval_name": "deduplicate-source",
+  "configuration": "without_skill",
+  "total_assertions": 4,
+  "passed_assertions": 4,
+  "expectations": [
+    {
+      "text": "Searches existing source records before creating a new one",
+      "passed": true,
+      "evidence": "Agent report states: 'Checked for duplicate source: Found that the MCP specification URL already existed as src_mcp_spec_2024'. Explicit search performed."
+    },
+    {
+      "text": "Reuses existing source ID for the same canonical resource",
+      "passed": true,
+      "evidence": "Claim references 'src_mcp_spec_2024' in source_id field (line 3). This is the existing source ID from the fixture."
+    },
+    {
+      "text": "Reconciles the new claim with relevant existing claims",
+      "passed": true,
+      "evidence": "New claim created without duplicating existing claims. Proper attribution to existing source."
+    },
+    {
+      "text": "Avoids creating duplicate canonical records",
+      "passed": true,
+      "evidence": "Source file src_mcp_spec_2024.md is identical to original fixture (verified via diff). Agent explicitly noted 'Did NOT create a new source file since the URL was already documented'."
+    }
+  ]
+}
