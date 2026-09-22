@@ -32,7 +32,11 @@ Initialize the approved research structure through configured logical subsystems
 
 ## Provider composition
 
-When Jira is the ticketing provider, apply `jira-research`. When Confluence is the document-store provider, apply `confluence-research`. Provider skills may add richer validation and linking requirements but must not weaken the generic safety rules.
+For each configured logical subsystem, apply the provider specialization selected in the approved research configuration when one is available.
+
+Provider specializations may add provider-specific conventions, validation, linking, and mutation requirements, but must not weaken the generic safety, approval, idempotency, or verification rules.
+
+If no provider specialization is available, operate only through the generic capability contract and do not infer provider-specific behavior.
 
 ## Verification
 
