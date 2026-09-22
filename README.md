@@ -1,5 +1,10 @@
 # Agentic Researcher
 
+[![Validate package](https://github.com/dmartinol/agentic-researcher/actions/workflows/validate.yml/badge.svg)](https://github.com/dmartinol/agentic-researcher/actions/workflows/validate.yml)
+[![GitHub release](https://img.shields.io/github/v/release/dmartinol/agentic-researcher?include_prereleases)](https://github.com/dmartinol/agentic-researcher/releases)
+[![License](https://img.shields.io/github/license/dmartinol/agentic-researcher)](https://github.com/dmartinol/agentic-researcher/blob/main/LICENSE)
+
+
 Installable, portable agentic research system for planning, executing, documenting, and verifying evidence-based research.
 
 The standards-based portable core follows Agent Plugins v1 and Agent Skills:
