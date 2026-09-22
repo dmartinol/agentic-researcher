@@ -18,17 +18,25 @@ Host-specific compatibility files are optional. Researchers must not be required
 
 ## Architecture layers
 
-```text
-agents
-  |
-  v
-portable skills
-  |
-  v
-logical subsystem capabilities
-  |
-  v
-provider-specific skills / MCP services
+```mermaid
+flowchart TB
+    A[Research agents] --> S[Portable Agent Skills]
+    S --> C[Logical subsystem capabilities]
+
+    C --> T[ticketing]
+    C --> D[document_store]
+    C --> R[repository]
+    C --> I[identity]
+
+    T --> PS[Provider-specific skills / MCP services]
+    D --> PS
+    R --> PS
+    I --> PS
+
+    PS --> J[(Jira)]
+    PS --> CF[(Confluence)]
+    PS --> G[(Git)]
+    PS --> O[(Other providers)]
 ```
 
 Generic research semantics belong above provider details.
