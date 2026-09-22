@@ -1,0 +1,76 @@
+# Analysis: Gateway Y Authorization Enforcement - Conflicting Sources
+
+## Summary
+
+When two credible sources disagree about whether gateway Y enforces authorization centrally, we cannot claim that either position is definitively established. The appropriate evidence label for this claim is **Conflicting**.
+
+## What We Can Claim
+
+Given the conflicting evidence, we can make the following precise claims:
+
+1. **Source disagreement exists**: "Two credible sources provide conflicting accounts of whether gateway Y enforces authorization centrally" - This is a verifiable fact about the evidence state itself.
+
+2. **Individual source positions**: We can report what each source states:
+   - "Source A reports that gateway Y enforces authorization centrally"
+   - "Source B reports that gateway Y does not enforce authorization centrally"
+
+   Each of these has evidence label: **Reported** (credible sources state these claims, but the conflict prevents independent establishment).
+
+3. **Evidence state**: "Whether gateway Y enforces authorization centrally remains unresolved based on available evidence" - This accurately describes our epistemic position.
+
+## What We Cannot Claim
+
+We cannot make any of the following claims:
+
+1. "Gateway Y enforces authorization centrally" (label would need to be **Verified**)
+2. "Gateway Y does not enforce authorization centrally" (label would need to be **Verified**)
+3. Either position is "more likely" or "probably true" without additional analysis of source strength, recency, and scope
+
+## Next Steps to Resolve the Conflict
+
+To move from **Conflicting** to **Verified** or **Reported**, we would need to:
+
+1. **Examine source characteristics**:
+   - Which source is more authoritative for this specific claim?
+   - Which is more recent?
+   - Do the sources describe the same version/configuration of gateway Y?
+   - Do they refer to the same scope (e.g., same deployment context, time period)?
+
+2. **Seek primary evidence**:
+   - Gateway Y's official documentation or specifications
+   - Source code inspection if available
+   - Configuration files or deployment manifests
+   - Official architecture diagrams
+
+3. **Check for scope differences**:
+   - Different versions of gateway Y
+   - Different deployment modes or configurations
+   - Different definitions of "central authorization enforcement"
+   - Different organizational contexts
+
+4. **Assess temporal factors**:
+   - Has gateway Y's architecture changed between source publication dates?
+   - Is one source describing historical behavior and another current behavior?
+
+5. **Investigate source quality**:
+   - Are both sources equally credible for this specific claim?
+   - Does either source cite primary evidence we can access?
+   - Are there any stated assumptions or qualifications in the sources?
+
+## Handling in Research Output
+
+When including this in research deliverables:
+
+- **Explicitly disclose the conflict**: Don't choose a convenient source and suppress the disagreement
+- **Qualify any downstream claims**: Any conclusions that depend on this assertion must acknowledge the uncertainty
+- **Consider multiple scenarios**: If the claim is critical to the research question, analyze outcomes under both possibilities
+- **Mark as requiring follow-up**: Flag this as an unresolved gap that may need additional investigation
+
+## Evidence Principle Applied
+
+This follows the core principle that credible disagreement must be preserved rather than resolved through preference or convenience. The evidence label **Conflicting** accurately represents that:
+- We have credible evidence for incompatible positions
+- The conflict remains unresolved
+- Neither position can be independently established without additional work
+
+A claim's evidence state describes what the evidence shows, not what we wish were true or what would be more convenient for our analysis.

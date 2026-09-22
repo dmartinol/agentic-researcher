@@ -1,0 +1,402 @@
+RESEARCH EVIDENCE ANALYSIS: STALE SOURCE SCENARIO
+===================================================
+
+Task: An official 2024 document says feature Z is unsupported, but we're making a 2026 architecture decision. Can we rely on it?
+
+Analysis Date: 2026-09-22
+
+================================================================================
+1. START FROM THE QUESTION: EVIDENCE NEEDS
+================================================================================
+
+The question requires establishing:
+
+PRIMARY CLAIMS TO EVALUATE:
+- Claim 1: Feature Z was unsupported as of the 2024 document publication
+- Claim 2: Feature Z support status remains unchanged in 2026
+- Claim 3: The 2024 statement is authoritative for 2026 architecture decisions
+
+MATERIAL DEPENDENCIES:
+- Product/platform release cycles and timelines (2024-2026)
+- Feature development roadmap announcements
+- Version-specific support policies
+- Vendor commitment patterns for feature additions
+
+SCOPE QUALIFICATIONS:
+- Temporal: 2024 document date vs. 2026 decision date (2-year gap)
+- Version: Specific product version mentioned in 2024 vs. current version
+- Geography: Regional availability differences
+- Edition: Enterprise vs. community vs. cloud editions
+
+FRESHNESS REQUIREMENTS:
+For architecture decisions with multi-year implications:
+- Support status claims require evidence <6 months old for high-risk decisions
+- 2-year-old evidence fails freshness test for forward-looking decisions
+- Must actively search for superseding documentation
+
+================================================================================
+2. SOURCE DISCOVERY & RETRIEVAL PLAN
+================================================================================
+
+REQUIRED SOURCE HIERARCHY (strongest to weakest):
+
+Tier 1 - Direct Primary Evidence:
+[✓] Official 2024 documentation stating feature Z unsupported
+[!] Current official documentation (2026) for feature Z support status
+[!] Product release notes (2024-Q4 through 2026-Q3)
+[!] Official product roadmap or feature announcements
+[!] Changelog entries for versions released after 2024 document
+
+Tier 2 - Authoritative Secondary:
+[!] Vendor blog posts announcing feature changes
+[!] Developer preview/beta announcements
+[!] Official support forum responses from vendor staff
+[!] Migration guides mentioning feature Z
+
+Tier 3 - Community/Discovery:
+[ ] Stack Overflow recent questions about feature Z
+[ ] GitHub issues/PRs in official repositories
+[ ] Third-party implementation attempts
+
+Legend: [✓] Have  [!] Required  [ ] Optional
+
+DISCOVERY ACTIONS NEEDED:
+1. Locate current product version and documentation URL
+2. Search vendor site for "feature Z" + date filters 2024-present
+3. Check version history/changelog for feature additions
+4. Search issue trackers for feature Z implementation/requests
+5. Verify if 2024 document has deprecation/update notices
+
+================================================================================
+3. CLAIM EXTRACTION & EVIDENCE LABELS
+================================================================================
+
+CLAIM 1: "Feature Z was unsupported as of 2024 document publication"
+  Evidence Label: VERIFIED
+  Source: Official 2024 documentation (assumed authoritative)
+  Retrieved: N/A (scenario input)
+  Scope: Specific product version as of 2024 publication date
+  Qualification: This establishes historical state, not current state
+
+  Notes: A vendor's authoritative documentation directly establishes what
+  the vendor officially reported. This does NOT establish feature Z will
+  remain unsupported, nor does it preclude beta/experimental support.
+
+CLAIM 2: "Feature Z support status remains unchanged in 2026"
+  Evidence Label: NOT ESTABLISHED
+  Source: None - extrapolation from 2024 document
+  Retrieved: N/A
+  Scope: Assumes no changes across ~2 year period
+
+  Critical Gap: No evidence searched or retrieved for:
+    - Product releases between 2024 document and 2026-09-22
+    - Feature roadmap announcements
+    - Experimental/preview feature launches
+    - Support policy changes
+
+  Risk Assessment: HIGH
+    - 2 years is multiple release cycles for most platforms
+    - Documentation freeze dates may precede actual publication
+    - Beta/preview features often have 6-12 month lead time
+    - Vendor priorities shift based on customer demand
+
+CLAIM 3: "2024 document is authoritative for 2026 architecture decisions"
+  Evidence Label: CONFLICTING
+
+  Supporting factors:
+    - Official documentation is authoritative for stated version/date
+    - Explicit "unsupported" statement creates clear boundary
+
+  Contradicting factors:
+    - 2-year staleness violates freshness requirements
+    - Architecture decisions have multi-year implications
+    - No contradiction search performed
+    - No superseding document verification
+
+  Recommendation: Cannot rely on stale evidence for forward-looking decisions
+
+================================================================================
+4. CONTRADICTION SEARCH (REQUIRED BEFORE DECISION)
+================================================================================
+
+FALSIFICATION ATTEMPTS NEEDED:
+
+Search 1: Current Documentation
+  Query: [product name] "feature Z" documentation site:vendor.com
+  Date filter: 2025-present
+  Goal: Find superseding documentation stating current support status
+  Status: NOT PERFORMED (demonstration scenario)
+
+Search 2: Release Notes
+  Query: [product name] release notes "feature Z" OR "Z support"
+  Versions: All releases after 2024 document version
+  Goal: Identify version where feature Z support was added
+  Status: NOT PERFORMED
+
+Search 3: Roadmap & Announcements
+  Query: [product name] roadmap "feature Z" OR "planned features"
+  Sources: Vendor blog, conference talks, product announcements
+  Goal: Find commitment to add feature Z support
+  Status: NOT PERFORMED
+
+Search 4: Change Logs & Migration Guides
+  Query: [product name] changelog "added feature Z" OR "new support"
+  Goal: Pinpoint exact version/date of support addition
+  Status: NOT PERFORMED
+
+Search 5: Community Implementation Evidence
+  Query: [product name] "feature Z" implementation example
+  Date filter: 2024-present
+  Goal: Find evidence of working implementations (indicating support added)
+  Status: NOT PERFORMED
+
+EXPECTED OUTCOMES:
+- If Search 1-2 find "feature Z now supported": Claim 2 FALSIFIED
+- If Search 3 finds roadmap commitment: Evidence of planned change
+- If Search 4 finds specific version: Precise superseding claim
+- If Search 5 finds implementations: Indirect evidence of support
+- If all searches negative: Increases (but doesn't prove) claim validity
+
+================================================================================
+5. FRESHNESS ANALYSIS
+================================================================================
+
+TEMPORAL GAP: ~2 years (2024 document → 2026-09-22 decision)
+
+FRESHNESS ASSESSMENT:
+
+Document Age: STALE for architecture decisions
+  - 2024 document represents point-in-time state
+  - No evidence of revalidation or "last reviewed" date
+  - Gap spans multiple typical release cycles
+
+Version Drift Risk: HIGH
+  - Most platforms: 2-4 major releases in 2 years
+  - Feature additions common in minor/major releases
+  - Support policies evolve based on customer demand
+
+Decision Impact Horizon: Multi-year
+  - Architecture decisions typically have 3-5 year implications
+  - Basing 2026-2031 architecture on 2024 state = 3-7 year span
+  - Compounds staleness risk
+
+FRESHNESS POLICY APPLICATION:
+
+For LOW-RISK decisions (easy to reverse):
+  - Acceptable: Evidence <1 year old
+  - 2024 evidence: FAILS
+
+For HIGH-RISK decisions (costly to reverse):
+  - Required: Evidence <6 months old
+  - Preferred: Evidence <3 months old
+  - 2024 evidence: FAILS
+
+For FORWARD-LOOKING decisions (multi-year commitments):
+  - Required: Current authoritative evidence + roadmap check
+  - Must verify: No planned changes in decision horizon
+  - 2024 evidence: FAILS
+
+CONCLUSION: The 2024 document FAILS all standard freshness tests for a 2026 architecture decision.
+
+================================================================================
+6. UPDATED CLAIMS & RELATIONSHIPS
+================================================================================
+
+ORIGINAL CLAIM (from 2024 document):
+  Statement: "Feature Z is unsupported"
+  Evidence: Verified (as of 2024)
+  Scope: Specific product version, as of publication date
+  Valid for: Historical reference only
+
+SUPERSEDING CLAIM (needed but not established):
+  Statement: "Feature Z support status as of 2026-09-22"
+  Evidence: Not established (no search performed)
+  Scope: Current product version
+  Valid for: 2026 architecture decision
+
+RELATIONSHIP:
+  - If found: New claim SUPERSEDES 2024 claim
+  - Preserve both: Show evolution of feature support
+  - Document: "2024 claim accurate historically but superseded for current decisions"
+
+RECOMMENDED CLAIM STRUCTURE:
+
+Claim A (Historical): "Feature Z was unsupported in [product version X, 2024]"
+  Evidence: Verified
+  Source: Official 2024 documentation
+  Superseded by: Claim B
+  Relevance: Historical context only
+
+Claim B (Current): "Feature Z support status in [product version Y, 2026-09-22]"
+  Evidence: [To be established through source discovery]
+  Source: [Current documentation, release notes]
+  Supersedes: Claim A
+  Relevance: Basis for architecture decision
+
+================================================================================
+7. RECOMMENDATIONS
+================================================================================
+
+IMMEDIATE ACTIONS (before architecture decision):
+
+1. LOCATE CURRENT DOCUMENTATION [CRITICAL]
+   - Find official documentation for current product version
+   - Search for feature Z support status
+   - Record publication/last-updated date
+   - Expected time: 15-30 minutes
+
+2. REVIEW RELEASE HISTORY [HIGH PRIORITY]
+   - Check all version release notes from 2024 to present
+   - Search for feature Z mentions
+   - Identify version where support added (if any)
+   - Expected time: 30-60 minutes
+
+3. VERIFY ROADMAP [MEDIUM PRIORITY]
+   - Check product roadmap for planned feature changes
+   - Search vendor announcements for feature Z
+   - Assess likelihood of future changes
+   - Expected time: 20-40 minutes
+
+4. ESTABLISH CURRENT CLAIM [CRITICAL]
+   - Create fresh evidence-based claim for 2026
+   - Label with appropriate evidence strength
+   - Document sources and retrieval date
+   - Expected time: 15 minutes
+
+5. CONTRADICTION RECONCILIATION [if needed]
+   - If 2024 and 2026 evidence conflict: document both
+   - Identify transition point (version/date)
+   - Assess impact on architecture decision
+   - Expected time: Varies
+
+DECISION FRAMEWORK:
+
+IF current evidence confirms "still unsupported":
+  → Proceed with architecture decision accounting for unsupported status
+  → Document: "Verified unsupported as of [current date]"
+  → Plan: Monitor for future support announcements
+  → Risk: Low (current state confirmed)
+
+IF current evidence shows "now supported":
+  → 2024 claim was accurate historically but now superseded
+  → Architecture decision can leverage feature Z
+  → Document: "Added in version X, supported as of [date]"
+  → Risk: Low (support confirmed)
+
+IF current evidence is ambiguous (beta/experimental):
+  → Treat as "reported but not established"
+  → Architecture decision should not depend on uncertain support
+  → Document: "Experimental/beta status, not recommended for production"
+  → Risk: Medium-High
+
+IF unable to find current evidence:
+  → Cannot proceed with high-confidence decision
+  → Options: Contact vendor support, test empirically, assume unsupported
+  → Document: "Could not establish current status"
+  → Risk: HIGH
+
+LONG-TERM PRACTICES:
+
+- Establish freshness policy: "Support status claims must be <6 months old"
+- Set revalidation schedule: Review critical claims quarterly
+- Monitor vendor channels: Subscribe to release notes, roadmap updates
+- Build evidence repository: Track feature support evolution over time
+- Document assumptions: Make dependency on feature support explicit
+
+================================================================================
+8. RISK SUMMARY
+================================================================================
+
+RISK OF RELYING ON 2024 DOCUMENT WITHOUT REVALIDATION:
+
+Technical Risk: HIGH
+  - May design around missing feature that now exists
+  - May miss opportunity to use now-supported functionality
+  - May build workarounds that are no longer needed
+  - Cost: Wasted development effort, suboptimal architecture
+
+Business Risk: MEDIUM-HIGH
+  - Competitive disadvantage if feature now available
+  - Increased complexity from unnecessary workarounds
+  - Delayed time-to-market if redesign needed post-discovery
+  - Cost: Opportunity cost, potential rework
+
+Reputational Risk: MEDIUM
+  - Architecture decision based on stale evidence
+  - Demonstrates inadequate research rigor
+  - May require explanation to stakeholders if outdated
+  - Cost: Credibility with technical leadership
+
+RISK MITIGATION:
+
+Minimum viable: 30 minutes of current documentation review
+Recommended: 2-4 hours comprehensive source verification
+Best practice: Establish ongoing monitoring for decision-critical claims
+
+================================================================================
+9. EVIDENCE QUALITY ASSESSMENT
+================================================================================
+
+Current Evidence State:
+  INSUFFICIENT for architecture decision
+
+Required Evidence Quality:
+  - Primary authoritative source (official documentation)
+  - Freshness: <6 months for high-risk decision
+  - Contradiction search: Performed and documented
+  - Scope match: Current version, applicable edition
+
+Current Evidence Gaps:
+  ✗ No current (2026) documentation reviewed
+  ✗ No release history checked
+  ✗ No contradiction search performed
+  ✗ No freshness validation
+  ✗ No superseding documentation sought
+
+Evidence Gathering Status: 0% complete
+Confidence in Decision: VERY LOW (do not proceed)
+
+Next Step: Execute source discovery plan (Section 2)
+
+================================================================================
+10. FINAL ANSWER TO THE QUESTION
+================================================================================
+
+Question: "Can we rely on [2024 document stating feature Z unsupported] for 2026 architecture decision?"
+
+Answer: NO
+
+Reasoning:
+
+1. TEMPORAL GAP: 2-year staleness violates freshness requirements for architecture decisions with multi-year implications.
+
+2. UNFALSIFIED: No contradiction search performed. The claim has not been tested against current evidence.
+
+3. INCOMPLETE EVIDENCE: The 2024 document establishes historical state but provides no evidence about current (2026) state.
+
+4. HIGH RISK: Architecture decisions are costly to reverse. Basing them on stale evidence creates unnecessary technical and business risk.
+
+5. ACTIONABLE ALTERNATIVE: 2-4 hours of source verification can establish current support status with high confidence.
+
+Recommendation:
+SUSPEND architecture decision until current evidence obtained. Execute source discovery plan to establish 2026-current feature Z support status. Only proceed with architecture design after fresh evidence confirms current state.
+
+If time-constrained:
+Minimum viable research: Review current official documentation for feature Z (30 minutes). This establths whether 2024 claim remains valid or has been superseded.
+
+Evidence-based decision making requires:
+- Fresh evidence (not 2-year-old claims)
+- Contradiction search (actively seek disconfirming evidence)
+- Appropriate source quality (official/authoritative)
+- Scope match (current version, not historical state)
+
+The 2024 document fails on dimension 1 (freshness) and lacks dimensions 2-4.
+
+================================================================================
+END OF ANALYSIS
+================================================================================
+
+Generated: 2026-09-22
+Methodology: research-evidence skill (SKILL.md)
+Analysis Type: Freshness assessment + evidence quality evaluation
+Status: Evidence gathering required before decision

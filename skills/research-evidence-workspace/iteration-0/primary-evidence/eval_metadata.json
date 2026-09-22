@@ -1,0 +1,35 @@
+{
+  "eval_id": 1,
+  "eval_name": "primary-evidence",
+  "prompt": "Research whether the current MCP specification supports capability X. I need a claim I can cite in an architecture decision.",
+  "assertions": [
+    {
+      "name": "evidence_need_defined",
+      "description": "Response explicitly identifies what claim needs to be established"
+    },
+    {
+      "name": "scope_version_specified",
+      "description": "Response includes specific version/scope constraints (e.g., 'current MCP spec', version number, date)"
+    },
+    {
+      "name": "primary_evidence_sought",
+      "description": "Response references authoritative/primary sources (spec docs, official repo, standards) rather than blog posts or summaries"
+    },
+    {
+      "name": "evidence_label_assigned",
+      "description": "Response uses an explicit evidence label: Verified, Reported, Not established, or Conflicting"
+    },
+    {
+      "name": "source_metadata_present",
+      "description": "Response includes source tracking (URL/path, retrieval time, specific section/location)"
+    },
+    {
+      "name": "contradiction_check_performed",
+      "description": "Response shows active attempt to falsify or find conflicting evidence"
+    },
+    {
+      "name": "freshness_validated",
+      "description": "Response assesses currency/staleness of evidence relative to architecture decision needs"
+    }
+  ]
+}

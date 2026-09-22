@@ -1,0 +1,27 @@
+{
+  "eval_id": 2,
+  "eval_name": "credible-conflict",
+  "prompt": "Two credible sources disagree about whether gateway Y enforces authorization centrally. Work out what we can actually claim.",
+  "assertions": [
+    {
+      "name": "disagreement_investigated",
+      "description": "Response examines both conflicting sources rather than accepting one at face value"
+    },
+    {
+      "name": "scope_version_compared",
+      "description": "Response checks whether sources differ in scope, version, date, or configuration"
+    },
+    {
+      "name": "conflict_preserved",
+      "description": "Response uses 'Conflicting' label or explicitly preserves unresolved disagreement rather than choosing one source"
+    },
+    {
+      "name": "no_arbitrary_selection",
+      "description": "Response does not simply pick the more convenient or recent source without justification"
+    },
+    {
+      "name": "provenance_recorded",
+      "description": "Response tracks both sources with specific identifiers, dates, and locations"
+    }
+  ]
+}

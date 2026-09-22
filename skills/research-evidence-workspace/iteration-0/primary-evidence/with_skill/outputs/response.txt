@@ -1,0 +1,291 @@
+# Research Evidence Report: MCP Specification Server-Side Sampling Support
+
+## Research Question
+
+Does the current MCP (Model Context Protocol) specification support server-side sampling capability? What claims can be cited in an architecture decision?
+
+Retrieved: September 22, 2026
+
+## Executive Summary
+
+Server-side sampling is **DEPRECATED but still functional** in the current MCP specification (version 2026-07-28). While the feature remains operational and supported until at least July 28, 2027, new implementations should NOT adopt it and should instead integrate directly with LLM provider APIs.
+
+---
+
+## Material Claims with Evidence Labels
+
+### Claim 1: Current MCP Specification Version
+**Statement:** The current MCP specification version is 2026-07-28, released on July 28, 2026.
+
+**Evidence Label:** Verified
+
+**Supporting Evidence:**
+- Source: Official MCP Specification page (https://modelcontextprotocol.io/specification/2026-07-28)
+- Source: MCP Blog post "The 2026-07-28 Specification" (https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+- Evidence: Direct authoritative documentation from modelcontextprotocol.io domain
+- Observation Time: September 22, 2026
+
+**Qualifications:** This is the authoritative current version as of September 2026.
+
+---
+
+### Claim 2: Sampling Feature Deprecation Status
+**Statement:** The Sampling feature is officially deprecated as of protocol version 2026-07-28 under SEP-2577.
+
+**Evidence Label:** Verified
+
+**Supporting Evidence:**
+- Source: Official MCP Specification Sampling page (https://modelcontextprotocol.io/specification/draft/client/sampling)
+- Direct quote from specification: "**Deprecated**: The Sampling feature is deprecated as of protocol version `2026-07-28` ([SEP-2577](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2577))."
+- Source: MCP Blog announcement (https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+- Evidence: Official deprecation notice in primary specification document
+- Observation Time: September 22, 2026
+
+**Qualifications:** Deprecated status is official and documented in the authoritative specification.
+
+---
+
+### Claim 3: Sampling Remains Functional During Deprecation Period
+**Statement:** Sampling remains functional and supported for at least twelve months after July 28, 2026 (until at least July 28, 2027).
+
+**Evidence Label:** Verified
+
+**Supporting Evidence:**
+- Source: Official MCP Specification Sampling page (https://modelcontextprotocol.io/specification/draft/client/sampling)
+- Direct quote: "Under the [feature lifecycle policy](/community/feature-lifecycle), it remains in the specification for at least twelve months after this revision's release before it becomes eligible for removal."
+- Source: MCP Blog (https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+- Direct quote: "They still work, and they'll keep working for at least twelve months."
+- Evidence: Explicit timeline in official specification documents
+- Observation Time: September 22, 2026
+
+**Qualifications:**
+- Minimum support window: 12 months from July 28, 2026
+- Eligible for removal: No earlier than July 28, 2027
+- Not guaranteed beyond the 12-month minimum
+
+---
+
+### Claim 4: Definition of Sampling Capability
+**Statement:** Sampling in MCP allows servers to request LLM sampling ("completions" or "generations") from language models via clients, enabling servers to implement agentic behaviors without requiring server API keys.
+
+**Evidence Label:** Verified
+
+**Supporting Evidence:**
+- Source: Official MCP Specification Sampling page (https://modelcontextprotocol.io/specification/draft/client/sampling)
+- Direct quote: "The Model Context Protocol (MCP) provides a standardized way for servers to request LLM sampling ("completions" or "generations") from language models via clients. This flow allows clients to maintain control over model access, selection, and permissions while enabling servers to leverage AI capabilities—with no server API keys necessary."
+- Evidence: Official feature definition in primary specification
+- Observation Time: September 22, 2026
+
+**Qualifications:** This describes the original design intent and current functionality.
+
+---
+
+### Claim 5: Reason for Deprecation
+**Statement:** Sampling was deprecated because it relied on constantly open bidirectional streams, which conflicts with MCP's evolution toward a stateless protocol architecture.
+
+**Evidence Label:** Verified
+
+**Supporting Evidence:**
+- Source: MCP Blog (https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+- Evidence: "The sampling mechanism relied on 'constantly open bidirectional streams,' which conflicted with MCP's evolution toward a stateless protocol architecture."
+- Context: The 2026-07-28 specification removes protocol-level session tracking, making MCP stateless at the protocol layer
+- Observation Time: September 22, 2026
+
+**Qualifications:** This is the stated architectural rationale from official sources.
+
+---
+
+### Claim 6: Recommended Migration Path
+**Statement:** New implementations SHOULD NOT adopt sampling; existing implementations SHOULD migrate to integrating directly with LLM provider APIs.
+
+**Evidence Label:** Verified
+
+**Supporting Evidence:**
+- Source: Official MCP Specification Sampling page (https://modelcontextprotocol.io/specification/draft/client/sampling)
+- Direct quote: "New implementations **SHOULD NOT** adopt it; existing implementations **SHOULD** migrate to integrating directly with LLM provider APIs."
+- Evidence: Official guidance using RFC 2119 normative language (SHOULD/SHOULD NOT)
+- Observation Time: September 22, 2026
+
+**Qualifications:** These are official recommendations using RFC 2119 specification language.
+
+---
+
+### Claim 7: Replacement Technology
+**Statement:** Multi Round-Trip Requests (MRTR) replaces the deprecated sampling functionality, enabling stateless request-response patterns where servers can request user input mid-call.
+
+**Evidence Label:** Verified
+
+**Supporting Evidence:**
+- Source: MCP Blog (https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+- Evidence: "Multi Round-Trip Requests (MRTR) replaces the deprecated sampling functionality. MRTR enables stateless request-response patterns where servers can request user input mid-call by returning `resultType: 'input_required'` with needed requests, and clients retry with answers in `inputResponses`."
+- Source: Official specification mentions MRTR as new feature in 2026-07-28
+- Observation Time: September 22, 2026
+
+**Qualifications:** MRTR is the architectural successor providing similar capabilities in a stateless manner.
+
+---
+
+## Contradiction Search
+
+**Search conducted for:** Evidence that sampling is still recommended or fully supported
+
+**Findings:** No contradictory evidence found. All sources consistently confirm:
+1. Sampling is deprecated as of 2026-07-28
+2. Sampling remains functional during the 12-month transition period
+3. New implementations should not adopt it
+4. Direct LLM provider API integration is the recommended alternative
+
+**Alternative perspectives identified:**
+- Blog post "The unfortunate deprecation of MCP Sampling" (https://nullpointer.se/new-mcp-spec.html) expresses concern about the deprecation
+- This represents developer sentiment, not a contradiction of the technical facts
+- Does not challenge the deprecation status or official guidance
+
+---
+
+## Freshness Assessment
+
+**Current Specification Version:** 2026-07-28 (released July 28, 2026)
+**Research Conducted:** September 22, 2026
+**Time Delta:** ~2 months
+
+**Assessment:** Evidence is current and authoritative.
+- Specification version is the latest available
+- No newer versions announced
+- All sources retrieved directly from official specification website
+- Retrieved date: September 22, 2026
+
+**Next Validation Recommended:** Before July 2027 (approaching end of 12-month deprecation window)
+
+---
+
+## Sources and Provenance
+
+### Primary Sources (Official Specification)
+
+1. **MCP Specification 2026-07-28 - Sampling**
+   - URL: https://modelcontextprotocol.io/specification/draft/client/sampling
+   - Type: Official specification documentation
+   - Authority: Primary authoritative source
+   - Retrieved: September 22, 2026
+   - Contains: Deprecation notice, feature definition, technical details
+
+2. **MCP Specification 2026-07-28 - Main Page**
+   - URL: https://modelcontextprotocol.io/specification/2026-07-28
+   - Type: Official specification documentation
+   - Authority: Primary authoritative source
+   - Retrieved: September 22, 2026
+   - Contains: Version information, architectural overview
+
+3. **MCP Specification Schema**
+   - URL: https://github.com/modelcontextprotocol/specification/blob/main/schema/2026-07-28/schema.ts
+   - Type: Technical specification (TypeScript schema)
+   - Authority: Primary authoritative source
+   - Note: Referenced as authoritative by main specification
+
+### Secondary Sources (Official Communications)
+
+4. **MCP Blog: The 2026-07-28 Specification**
+   - URL: https://blog.modelcontextprotocol.io/posts/2026-07-28/
+   - Type: Official blog announcement
+   - Authority: Authoritative (official blog)
+   - Retrieved: September 22, 2026
+   - Contains: Rationale for changes, migration guidance, timeline
+
+5. **MCP Blog: Release Candidate Announcement**
+   - URL: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
+   - Type: Official blog announcement
+   - Authority: Authoritative (official blog)
+   - Retrieved: September 22, 2026
+
+### Tertiary Sources (Community)
+
+6. **Developer Blog: "The unfortunate deprecation of MCP Sampling"**
+   - URL: https://nullpointer.se/new-mcp-spec.html
+   - Type: Community commentary
+   - Authority: Community perspective (not authoritative for specification facts)
+   - Note: Provides developer perspective on the deprecation
+
+---
+
+## Citable Claims for Architecture Decisions
+
+### For Current State (September 2026):
+
+**Claim A: Sampling is Deprecated**
+> "The Sampling feature is deprecated as of MCP protocol version 2026-07-28 (SEP-2577). Under the feature lifecycle policy, it remains in the specification for at least twelve months after this revision's release before it becomes eligible for removal. New implementations SHOULD NOT adopt it; existing implementations SHOULD migrate to integrating directly with LLM provider APIs."
+
+**Source:** Model Context Protocol Specification, Sampling section, https://modelcontextprotocol.io/specification/draft/client/sampling (Retrieved September 22, 2026)
+
+**Use case:** When explaining why sampling should not be used in new implementations
+
+---
+
+**Claim B: Sampling Remains Functional Through July 2027**
+> "Sampling remains functional in the MCP 2026-07-28 specification and will continue to work for at least twelve months from July 28, 2026, making it eligible for removal no earlier than July 28, 2027."
+
+**Source:** Model Context Protocol Specification, Sampling section (https://modelcontextprotocol.io/specification/draft/client/sampling) and Official MCP Blog (https://blog.modelcontextprotocol.io/posts/2026-07-28/) (Retrieved September 22, 2026)
+
+**Use case:** When planning migration timelines or supporting existing implementations
+
+---
+
+**Claim C: Direct LLM Integration is the Recommended Approach**
+> "For MCP implementations requiring LLM sampling capabilities, the official recommendation is to integrate directly with LLM provider APIs rather than using the deprecated MCP sampling feature. This approach aligns with MCP's architectural evolution toward a stateless protocol design."
+
+**Source:** Model Context Protocol Specification, Sampling section, https://modelcontextprotocol.io/specification/draft/client/sampling (Retrieved September 22, 2026)
+
+**Use case:** When justifying architectural decisions to use direct API integration
+
+---
+
+**Claim D: MRTR as Replacement for Server-Client Interaction**
+> "Multi Round-Trip Requests (MRTR) replaces the deprecated sampling functionality, enabling stateless request-response patterns where servers can request additional information from users mid-call without requiring constantly open bidirectional streams."
+
+**Source:** Model Context Protocol Blog, "The 2026-07-28 Specification", https://blog.modelcontextprotocol.io/posts/2026-07-28/ (Retrieved September 22, 2026)
+
+**Use case:** When explaining the replacement technology for server-to-client requests
+
+---
+
+## Unresolved Gaps
+
+None. The research question has been comprehensively answered with primary source evidence.
+
+---
+
+## Research Methodology Note
+
+This research followed the research-evidence skill methodology:
+1. ✅ Started from explicit evidence needs
+2. ✅ Prioritized direct primary evidence (official specification)
+3. ✅ Made precise, independently verifiable claims
+4. ✅ Applied appropriate evidence labels (Verified)
+5. ✅ Conducted contradiction search
+6. ✅ Validated freshness of sources
+7. ✅ Preserved source provenance for all material claims
+
+All claims are supported by official MCP specification documentation and official blog posts from modelcontextprotocol.io.
+
+---
+
+## Conclusion
+
+**Direct Answer to Research Question:**
+
+The current MCP specification (version 2026-07-28) **does not actively support** server-side sampling as a recommended feature. While sampling is technically functional and will remain in the specification until at least July 28, 2027, it is officially deprecated (SEP-2577).
+
+**Architecture Decision Guidance:**
+
+For new implementations: **Do NOT use MCP sampling.** Instead, integrate directly with LLM provider APIs for sampling/completion capabilities.
+
+For existing implementations using sampling: **Plan migration** to direct LLM provider API integration within the 12-month deprecation window.
+
+For server-to-client communication needs: Consider Multi Round-Trip Requests (MRTR) as the stateless replacement pattern.
+
+---
+
+## Attribution
+
+Research conducted: September 22, 2026
+Methodology: research-evidence skill (https://github.com/dmartinol/agentic-researcher)
+All sources retrieved from official MCP specification and blog (modelcontextprotocol.io)

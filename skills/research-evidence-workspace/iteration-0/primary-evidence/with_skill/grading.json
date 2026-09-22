@@ -1,0 +1,45 @@
+{
+  "expectations": [
+    {
+      "text": "Response explicitly identifies what claim needs to be established",
+      "passed": true,
+      "evidence": "Research Question section clearly states: 'Does the current MCP (Model Context Protocol) specification support server-side sampling capability? What claims can be cited in an architecture decision?'"
+    },
+    {
+      "text": "Response includes specific version/scope constraints (e.g., 'current MCP spec', version number, date)",
+      "passed": true,
+      "evidence": "Claim 1 specifies: 'The current MCP specification version is 2026-07-28, released on July 28, 2026.' Scope qualifications present throughout."
+    },
+    {
+      "text": "Response references authoritative/primary sources (spec docs, official repo, standards) rather than blog posts or summaries",
+      "passed": true,
+      "evidence": "Primary sources include Official MCP Specification (https://modelcontextprotocol.io/specification/2026-07-28), specification schema, and official blog posts from modelcontextprotocol.io domain"
+    },
+    {
+      "text": "Response uses an explicit evidence label: Verified, Reported, Not established, or Conflicting",
+      "passed": true,
+      "evidence": "All 7 material claims labeled as 'Evidence Label: Verified'. Uses skill's evidence label taxonomy consistently."
+    },
+    {
+      "text": "Response includes source tracking (URL/path, retrieval time, specific section/location)",
+      "passed": true,
+      "evidence": "Each claim includes: Source URLs, Observation Time (September 22, 2026), direct quotes, and specific sections. Example: 'Source: Official MCP Specification Sampling page (https://modelcontextprotocol.io/specification/draft/client/sampling)'"
+    },
+    {
+      "text": "Response shows active attempt to falsify or find conflicting evidence",
+      "passed": true,
+      "evidence": "Dedicated 'Contradiction Search' section: 'Search conducted for: Evidence that sampling is still recommended or fully supported' with documented findings and alternative perspectives"
+    },
+    {
+      "text": "Response assesses currency/staleness of evidence relative to architecture decision needs",
+      "passed": true,
+      "evidence": "Freshness Assessment section: 'Current Specification Version: 2026-07-28 (released July 28, 2026), Research Conducted: September 22, 2026, Time Delta: ~2 months, Assessment: Evidence is current and authoritative'"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  }
+}

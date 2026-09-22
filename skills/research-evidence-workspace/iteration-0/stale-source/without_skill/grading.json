@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Response identifies 2-year gap between evidence date (2024) and decision date (2026) as material",
+      "passed": true,
+      "evidence": "'The 2-year gap between the documentation date (2024) and the decision date (2026) introduces significant risk' and 'HIGH RISK - Do Not Proceed Without Verification' sections clearly identify the temporal gap as critical"
+    },
+    {
+      "text": "Response actively searches for 2025-2026 sources or current version documentation",
+      "passed": true,
+      "evidence": "IMMEDIATE ACTIONS section: 'Check Latest Official Documentation', 'Review release notes from 2024 to 2026', 'Check vendor's GitHub issues/discussions if applicable', 'Review vendor blog posts or technical announcements from 2024-2026'"
+    },
+    {
+      "text": "Response retains the 2024 claim with appropriate temporal context rather than discarding it",
+      "passed": false,
+      "evidence": "Response focuses on verifying current state but does not explicitly preserve the 2024 claim with temporal context or discuss maintaining it as historical record"
+    },
+    {
+      "text": "Response uses temporal semantics (supersedes, updated, historically correct) when relating old and new claims",
+      "passed": false,
+      "evidence": "No explicit use of temporal relationship semantics like 'supersedes', 'updated', or 'historically correct' when discussing how new evidence would relate to 2024 claim"
+    },
+    {
+      "text": "Response includes publication dates, version dates, or retrieval timestamps for evidence",
+      "passed": true,
+      "evidence": "Dates mentioned: '2024 document', 'September 22, 2026', 'Research Date: 2026-09-22', '2025+ materials', '6-12 months old'"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 2,
+    "total": 5,
+    "pass_rate": 0.6
+  }
+}

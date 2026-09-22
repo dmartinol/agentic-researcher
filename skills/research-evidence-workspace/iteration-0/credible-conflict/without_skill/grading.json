@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Response examines both conflicting sources rather than accepting one at face value",
+      "passed": true,
+      "evidence": "'Next Steps to Resolve the Conflict' section systematically examines: source characteristics, primary evidence, scope differences, temporal factors, and source quality"
+    },
+    {
+      "text": "Response checks whether sources differ in scope, version, date, or configuration",
+      "passed": true,
+      "evidence": "Point 3: 'Check for scope differences: Different versions of gateway Y, Different deployment modes or configurations, Different definitions of \"central authorization enforcement\", Different organizational contexts'"
+    },
+    {
+      "text": "Response uses 'Conflicting' label or explicitly preserves unresolved disagreement rather than choosing one source",
+      "passed": true,
+      "evidence": "'The appropriate evidence label for this claim is **Conflicting**' and 'Explicitly disclose the conflict: Don't choose a convenient source and suppress the disagreement'"
+    },
+    {
+      "text": "Response does not simply pick the more convenient or recent source without justification",
+      "passed": true,
+      "evidence": "What We Cannot Claim section explicitly states: cannot claim either position is 'more likely' or 'probably true' without additional analysis"
+    },
+    {
+      "text": "Response tracks both sources with specific identifiers, dates, and locations",
+      "passed": false,
+      "evidence": "Sources referred to generically as 'Source A' and 'Source B' without specific URLs, dates, or identifiers - though this is inherent to the hypothetical scenario"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

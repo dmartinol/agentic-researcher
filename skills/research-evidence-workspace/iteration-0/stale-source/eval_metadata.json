@@ -1,0 +1,27 @@
+{
+  "eval_id": 3,
+  "eval_name": "stale-source",
+  "prompt": "An official 2024 document says feature Z is unsupported, but we're making a 2026 architecture decision. Can we rely on it?",
+  "assertions": [
+    {
+      "name": "freshness_recognized",
+      "description": "Response identifies 2-year gap between evidence date (2024) and decision date (2026) as material"
+    },
+    {
+      "name": "current_evidence_sought",
+      "description": "Response actively searches for 2025-2026 sources or current version documentation"
+    },
+    {
+      "name": "historical_evidence_preserved",
+      "description": "Response retains the 2024 claim with appropriate temporal context rather than discarding it"
+    },
+    {
+      "name": "temporal_relationship_noted",
+      "description": "Response uses temporal semantics (supersedes, updated, historically correct) when relating old and new claims"
+    },
+    {
+      "name": "date_metadata_present",
+      "description": "Response includes publication dates, version dates, or retrieval timestamps for evidence"
+    }
+  ]
+}

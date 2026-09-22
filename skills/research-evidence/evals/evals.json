@@ -5,19 +5,93 @@
       "id": 1,
       "name": "primary-evidence",
       "prompt": "Research whether the current MCP specification supports capability X. I need a claim I can cite in an architecture decision.",
-      "expected_output": "Defines the evidence need and scope/version, prefers current primary/authoritative evidence, extracts a precise traceable claim with source/location/retrieval metadata and an appropriate evidence label, and checks conclusion-critical contradiction/freshness."
+      "expected_output": "Defines the evidence need and scope/version, prefers current primary/authoritative evidence, extracts a precise traceable claim with source/location/retrieval metadata and an appropriate evidence label, and checks conclusion-critical contradiction/freshness.",
+      "assertions": [
+        {
+          "name": "evidence_need_defined",
+          "description": "Response explicitly identifies what claim needs to be established"
+        },
+        {
+          "name": "scope_version_specified",
+          "description": "Response includes specific version/scope constraints (e.g., 'current MCP spec', version number, date)"
+        },
+        {
+          "name": "primary_evidence_sought",
+          "description": "Response references authoritative/primary sources (spec docs, official repo, standards) rather than blog posts or summaries"
+        },
+        {
+          "name": "evidence_label_assigned",
+          "description": "Response uses an explicit evidence label: Verified, Reported, Not established, or Conflicting"
+        },
+        {
+          "name": "source_metadata_present",
+          "description": "Response includes source tracking (URL/path, retrieval time, specific section/location)"
+        },
+        {
+          "name": "contradiction_check_performed",
+          "description": "Response shows active attempt to falsify or find conflicting evidence"
+        },
+        {
+          "name": "freshness_validated",
+          "description": "Response assesses currency/staleness of evidence relative to architecture decision needs"
+        }
+      ]
     },
     {
       "id": 2,
       "name": "credible-conflict",
       "prompt": "Two credible sources disagree about whether gateway Y enforces authorization centrally. Work out what we can actually claim.",
-      "expected_output": "Actively investigates the disagreement, checks scope/version/date and stronger evidence, preserves genuine unresolved disagreement as Conflicting rather than choosing a convenient source, and records precise provenance."
+      "expected_output": "Actively investigates the disagreement, checks scope/version/date and stronger evidence, preserves genuine unresolved disagreement as Conflicting rather than choosing a convenient source, and records precise provenance.",
+      "assertions": [
+        {
+          "name": "disagreement_investigated",
+          "description": "Response examines both conflicting sources rather than accepting one at face value"
+        },
+        {
+          "name": "scope_version_compared",
+          "description": "Response checks whether sources differ in scope, version, date, or configuration"
+        },
+        {
+          "name": "conflict_preserved",
+          "description": "Response uses 'Conflicting' label or explicitly preserves unresolved disagreement rather than choosing one source"
+        },
+        {
+          "name": "no_arbitrary_selection",
+          "description": "Response does not simply pick the more convenient or recent source without justification"
+        },
+        {
+          "name": "provenance_recorded",
+          "description": "Response tracks both sources with specific identifiers, dates, and locations"
+        }
+      ]
     },
     {
       "id": 3,
       "name": "stale-source",
       "prompt": "An official 2024 document says feature Z is unsupported, but we're making a 2026 architecture decision. Can we rely on it?",
-      "expected_output": "Recognizes freshness as material, seeks current authoritative evidence, preserves historically correct evidence when appropriate, and relates a newer claim using supersedes/conflict semantics instead of silently rewriting history."
+      "expected_output": "Recognizes freshness as material, seeks current authoritative evidence, preserves historically correct evidence when appropriate, and relates a newer claim using supersedes/conflict semantics instead of silently rewriting history.",
+      "assertions": [
+        {
+          "name": "freshness_recognized",
+          "description": "Response identifies 2-year gap between evidence date (2024) and decision date (2026) as material"
+        },
+        {
+          "name": "current_evidence_sought",
+          "description": "Response actively searches for 2025-2026 sources or current version documentation"
+        },
+        {
+          "name": "historical_evidence_preserved",
+          "description": "Response retains the 2024 claim with appropriate temporal context rather than discarding it"
+        },
+        {
+          "name": "temporal_relationship_noted",
+          "description": "Response uses temporal semantics (supersedes, updated, historically correct) when relating old and new claims"
+        },
+        {
+          "name": "date_metadata_present",
+          "description": "Response includes publication dates, version dates, or retrieval timestamps for evidence"
+        }
+      ]
     }
   ]
 }

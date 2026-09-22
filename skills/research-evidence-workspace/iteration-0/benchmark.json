@@ -1,0 +1,138 @@
+{
+  "skill_name": "research-evidence",
+  "iteration": 0,
+  "timestamp": "2026-09-22",
+  "configurations": [
+    {
+      "name": "with_skill",
+      "description": "Using research-evidence skill"
+    },
+    {
+      "name": "without_skill",
+      "description": "Baseline without skill"
+    }
+  ],
+  "test_cases": [
+    {
+      "id": "primary-evidence",
+      "name": "Primary Evidence Discovery",
+      "prompt": "Research whether the current MCP specification supports capability X. I need a claim I can cite in an architecture decision.",
+      "results": {
+        "with_skill": {
+          "pass_rate": 1.0,
+          "passed": 7,
+          "failed": 0,
+          "total": 7,
+          "tokens": 37412,
+          "duration_seconds": 213.8
+        },
+        "without_skill": {
+          "pass_rate": 0.71,
+          "passed": 5,
+          "failed": 2,
+          "total": 7,
+          "tokens": 24938,
+          "duration_seconds": 259.8
+        }
+      }
+    },
+    {
+      "id": "credible-conflict",
+      "name": "Credible Source Conflict",
+      "prompt": "Two credible sources disagree about whether gateway Y enforces authorization centrally. Work out what we can actually claim.",
+      "results": {
+        "with_skill": {
+          "pass_rate": 0.8,
+          "passed": 4,
+          "failed": 1,
+          "total": 5,
+          "tokens": 19784,
+          "duration_seconds": 57.9
+        },
+        "without_skill": {
+          "pass_rate": 0.8,
+          "passed": 4,
+          "failed": 1,
+          "total": 5,
+          "tokens": 21615,
+          "duration_seconds": 73.1
+        }
+      }
+    },
+    {
+      "id": "stale-source",
+      "name": "Stale Source Handling",
+      "prompt": "An official 2024 document says feature Z is unsupported, but we're making a 2026 architecture decision. Can we rely on it?",
+      "results": {
+        "with_skill": {
+          "pass_rate": 1.0,
+          "passed": 5,
+          "failed": 0,
+          "total": 5,
+          "tokens": 22504,
+          "duration_seconds": 121.1
+        },
+        "without_skill": {
+          "pass_rate": 0.6,
+          "passed": 3,
+          "failed": 2,
+          "total": 5,
+          "tokens": 19165,
+          "duration_seconds": 66.8
+        }
+      }
+    }
+  ],
+  "summary": {
+    "with_skill": {
+      "avg_pass_rate": 0.93,
+      "total_passed": 16,
+      "total_failed": 1,
+      "total_assertions": 17,
+      "avg_tokens": 26567,
+      "avg_duration_seconds": 130.9,
+      "total_tokens": 79700,
+      "total_duration_seconds": 392.8
+    },
+    "without_skill": {
+      "avg_pass_rate": 0.71,
+      "total_passed": 12,
+      "total_failed": 5,
+      "total_assertions": 17,
+      "avg_tokens": 21906,
+      "avg_duration_seconds": 133.2,
+      "total_tokens": 65718,
+      "total_duration_seconds": 399.7
+    },
+    "delta": {
+      "pass_rate_improvement": "+0.22 (+31%)",
+      "token_overhead": "+13982 tokens (+21%)",
+      "time_difference": "-6.9s (-2%)"
+    }
+  },
+  "analysis": {
+    "key_findings": [
+      "Skill improves pass rate from 71% to 93% (+31% improvement)",
+      "Strongest improvement in stale-source test (60% -> 100%)",
+      "Primary-evidence test shows 29% pass rate improvement (71% -> 100%)",
+      "Credible-conflict test shows equal performance (80% both)",
+      "Skill uses 21% more tokens on average but delivers higher quality",
+      "Time difference negligible (-2%), slightly faster with skill"
+    ],
+    "quality_observations": [
+      "With skill: Systematic evidence label taxonomy (Verified/Reported/Not established/Conflicting)",
+      "With skill: Explicit contradiction search and freshness assessment",
+      "With skill: Temporal relationship semantics (supersedes, historically correct)",
+      "Without skill: Missing explicit freshness validation and contradiction search in 2 of 3 tests"
+    ],
+    "failure_patterns": {
+      "without_skill": [
+        "primary-evidence: No contradiction search or freshness assessment",
+        "stale-source: Missing temporal relationship semantics and historical claim preservation"
+      ],
+      "with_skill": [
+        "credible-conflict: Provenance limited due to hypothetical scenario (inherent limitation, not skill failure)"
+      ]
+    }
+  }
+}

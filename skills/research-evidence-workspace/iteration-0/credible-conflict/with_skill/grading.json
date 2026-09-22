@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Response examines both conflicting sources rather than accepting one at face value",
+      "passed": true,
+      "evidence": "Investigation Steps section lists systematic checks: 'Check scope/version differences', 'Check temporal currency', 'Examine precise definitions', 'Seek primary evidence', 'Look for independent authoritative sources'"
+    },
+    {
+      "text": "Response checks whether sources differ in scope, version, date, or configuration",
+      "passed": true,
+      "evidence": "Investigation Step 1: 'Check scope/version differences - Are the sources describing the same version of Gateway Y? Do they apply to different deployment modes (cloud vs on-premise)? Are there configuration options that change the behavior?'"
+    },
+    {
+      "text": "Response uses 'Conflicting' label or explicitly preserves unresolved disagreement rather than choosing one source",
+      "passed": true,
+      "evidence": "Primary Claim: 'Evidence Label: Conflicting' with rationale: 'Two credible sources provide materially contradictory evidence on the same proposition. The conflict remains unresolved without additional investigation.'"
+    },
+    {
+      "text": "Response does not simply pick the more convenient or recent source without justification",
+      "passed": true,
+      "evidence": "'Following the research-evidence skill guidelines, I did NOT: Choose a convenient source and discard the conflict, Invent a confidence score to weigh the sources, Assume one source is more authoritative without evidence'"
+    },
+    {
+      "text": "Response tracks both sources with specific identifiers, dates, and locations",
+      "passed": false,
+      "evidence": "Sources are tracked as generic 'Source 1' and 'Source 2' with note '[Assumed to be documentation/specification]' - lacks specific URLs, dates, or precise identifiers since this was a hypothetical scenario"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

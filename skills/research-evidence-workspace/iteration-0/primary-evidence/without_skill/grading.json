@@ -1,0 +1,45 @@
+{
+  "expectations": [
+    {
+      "text": "Response explicitly identifies what claim needs to be established",
+      "passed": true,
+      "evidence": "Research Question: 'What capabilities does the current MCP specification support?' - rephrased but addresses core evidence need"
+    },
+    {
+      "text": "Response includes specific version/scope constraints (e.g., 'current MCP spec', version number, date)",
+      "passed": true,
+      "evidence": "Specification Version section: 'Current Version: 2026-07-28 (date-based versioning)'"
+    },
+    {
+      "text": "Response references authoritative/primary sources (spec docs, official repo, standards) rather than blog posts or summaries",
+      "passed": true,
+      "evidence": "Primary Sources include: 'Official Specification: https://spec.modelcontextprotocol.io', 'TypeScript Schema (Source of Truth)', GitHub repository"
+    },
+    {
+      "text": "Response uses an explicit evidence label: Verified, Reported, Not established, or Conflicting",
+      "passed": true,
+      "evidence": "Citable Claims section uses 'Evidence Level: Verified' for all claims (e.g., Claim 1-8 all labeled 'Verified (official specification)')"
+    },
+    {
+      "text": "Response includes source tracking (URL/path, retrieval time, specific section/location)",
+      "passed": true,
+      "evidence": "Research Metadata includes: 'Research Date: 2026-09-22', specific URLs for sources, citation format provided"
+    },
+    {
+      "text": "Response shows active attempt to falsify or find conflicting evidence",
+      "passed": false,
+      "evidence": "No explicit contradiction search section or documented attempt to find conflicting evidence"
+    },
+    {
+      "text": "Response assesses currency/staleness of evidence relative to architecture decision needs",
+      "passed": false,
+      "evidence": "Research date mentioned (2026-09-22) but no explicit freshness assessment or discussion of currency for architecture decisions"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 2,
+    "total": 7,
+    "pass_rate": 0.71
+  }
+}

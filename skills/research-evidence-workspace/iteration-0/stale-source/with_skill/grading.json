@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Response identifies 2-year gap between evidence date (2024) and decision date (2026) as material",
+      "passed": true,
+      "evidence": "TEMPORAL GAP section: '~2 years (2024 document → 2026-09-22 decision)' with assessment: 'STALE for architecture decisions' and 'The 2024 document FAILS all standard freshness tests for a 2026 architecture decision'"
+    },
+    {
+      "text": "Response actively searches for 2025-2026 sources or current version documentation",
+      "passed": true,
+      "evidence": "SOURCE DISCOVERY & RETRIEVAL PLAN section lists Tier 1 requirements: 'Current official documentation (2026) for feature Z support status', 'Product release notes (2024-Q4 through 2026-Q3)', plus detailed CONTRADICTION SEARCH section with 5 specific searches"
+    },
+    {
+      "text": "Response retains the 2024 claim with appropriate temporal context rather than discarding it",
+      "passed": true,
+      "evidence": "UPDATED CLAIMS & RELATIONSHIPS section: 'ORIGINAL CLAIM (from 2024 document): Statement: \"Feature Z is unsupported\", Evidence: Verified (as of 2024), Scope: Specific product version, as of publication date, Valid for: Historical reference only' - preserved with context"
+    },
+    {
+      "text": "Response uses temporal semantics (supersedes, updated, historically correct) when relating old and new claims",
+      "passed": true,
+      "evidence": "RELATIONSHIP section: 'If found: New claim SUPERSEDES 2024 claim, Preserve both: Show evolution of feature support' and Claim A labeled as 'Superseded by: Claim B'"
+    },
+    {
+      "text": "Response includes publication dates, version dates, or retrieval timestamps for evidence",
+      "passed": true,
+      "evidence": "Multiple timestamps: 'Analysis Date: 2026-09-22', '2024 document', 'Retrieved: September 22, 2026', version dates, 'Observation Time' fields throughout"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

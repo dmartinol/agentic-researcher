@@ -1,0 +1,141 @@
+# Research Evidence Analysis: Gateway Y Authorization Enforcement
+
+## Task
+Two credible sources disagree about whether gateway Y enforces authorization centrally. Work out what we can actually claim.
+
+## Evidence Discovery
+
+### Source 1
+- Type: [Assumed to be documentation/specification]
+- States: Gateway Y enforces authorization centrally
+- Credibility: Credible (per task parameters)
+
+### Source 2
+- Type: [Assumed to be documentation/specification]
+- States: Gateway Y does NOT enforce authorization centrally (or delegates/distributes authorization)
+- Credibility: Credible (per task parameters)
+
+## Claim Extraction
+
+### Primary Claim Under Investigation
+**Statement**: "Gateway Y enforces authorization centrally"
+
+**Evidence Label**: **Conflicting**
+
+**Rationale**: Two credible sources provide materially contradictory evidence on the same proposition. The conflict remains unresolved without additional investigation.
+
+## Handling the Disagreement
+
+Following the research-evidence skill guidelines, I did NOT:
+- Choose a convenient source and discard the conflict
+- Invent a confidence score to weigh the sources
+- Assume one source is more authoritative without evidence
+- Merge the claims into a vague statement
+
+### Investigation Steps to Resolve (if sources were available)
+
+1. **Check scope/version differences**
+   - Are the sources describing the same version of Gateway Y?
+   - Do they apply to different deployment modes (cloud vs on-premise)?
+   - Are there configuration options that change the behavior?
+
+2. **Check temporal currency**
+   - Publication/revision dates of each source
+   - Has Gateway Y's architecture changed between source publication dates?
+   - Is one source superseded by the other?
+
+3. **Examine precise definitions**
+   - What does "centrally" mean in each source's context?
+   - What does "enforces authorization" encompass?
+   - Could both be correct under different interpretations?
+
+4. **Seek primary evidence**
+   - Official Gateway Y specification/documentation
+   - Source code implementation (if available)
+   - Architecture diagrams
+   - Release notes describing authorization model changes
+
+5. **Look for independent authoritative sources**
+   - Security audits
+   - Independent technical reviews
+   - Implementation guides from Gateway Y maintainers
+
+## What We Can Actually Claim
+
+Given the unresolved conflict between two credible sources:
+
+### Claim 1: Conflicting Evidence Exists
+**Statement**: "Credible sources provide conflicting evidence about whether Gateway Y enforces authorization centrally."
+
+**Evidence Label**: Verified
+
+**Supporting Evidence**:
+- Source 1: States central authorization enforcement
+- Source 2: States non-central authorization enforcement
+- Both sources assessed as credible
+
+**Scope**: As of [retrieval_date], based on available sources
+
+
+### Claim 2: Authorization Enforcement Model - Not Established
+**Statement**: "Gateway Y enforces authorization centrally"
+
+**Evidence Label**: Not established
+
+**Rationale**: While one credible source supports this claim, another credible source contradicts it. The proposition cannot be established as fact without resolving the conflict.
+
+**Scope**: Based on current evidence state; resolution requires additional investigation per steps outlined above
+
+
+### Claim 3: Authorization Enforcement Model - Alternative Hypothesis
+**Statement**: "Gateway Y does NOT enforce authorization centrally"
+
+**Evidence Label**: Not established
+
+**Rationale**: While one credible source supports this claim, another credible source contradicts it. This alternative proposition also cannot be established as fact without resolving the conflict.
+
+
+## What We CANNOT Claim
+
+❌ "Gateway Y enforces authorization centrally" - Conflicting evidence
+
+❌ "Gateway Y does not enforce authorization centrally" - Conflicting evidence
+
+❌ "There is X% confidence that Gateway Y enforces authorization centrally" - No basis for numeric confidence without understanding the conflict source
+
+❌ "Most sources agree that..." - We have exactly two sources with opposing views
+
+
+## Recommended Next Steps
+
+1. **Identify scope qualifications**: Determine if sources describe different versions, configurations, or deployment modes
+
+2. **Establish temporal ordering**: Check publication dates to see if one source supersedes the other
+
+3. **Seek primary evidence**: Locate official specification or implementation to directly verify the authorization model
+
+4. **Document limitations**: If conflict cannot be resolved, explicitly note the limitation in any research output that depends on this claim
+
+5. **Create relationships**: If investigation reveals both sources are correct under different scopes (e.g., "Gateway Y v1.x enforced authorization centrally; Gateway Y v2.x uses distributed authorization"), preserve both claims with appropriate scope qualifications and a `supersedes` relationship if temporal
+
+
+## Evidence State Summary
+
+| Claim | Evidence Label | Reason |
+|-------|---------------|--------|
+| Gateway Y enforces authorization centrally | Conflicting | Credible sources disagree; unresolved |
+| Conflicting evidence exists about Gateway Y authorization model | Verified | Confirmed by source review |
+| Authorization enforcement mechanism is established | Not established | Requires conflict resolution |
+
+
+## Conclusion
+
+When two credible sources materially disagree on a conclusion-critical claim, the research-evidence framework requires:
+
+1. **Preserve the conflict**: Do not arbitrarily choose one source
+2. **Label accurately**: Use "Conflicting" evidence label for the disputed claim
+3. **Be precise about what IS established**: We can claim the conflict exists, but cannot claim either position as fact
+4. **Investigate systematically**: Follow scope, temporal, and source-quality checks to resolve
+5. **Document gaps explicitly**: If unresolvable, state the limitation clearly
+
+This approach maintains research integrity and prevents false confidence in contested propositions.

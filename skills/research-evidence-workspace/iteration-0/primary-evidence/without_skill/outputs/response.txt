@@ -1,0 +1,259 @@
+# MCP Specification Research Findings
+## Research Question: What capabilities does the current MCP specification support?
+
+### Executive Summary
+
+The Model Context Protocol (MCP) specification version 2026-07-28 supports four primary capabilities across a client-server architecture using JSON-RPC 2.0 messaging. The specification provides a standardized way for AI models to interact with external tools, data sources, and prompt templates through a capability-negotiation model.
+
+---
+
+## Core Capabilities Supported by MCP
+
+The MCP specification supports **four primary capabilities**:
+
+### Server-Provided Capabilities
+
+1. **Tools**
+   - Executable functions with JSON Schema definitions that AI models can invoke
+   - Accessed via `tools/list` and `tools/call` operations
+   - Include JSON Schema validation for arguments and return values
+   - Enable models to perform actions in external systems
+
+2. **Resources**
+   - URI-based, read-only data sources with MIME type declarations
+   - Support URI templates for parameterized resource access
+   - Accessed via `resources/list`, `resources/templates/list`, and `resources/read`
+   - Provide structured data access to AI models
+
+3. **Prompts**
+   - Reusable, parameterizable templates for model interactions
+   - Include argument schemas for dynamic prompt composition
+   - Accessed via `prompts/list` and `prompts/get`
+   - Enable standardized interaction patterns
+
+### Client-Provided Capabilities
+
+4. **Elicitation**
+   - Structured user input requests with two modes:
+     - Form mode: Structured field collection
+     - URL mode: OAuth-like external flows
+   - Accessed via `elicitation/create`
+   - Enables multi-round-trip requests (MRTR) for user interaction
+
+### Deprecated Capabilities
+
+- **Sampling**: Deprecated as of 2026-07-28
+- **Roots**: Deprecated as of 2026-07-28
+
+---
+
+## Specification Version
+
+**Current Version:** `2026-07-28` (date-based versioning)
+
+**Source of Truth:** TypeScript schema at `schema/2026-07-28/schema.ts` in the official repository
+
+---
+
+## Key Architectural Features
+
+### Architecture Model
+
+- **Client-Server Architecture:** Dedicated connections between MCP clients and servers
+- **Two-Layer Design:**
+  - Data Layer: JSON-RPC 2.0 messaging protocol
+  - Transport Layer: stdio or Streamable HTTP
+
+### Design Principles
+
+1. **Stateless Protocol**
+   - Self-contained requests include metadata (`protocolVersion`, `clientCapabilities`)
+   - Each request carries necessary context for independent processing
+
+2. **Capability Negotiation**
+   - Per-request capability declaration via `_meta` field
+   - Dynamic discovery of server capabilities
+
+3. **Discovery-Based**
+   - `server/discover` operation returns:
+     - Supported protocol versions
+     - Available capabilities
+     - Caching hints and metadata
+
+### Message Patterns
+
+The specification defines three primary message patterns:
+
+1. **Request/Response:** Standard synchronous operations
+2. **Multi Round-Trip Requests (MRTR):** Client input collection via elicitation
+3. **Subscribe/Notify:** SSE streams for change notifications
+
+---
+
+## Standards and Compliance Requirements
+
+### Security Requirements (MUST)
+
+1. **User Consent:** Mandatory before data access or tool execution
+2. **Origin Header Validation:** Required for HTTP transports
+3. **Localhost Binding:** Local servers must bind to localhost only
+4. **Authentication:** Proper implementation required
+   - Bearer tokens
+   - API keys
+   - OAuth flows
+
+### Registry Standards
+
+**Supported Distribution Methods:**
+- npm packages
+- PyPI packages
+- Docker Hub containers
+- Public remote servers
+
+**Authentication Requirements:**
+- Namespace verification via DNS for public registry submissions
+- Proper ownership validation
+
+**Not Supported:**
+- Private servers on restricted networks (not eligible for public registry)
+
+### Transport Standards
+
+**stdio Transport:**
+- Newline-delimited JSON-RPC messages
+- Suitable for local process communication
+
+**Streamable HTTP Transport:**
+- POST requests with JSON or Server-Sent Events (SSE) responses
+- Enables remote server communication
+- Requires proper origin validation
+
+---
+
+## Specific Technical Capabilities (Citable)
+
+### Protocol Operations
+
+**Tool Operations:**
+- `tools/list`: Enumerate available tools with schemas
+- `tools/call`: Invoke tools with validated JSON inputs
+
+**Resource Operations:**
+- `resources/list`: List available resources
+- `resources/templates/list`: Discover URI template patterns
+- `resources/read`: Retrieve resource content by URI
+
+**Prompt Operations:**
+- `prompts/list`: Enumerate available prompt templates
+- `prompts/get`: Retrieve prompt with argument binding
+
+**Elicitation Operations:**
+- `elicitation/create`: Request structured user input
+
+**Subscription Operations:**
+- `subscriptions/listen`: Subscribe to change notifications
+
+### Error Handling
+
+**Standard JSON-RPC Error Codes:**
+- `-32700`: Parse error
+- `-32600`: Invalid request
+- `-32601`: Method not found
+- `-32602`: Invalid params
+- `-32603`: Internal error
+
+**MCP-Specific Error Codes:**
+- `-32020`: HeaderMismatch (transport validation failure)
+- `-32021`: MissingRequiredClientCapability (client lacks required capability)
+- `-32022`: UnsupportedProtocolVersion (version mismatch)
+
+### Advanced Features
+
+**Progress Tracking:**
+- Built-in support for operation progress reporting
+- Cancellation support for long-running operations
+
+**Pagination:**
+- Cursor-based pagination for large result sets
+- Consistent pattern across list operations
+
+**Caching:**
+- Response caching hints via `ttlMs` (time-to-live in milliseconds)
+- Cache scope declarations (`cacheScope` field)
+
+---
+
+## Citable Claims for Architecture Decisions
+
+The following claims can be cited with confidence in architecture decision records:
+
+1. **Claim:** "MCP supports four primary capabilities: Tools, Resources, Prompts, and Elicitation"
+   - **Source:** MCP Specification version 2026-07-28
+   - **Evidence Level:** Verified (official specification)
+
+2. **Claim:** "MCP uses a stateless protocol design with per-request capability negotiation"
+   - **Source:** MCP Specification version 2026-07-28, Architecture section
+   - **Evidence Level:** Verified (official specification)
+
+3. **Claim:** "MCP servers can expose tools with JSON Schema validation for type-safe execution"
+   - **Source:** MCP Specification version 2026-07-28, Tools capability
+   - **Evidence Level:** Verified (official specification)
+
+4. **Claim:** "MCP supports two transport layers: stdio for local processes and Streamable HTTP for remote servers"
+   - **Source:** MCP Specification version 2026-07-28, Transport section
+   - **Evidence Level:** Verified (official specification)
+
+5. **Claim:** "MCP requires user consent before tool execution or data access for security compliance"
+   - **Source:** MCP Specification version 2026-07-28, Security Requirements
+   - **Evidence Level:** Verified (MUST requirement in specification)
+
+6. **Claim:** "MCP uses JSON-RPC 2.0 as its data layer messaging protocol"
+   - **Source:** MCP Specification version 2026-07-28, Protocol section
+   - **Evidence Level:** Verified (official specification)
+
+7. **Claim:** "MCP supports discovery-based capability negotiation through the server/discover operation"
+   - **Source:** MCP Specification version 2026-07-28, Discovery section
+   - **Evidence Level:** Verified (official specification)
+
+8. **Claim:** "MCP provides built-in support for progress tracking, cancellation, and cursor-based pagination"
+   - **Source:** MCP Specification version 2026-07-28, Utility Features
+   - **Evidence Level:** Verified (official specification)
+
+---
+
+## Official References
+
+### Primary Sources
+
+- **Official Specification:** https://spec.modelcontextprotocol.io
+- **Specification Version:** 2026-07-28
+- **GitHub Repository:** https://github.com/modelcontextprotocol/specification
+- **TypeScript Schema (Source of Truth):** https://github.com/modelcontextprotocol/specification/blob/main/schema/2026-07-28/schema.ts
+- **MCP Registry:** https://modelcontextprotocol.io/registry
+
+### Citation Format
+
+When citing in architecture documents, use the following format:
+
+```
+Model Context Protocol Specification, Version 2026-07-28
+Available at: https://spec.modelcontextprotocol.io
+```
+
+---
+
+## Research Metadata
+
+- **Research Date:** 2026-09-22
+- **Specification Version Researched:** 2026-07-28
+- **Research Method:** Direct analysis of official MCP specification and schema definitions
+- **Evidence Quality:** All claims verified against official specification (Verified level)
+- **Researcher:** Claude Code with MCP Protocol Expert specialization
+
+---
+
+## Conclusions
+
+The Model Context Protocol provides a comprehensive, standardized framework for AI model integration with external systems. Its four primary capabilities (Tools, Resources, Prompts, and Elicitation) cover the essential patterns for model-context interaction. The specification's emphasis on stateless design, capability negotiation, and security requirements makes it suitable for production architecture decisions.
+
+For architecture decisions requiring specific MCP capabilities, any of the claims listed in the "Citable Claims" section above can be referenced with confidence, as they are directly sourced from the official specification version 2026-07-28.
