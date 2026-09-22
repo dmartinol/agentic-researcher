@@ -1,0 +1,23 @@
+{
+  "skill_name": "complete-research",
+  "evals": [
+    {
+      "id": 1,
+      "name": "approved-completion",
+      "prompt": "Verification passed with no blockers. I explicitly approve completion of the research and closure of its configured work item.",
+      "expected_output": "Resolves exact target resources and allowed transitions, applies configured provider closure rules, records a reference to the exact final output, mutates only after approval, then reads back and verifies final status/reference."
+    },
+    {
+      "id": 2,
+      "name": "implicit-completion",
+      "prompt": "Everything looks good. Wrap things up.",
+      "expected_output": "Does not interpret ambiguous wording as explicit closure approval; requests explicit completion/closure approval before external transition or closure."
+    },
+    {
+      "id": 3,
+      "name": "verification-blocker",
+      "prompt": "Close the research now. Verification still reports an unresolved conclusion-critical evidence blocker.",
+      "expected_output": "Refuses/blocks completion despite the closure request because verification has an unresolved blocker; it does not transition the external work item."
+    }
+  ]
+}
