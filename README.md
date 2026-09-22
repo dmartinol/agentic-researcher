@@ -32,8 +32,34 @@ No host-specific adapter is required by the project architecture.
 
 ## Research lifecycle
 
-```text
-SETUP -> PLAN -> EXECUTE -> COMPLETE / VERIFY
+The researcher sees four conceptual phases while the internal workflow keeps approval-gated initialization, parallel task execution, synthesis, verification, and completion explicit.
+
+```mermaid
+flowchart LR
+    U([Researcher]) --> S[SETUP]
+    S --> P[PLAN]
+    P --> A{{Approval}}
+    A --> I[Initialize]
+    I --> E
+
+    subgraph EXECUTE
+        E[Execute research] --> T1[Research Task]
+        E --> T2[Research Task]
+        E --> TN[Research Task ...]
+        T1 --> SY[Synthesize]
+        T2 --> SY
+        TN --> SY
+    end
+
+    SY --> V[Verify]
+    V --> C{{Closure approval}}
+    C --> CO[Complete]
+
+    E <--> M[(Research memory)]
+    P -. work plan .-> TK[(Ticketing)]
+    I -. approved mutations .-> TK
+    I -. approved mutations .-> DS[(Document store)]
+    SY -. research outputs .-> DS
 ```
 
 Internally, specialized setup, planning, initialization, execution, verification, and completion agents/skills preserve explicit approval and mutation boundaries.
