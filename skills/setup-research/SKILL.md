@@ -43,7 +43,7 @@ For each required role:
 
 Use the capability contracts in `docs/subsystem-capabilities.md`. Do not assume a particular MCP server, tool name, or host configuration format.
 
-The default profile is Jira for `ticketing` and Confluence for `document_store`. When those providers are selected, compose the `jira-research` and `confluence-research` skills for provider-specific conventions.
+Apply the provider specialization selected in the approved research configuration when one is available. Provider defaults are configuration concerns and must not be hardcoded into this generic lifecycle skill.
 
 Do not put user credentials or host-specific authentication profiles in the research project.
 
