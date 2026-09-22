@@ -81,12 +81,12 @@ Provide opinionated defaults and ask the researcher to confirm or override them.
 
 ## P3 - Product integration, validation, and demo
 
-- Implement and test greenfield project initialization.
-- Implement and test existing/brownfield discovery and reconciliation.
-- Add package validation against Agent Plugins and Agent Skills schemas.
-- Validate skill frontmatter and JSON manifests.
-- Add client-neutral dry-run coverage for approvals and idempotency.
-- Test zero-clone installation on target hosts.
-- Document supported installation mechanisms without making them architecture requirements.
-- Update the demo flow to show install -> setup -> plan -> execute -> verify -> explicit completion.
-- Verify Jira/Confluence default-provider behavior end to end.
+- [x] Add greenfield and existing/brownfield lifecycle fixtures and expected invariants.
+- [x] Add package/architecture validation for manifests, skills, agents, templates, provider separation, and secret hygiene.
+- [x] Validate skill/agent frontmatter and JSON manifests in CI.
+- [x] Document client-neutral approval/idempotency expectations and a reproducible dry-run/demo scenario.
+- [ ] Test zero-clone installation on target hosts.
+- [x] Document installation as a host-specific mechanism without making it an architecture requirement.
+- [x] Update the demo flow to show install -> setup -> plan -> initialize -> execute -> resume -> synthesize -> verify -> explicit completion.
+- [ ] Verify greenfield and brownfield behavior end to end on a real host.
+- [ ] Verify Jira/Confluence default-provider behavior end to end.
