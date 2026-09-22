@@ -1,39 +1,69 @@
 # Demo Script
 
-## Scenario
+This demo proves the product lifecycle rather than a specific research answer. Use `examples/demo-research/scenario.md` as the scenario contract.
 
-Given a research requirement such as:
+## Preconditions
 
-> Identify operational agent platforms, compare their integration hooks, and
-> assess relevance to a product portfolio.
+- Install `agentic-researcher` with the target host's normal installation mechanism; do not clone this repository as part of the researcher workflow.
+- Authenticate configured providers through the host.
+- Use disposable or explicitly approved external resources for mutation testing.
 
-The researcher should:
+## Demo
 
-1. Ask clarifying questions about scope, evidence, outputs, and exclusions.
-2. Resolve Jira, Confluence, repository, and identity roles through the host
-   client and its MCP configuration.
-3. Propose a Story/Sub-task plan and page hierarchy.
-4. Show the user the plan and wait for approval.
-5. Generate Jira descriptions, page templates, Jira cards, and reciprocal links.
-6. Show parallel task delegation and dependency-aware synthesis.
-7. Verify evidence labels, hierarchy, and links before requesting closure approval.
+### 1. Setup
 
-Load the definitions from `agents/` using the host's native agent mechanism and
-show `research-orchestrator` delegating to `research-setup`,
-`research-planner`, `research-initializer`, `research-executor`,
-`research-verifier`, and `research-completer`. Show independent ready Sub-tasks
-running concurrently and the synthesis Sub-task held until its `depends_on`
-items pass verification.
+Ask the installed researcher to execute the scenario.
 
-## Demonstration checkpoints
+Expected: clarify consequential configuration, resolve logical subsystems, and present the effective configuration before mutation.
 
-- Jira/Confluence logical defaults can be replaced by MCP service configuration.
-- The resolved user configuration is shown without exposing credentials.
-- Re-running initialization reuses existing issues and pages.
-- A missing description or reciprocal link is reported and repaired.
-- Closure is blocked until the user approves it.
+### 2. Plan
 
-The demo should also make clear that Agent Plugins v1 provides portable skills
-and MCP configuration only. The files under `agents/` are client-neutral
-workflow definitions; the host client still supplies agent execution, MCP
-services, authentication, and persistent user-memory behavior.
+Approve setup and request a plan.
+
+Expected: provider-neutral Workstreams, Research Tasks, dependencies, acceptance criteria, evidence needs, and a Synthesis Task. No external resources are created yet.
+
+### 3. Initialize
+
+Approve initialization.
+
+Expected: provider resources are created or reused, stable IDs/URLs recorded, links/hierarchy verified, and repeated initialization creates no duplicates.
+
+### 4. Execute
+
+Approve task execution.
+
+Expected: retrieve relevant memory first; gather authoritative evidence; record canonical sources and atomic claims; actively seek contradictions to conclusion-critical claims; check freshness; preserve unresolved gaps.
+
+Independent Research Tasks may execute in parallel where supported.
+
+### 5. Resume
+
+Start a fresh agent session against the same research project.
+
+Expected: reconstruct current work from `RESEARCH.md`, `STATE.md`, and selective memory retrieval rather than prior conversation.
+
+### 6. Synthesize
+
+Run the dependent Synthesis Task.
+
+Expected: conclusions trace to claims/sources; genuine conflicts and missing evidence remain visible.
+
+### 7. Verify
+
+Request verification.
+
+Expected: read-only checks cover acceptance criteria, evidence provenance, contradiction/freshness checks, memory integrity, external identities/hierarchy/links, and provider invariants.
+
+### 8. Complete
+
+Approve completion explicitly.
+
+Expected: only then are configured external work items transitioned/closed and final outputs linked; final state is read back and verified.
+
+## Brownfield variant
+
+Repeat against a pre-existing research project. Discover and reconcile existing manifests, state, memory, work items, and documents before mutation. Do not recreate resources because the current session did not create them.
+
+## Release evidence
+
+Capture host/version, installation method, provider configuration without secrets, greenfield/brownfield result, idempotency result, resume result, and deviations. Manual observations determine whether environment-dependent P3 TODO items can be marked complete.
