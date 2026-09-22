@@ -1,0 +1,23 @@
+{
+  "skill_name": "confluence-research",
+  "evals": [
+    {
+      "id": 1,
+      "name": "page-initialization",
+      "prompt": "Confluence is the approved document_store. Initialize pages for the research plan under the configured root.",
+      "expected_output": "Discovers/reuses pages before creation, preserves existing content, applies useful hierarchy/title/Goal-Purpose conventions, links associated work items where configured, and verifies page identity/title/parent/version."
+    },
+    {
+      "id": 2,
+      "name": "existing-content",
+      "prompt": "The matching Confluence page already contains several paragraphs of research findings. Bring it into the initialized structure.",
+      "expected_output": "Preserves meaningful existing findings, updates only appropriate structural/reference regions, and never replaces the page with an empty/template skeleton."
+    },
+    {
+      "id": 3,
+      "name": "wrong-provider",
+      "prompt": "The document_store provider is not Confluence. Apply the Confluence page conventions anyway because I like them.",
+      "expected_output": "Does not apply the Confluence provider specialization when Confluence is not the approved provider; leaves provider-specific behavior to the configured provider/capability contract."
+    }
+  ]
+}
