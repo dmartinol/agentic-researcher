@@ -5,19 +5,73 @@
       "id": 1,
       "name": "deduplicate-source",
       "prompt": "Save this source and its claim. I think the same canonical documentation URL may already be in research/memory/sources/.",
-      "expected_output": "Searches existing source records first, reuses the existing source ID for the same canonical resource, reconciles the claim with relevant existing claims, and avoids duplicate canonical records."
+      "expected_output": "Searches existing source records first, reuses the existing source ID for the same canonical resource, reconciles the claim with relevant existing claims, and avoids duplicate canonical records.",
+      "assertions": [
+        {
+          "text": "Searches existing source records before creating a new one",
+          "rationale": "Must check for duplicates to avoid creating redundant source records"
+        },
+        {
+          "text": "Reuses existing source ID for the same canonical resource",
+          "rationale": "Same canonical URL should map to same source ID"
+        },
+        {
+          "text": "Reconciles the new claim with relevant existing claims",
+          "rationale": "Should check if claim already exists or relates to existing claims"
+        },
+        {
+          "text": "Avoids creating duplicate canonical records",
+          "rationale": "Should not create multiple source records for the same canonical location"
+        }
+      ]
     },
     {
       "id": 2,
       "name": "contradict-existing",
       "prompt": "Store a new finding that contradicts an existing Verified claim in memory.",
-      "expected_output": "Preserves the existing claim, creates or updates the new atomic claim with provenance, records an explicit contradiction/supersession relationship as appropriate, updates evidence state without rewriting history, and does not invent numeric confidence."
+      "expected_output": "Preserves the existing claim, creates or updates the new atomic claim with provenance, records an explicit contradiction/supersession relationship as appropriate, updates evidence state without rewriting history, and does not invent numeric confidence.",
+      "assertions": [
+        {
+          "text": "Preserves the existing claim (doesn't delete or overwrite it)",
+          "rationale": "History should not be rewritten; old claims remain even when contradicted"
+        },
+        {
+          "text": "Creates or updates the new atomic claim with proper provenance",
+          "rationale": "New contradicting claim needs its own record with source information"
+        },
+        {
+          "text": "Records an explicit contradiction or supersession relationship",
+          "rationale": "The relationship between contradicting claims must be documented"
+        },
+        {
+          "text": "Updates evidence state without rewriting history",
+          "rationale": "Evidence labels may change but historical record is preserved"
+        },
+        {
+          "text": "Does not invent numeric confidence scores",
+          "rationale": "Skill specifies using project evidence labels only, no numeric confidence"
+        }
+      ]
     },
     {
       "id": 3,
       "name": "routine-episode",
       "prompt": "I ran three ordinary searches and opened two documentation pages. Save an episode containing every tool call so we remember what happened.",
-      "expected_output": "Does not store routine tool-call/transcript history as an episode; only creates an episode if the research trajectory contains reusable investigative value."
+      "expected_output": "Does not store routine tool-call/transcript history as an episode; only creates an episode if the research trajectory contains reusable investigative value.",
+      "assertions": [
+        {
+          "text": "Does not create an episode for routine tool calls",
+          "rationale": "Episodes are only for trajectories with reusable investigative value"
+        },
+        {
+          "text": "Does not store transcript history or chain-of-thought as an episode",
+          "rationale": "Skill explicitly states not to record routine tool calls or conversation transcripts"
+        },
+        {
+          "text": "Only creates episodes when research trajectory has reusable investigative value",
+          "rationale": "Episode creation should be reserved for meaningful research insights, not routine operations"
+        }
+      ]
     }
   ]
 }

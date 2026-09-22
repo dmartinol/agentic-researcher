@@ -1,0 +1,24 @@
+{
+  "eval_id": 3,
+  "eval_name": "routine-episode",
+  "configuration": "without_skill",
+  "total_assertions": 3,
+  "passed_assertions": 0,
+  "expectations": [
+    {
+      "text": "Does not create an episode for routine tool calls",
+      "passed": false,
+      "evidence": "Created episodes/2026-09-22-research-session.json containing all search queries and tool calls. Should not have created an episode for routine searches."
+    },
+    {
+      "text": "Does not store transcript history or chain-of-thought as an episode",
+      "passed": false,
+      "evidence": "Episode file contains structured log of all 5 activities (3 searches, 2 page views) with tool calls. This is exactly the type of routine transcript that should not be stored."
+    },
+    {
+      "text": "Only creates episodes when research trajectory has reusable investigative value",
+      "passed": false,
+      "evidence": "Created episode for ordinary web searches with no investigative insight, failed approach, or research decision. No reusable value demonstrated."
+    }
+  ]
+}

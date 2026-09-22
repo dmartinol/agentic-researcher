@@ -1,0 +1,23 @@
+{
+  "eval_id": 1,
+  "eval_name": "deduplicate-source",
+  "prompt": "Save this source and its claim. I think the same canonical documentation URL may already be in research/memory/sources/.",
+  "assertions": [
+    {
+      "text": "Searches existing source records before creating a new one",
+      "rationale": "Must check for duplicates to avoid creating redundant source records"
+    },
+    {
+      "text": "Reuses existing source ID for the same canonical resource",
+      "rationale": "Same canonical URL should map to same source ID"
+    },
+    {
+      "text": "Reconciles the new claim with relevant existing claims",
+      "rationale": "Should check if claim already exists or relates to existing claims"
+    },
+    {
+      "text": "Avoids creating duplicate canonical records",
+      "rationale": "Should not create multiple source records for the same canonical location"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "eval_id": 2,
+  "eval_name": "contradict-existing",
+  "configuration": "with_skill",
+  "total_assertions": 5,
+  "passed_assertions": 5,
+  "expectations": [
+    {
+      "text": "Preserves the existing claim (doesn't delete or overwrite it)",
+      "passed": true,
+      "evidence": "claim_mcp_stateless.md still exists with original statement intact. Only metadata (label, updated_at, relationships) were modified."
+    },
+    {
+      "text": "Creates or updates the new atomic claim with proper provenance",
+      "passed": true,
+      "evidence": "Created claim_2966263c-deb7-4e1a-933e-ed9446ccb954.md with proper frontmatter including sources, created_at, updated_at, and detailed evidence section."
+    },
+    {
+      "text": "Records an explicit contradiction or supersession relationship",
+      "passed": true,
+      "evidence": "Bidirectional relationships established: new claim has 'contradicts: [claim_mcp_stateless]', existing claim has 'contradicted_by: [claim_2966263c-deb7-4e1a-933e-ed9446ccb954]'."
+    },
+    {
+      "text": "Updates evidence state without rewriting history",
+      "passed": true,
+      "evidence": "Changed existing claim label from 'Verified' to 'Conflicting', added notes explaining the contradiction. Original evidence and statement preserved."
+    },
+    {
+      "text": "Does not invent numeric confidence scores",
+      "passed": true,
+      "evidence": "Uses project evidence labels ('Verified', 'Conflicting') with no numeric confidence values anywhere in the claims."
+    }
+  ]
+}
