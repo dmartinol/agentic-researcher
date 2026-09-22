@@ -1,0 +1,23 @@
+{
+  "suite_name": "research-capability-composition",
+  "evals": [
+    {
+      "id": 1,
+      "name": "stale-claim-reconciliation",
+      "prompt": "Execute an approved task whose memory contains a Verified claim based on an older specification. Current primary evidence appears to contradict it. Update the research and prepare the result for synthesis.",
+      "expected_output": "Execution retrieves the existing claim, uses evidence evaluation to investigate freshness and contradiction, preserves historical evidence, creates/reconciles current claims and relationships, updates durable memory/state, and exposes the qualified result to synthesis rather than overwriting the old claim."
+    },
+    {
+      "id": 2,
+      "name": "conflicting-dependent-synthesis",
+      "prompt": "Two completed Research Tasks provide credible but materially conflicting evidence for a conclusion-critical point. Run the dependent Synthesis Task and verify its result.",
+      "expected_output": "Synthesis consumes dependency outputs and canonical memory, investigates whether scope/version/date explains the conflict, preserves genuine unresolved conflict, derives only supported conclusions, and verification treats an uninvestigated material conflict as blocking."
+    },
+    {
+      "id": 3,
+      "name": "resume-from-memory",
+      "prompt": "A previous agent session completed evidence gathering and persisted claims, sources, episodes and STATE.md. In a fresh session, continue the active Research Task and produce the next update.",
+      "expected_output": "The fresh execution reconstructs context selectively from RESEARCH.md, STATE.md and canonical memory, follows relevant relationships/conflicts, does not rely on prior conversation, and updates rather than duplicates existing memory objects."
+    }
+  ]
+}
