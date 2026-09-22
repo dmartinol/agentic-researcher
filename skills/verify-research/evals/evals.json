@@ -1,0 +1,23 @@
+{
+  "skill_name": "verify-research",
+  "evals": [
+    {
+      "id": 1,
+      "name": "clean-verification",
+      "prompt": "Verify this completed research package before I ask to close it.",
+      "expected_output": "Performs read-only checks of acceptance criteria, claim/source traceability, evidence labels, contradiction/freshness handling, memory integrity, configured subsystem identities/hierarchy/links, and reports pass/warning/blocking findings without mutation."
+    },
+    {
+      "id": 2,
+      "name": "missing-contradiction",
+      "prompt": "The conclusion relies on one authoritative source and the claim is marked Verified, but nobody searched for contradicting or qualifying evidence. Verify it.",
+      "expected_output": "Treats the missing contradiction search for a conclusion-critical claim as blocking unless the approved scope explicitly accepts the limitation; does not equate an authoritative source alone with completed verification."
+    },
+    {
+      "id": 3,
+      "name": "not-established",
+      "prompt": "We couldn't find evidence that feature X exists, so the report says 'Verified: feature X does not exist.' Please verify.",
+      "expected_output": "Flags the inference as invalid: lack of establishing evidence must not become proof of absence; requires an appropriate Not established state unless direct evidence supports the negative proposition."
+    }
+  ]
+}

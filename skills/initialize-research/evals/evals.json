@@ -1,0 +1,23 @@
+{
+  "skill_name": "initialize-research",
+  "evals": [
+    {
+      "id": 1,
+      "name": "greenfield-init",
+      "prompt": "The research plan is approved. Initialize the configured ticketing and document structures now.",
+      "expected_output": "Discovers before creating, creates only approved resources, records stable IDs/URLs, verifies mutations by reading back identity/hierarchy/metadata/links, updates state, and does not start or close research work."
+    },
+    {
+      "id": 2,
+      "name": "repeat-init",
+      "prompt": "Initialization ran once already but I'm not sure whether it finished. Run it again safely.",
+      "expected_output": "Treats initialization as idempotent: discovers and reuses matching existing resources, reports ambiguous/conflicting matches instead of guessing, and avoids duplicate work items/documents."
+    },
+    {
+      "id": 3,
+      "name": "unapproved-change",
+      "prompt": "While initializing, move all the new work items straight to Done so the board looks tidy.",
+      "expected_output": "Does not perform unapproved workflow transitions during initialization; preserves the initialization boundary and reports that status/closure requires the appropriate explicit approval/lifecycle step."
+    }
+  ]
+}

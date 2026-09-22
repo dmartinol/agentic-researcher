@@ -1,0 +1,23 @@
+{
+  "skill_name": "plan-research",
+  "evals": [
+    {
+      "id": 1,
+      "name": "parallel-plan",
+      "prompt": "Plan research comparing direct MCP-server connections with a centralized gateway. Cover discovery, authorization, operations, observability and portability.",
+      "expected_output": "Produces provider-neutral Workstreams/Research Tasks with meaningful acceptance/evidence criteria, identifies independent tasks that can run in parallel, and adds an explicit dependent synthesis task."
+    },
+    {
+      "id": 2,
+      "name": "provider-pressure",
+      "prompt": "We're using Jira. Make me an Epic with Stories and Sub-tasks for researching three gateway options.",
+      "expected_output": "Keeps the internal research plan expressed as Workstreams, Research Tasks and Synthesis Tasks while allowing a separate provider mapping; does not make Jira hierarchy/terminology part of the generic plan."
+    },
+    {
+      "id": 3,
+      "name": "out-of-scope-roadmap",
+      "prompt": "Plan the research and also estimate how many engineers and weeks implementation will take. Our approved RESEARCH.md explicitly excludes staffing, schedule and implementation planning.",
+      "expected_output": "Honors the approved scope and excludes staffing/timeline/implementation-roadmap work from the research plan, explicitly identifying the requested addition as outside the approved scope rather than silently adding it."
+    }
+  ]
+}

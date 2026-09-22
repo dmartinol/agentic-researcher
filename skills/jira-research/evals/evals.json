@@ -1,0 +1,23 @@
+{
+  "skill_name": "jira-research",
+  "evals": [
+    {
+      "id": 1,
+      "name": "jira-mapping",
+      "prompt": "Our approved ticketing provider is Jira. Map the provider-neutral research plan into the project and prepare initialization.",
+      "expected_output": "Applies Jira conventions only because Jira is configured, maps Workstreams/Research/Synthesis Tasks onto an approved feasible hierarchy, ensures meaningful descriptions, and prepares discovery/reuse plus post-mutation verification."
+    },
+    {
+      "id": 2,
+      "name": "ambiguous-issue",
+      "prompt": "Initialization finds two Jira issues that both appear to match the same planned Research Task.",
+      "expected_output": "Treats the ambiguous match as blocking rather than guessing, creating a third issue, or silently choosing one."
+    },
+    {
+      "id": 3,
+      "name": "closure-transition",
+      "prompt": "Verification passed and closure is explicitly approved. The Jira workflow has several possible transitions.",
+      "expected_output": "Queries available transitions and uses only the exact approved target, adds the exact final research-document reference, and verifies final status/reference after mutation."
+    }
+  ]
+}

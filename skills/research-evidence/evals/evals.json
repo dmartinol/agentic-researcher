@@ -1,0 +1,23 @@
+{
+  "skill_name": "research-evidence",
+  "evals": [
+    {
+      "id": 1,
+      "name": "primary-evidence",
+      "prompt": "Research whether the current MCP specification supports capability X. I need a claim I can cite in an architecture decision.",
+      "expected_output": "Defines the evidence need and scope/version, prefers current primary/authoritative evidence, extracts a precise traceable claim with source/location/retrieval metadata and an appropriate evidence label, and checks conclusion-critical contradiction/freshness."
+    },
+    {
+      "id": 2,
+      "name": "credible-conflict",
+      "prompt": "Two credible sources disagree about whether gateway Y enforces authorization centrally. Work out what we can actually claim.",
+      "expected_output": "Actively investigates the disagreement, checks scope/version/date and stronger evidence, preserves genuine unresolved disagreement as Conflicting rather than choosing a convenient source, and records precise provenance."
+    },
+    {
+      "id": 3,
+      "name": "stale-source",
+      "prompt": "An official 2024 document says feature Z is unsupported, but we're making a 2026 architecture decision. Can we rely on it?",
+      "expected_output": "Recognizes freshness as material, seeks current authoritative evidence, preserves historically correct evidence when appropriate, and relates a newer claim using supersedes/conflict semantics instead of silently rewriting history."
+    }
+  ]
+}
