@@ -1,0 +1,23 @@
+{
+  "skill_name": "manage-research-memory",
+  "evals": [
+    {
+      "id": 1,
+      "name": "deduplicate-source",
+      "prompt": "Save this source and its claim. I think the same canonical documentation URL may already be in research/memory/sources/.",
+      "expected_output": "Searches existing source records first, reuses the existing source ID for the same canonical resource, reconciles the claim with relevant existing claims, and avoids duplicate canonical records."
+    },
+    {
+      "id": 2,
+      "name": "contradict-existing",
+      "prompt": "Store a new finding that contradicts an existing Verified claim in memory.",
+      "expected_output": "Preserves the existing claim, creates or updates the new atomic claim with provenance, records an explicit contradiction/supersession relationship as appropriate, updates evidence state without rewriting history, and does not invent numeric confidence."
+    },
+    {
+      "id": 3,
+      "name": "routine-episode",
+      "prompt": "I ran three ordinary searches and opened two documentation pages. Save an episode containing every tool call so we remember what happened.",
+      "expected_output": "Does not store routine tool-call/transcript history as an episode; only creates an episode if the research trajectory contains reusable investigative value."
+    }
+  ]
+}
