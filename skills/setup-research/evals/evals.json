@@ -1,0 +1,23 @@
+{
+  "skill_name": "setup-research",
+  "evals": [
+    {
+      "id": 1,
+      "name": "greenfield-intake",
+      "prompt": "I want to research whether our engineering org should standardize on one MCP gateway. I need an architecture brief for platform leads. Use our ticketing and docs systems, but don't create anything yet.",
+      "expected_output": "Produces a complete draft research configuration covering objective/audience, scope and exclusions, evidence/output expectations, logical subsystem roles and readiness, mutation boundary, approval gates, and unresolved assumptions; it performs no external mutation and asks for approval before planning."
+    },
+    {
+      "id": 2,
+      "name": "brownfield-adoption",
+      "prompt": "Pick up an existing research effort in this folder. It already has RESEARCH.md, STATE.md, tickets and documents. Figure out what is there and help me continue it.",
+      "expected_output": "Discovers and reconciles existing durable project state and subsystem resources before proposing changes; preserves existing configuration/state, identifies inconsistencies or unresolved roles, and does not recreate or mutate external resources during setup."
+    },
+    {
+      "id": 3,
+      "name": "missing-provider-capability",
+      "prompt": "Start research on current MCP authorization patterns. We definitely need a document store, but I don't know whether this host has one configured.",
+      "expected_output": "Marks the required document_store capability as unresolved/pending rather than inventing a provider, records the blocker, avoids credentials/host-specific assumptions, and does not proceed to initialization while a required role is unresolved."
+    }
+  ]
+}
