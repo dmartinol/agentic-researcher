@@ -40,34 +40,25 @@ Files under `.cache/` are derived artifacts and must be reproducible from canoni
 
 Do not store important research merely as free-form summaries. Represent significant findings as explicit claims with provenance.
 
-A claim should contain, where applicable:
+Canonical claim, source, and episode shapes are defined by `templates/memory/claim.md`, `templates/memory/source.md`, and `templates/memory/episode.md`.
 
-```yaml
-id: <globally unique ID>
-claim: <precise factual statement>
-status: supported | disputed | unverified | superseded
-confidence: high | medium | low
+Claims use the project evidence labels `Verified`, `Reported`, `Not established`, and `Conflicting`. Do not add numeric confidence scores: confidence-like numbers imply a calibration the research process does not provide. Express uncertainty through evidence state, provenance, qualifications, conflicts, and unresolved gaps.
 
-evidence:
-  - source: <source ID>
-    observed_at: <date>
+A claim records a precise statement, source relationships, observation/update time, scope qualifications, and relationships such as `contradicts`, `supersedes`, and `depends_on`.
 
-tags:
-  - <topic>
-```
-
-Sources should be recorded separately and include:
-
-```yaml
-id: <globally unique ID>
-type: documentation | source-code | paper | issue | article | other
-url: <source location>
-title: <title>
-published_at: <date if known>
-retrieved_at: <date>
-```
+A source records a stable location/identifier, source type, title, publication/version metadata when known, and retrieval time.
 
 Prefer UUID/ULID-style identifiers over sequential IDs so multiple researchers and agents can create records concurrently without collisions.
+
+## Executable Skills
+
+The memory model is implemented by portable skills:
+
+- `manage-research-memory`: canonical persistence, reconciliation, relationships, episodes, selective retrieval, and derived-index rules;
+- `research-evidence`: source discovery/evaluation, claim extraction, contradiction search, and freshness/revalidation;
+- `research-synthesis`: evidence-based synthesis across claims and dependent research tasks.
+
+`execute-research` composes these capabilities and remains capable of generic research when no topic-specific skill is assigned.
 
 ## Research Lifecycle
 
