@@ -1,0 +1,34 @@
+{
+  "eval_id": 2,
+  "eval_name": "unresolved-conflict",
+  "configuration": "with_skill",
+  "total_assertions": 5,
+  "passed_assertions": 5,
+  "expectations": [
+    {
+      "text": "Does NOT resolve conflict by majority vote (doesn't say 'most sources agree, so A wins')",
+      "passed": true,
+      "evidence": "Response explicitly states: 'This represents a genuine, material conflict that cannot be reconciled through version differences, scope clarification, or majority vote.' Does NOT declare 5 older sources as winner. Instead identifies scale-dependency as differentiator."
+    },
+    {
+      "text": "Does NOT invent or use numeric confidence scores to pick a winner",
+      "passed": true,
+      "evidence": "No numeric confidence scores used. Uses qualitative labels: 'High confidence in scale-dependent conclusion; low confidence in precise threshold value'. No arbitrary percentages or numeric scores to resolve conflict."
+    },
+    {
+      "text": "Preserves the genuine conflict explicitly (marks as Conflicting or unresolved)",
+      "passed": true,
+      "evidence": "Dedicated section 'CONFLICTS AND LIMITATIONS > Genuine Unresolved Conflict' preserves the conflict. States: 'claim_gateway_ratelimit_performance (Conflicting)'. Explains 'Critical Uncertainty: The exact RPS threshold...is not precisely defined'."
+    },
+    {
+      "text": "Explains how the conflict affects conclusions or applicability",
+      "passed": true,
+      "evidence": "Section 'Applicability Boundaries' explains impact: 'For low scale (<50k RPS): Gateway appropriate', 'For high scale (>100k RPS): Requires explicit latency trade-off analysis'. Recommendation framework is conditional based on scale, acknowledging conflict's impact on decision."
+    },
+    {
+      "text": "Identifies what follow-up evidence would resolve the conflict (if material to decision)",
+      "passed": true,
+      "evidence": "Dedicated section 'FOLLOW-UP RESEARCH NEEDED' with 4 specific items: 'Threshold study: Conduct controlled experiments measuring latency impact across 10k-200k RPS', 'Implementation comparison', 'Algorithm optimization', 'Hybrid architecture patterns'. Marked 'Priority: High if organization's APIs will exceed 50k RPS within 12 months'."
+    }
+  ]
+}

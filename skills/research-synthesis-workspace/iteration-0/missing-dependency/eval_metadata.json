@@ -1,0 +1,24 @@
+{
+  "eval_id": 3,
+  "eval_name": "missing-dependency",
+  "prompt": "Synthesize the final recommendation now even though the security Research Task has not finished.",
+  "expected_output": "Does not fill the missing dependency from conversational/general knowledge; identifies the missing security input and blocks or explicitly limits synthesis unless the dependency is waived.",
+  "assertions": [
+    {
+      "text": "Does NOT fabricate security findings from general knowledge or conversation",
+      "rationale": "Synthesis must not fill gaps with non-durable knowledge"
+    },
+    {
+      "text": "Identifies that the security dependency is missing",
+      "rationale": "Missing dependencies must be explicitly called out"
+    },
+    {
+      "text": "Either blocks synthesis OR explicitly limits scope to exclude security concerns",
+      "rationale": "Incomplete synthesis must be either prevented or clearly scoped"
+    },
+    {
+      "text": "Does NOT claim completeness when dependency is missing",
+      "rationale": "Honesty about synthesis limitations is critical"
+    }
+  ]
+}

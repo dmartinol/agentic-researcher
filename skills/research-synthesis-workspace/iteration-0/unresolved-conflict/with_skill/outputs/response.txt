@@ -1,0 +1,166 @@
+# Research Synthesis: API Rate Limiting Strategy
+
+## Research Question
+Should we implement rate limiting at the API gateway layer or application layer?
+
+## Synthesis Question
+Given the conflicting evidence on performance impact, which approach should we recommend?
+
+---
+
+## CONCLUSIONS
+
+### Performance Impact is Scale-Dependent (Conflicting Evidence)
+
+The performance impact of API gateway rate limiting **cannot be characterized with a single universal claim**. Evidence shows a scale-dependent threshold effect:
+
+**At low-to-moderate scale (<100k RPS):**
+- Evidence supports negligible performance impact (<1ms latency)
+- Supported by: AWS API Gateway (2025), Kong benchmarks (2024), Nginx (2023), Envoy (2024), Azure API Management (2025)
+- Claim ID: `claim_gateway_ratelimit_performance` (partially supported)
+
+**At high scale (100k+ RPS):**
+- Evidence demonstrates measurable performance impact (5-15ms latency increase)
+- Supported by: Cloudflare whitepaper (2026-09-15), Netflix blog (2026-09-18)
+- Claim ID: `claim_gateway_ratelimit_latency_2026` (verified)
+
+### Recommendation Framework
+
+**For APIs with traffic <50k RPS:**
+- Gateway-layer rate limiting is appropriate
+- Performance impact remains negligible
+- Centralization benefits outweigh minimal overhead
+
+**For high-throughput APIs (>100k RPS):**
+- Performance impact becomes material (5-15ms)
+- Decision requires explicit SLA trade-off analysis
+- Consider hybrid approaches or application-layer alternatives
+
+---
+
+## SUPPORTING EVIDENCE
+
+### Low-Impact Evidence (5 sources, 2023-2025)
+1. **AWS API Gateway** (2025): <1ms overhead claim
+2. **Kong Gateway** (2024): 0.5ms median latency increase (benchmarks)
+3. **Nginx** (2023): Described as "lightweight operation"
+4. **Envoy** (2024): "Minimal performance overhead"
+5. **Azure API Management** (2025): "Sub-millisecond policy execution"
+
+### High-Impact Evidence (2 sources, September 2026)
+1. **Cloudflare whitepaper** (`src_cloudflare_whitepaper_2026`, 2026-09-15):
+   - P50 latency: 5-8ms increase at 100k+ RPS
+   - P99 latency: 10-12ms increase
+   - Primary source (production measurements)
+   - High authority (global edge network operator)
+
+2. **Netflix blog** (`src_netflix_blog_2026`, 2026-09-18):
+   - P99 latency: 7-15ms increase during peak traffic
+   - Describes gateway rate limiting as "surprisingly expensive"
+   - Primary source (production experience)
+   - High authority (200M+ subscribers, massive scale)
+
+---
+
+## CONFLICTS AND LIMITATIONS
+
+### Genuine Unresolved Conflict
+
+**Nature of Conflict:**
+This represents a **genuine, material conflict** that cannot be reconciled through version differences, scope clarification, or majority vote.
+
+**Why the Conflict Persists:**
+1. **Temporal difference is meaningful**: The 2026 sources may reflect evolved understanding or different workload patterns not present in earlier analyses
+2. **Scale threshold effect**: Older sources may be correct for their tested scale ranges, while newer sources reveal impact at higher scales
+3. **Distributed synchronization overhead**: Netflix explicitly identifies state synchronization as the latency source—this may not have been measured in earlier single-instance benchmarks
+
+**Critical Uncertainty:**
+The exact RPS threshold where performance impact transitions from negligible to material is **not precisely defined** in the evidence. The 100k RPS value is approximate.
+
+### Evidence Gaps
+
+1. **Missing threshold data**: No source provides fine-grained latency measurements across the 10k-200k RPS range to identify the exact transition point
+2. **Implementation variation**: Different gateway technologies (Envoy, Kong, cloud-managed) may have different performance characteristics at scale
+3. **Workload dependency**: Impact may vary based on request complexity, rate limit algorithm (token bucket, leaky bucket, sliding window), and accuracy requirements
+
+### Applicability Boundaries
+
+This synthesis applies to:
+- ✅ HTTP/REST API gateways
+- ✅ Distributed rate limiting (multi-node deployments)
+- ✅ 2026 evidence base
+
+This synthesis does NOT address:
+- ❌ Single-instance rate limiting (may have lower overhead)
+- ❌ GraphQL or gRPC-specific rate limiting
+- ❌ CDN edge rate limiting (different architecture)
+- ❌ Per-user vs. per-endpoint rate limiting strategies
+
+---
+
+## UNKNOWNS
+
+1. **Precise threshold**: At what exact RPS does latency impact become measurable (>1ms)?
+2. **Linear vs. step function**: Does latency increase gradually or exhibit threshold behavior?
+3. **Mitigation strategies**: Can distributed rate limiting algorithms be optimized to reduce synchronization overhead?
+4. **Technology-specific variance**: Do different gateway implementations (Kong, Envoy, AWS, etc.) exhibit different performance profiles at high scale?
+
+---
+
+## IMPLICATIONS
+
+### Decision Framework
+
+Organizations should **not** make gateway vs. application-layer rate limiting decisions based solely on performance impact claims. Instead:
+
+1. **Measure current/projected scale**: Determine if your API will exceed 100k RPS
+2. **Define SLA requirements**: Determine if 5-15ms additional latency is acceptable
+3. **Consider accuracy requirements**: Distributed rate limiting adds overhead—local rate limiting sacrifices accuracy
+4. **Evaluate trade-offs explicitly**: Gateway centralization benefits vs. latency cost
+
+### Risk Mitigation
+
+For organizations approaching or exceeding 100k RPS:
+- **Test in production-like conditions**: Vendor benchmarks may not reflect distributed deployment overhead
+- **Monitor P99 latency**: The impact appears most severe at tail latencies
+- **Prepare hybrid strategy**: Combine gateway-level coarse limits with application-level fine-grained control
+- **Budget latency explicitly**: Include rate limiting overhead in SLA calculations
+
+### Architecture Guidance
+
+The evidence **does NOT support** a universal "always use gateway rate limiting" recommendation. The correct choice is **scale-dependent**:
+
+- **Low scale (<50k RPS)**: Gateway rate limiting appropriate
+- **High scale (>100k RPS)**: Requires explicit latency trade-off analysis
+- **Mission-critical low-latency APIs**: Consider application-layer alternatives regardless of scale
+
+---
+
+## FOLLOW-UP RESEARCH NEEDED
+
+To resolve the remaining uncertainty:
+
+1. **Threshold study**: Conduct controlled experiments measuring latency impact across 10k-200k RPS range to identify precise transition point
+2. **Implementation comparison**: Benchmark different gateway technologies (Kong, Envoy, AWS API Gateway, cloud-managed) at high scale
+3. **Algorithm optimization**: Research distributed rate limiting algorithms that minimize synchronization overhead
+4. **Hybrid architecture patterns**: Investigate proven patterns for combining gateway and application-layer rate limiting
+
+**Priority**: High if organization's APIs will exceed 50k RPS within 12 months
+
+---
+
+## SYNTHESIS METADATA
+
+**Evidence Sources**: 7 total (5 supporting low impact, 2 contradicting at high scale)
+**Claim IDs Referenced**:
+- `claim_gateway_ratelimit_performance` (Conflicting)
+- `claim_gateway_ratelimit_latency_2026` (Verified)
+
+**Source IDs Referenced**:
+- `src_cloudflare_whitepaper_2026`
+- `src_netflix_blog_2026`
+- Plus 5 additional sources (AWS, Kong, Nginx, Envoy, Azure)
+
+**Conflict Resolution Approach**: Preserved genuine conflict; identified scale-dependency as differentiator rather than resolving via majority vote
+
+**Confidence Level**: High confidence in scale-dependent conclusion; low confidence in precise threshold value

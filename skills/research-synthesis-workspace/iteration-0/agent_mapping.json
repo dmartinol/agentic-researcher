@@ -1,0 +1,34 @@
+{
+  "agents": {
+    "a4c8986d1e34af914": {
+      "eval_case": "multi-task-synthesis",
+      "configuration": "with_skill",
+      "prompt": "Synthesize the completed discovery, security and operations research tasks into an architecture comparison."
+    },
+    "a026ea17a28ff0c40": {
+      "eval_case": "multi-task-synthesis",
+      "configuration": "without_skill",
+      "prompt": "Synthesize the completed discovery, security and operations research tasks into an architecture comparison."
+    },
+    "aa26502872220cec0": {
+      "eval_case": "unresolved-conflict",
+      "configuration": "with_skill",
+      "prompt": "Most sources favor approach A, but two credible current sources materially contradict a conclusion-critical claim. Synthesize the result."
+    },
+    "ac615d83f533e3f75": {
+      "eval_case": "unresolved-conflict",
+      "configuration": "without_skill",
+      "prompt": "Most sources favor approach A, but two credible current sources materially contradict a conclusion-critical claim. Synthesize the result."
+    },
+    "a3228c6e8ab870dd1": {
+      "eval_case": "missing-dependency",
+      "configuration": "with_skill",
+      "prompt": "Synthesize the final recommendation now even though the security Research Task has not finished."
+    },
+    "a6ce4a4961a57ff37": {
+      "eval_case": "missing-dependency",
+      "configuration": "without_skill",
+      "prompt": "Synthesize the final recommendation now even though the security Research Task has not finished."
+    }
+  }
+}

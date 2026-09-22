@@ -1,0 +1,32 @@
+{
+  "eval_id": 1,
+  "eval_name": "multi-task-synthesis",
+  "prompt": "Synthesize the completed discovery, security and operations research tasks into an architecture comparison.",
+  "expected_output": "Retrieves durable claims/sources and dependency outputs, groups evidence by decision criterion, distinguishes established/reported/unresolved evidence, links conclusions to claims/sources, and clearly preserves limitations and unknowns.",
+  "assertions": [
+    {
+      "text": "Retrieves durable claims and sources from research memory (doesn't fabricate from conversation)",
+      "rationale": "Synthesis must work from persisted evidence, not conversational knowledge"
+    },
+    {
+      "text": "Retrieves dependency task outputs (discovery, security, operations)",
+      "rationale": "Synthesis depends on completed research tasks"
+    },
+    {
+      "text": "Groups evidence by decision criterion (e.g., security, performance, operations)",
+      "rationale": "Facilitates structured comparison across options"
+    },
+    {
+      "text": "Distinguishes between established evidence (Verified), reported assertions, and unresolved propositions",
+      "rationale": "Preserves evidence quality levels without flattening them"
+    },
+    {
+      "text": "Links conclusions back to specific claim IDs and source evidence",
+      "rationale": "Enables traceability and verification of synthesis claims"
+    },
+    {
+      "text": "Preserves limitations and unknowns explicitly (doesn't hide gaps)",
+      "rationale": "Honest synthesis acknowledges what is not known"
+    }
+  ]
+}
