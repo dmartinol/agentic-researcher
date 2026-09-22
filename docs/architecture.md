@@ -46,7 +46,13 @@ The default profile maps ticketing to Jira and document storage to Confluence. G
 
 Jira and Confluence are first-class, opinionated defaults, but their conventions must not define the generic subsystem contract. Provider-specific behavior belongs in specialized skills/references and configured MCP capabilities.
 
-Authentication is host/integration managed. The plugin, research manifest, documents, and Git-tracked research artifacts must not contain secrets.
+The logical capability semantics are defined in `docs/subsystem-capabilities.md`. Lifecycle skills do not depend on provider tool names.
+
+The default Jira/Confluence profile is composed through `skills/jira-research` and `skills/confluence-research`.
+
+The portable `mcp.json` declares Atlassian's Streamable HTTP MCP endpoint as the default integration. Agent Plugins leaves OAuth/credential handling to the client, so the package contains no credentials or portable auth profile. Alternative providers may be supplied by a host when they satisfy the required capability semantics.
+
+No host-specific adapter is required for the default architecture.
 
 ## Research project
 
