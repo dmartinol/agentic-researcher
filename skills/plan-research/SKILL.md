@@ -26,7 +26,7 @@ For each task define:
 - expected repository artifacts, if configured;
 - completion verification and approval gate.
 
-Provider specializations map this model onto external systems. For example, Jira may map workstreams/tasks to its configured issue hierarchy; a different ticketing provider may use another representation.
+Provider specializations map this model onto the configured external systems. The generic plan must not depend on any provider's native hierarchy or terminology.
 
 Do not invent provider identifiers, hierarchy values, document roots, or repository paths. Resolve missing required values through the approved configuration.
 
