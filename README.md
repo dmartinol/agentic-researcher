@@ -1,46 +1,59 @@
 # Agentic Researcher
 
-Portable Agent Plugin for planning and coordinating evidence-based research.
+Installable, portable agentic research system for planning, executing, documenting, and verifying evidence-based research.
 
-This package conforms to Agent Plugins v1.0.0:
+The standards-based portable core follows Agent Plugins v1 and Agent Skills:
 
-- `plugin.json` is the portable manifest.
+- `plugin.json` is the portable plugin manifest.
 - `skills/` contains portable Agent Skills.
-- `mcp.json` is the optional MCP configuration and currently declares no bundled servers.
+- `mcp.json` declares optional MCP integrations and remains credentials-free.
 
-The core standard does not define portable agent definitions, commands, or
-hooks. Those remain client-specific extensions and are intentionally excluded
-from the portable package. Clients can orchestrate the packaged skills using
-their own agent or workflow features.
+Agent Plugins v1 does not standardize agent definitions. This project deliberately includes IDE-neutral Markdown agent definitions under `agents/` as a non-standard extension following the convention used by Claude plugins and compatible hosts. Essential research behavior remains in portable skills so hosts without agent-definition support can still execute the lifecycle.
 
-This repository also includes client-neutral executable phase agents under
-`agents/`. Hosts may load these definitions using their native agent mechanism;
-the definitions do not require a particular vendor, runtime, command format,
-MCP server, or credential layout.
+Jira and Confluence are the default ticketing and document-store providers. The architecture uses logical subsystem roles so provider-specific conventions can be composed separately from generic research semantics. Git/repository integration is optional.
 
-The included `opencode.json` is an optional OpenCode adapter. It registers the
-portable skills, loads the root instructions and agent definitions as context,
-and enables the official Atlassian Rovo MCP server for Jira and Confluence
-operations. OpenCode handles OAuth authentication; this repository contains no
-credentials or authorization headers.
+## Research lifecycle
 
-Jira and Confluence are the default logical service choices described by the
-skills. Users may provide alternative ticketing, document, repository, or
-identity services through their client-managed MCP configuration and persistent
-user settings. For a specific research run, setup may configure the active
-research repository's host adapter after explicit approval; it must not place
-user-specific MCP settings in this portable plugin.
+The user-facing lifecycle is:
+
+```text
+SETUP -> PLAN -> EXECUTE -> COMPLETE / VERIFY
+```
+
+Internally, specialized setup, planning, initialization, execution, verification, and completion agents/skills preserve explicit approval and mutation boundaries.
+
+## Research project
+
+The installed product creates or adopts a research project separate from this development repository.
+
+Its durable local model is:
+
+```text
+RESEARCH.md       stable research definition and configuration
+STATE.md          concise current/restart state
+research/memory/  acquired claims, sources, and useful research history
+research/reports/ research outputs
+```
+
+See `templates/RESEARCH.md`, `templates/STATE.md`, and `docs/research-memory.md`.
 
 ## Skills
 
-- `setup-research`: clarify objectives, service roles, conventions, and approvals
-- `plan-research`: produce actionable Stories, Sub-tasks, dependencies, and outputs
-- `initialize-research`: create or reuse external research structure
-- `execute-research`: run an approved task-specific research skill
-- `verify-research`: perform read-only quality and traceability checks
-- `complete-research`: approval-gated card-based closure
-- `agents/`: client-neutral orchestration and phase-agent definitions
+Current lifecycle skills:
 
-See `docs/getting-started.md` for user instructions and how to run a dry-run.
-See `docs/architecture.md` and `docs/demo-script.md` for the full workflow and
-demonstration scenario.
+- `setup-research`: clarify objectives, subsystem roles, conventions, and approvals
+- `plan-research`: produce an actionable research decomposition
+- `initialize-research`: create or reuse approved external research structure
+- `execute-research`: execute an approved research task
+- `verify-research`: perform read-only quality and traceability checks
+- `complete-research`: approval-gated completion and closure
+
+`agents/` contains the IDE-neutral orchestrator and specialized phase-agent definitions.
+
+## Current implementation status
+
+The P0 architecture contract is documented, but the existing skills and integrations still contain Jira/Confluence-specific behavior that will be separated in P1.
+
+The existing `opencode.json` remains temporarily as an implementation artifact. It is not part of the target portable architecture and is not a required research-project adapter.
+
+See `AGENTS.md` for the authoritative project contract, `docs/architecture.md` for the architecture model, and `TODO.md` for the P1-P3 implementation backlog.
