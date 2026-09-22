@@ -19,4 +19,4 @@ Record a concise completion reference linking the exact final research output us
 
 After mutation, read back and verify the final work-item status and closure reference. If any check fails, stop without guessing.
 
-When Jira and Confluence are selected, apply the `jira-research` and `confluence-research` closure conventions.
+Apply closure conventions from the configured provider specializations when available. Do not infer provider-specific closure behavior from the generic lifecycle.
