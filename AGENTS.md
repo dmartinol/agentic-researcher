@@ -1,5 +1,11 @@
 # AGENTS.md
 
+## Scope
+
+This file contains contributor and coding-agent instructions for developing the `agentic-researcher` repository. It is not part of the installed Agentic Researcher runtime contract.
+
+Runtime instructions live in `agentic-researcher/AGENTS.md` inside the distributable package. Do not add end-user lifecycle routing rules here when they are required by an installed host.
+
 ## Project Purpose
 
 `agentic-researcher` is an installable, portable agentic research system for planning, executing, documenting, and verifying evidence-based research.
@@ -34,19 +40,20 @@ The research project created by the installed agent is separate from the `agenti
 
 The portable core follows the Agent Plugins v1 standard and the Agent Skills specification.
 
-Standard components are:
+The distributable package lives under `agentic-researcher/`. Its standard components are:
 
-- `plugin.json`: Agent Plugin manifest.
-- `skills/<skill-name>/SKILL.md`: portable Agent Skills.
-- `mcp.json`: optional MCP server declarations.
+- `agentic-researcher/plugin.json`: Agent Plugin manifest.
+- `agentic-researcher/skills/<skill-name>/SKILL.md`: portable Agent Skills.
+- `agentic-researcher/mcp.json`: optional MCP server declarations.
+- `agentic-researcher/AGENTS.md`: runtime host instructions.
 
-Agent Plugins v1 does not standardize agent definitions. This project deliberately provides `agents/` as a non-standard but IDE-neutral extension following the Markdown agent convention used by Claude plugins and compatible agent hosts.
+Agent Plugins v1 does not standardize agent definitions. This project deliberately provides `agentic-researcher/agents/` as a non-standard but IDE-neutral extension following the Markdown agent convention used by Claude plugins and compatible agent hosts.
 
 Agent definitions MUST avoid host-specific APIs, delegation syntax, tool names, permission models, and runtime assumptions wherever practical.
 
-Agents provide role specialization, lifecycle orchestration, delegation, and coordination between portable skills. All essential research behavior MUST remain available through portable Agent Skills. No critical research rule may exist only in an agent definition.
+Agents provide role specialization, lifecycle orchestration, delegation, and coordination between portable skills. Skills implement reusable research operations; agents define the canonical multi-phase orchestration.
 
-A host supporting the `agents/` convention may expose the specialized multi-agent workflow. A host supporting Agent Skills but not `agents/` should still be able to execute the complete research lifecycle using portable skills.
+A host supporting the installed agent definitions enters the full Agentic Researcher lifecycle through `research-orchestrator`. A skills-only host may use individual portable research operations, but full lifecycle orchestration is not guaranteed without compatible agent/orchestration support.
 
 Do not require researchers to create or maintain IDE-specific agent adapters. Host-specific compatibility files may be added when necessary for a target host, but they are optional, must not contain canonical research behavior, and must not be required configuration for a research project.
 
@@ -72,7 +79,7 @@ Providers / MCP servers
 
 ### Agents
 
-`agents/` contains canonical role and orchestration definitions:
+`agentic-researcher/agents/` contains canonical role and orchestration definitions:
 
 - `research-orchestrator`
 - `research-setup`
@@ -207,7 +214,7 @@ Important findings should be represented as claims with provenance to their supp
 
 Binary databases, SQLite indexes, embeddings, or vector databases may be used as derived retrieval layers, but they must not be the only authoritative representation of research knowledge.
 
-The detailed memory model is defined in `docs/research-memory.md`; canonical object templates live under `templates/memory/`.
+The detailed memory model is defined in `docs/research-memory.md`; canonical object templates live under `agentic-researcher/templates/memory/`.
 
 Do not use numeric confidence scores for claims. Express evidence state with the canonical labels, provenance, scope qualifications, conflicts, freshness, and unresolved gaps.
 

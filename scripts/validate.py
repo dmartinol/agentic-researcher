@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PACKAGE = ROOT / "agentic-researcher"
 LIFECYCLE_SKILLS = (
     "setup-research", "plan-research", "initialize-research",
     "execute-research", "verify-research", "complete-research",
@@ -32,7 +33,7 @@ def fail(errors: list[str], message: str) -> None:
 
 
 def read(path: str) -> str:
-    return (ROOT / path).read_text(encoding="utf-8")
+    return (PACKAGE / path).read_text(encoding="utf-8")
 
 
 def frontmatter(text: str) -> dict[str, str]:
@@ -52,6 +53,9 @@ def frontmatter(text: str) -> dict[str, str]:
 def main() -> int:
     errors: list[str] = []
 
+    if not (PACKAGE / "AGENTS.md").is_file():
+        fail(errors, "missing runtime package instructions: AGENTS.md")
+
     for manifest in ("plugin.json", "mcp.json"):
         try:
             json.loads(read(manifest))
@@ -66,12 +70,12 @@ def main() -> int:
     required += [f"skills/{name}/SKILL.md" for name in LIFECYCLE_SKILLS + RESEARCH_SKILLS + PROVIDER_SKILLS]
     required += [f"agents/{name}.md" for name in AGENTS]
     for path in required:
-        if not (ROOT / path).is_file():
+        if not (PACKAGE / path).is_file():
             fail(errors, f"missing required file: {path}")
 
     for name in LIFECYCLE_SKILLS + RESEARCH_SKILLS + PROVIDER_SKILLS:
         path = f"skills/{name}/SKILL.md"
-        if not (ROOT / path).is_file():
+        if not (PACKAGE / path).is_file():
             continue
         metadata = frontmatter(read(path))
         if metadata.get("name") != name:
@@ -81,7 +85,7 @@ def main() -> int:
 
     for name in AGENTS:
         path = f"agents/{name}.md"
-        if not (ROOT / path).is_file():
+        if not (PACKAGE / path).is_file():
             continue
         metadata = frontmatter(read(path))
         if metadata.get("name") != name or not metadata.get("description"):
@@ -89,15 +93,15 @@ def main() -> int:
 
     for name in LIFECYCLE_SKILLS:
         path = f"skills/{name}/SKILL.md"
-        if not (ROOT / path).is_file():
+        if not (PACKAGE / path).is_file():
             continue
         text = read(path)
         for term in FORBIDDEN_PROVIDER_TERMS:
             if term.lower() in text.lower():
                 fail(errors, f"{path}: generic lifecycle skill contains provider term {term!r}")
 
-    for path in ("plugin.json", "mcp.json", "templates/RESEARCH.md", "templates/STATE.md"):
-        if not (ROOT / path).is_file():
+    for path in ("AGENTS.md", "plugin.json", "mcp.json", "templates/RESEARCH.md", "templates/STATE.md"):
+        if not (PACKAGE / path).is_file():
             continue
         text = read(path)
         for pattern in SECRET_PATTERNS:

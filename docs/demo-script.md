@@ -33,7 +33,8 @@ uv tool install lola-ai
 Register Agentic Researcher directly from GitHub:
 
 ```bash
-lola mod add https://github.com/dmartinol/agentic-researcher.git
+lola mod add https://github.com/dmartinol/agentic-researcher.git \
+  --module-content agentic-researcher
 ```
 
 Install it into the current project for OpenCode:
@@ -42,7 +43,7 @@ Install it into the current project for OpenCode:
 lola install agentic-researcher -a opencode
 ```
 
-Lola installs project-scoped agent instructions and skills into the current workspace for the selected assistant. For another supported host, use the corresponding Lola assistant target instead of `opencode`.
+The repository separates contributor material from the distributable package. Lola installs only the `agentic-researcher/` package subdirectory, including its concise runtime `AGENTS.md`, agents, skills, templates, and MCP declaration. It does not install the repository-root contributor `AGENTS.md`. For another supported host, use the corresponding Lola assistant target instead of `opencode`.
 
 Before continuing, make sure any required provider integrations are authenticated in the host. The default demo uses Jira and Confluence resources suitable for disposable testing or explicitly approved mutation.
 

@@ -4,15 +4,15 @@
 
 ## 1. Install
 
-Use the plugin/skill installation mechanism provided by your host to install the package from `dmartinol/agentic-researcher`.
+Use the plugin/skill installation mechanism provided by your host to install the distributable package from the repository's `agentic-researcher/` subdirectory.
 
 Installation syntax is host-specific. The package architecture does not depend on a particular installer. A compatible host should expose the portable Agent Skills; hosts supporting the Markdown `agents/` convention can also expose the specialized multi-agent workflow.
 
 ## 2. Connect providers
 
-The default profile uses the Atlassian MCP declaration in `mcp.json` for Jira and Confluence. Authentication is handled by the host/client and is never stored in the research project.
+The default profile uses the Atlassian MCP declaration in `agentic-researcher/mcp.json` for Jira and Confluence. Authentication is handled by the host/client and is never stored in the research project.
 
-Alternative providers may be used when they satisfy `docs/subsystem-capabilities.md`.
+Alternative providers may be used when they satisfy `agentic-researcher/docs/subsystem-capabilities.md`.
 
 ## 3. Start research
 

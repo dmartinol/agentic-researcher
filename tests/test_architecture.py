@@ -1,6 +1,7 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PACKAGE = ROOT / "agentic-researcher"
 
 LIFECYCLE_SKILLS = (
     "setup-research", "plan-research", "initialize-research",
@@ -12,7 +13,7 @@ FORBIDDEN = ("jira", "confluence", "jira-research", "confluence-research")
 def test_generic_lifecycle_has_no_concrete_provider_dependency():
     violations = []
     for skill in LIFECYCLE_SKILLS:
-        path = ROOT / "skills" / skill / "SKILL.md"
+        path = PACKAGE / "skills" / skill / "SKILL.md"
         text = path.read_text(encoding="utf-8").lower()
         for term in FORBIDDEN:
             if term in text:
