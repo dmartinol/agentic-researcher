@@ -27,7 +27,17 @@ def test_every_skill_has_iteration_zero_evals():
             assert case.get("name")
             assert case.get("prompt")
             assert case.get("expected_output")
-            assert "assertions" not in case, "Iteration 0 intentionally precedes assertions"
+
+            # Assertions are optional in the authored Iteration 0 corpus and may
+            # be added after observing outputs for grading. When present, only
+            # validate their structural shape; do not require or forbid them.
+            assertions = case.get("assertions")
+            if assertions is not None:
+                assert isinstance(assertions, list)
+                assert assertions
+                for assertion in assertions:
+                    assert isinstance(assertion, dict)
+                    assert assertion.get("name") or assertion.get("text")
 
 
 def test_cross_skill_suites_are_well_formed():
