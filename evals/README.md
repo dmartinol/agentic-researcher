@@ -2,7 +2,7 @@
 
 This directory defines cross-skill evaluations. Per-skill test cases live beside each skill at `skills/<skill>/evals/evals.json`, following the Agent Skills evaluation convention.
 
-Iteration 0 deliberately contains only realistic prompts and human-readable expected outputs. It does **not** add detailed assertions yet. The Agent Skills evaluation guidance recommends first observing outputs, then deriving objective assertions from useful behavioral differences.
+Iteration 0 began with realistic prompts and human-readable expected outputs. Detailed assertions may be added after observing outputs for grading, following the Agent Skills evaluation guidance. Published results and their underlying artifacts are indexed in [`docs/evaluations.md`](../docs/evaluations.md).
 
 ## Iteration 0 protocol
 

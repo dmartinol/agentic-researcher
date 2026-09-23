@@ -3,6 +3,7 @@
 [![Validate package](https://github.com/dmartinol/agentic-researcher/actions/workflows/validate.yml/badge.svg)](https://github.com/dmartinol/agentic-researcher/actions/workflows/validate.yml)
 [![GitHub release](https://img.shields.io/github/v/release/dmartinol/agentic-researcher?include_prereleases)](https://github.com/dmartinol/agentic-researcher/releases)
 [![License](https://img.shields.io/github/license/dmartinol/agentic-researcher)](https://github.com/dmartinol/agentic-researcher/blob/main/LICENSE)
+[![Skill evals](https://img.shields.io/badge/skill_evals-9%2F11_published-blue)](docs/evaluations.md)
 
 
 Installable, portable agentic research system for planning, executing, documenting, and verifying evidence-based research.
@@ -98,6 +99,12 @@ Provider specializations:
 - `confluence-research`
 
 `agents/` contains the IDE-neutral orchestrator and specialized phase-agent definitions.
+
+## Evaluations
+
+Nine of the eleven individual skills have published Iteration 0 evaluations using isolated **with-skill vs baseline** runs. Results are reported as measured assertion pass rates and absolute percentage-point deltas, with machine-readable benchmarks and run artifacts retained in the repository.
+
+See [Evaluation results](docs/evaluations.md) for the scorecard, methodology notes, coverage, and links to the underlying evidence.
 
 ## Install and validate
 
