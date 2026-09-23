@@ -33,7 +33,8 @@ uv tool install lola-ai
 Register Agentic Researcher directly from GitHub:
 
 ```bash
-lola mod add 'https://github.com/dmartinol/agentic-researcher.git#subdirectory=agentic-researcher'
+lola mod add https://github.com/dmartinol/agentic-researcher.git \
+  --module-content agentic-researcher
 ```
 
 Install it into the current project for OpenCode:
