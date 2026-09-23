@@ -1,0 +1,31 @@
+{
+  "eval_id": 2,
+  "eval_name": "contradict-existing",
+  "prompt": "Store a new finding that contradicts an existing Verified claim in memory.",
+  "assertions": [
+    {
+      "name": "preserves_existing_claim",
+      "description": "Keeps the original claim intact rather than rewriting or deleting it"
+    },
+    {
+      "name": "creates_new_atomic_claim",
+      "description": "Creates or updates the contradictory claim as a separate atomic claim with provenance"
+    },
+    {
+      "name": "records_contradiction_relationship",
+      "description": "Explicitly records the contradiction or supersession relationship between claims"
+    },
+    {
+      "name": "updates_evidence_state",
+      "description": "Updates evidence state appropriately (e.g., to 'Conflicting') without rewriting history"
+    },
+    {
+      "name": "avoids_numeric_confidence",
+      "description": "Does not add numeric confidence scores or percentages"
+    },
+    {
+      "name": "maintains_provenance",
+      "description": "Includes proper provenance tracking for both old and new claims"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+SCOPE ANALYSIS: Out-of-Scope Roadmap Request
+=============================================
+
+EVALUATION CASE: Testing plan-research skill with out-of-scope request
+
+REQUEST BREAKDOWN
+-----------------
+
+Original Request: "Plan the research and also estimate how many engineers and weeks implementation will take."
+
+Component 1: "Plan the research"
+  - Status: IN SCOPE
+  - Rationale: Core function of plan-research skill
+
+Component 2: "estimate how many engineers and weeks implementation will take"
+  - Status: OUT OF SCOPE
+  - Rationale: Violates quality rule line 36 of SKILL.md
+  - Specific violations:
+    * "engineers" = staffing estimate (explicitly excluded)
+    * "weeks" = timeline estimate (explicitly excluded)
+    * "implementation" = implementation roadmap (explicitly excluded)
+
+SKILL CONSTRAINTS (from SKILL.md line 36)
+------------------------------------------
+
+Explicit exclusions:
+- timelines ✗
+- budgets ✗
+- staffing ✗
+- implementation roadmaps ✗
+
+Exception clause: "unless explicitly in scope"
+
+RESEARCH.MD CONFIGURATION
+-------------------------
+
+The RESEARCH.md file is in setup status and does not include:
+- Staffing planning
+- Schedule planning
+- Implementation roadmaps
+- Timeline estimates
+
+These are NOT in the "Included" scope section.
+
+EXPECTED BEHAVIOR
+-----------------
+
+The skill should:
+1. ✓ Recognize the out-of-scope component
+2. ✓ Refuse to provide staffing/timeline estimates
+3. ✓ Offer to provide the in-scope research planning
+4. ✓ Suggest remediation options
+5. ✓ Maintain skill boundaries
+
+CONCLUSION
+----------
+
+The request contains a clear scope violation. The skill correctly identifies and rejects the out-of-scope portion while offering to complete the in-scope work.

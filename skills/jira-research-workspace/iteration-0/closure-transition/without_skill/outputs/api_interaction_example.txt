@@ -1,0 +1,231 @@
+EXAMPLE JIRA API INTERACTION SEQUENCE (WITHOUT SKILL)
+=====================================================
+
+Scenario: Close issue PROJ-123 after verification approval
+
+STEP 1: GET ISSUE DETAILS
+--------------------------
+Request:
+  GET https://your-domain.atlassian.net/rest/api/3/issue/PROJ-123
+  Headers:
+    Authorization: Basic <base64-encoded-credentials>
+    Accept: application/json
+
+Response (200 OK):
+  {
+    "key": "PROJ-123",
+    "fields": {
+      "status": {
+        "name": "In Verification",
+        "id": "10004"
+      },
+      "summary": "Implement user authentication feature",
+      "assignee": { "displayName": "John Doe" },
+      ...
+    }
+  }
+
+STEP 2: GET AVAILABLE TRANSITIONS
+----------------------------------
+Request:
+  GET https://your-domain.atlassian.net/rest/api/3/issue/PROJ-123/transitions
+  Headers:
+    Authorization: Basic <base64-encoded-credentials>
+    Accept: application/json
+
+Response (200 OK):
+  {
+    "transitions": [
+      {
+        "id": "31",
+        "name": "Done",
+        "to": {
+          "id": "10001",
+          "name": "Done"
+        },
+        "hasScreen": false,
+        "fields": {}
+      },
+      {
+        "id": "51",
+        "name": "Close",
+        "to": {
+          "id": "10002",
+          "name": "Closed"
+        },
+        "hasScreen": true,
+        "fields": {
+          "resolution": {
+            "required": true,
+            "name": "Resolution",
+            "allowedValues": [
+              {"id": "1", "name": "Fixed"},
+              {"id": "2", "name": "Won't Fix"},
+              {"id": "3", "name": "Duplicate"}
+            ]
+          }
+        }
+      },
+      {
+        "id": "71",
+        "name": "Resolve",
+        "to": {
+          "id": "10003",
+          "name": "Resolved"
+        },
+        "hasScreen": false,
+        "fields": {}
+      }
+    ]
+  }
+
+ANALYSIS OF TRANSITIONS
+------------------------
+Option 1: "Done" (ID: 31)
+  - Target status: "Done"
+  - No required fields
+  - No screen needed
+  - PROS: Simple, no additional input needed
+  - CONS: May not be standard closure state
+
+Option 2: "Close" (ID: 51)
+  - Target status: "Closed"
+  - Required field: Resolution
+  - Has screen (may require user interaction)
+  - PROS: Explicit closure state
+  - CONS: Requires resolution selection
+
+Option 3: "Resolve" (ID: 71)
+  - Target status: "Resolved"
+  - No required fields
+  - No screen needed
+  - PROS: Simple execution
+  - CONS: "Resolved" may not mean "Closed"
+
+DECISION WITHOUT SKILL
+----------------------
+Without a skill to guide the decision, would need to:
+1. Ask user which transition to use
+2. Or make assumption (risky)
+3. Or check team documentation
+4. Or examine similar issues' history
+
+User query needed:
+  "I found three possible transitions for closing PROJ-123:
+   1. Done - moves to 'Done' status
+   2. Close - moves to 'Closed' status (requires resolution)
+   3. Resolve - moves to 'Resolved' status
+
+   Which transition should I use?"
+
+STEP 3: EXECUTE TRANSITION (Assuming "Close" selected)
+-------------------------------------------------------
+First, need to select resolution:
+  User query: "The 'Close' transition requires a resolution. Options are:
+   1. Fixed
+   2. Won't Fix
+   3. Duplicate
+
+   Which resolution should I use?"
+
+Assuming "Fixed" selected:
+
+Request:
+  POST https://your-domain.atlassian.net/rest/api/3/issue/PROJ-123/transitions
+  Headers:
+    Authorization: Basic <base64-encoded-credentials>
+    Content-Type: application/json
+  Body:
+    {
+      "transition": {
+        "id": "51"
+      },
+      "fields": {
+        "resolution": {
+          "id": "1"
+        }
+      },
+      "update": {
+        "comment": [
+          {
+            "add": {
+              "body": "Verification passed and closure approved. Closing issue."
+            }
+          }
+        ]
+      }
+    }
+
+Response (204 No Content):
+  [Empty body - successful transition]
+
+STEP 4: VERIFY TRANSITION
+--------------------------
+Request:
+  GET https://your-domain.atlassian.net/rest/api/3/issue/PROJ-123
+  Headers:
+    Authorization: Basic <base64-encoded-credentials>
+    Accept: application/json
+
+Response (200 OK):
+  {
+    "key": "PROJ-123",
+    "fields": {
+      "status": {
+        "name": "Closed",
+        "id": "10002"
+      },
+      "resolution": {
+        "name": "Fixed",
+        "id": "1"
+      },
+      ...
+    }
+  }
+
+Verification: SUCCESS - Issue is now in "Closed" status with "Fixed" resolution
+
+ERROR SCENARIOS
+===============
+
+Error 1: Invalid Credentials
+  Response (401 Unauthorized):
+    {"errorMessages":["Client must be authenticated to access this resource."]}
+  Action: Request valid credentials from user
+
+Error 2: Issue Not Found
+  Response (404 Not Found):
+    {"errorMessages":["Issue does not exist or you do not have permission to see it."]}
+  Action: Verify issue key and permissions
+
+Error 3: Transition Not Available
+  Response (400 Bad Request):
+    {"errorMessages":["The transition is not available for this issue."]}
+  Action: Re-check available transitions, workflow may have changed
+
+Error 4: Missing Required Field
+  Response (400 Bad Request):
+    {"errors":{"resolution":"Resolution is required"}}
+  Action: Prompt user for missing field
+
+TOTAL USER INTERACTIONS REQUIRED
+=================================
+Without skill automation:
+1. Provide Jira credentials
+2. Provide issue key
+3. Select transition (if multiple options)
+4. Provide resolution (if required)
+5. Confirm execution
+6. Handle any errors
+
+Minimum: 2 interactions (credentials + issue key)
+Typical: 4-5 interactions
+Maximum: 6+ interactions (with error recovery)
+
+COMPARISON: WITH SKILL
+======================
+Expected interactions with proper skill:
+1. Initial request ("close PROJ-123")
+2. Possibly confirm if ambiguous
+
+Reduction: 50-80% fewer user interactions

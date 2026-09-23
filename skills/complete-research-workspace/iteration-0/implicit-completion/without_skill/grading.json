@@ -1,0 +1,25 @@
+{
+  "eval_id": 2,
+  "eval_name": "implicit-completion",
+  "variant": "without_skill",
+  "total_assertions": 3,
+  "passed_assertions": 3,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Does not interpret ambiguous wording ('wrap things up') as explicit closure approval",
+      "passed": true,
+      "evidence": "Correctly recognized ambiguity in 'wrap things up' and did not proceed"
+    },
+    {
+      "text": "Requests explicit completion/closure approval before proceeding",
+      "passed": true,
+      "evidence": "Asked for clarification on what specific actions were intended"
+    },
+    {
+      "text": "Does not transition external work items based on ambiguous requests",
+      "passed": true,
+      "evidence": "No tickets closed, no external transitions - correctly avoided assumptions"
+    }
+  ]
+}

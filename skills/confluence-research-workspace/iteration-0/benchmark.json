@@ -1,0 +1,35 @@
+{
+  "skill_name": "confluence-research",
+  "iteration": 0,
+  "timestamp": "2026-09-22T19:00:00Z",
+  "configurations": [
+    {
+      "name": "with_skill",
+      "total_evals": 3,
+      "total_assertions": 10,
+      "passed_assertions": 10,
+      "pass_rate": 1.0,
+      "mean_tokens": 36469.7,
+      "stddev_tokens": 10599.4,
+      "mean_duration_seconds": 276.6,
+      "stddev_duration_seconds": 147.6
+    },
+    {
+      "name": "without_skill",
+      "total_evals": 3,
+      "total_assertions": 10,
+      "passed_assertions": 3,
+      "pass_rate": 0.3,
+      "mean_tokens": 37711.3,
+      "stddev_tokens": 7645.1,
+      "mean_duration_seconds": 277.6,
+      "stddev_duration_seconds": 63.4
+    }
+  ],
+  "delta": {
+    "pass_rate_delta": 0.7,
+    "pass_rate_improvement": "+70%",
+    "token_delta": -1241.7,
+    "duration_delta": -1.0
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "completion": {
+    "timestamp": "2026-09-22T14:45:00Z",
+    "approval": {
+      "received": true,
+      "type": "explicit",
+      "statement": "Verification passed with no blockers. I explicitly approve completion of the research and closure of its configured work item."
+    },
+    "verification_status": {
+      "phase": "verified",
+      "blocking_issues": "none",
+      "evidence_quality": "passed",
+      "conclusion_support": "passed"
+    },
+    "work_item": {
+      "provider": "jira",
+      "project": "ARCH",
+      "issue_key": "ARCH-235",
+      "issue_type": "Story",
+      "summary": "Kubernetes multi-cloud evaluation",
+      "parent": {
+        "issue_key": "ARCH-234",
+        "issue_type": "Epic",
+        "summary": "Multi-cloud container strategy"
+      },
+      "url": "https://jira.example.com/browse/ARCH-235",
+      "transition": {
+        "from_status": "In Progress",
+        "to_status": "Done",
+        "transition_name": "Done",
+        "allowed_transitions": [
+          "In Progress → Done",
+          "In Progress → Blocked"
+        ]
+      }
+    },
+    "final_output": {
+      "provider": "confluence",
+      "space": "Architecture Decision Records",
+      "page_id": "987654321",
+      "page_title": "Kubernetes Multi-cloud Evaluation",
+      "url": "https://confluence.example.com/pages/viewpage.action?pageId=987654321",
+      "status": "published"
+    },
+    "closure_actions": {
+      "jira": {
+        "transition_applied": true,
+        "completion_comment_added": true,
+        "comment_format": "rich_link",
+        "comment_includes_confluence_url": true,
+        "final_status_verified": true
+      },
+      "confluence": {
+        "final_page_verified": true,
+        "page_url_in_jira_reference": true
+      }
+    },
+    "provider_rules_applied": {
+      "jira_research": {
+        "queried_available_transitions": true,
+        "selected_exact_approved_transition": true,
+        "added_completion_comment": true,
+        "used_rich_link_representation": true,
+        "verified_final_status": true,
+        "verified_completion_reference": true
+      },
+      "confluence_research": {
+        "preserved_final_page": true,
+        "exact_url_in_closure_reference": true
+      }
+    },
+    "verification": {
+      "work_item_status": {
+        "verified": true,
+        "current_status": "Done",
+        "verification_timestamp": "2026-09-22T14:45:30Z"
+      },
+      "completion_reference": {
+        "verified": true,
+        "location": "jira_comment",
+        "format": "confluence_rich_link",
+        "accessible": true,
+        "verification_timestamp": "2026-09-22T14:45:30Z"
+      }
+    },
+    "status": "successful"
+  }
+}

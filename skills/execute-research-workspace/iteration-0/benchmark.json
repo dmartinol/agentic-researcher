@@ -1,0 +1,102 @@
+{
+  "skill_name": "execute-research",
+  "iteration": 0,
+  "timestamp": "2026-09-22T18:45:00Z",
+  "configurations": [
+    {
+      "name": "with_skill",
+      "total_evals": 3,
+      "total_assertions": 15,
+      "passed_assertions": 15,
+      "pass_rate": 1.0,
+      "mean_tokens": 48258.666666666664,
+      "stddev_tokens": 8021.868381700945,
+      "mean_duration_seconds": 485.4666666666667,
+      "stddev_duration_seconds": 114.34883923037144
+    },
+    {
+      "name": "without_skill",
+      "total_evals": 3,
+      "total_assertions": 15,
+      "passed_assertions": 4,
+      "pass_rate": 0.26666666666666666,
+      "mean_tokens": 33686.333333333336,
+      "stddev_tokens": 11144.949050279833,
+      "mean_duration_seconds": 242.16333333333333,
+      "stddev_duration_seconds": 111.53651883277215
+    }
+  ],
+  "delta": {
+    "pass_rate_delta": 0.7333333333333334,
+    "pass_rate_improvement": "+73.3%",
+    "token_delta": 14572.333333333328,
+    "token_improvement": "+43.3%",
+    "duration_delta": 243.30333333333337,
+    "duration_improvement": "+100.5%"
+  },
+  "eval_details": [
+    {
+      "eval_name": "generic-execution",
+      "with_skill": {
+        "passed": 7,
+        "total": 7,
+        "pass_rate": 1.0,
+        "tokens": 46690,
+        "duration_seconds": 519.63
+      },
+      "without_skill": {
+        "passed": 2,
+        "total": 7,
+        "pass_rate": 0.2857142857142857,
+        "tokens": 33927,
+        "duration_seconds": 297.95
+      },
+      "delta": {
+        "pass_rate": 0.7142857142857143,
+        "improvement": "+71%"
+      }
+    },
+    {
+      "eval_name": "existing-conflict",
+      "with_skill": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0,
+        "tokens": 56949,
+        "duration_seconds": 578.84
+      },
+      "without_skill": {
+        "passed": 2,
+        "total": 5,
+        "pass_rate": 0.4,
+        "tokens": 22423,
+        "duration_seconds": 113.74
+      },
+      "delta": {
+        "pass_rate": 0.6,
+        "improvement": "+60%"
+      }
+    },
+    {
+      "eval_name": "blocked-dependency",
+      "with_skill": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0,
+        "tokens": 41137,
+        "duration_seconds": 357.93
+      },
+      "without_skill": {
+        "passed": 0,
+        "total": 3,
+        "pass_rate": 0.0,
+        "tokens": 44709,
+        "duration_seconds": 314.8
+      },
+      "delta": {
+        "pass_rate": 1.0,
+        "improvement": "+100%"
+      }
+    }
+  ]
+}

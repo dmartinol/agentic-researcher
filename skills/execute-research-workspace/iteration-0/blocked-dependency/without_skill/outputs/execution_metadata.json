@@ -1,0 +1,76 @@
+{
+  "evaluation": {
+    "id": 3,
+    "name": "blocked-dependency",
+    "approach": "baseline",
+    "skill_used": null
+  },
+  "execution": {
+    "timestamp": "2026-09-22T17:50:00Z",
+    "task_id": "AUTH-RESEARCH-1",
+    "task_type": "Synthesis Task",
+    "task_description": "Compare OAuth 2.0 and SAML 2.0 authentication methods"
+  },
+  "dependencies": {
+    "AUTH-RESEARCH-2": {
+      "description": "Research OAuth 2.0",
+      "status": "Done",
+      "evidence_available": true,
+      "claims_count": 3,
+      "sources_count": 2
+    },
+    "AUTH-RESEARCH-3": {
+      "description": "Research SAML 2.0",
+      "status": "In Progress",
+      "evidence_available": false,
+      "completion_percentage": 50,
+      "missing_elements": [
+        "Security best practices",
+        "Implementation complexity analysis",
+        "Enterprise integration patterns"
+      ]
+    }
+  },
+  "dependency_status": {
+    "all_complete": false,
+    "incomplete_count": 1,
+    "waived_dependencies": []
+  },
+  "baseline_behavior": {
+    "checked_dependencies": false,
+    "blocked_on_incomplete": false,
+    "filled_with_general_knowledge": true,
+    "identified_missing_input": false,
+    "requested_waiver": false
+  },
+  "expected_behavior": {
+    "should_block": true,
+    "should_identify_missing": true,
+    "should_not_fill_gaps": true,
+    "should_require_waiver": true
+  },
+  "result": {
+    "meets_expectations": false,
+    "failure_modes": [
+      "Silently filled missing dependency with general knowledge",
+      "Did not identify incomplete dependency",
+      "Did not block synthesis execution",
+      "Did not preserve evidence boundaries"
+    ]
+  },
+  "artifacts": {
+    "response": "response.txt",
+    "analysis": "analysis.txt",
+    "research_definition": "RESEARCH.md",
+    "state_document": "STATE.md",
+    "claims": [
+      "research/memory/claims/oauth2-token-based.json",
+      "research/memory/claims/oauth2-grant-types.json",
+      "research/memory/claims/oauth2-security.json"
+    ],
+    "sources": [
+      "research/memory/sources/rfc6749.json",
+      "research/memory/sources/owasp-oauth.json"
+    ]
+  }
+}

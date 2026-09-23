@@ -1,0 +1,19 @@
+{
+  "eval_id": 2,
+  "eval_name": "existing-content",
+  "prompt": "The matching Confluence page already contains several paragraphs of research findings. Bring it into the initialized structure.",
+  "assertions": [
+    {
+      "name": "preserves_findings",
+      "description": "Preserves meaningful existing findings"
+    },
+    {
+      "name": "updates_structural_only",
+      "description": "Updates only appropriate structural/reference regions"
+    },
+    {
+      "name": "no_empty_template",
+      "description": "Never replaces page with empty/template skeleton"
+    }
+  ]
+}

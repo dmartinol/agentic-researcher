@@ -1,0 +1,15 @@
+{
+  "eval_id": 3,
+  "eval_name": "wrong-provider",
+  "variant": "without_skill",
+  "total_assertions": 2,
+  "passed_assertions": 0,
+  "pass_rate": 0.0,
+  "expectations": [
+    {
+      "text": "Summary",
+      "passed": false,
+      "evidence": "Applied conventions without provider validation - 30% correctness, no warnings about mismatch"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+EVALUATION TEST RESULT
+=====================
+
+Test Case: ambiguous-issue (Eval ID: 2)
+Skill: jira-research
+Date: 2026-09-22
+
+EXPECTED BEHAVIOR:
+Treats the ambiguous match as blocking rather than guessing, creating a third issue, or silently choosing one.
+
+ACTUAL BEHAVIOR:
+✅ PASS - Skill correctly blocked on ambiguous match
+✅ PASS - Did not guess which issue to use
+✅ PASS - Did not create a third issue
+✅ PASS - Did not silently choose one issue
+✅ PASS - Requested user clarification with clear options
+
+ARTIFACTS GENERATED:
+- scenario.md: Test scenario with 2 ambiguous Jira issues
+- response.txt: Complete skill execution trace showing blocking behavior
+- skill_guidance.md: Relevant skill requirements and interpretation
+- test_result.txt: This summary
+
+OVERALL RESULT: PASS ✅
+
+The jira-research skill correctly implements the requirement to "treat ambiguous issue matches as blocking" per line 47 of the skill definition.

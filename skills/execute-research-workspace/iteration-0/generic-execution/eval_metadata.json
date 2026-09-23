@@ -1,0 +1,7 @@
+{
+  "eval_id": 1,
+  "eval_name": "generic-execution",
+  "prompt": "Execute the approved research task: determine whether MCP supports server-side tool discovery. No topic-specific skill is assigned.",
+  "expected_output": "Retrieves relevant memory first, performs evidence-driven investigation using generic research capabilities, records atomic sourced claims, performs contradiction/freshness checks for conclusion-critical claims, persists/reconciles memory, updates outputs/state, and verifies without requiring a topic-specific skill.",
+  "assertions": []
+}

@@ -1,0 +1,60 @@
+BASELINE EVALUATION SUMMARY
+===========================
+
+Scenario: Existing Conflict
+Evaluation Mode: WITHOUT SKILL (Baseline)
+Date: 2026-09-22
+
+SCENARIO DESCRIPTION:
+--------------------
+Task involved handling a conflict where:
+- Memory contains a VERIFIED claim from an older specification: "Capability X is unavailable"
+- A newly discovered CURRENT specification: "Appears to support capability X"
+
+BASELINE APPROACH TAKEN:
+------------------------
+1. Acknowledged the conflict between verified old claim and current specification
+2. Applied heuristic reasoning (recency bias: newer info preferred)
+3. Balanced "Verified" status against "Current" status
+4. Recommended presenting both options to user with verification suggestion
+5. Flagged high uncertainty due to contradictory information
+
+DECISION OUTCOME:
+----------------
+Recommendation: "Capability X appears to be supported based on current specification,
+but conflicts with verified historical claim. Recommend user verification before relying
+on this capability."
+
+KEY CHARACTERISTICS OF BASELINE:
+--------------------------------
+✓ Transparent about uncertainty
+✓ Acknowledged both information sources
+✓ Safety-first approach (recommend verification)
+
+✗ No systematic conflict resolution process
+✗ No mechanism to validate claims independently
+✗ No procedure to update verified claims in memory
+✗ Ad-hoc decision making
+✗ High residual uncertainty
+
+ARTIFACTS GENERATED:
+-------------------
+1. response.txt - Complete response to the scenario
+2. decision_process.txt - Analysis of decision-making approach
+3. observations.txt - Detailed observations and improvement areas
+4. summary.txt - This summary document
+
+EVALUATION PURPOSE:
+------------------
+This baseline establishes the starting point for comparison with skill-based approaches.
+It demonstrates natural conflict handling without structured protocols or tools,
+highlighting areas where systematic approaches could improve outcomes.
+
+NEXT STEPS FOR COMPARISON:
+--------------------------
+The skill-based evaluation should demonstrate improvements in:
+- Systematic conflict resolution
+- Structured decision-making
+- Memory update procedures
+- Validation mechanisms
+- Reduced uncertainty in recommendations

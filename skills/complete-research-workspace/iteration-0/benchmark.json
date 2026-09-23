@@ -1,0 +1,102 @@
+{
+  "skill_name": "complete-research",
+  "iteration": 0,
+  "timestamp": "2026-09-22T18:30:00Z",
+  "configurations": [
+    {
+      "name": "with_skill",
+      "total_evals": 3,
+      "total_assertions": 13,
+      "passed_assertions": 13,
+      "pass_rate": 1.0,
+      "mean_tokens": 27675.0,
+      "stddev_tokens": 8714.7,
+      "mean_duration_seconds": 149.5,
+      "stddev_duration_seconds": 100.3
+    },
+    {
+      "name": "without_skill",
+      "total_evals": 3,
+      "total_assertions": 13,
+      "passed_assertions": 8,
+      "pass_rate": 0.615,
+      "mean_tokens": 29854.0,
+      "stddev_tokens": 10643.3,
+      "mean_duration_seconds": 220.3,
+      "stddev_duration_seconds": 235.8
+    }
+  ],
+  "delta": {
+    "pass_rate_delta": 0.385,
+    "pass_rate_improvement": "+38.5%",
+    "token_delta": -2179.0,
+    "token_improvement": "-7.3% (more efficient)",
+    "duration_delta": -70.8,
+    "duration_improvement": "-32.1% (faster)"
+  },
+  "eval_details": [
+    {
+      "eval_name": "approved-completion",
+      "with_skill": {
+        "passed": 6,
+        "total": 6,
+        "pass_rate": 1.0,
+        "tokens": 36628,
+        "duration_seconds": 252.81
+      },
+      "without_skill": {
+        "passed": 2,
+        "total": 6,
+        "pass_rate": 0.333,
+        "tokens": 42143,
+        "duration_seconds": 492.59
+      },
+      "delta": {
+        "pass_rate": 0.667,
+        "improvement": "+67%"
+      }
+    },
+    {
+      "eval_name": "implicit-completion",
+      "with_skill": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0,
+        "tokens": 19220,
+        "duration_seconds": 52.58
+      },
+      "without_skill": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0,
+        "tokens": 23584,
+        "duration_seconds": 87.98
+      },
+      "delta": {
+        "pass_rate": 0.0,
+        "improvement": "Tied"
+      }
+    },
+    {
+      "eval_name": "verification-blocker",
+      "with_skill": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0,
+        "tokens": 27177,
+        "duration_seconds": 142.98
+      },
+      "without_skill": {
+        "passed": 3,
+        "total": 4,
+        "pass_rate": 0.75,
+        "tokens": 23835,
+        "duration_seconds": 80.34
+      },
+      "delta": {
+        "pass_rate": 0.25,
+        "improvement": "+25%"
+      }
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "plan_name": "MCP Direct Connections vs. Centralized Gateway Research",
+  "created_date": "2026-09-22",
+  "skill_used": "plan-research",
+  "skill_version": "iteration-0",
+  "plan_type": "provider-neutral",
+  "research_scope": [
+    "discovery",
+    "authorization",
+    "operations",
+    "observability",
+    "portability"
+  ],
+  "statistics": {
+    "total_workstreams": 6,
+    "total_tasks": 16,
+    "independent_tasks": 10,
+    "synthesis_tasks": 6,
+    "execution_waves": 3,
+    "parallelization_factor": {
+      "wave_1": 10,
+      "wave_2": 5,
+      "wave_3": 1
+    }
+  },
+  "execution_model": {
+    "wave_1": {
+      "name": "Independent Research",
+      "parallelization": "full",
+      "task_count": 10,
+      "tasks": [
+        "1.1", "1.2", "2.1", "2.2", "3.1", "3.2", "4.1", "4.2", "5.1", "5.2"
+      ]
+    },
+    "wave_2": {
+      "name": "Workstream Synthesis",
+      "parallelization": "full",
+      "task_count": 5,
+      "tasks": [
+        "1.3", "2.3", "3.3", "4.3", "5.3"
+      ],
+      "depends_on": "wave_1"
+    },
+    "wave_3": {
+      "name": "Final Synthesis",
+      "parallelization": "none",
+      "task_count": 1,
+      "tasks": [
+        "6.1"
+      ],
+      "depends_on": "wave_2"
+    }
+  },
+  "deliverables": {
+    "analysis_documents": 10,
+    "comparison_documents": 5,
+    "final_synthesis": 1,
+    "supporting_artifacts": [
+      "code_samples",
+      "architecture_diagrams",
+      "threat_models",
+      "security_flows",
+      "sequence_diagrams",
+      "monitoring_dashboards",
+      "migration_paths",
+      "decision_matrices"
+    ]
+  },
+  "quality_framework": {
+    "evidence_policy": "primary_sources_required",
+    "minimum_patterns_per_analysis": 3,
+    "comparison_criteria_minimum": 5,
+    "document_structure": "standardized",
+    "quality_gates": 3
+  },
+  "task_definitions": [
+    {
+      "id": "1.1",
+      "workstream": "discovery",
+      "name": "Direct Connection Discovery Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "1.2",
+      "workstream": "discovery",
+      "name": "Gateway-Based Discovery Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "1.3",
+      "workstream": "discovery",
+      "name": "Discovery Synthesis",
+      "type": "synthesis",
+      "dependencies": ["1.1", "1.2"],
+      "wave": 2
+    },
+    {
+      "id": "2.1",
+      "workstream": "authorization",
+      "name": "Direct Connection Authorization Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "2.2",
+      "workstream": "authorization",
+      "name": "Gateway-Based Authorization Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "2.3",
+      "workstream": "authorization",
+      "name": "Authorization Synthesis",
+      "type": "synthesis",
+      "dependencies": ["2.1", "2.2"],
+      "wave": 2
+    },
+    {
+      "id": "3.1",
+      "workstream": "operations",
+      "name": "Direct Connection Operations Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "3.2",
+      "workstream": "operations",
+      "name": "Gateway-Based Operations Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "3.3",
+      "workstream": "operations",
+      "name": "Operations Synthesis",
+      "type": "synthesis",
+      "dependencies": ["3.1", "3.2"],
+      "wave": 2
+    },
+    {
+      "id": "4.1",
+      "workstream": "observability",
+      "name": "Direct Connection Observability Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "4.2",
+      "workstream": "observability",
+      "name": "Gateway-Based Observability Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "4.3",
+      "workstream": "observability",
+      "name": "Observability Synthesis",
+      "type": "synthesis",
+      "dependencies": ["4.1", "4.2"],
+      "wave": 2
+    },
+    {
+      "id": "5.1",
+      "workstream": "portability",
+      "name": "Direct Connection Portability Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "5.2",
+      "workstream": "portability",
+      "name": "Gateway-Based Portability Analysis",
+      "type": "research",
+      "dependencies": [],
+      "wave": 1
+    },
+    {
+      "id": "5.3",
+      "workstream": "portability",
+      "name": "Portability Synthesis",
+      "type": "synthesis",
+      "dependencies": ["5.1", "5.2"],
+      "wave": 2
+    },
+    {
+      "id": "6.1",
+      "workstream": "final_synthesis",
+      "name": "Cross-Workstream Synthesis",
+      "type": "final_synthesis",
+      "dependencies": ["1.3", "2.3", "3.3", "4.3", "5.3"],
+      "wave": 3
+    }
+  ],
+  "skill_compliance": {
+    "uses_research_semantics": true,
+    "provider_neutral": true,
+    "defines_workstreams": true,
+    "defines_tasks": true,
+    "defines_synthesis": true,
+    "includes_acceptance_criteria": true,
+    "includes_evidence_requirements": true,
+    "includes_dependencies": true,
+    "includes_expected_outputs": true,
+    "includes_verification": true,
+    "separates_findings_from_metadata": true,
+    "excludes_timelines": true,
+    "excludes_budgets": true,
+    "prefers_independent_tasks": true,
+    "idempotent_initialization": true,
+    "preserves_evidence_policy": true
+  }
+}

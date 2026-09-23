@@ -1,0 +1,102 @@
+{
+  "skill_name": "plan-research",
+  "iteration": 0,
+  "timestamp": "2026-09-23T00:40:00Z",
+  "configurations": [
+    {
+      "name": "with_skill",
+      "total_evals": 3,
+      "total_assertions": 9,
+      "passed_assertions": 9,
+      "pass_rate": 1.0,
+      "mean_tokens": 35163.666666666664,
+      "stddev_tokens": 13773.89140124654,
+      "mean_duration_seconds": 198.86333333333334,
+      "stddev_duration_seconds": 96.11269236335716
+    },
+    {
+      "name": "without_skill",
+      "total_evals": 3,
+      "total_assertions": 9,
+      "passed_assertions": 3,
+      "pass_rate": 0.3333333333333333,
+      "mean_tokens": 43318.666666666664,
+      "stddev_tokens": 6862.447401134185,
+      "mean_duration_seconds": 359.12,
+      "stddev_duration_seconds": 39.70119267729874
+    }
+  ],
+  "delta": {
+    "pass_rate_delta": 0.6666666666666667,
+    "pass_rate_improvement": "+66.7%",
+    "token_delta": -8155.0,
+    "token_improvement": "-18.8%",
+    "duration_delta": -160.25666666666666,
+    "duration_improvement": "-44.6%"
+  },
+  "eval_details": [
+    {
+      "eval_name": "parallel-plan",
+      "with_skill": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0,
+        "tokens": 50731,
+        "duration_seconds": 300.0
+      },
+      "without_skill": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0,
+        "tokens": 36523,
+        "duration_seconds": 351.01
+      },
+      "delta": {
+        "pass_rate": 0.0,
+        "improvement": "Tied"
+      }
+    },
+    {
+      "eval_name": "provider-pressure",
+      "with_skill": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0,
+        "tokens": 30202,
+        "duration_seconds": 187.87
+      },
+      "without_skill": {
+        "passed": 0,
+        "total": 3,
+        "pass_rate": 0.0,
+        "tokens": 50246,
+        "duration_seconds": 324.1
+      },
+      "delta": {
+        "pass_rate": 1.0,
+        "improvement": "+100%"
+      }
+    },
+    {
+      "eval_name": "out-of-scope-roadmap",
+      "with_skill": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0,
+        "tokens": 24558,
+        "duration_seconds": 108.72
+      },
+      "without_skill": {
+        "passed": 0,
+        "total": 3,
+        "pass_rate": 0.0,
+        "tokens": 43187,
+        "duration_seconds": 402.25
+      },
+      "delta": {
+        "pass_rate": 1.0,
+        "improvement": "+100%"
+      }
+    }
+  ]
+}

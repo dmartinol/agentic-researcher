@@ -1,0 +1,25 @@
+{
+  "eval_id": 3,
+  "eval_name": "unapproved-change",
+  "variant": "with_skill",
+  "total_assertions": 3,
+  "passed_assertions": 3,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Does not perform unapproved workflow transitions during initialization",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Preserves the initialization boundary",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Reports that status/closure requires explicit approval/lifecycle step",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+RESEARCH QUESTION: Does MCP support server-side tool discovery?
+
+ANSWER: YES - MCP (Model Context Protocol) fully supports server-side tool discovery.
+
+================================================================================
+DETAILED FINDINGS
+================================================================================
+
+1. PRIMARY DISCOVERY MECHANISM: tools/list ENDPOINT
+   ------------------------------------------------
+   - MCP servers expose tools through the `tools/list` JSON-RPC endpoint
+   - Clients call this endpoint to discover all available tools from a server
+   - The endpoint returns a paginated list of tools with their schemas
+
+   Request Format:
+   {
+     "jsonrpc": "2.0",
+     "id": 1,
+     "method": "tools/list",
+     "params": {
+       "cursor": "optional-cursor-value"
+     }
+   }
+
+   Response includes:
+   - Tool name
+   - Tool description
+   - Input schema (JSON Schema format)
+   - Optional output schema
+
+2. INITIALIZATION & CAPABILITY NEGOTIATION
+   ----------------------------------------
+   - When a client connects to an MCP server, it sends an `initialize` request
+   - The server responds with its capabilities, including:
+     * Available tool endpoints
+     * Resource endpoints
+     * Prompt endpoints
+     * Protocol version
+     * Server information
+
+   - The 2025-06-18 specification update formalized this process:
+     * Client sends: protocolVersion, capabilities, clientInfo
+     * Server responds: serverInfo, protocolVersion, capabilities, instructions
+
+3. RUNTIME DISCOVERY
+   ------------------
+   - MCP is designed for runtime discovery, not hardcoded connections
+   - AI systems can dynamically:
+     * Query available tools
+     * Understand tool capabilities through structured schemas
+     * Invoke tools with proper parameters
+
+   - This makes MCP particularly valuable for building flexible, runtime-adaptable
+     AI systems that work with various external services without requiring custom
+     integrations for each pairing
+
+4. SERVER DISCOVERY PROTOCOL (.well-known endpoints)
+   -------------------------------------------------
+   - Two Specification Enhancement Proposals (SEPs) emerged in 2025:
+
+   a) SEP-1649: Server Card Discovery
+      - Defines /.well-known/mcp/server-card.json
+      - Contains human-readable description, homepage
+      - Includes full tool/resource/prompt listings
+      - Aimed at catalogs and human users
+
+   b) SEP-1960: MCP Discovery Endpoint
+      - Filed December 11, 2025
+      - Defines standardized /.well-known/mcp endpoint
+      - Provides server metadata discovery
+      - Includes capability advertisement
+      - Contains security policy declarations
+
+   - As of mid-2026, recommendation is to serve both static JSON files
+   - Claude Desktop probes these endpoints to determine transport and capabilities
+     before connecting
+
+5. PROTOCOL ARCHITECTURE
+   ----------------------
+   - Built on JSON-RPC 2.0
+   - Supports multiple transport methods:
+     * stdio (standard input/output)
+     * HTTP POST
+     * Server-Sent Events (SSE)
+
+   - Discovery methods include:
+     * tools/list - List available tools
+     * resources/list - List available resources
+     * prompts/list - List available prompts
+
+   - All list methods support pagination with nextCursor tokens
+
+6. TOOL INVOCATION PROCESS
+   ------------------------
+   After discovery, tools are invoked via:
+   - Endpoint: tools/call
+   - Server performs the requested operation
+   - Returns results to the client
+   - Each tool has structured input/output schemas
+
+7. BENEFITS OF SERVER-SIDE DISCOVERY
+   ----------------------------------
+   - No need to hardcode connections to each external service
+   - AI agents can dynamically discover available tools
+   - Understand capabilities through structured schemas
+   - Invoke tools with proper permissions
+   - Enables building flexible, adaptable AI systems
+   - Supports runtime changes to available tools
+   - Facilitates tool sharing and reuse across different AI systems
+
+================================================================================
+CONCLUSION
+================================================================================
+
+MCP comprehensively supports server-side tool discovery through multiple mechanisms:
+
+1. Primary: tools/list JSON-RPC endpoint for runtime discovery
+2. Secondary: Initialization handshake for capability negotiation
+3. Optional: .well-known discovery endpoints for server metadata
+4. Structured: JSON Schema-based tool definitions
+5. Dynamic: Runtime-adaptable without hardcoded connections
+
+The protocol is specifically designed to enable AI systems to discover and utilize
+tools dynamically, making it a robust solution for server-side tool discovery in
+AI agent architectures.
+
+================================================================================
+SOURCES
+================================================================================
+
+1. Tools - Model Context Protocol
+   https://modelcontextprotocol.io/specification/2025-06-18/server/tools
+
+2. Model Context Protocol (MCP) explained: A practical technical overview for developers and architects
+   https://codilime.com/blog/model-context-protocol-explained/
+
+3. What is the Model Context Protocol (MCP)? | Databricks
+   https://www.databricks.com/blog/what-is-model-context-protocol
+
+4. What Is the Model Context Protocol (MCP) and How It Works
+   https://www.descope.com/learn/post/mcp
+
+5. Tools – Model Context Protocol (MCP)
+   https://modelcontextprotocol.info/docs/concepts/tools/
+
+6. MCP tools - Agent Development Kit (ADK)
+   https://adk.dev/tools-custom/mcp-tools/
+
+7. MCP server – Plugins | OpenAI Developers
+   https://developers.openai.com/plugins/concepts/mcp-server
+
+8. Model context protocol (MCP) - OpenAI Agents SDK
+   https://openai.github.io/openai-agents-python/mcp/
+
+9. What is Model Context Protocol (MCP)? A guide | Google Cloud
+   https://cloud.google.com/discover/what-is-model-context-protocol
+
+10. Model Context Protocol (MCP): A comprehensive introduction for developers
+    https://stytch.com/blog/model-context-protocol-introduction/
+
+11. MCP Server Discovery: Implement .well-known/mcp.json (2026) | Ekamoira Blog
+    https://www.ekamoira.com/blog/mcp-server-discovery-implement-well-known-mcp-json-2026-guide
+
+12. MCP Server Discovery: The .well-known Files to Ship Today
+    https://alatirok.com/mcp-server-discovery/
+
+13. Tool Discovery - MCP Server Templates
+    https://data-everything.github.io/mcp-server-templates/tool-discovery/
+
+14. MCP Server Discovery Protocol Security
+    https://safeguard.sh/resources/blog/mcp-server-discovery-protocol-security
+
+15. SEP: .well-known/mcp Discovery Endpoint for Server Metadata · Issue #1960
+    https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1960
+
+16. MCP 2025-06-18 Spec Update: AI Security, Structured Output, and User Elicitation for LLMs
+    https://forgecode.dev/blog/mcp-spec-updates/
+
+17. The MCP Protocol Handbook: Every JSON-RPC Method Explained | MCP Find
+    https://mcp-find.org/blog/mcp-protocol-handbook
+
+18. MCP JSON RPC Guide - ContextForge AI Gateway
+    https://ibm.github.io/mcp-context-forge/development/mcp-developer-guide-json-rpc/
+
+19. Writing a Simple Bun MCP Server | Scott Pierce
+    https://scottpierce.dev/posts/simple-mcp-server/
+
+20. Inspecting and Debugging MCP Servers Using CLI and jq
+    https://blog.fka.dev/blog/2025-03-25-inspecting-mcp-servers-using-cli/
+
+================================================================================
+RESEARCH METADATA
+================================================================================
+
+Date: September 22, 2026
+Research Method: Web search and documentation analysis
+Primary Sources: Official MCP specification, developer guides, technical blogs
+Confidence Level: High - Information confirmed across multiple authoritative sources

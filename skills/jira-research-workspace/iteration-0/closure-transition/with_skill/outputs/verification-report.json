@@ -1,0 +1,82 @@
+{
+  "verification_phase": "post_closure",
+  "timestamp": "2026-09-22T18:30:45Z",
+  "issue_key": "RES-123",
+  "verification_results": {
+    "issue_identity": {
+      "verified": true,
+      "key": "RES-123",
+      "id": "10987",
+      "note": "Issue identity matches expected research task"
+    },
+    "issue_type": {
+      "verified": true,
+      "expected": "Story",
+      "actual": "Story",
+      "note": "Issue type correct for research task level"
+    },
+    "parent_hierarchy": {
+      "verified": true,
+      "parent_key": "RES-100",
+      "parent_type": "Epic",
+      "parent_summary": "Q3 Market Research Initiative",
+      "note": "Hierarchy relationship preserved"
+    },
+    "description": {
+      "verified": true,
+      "has_content": true,
+      "is_meaningful": true,
+      "note": "Description is non-empty and meaningful"
+    },
+    "components_labels": {
+      "verified": true,
+      "components": ["Market Research", "Competitive Analysis"],
+      "labels": ["q3-2026", "priority-high", "research-task"],
+      "note": "Components and labels correctly maintained"
+    },
+    "assignee": {
+      "verified": true,
+      "assignee": "research.lead@example.com",
+      "note": "Assignee unchanged during closure"
+    },
+    "final_status": {
+      "verified": true,
+      "expected": "Completed",
+      "actual": "Completed",
+      "status_category": "DONE",
+      "is_terminal": true,
+      "note": "Transition to target status succeeded"
+    },
+    "completion_reference": {
+      "verified": true,
+      "comment_found": true,
+      "document_link_present": true,
+      "document_url": "https://confluence.example.com/spaces/RESEARCH/pages/123456/Market-Analysis-Final-Report",
+      "link_format": "rich_link",
+      "note": "Completion comment with exact document reference added successfully"
+    },
+    "existing_content_preserved": {
+      "verified": true,
+      "previous_comments_count": 12,
+      "current_comments_count": 13,
+      "previous_links_count": 5,
+      "current_links_count": 6,
+      "note": "All existing content preserved, only completion comment added"
+    }
+  },
+  "overall_verification": {
+    "all_checks_passed": true,
+    "blocking_issues": [],
+    "warnings": [],
+    "closure_confirmed": true
+  },
+  "skill_compliance": {
+    "queried_transitions_before_closure": true,
+    "selected_exact_approved_transition": true,
+    "added_completion_comment": true,
+    "used_rich_links": true,
+    "verified_after_mutation": true,
+    "had_explicit_user_approval": true,
+    "preserved_existing_content": true
+  }
+}

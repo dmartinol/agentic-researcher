@@ -1,0 +1,102 @@
+{
+  "skill_name": "initialize-research",
+  "iteration": 0,
+  "timestamp": "2026-09-23T00:30:00Z",
+  "configurations": [
+    {
+      "name": "with_skill",
+      "total_evals": 3,
+      "total_assertions": 14,
+      "passed_assertions": 14,
+      "pass_rate": 1.0,
+      "mean_tokens": 37897,
+      "stddev_tokens": 6692.068364862989,
+      "mean_duration_seconds": 281.84333333333336,
+      "stddev_duration_seconds": 90.63701469782272
+    },
+    {
+      "name": "without_skill",
+      "total_evals": 3,
+      "total_assertions": 14,
+      "passed_assertions": 10,
+      "pass_rate": 0.7142857142857143,
+      "mean_tokens": 34981.666666666664,
+      "stddev_tokens": 6496.243247703501,
+      "mean_duration_seconds": 222.9633333333333,
+      "stddev_duration_seconds": 89.00683475628898
+    }
+  ],
+  "delta": {
+    "pass_rate_delta": 0.2857142857142857,
+    "pass_rate_improvement": "+28.6%",
+    "token_delta": 2915.3333333333358,
+    "token_improvement": "+8.3%",
+    "duration_delta": 58.88000000000005,
+    "duration_improvement": "+26.4%"
+  },
+  "eval_details": [
+    {
+      "eval_name": "greenfield-init",
+      "with_skill": {
+        "passed": 7,
+        "total": 7,
+        "pass_rate": 1.0,
+        "tokens": 45522,
+        "duration_seconds": 381.45
+      },
+      "without_skill": {
+        "passed": 3,
+        "total": 7,
+        "pass_rate": 0.42857142857142855,
+        "tokens": 39933,
+        "duration_seconds": 244.26
+      },
+      "delta": {
+        "pass_rate": 0.5714285714285714,
+        "improvement": "+57%"
+      }
+    },
+    {
+      "eval_name": "repeat-init",
+      "with_skill": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0,
+        "tokens": 35170,
+        "duration_seconds": 204.22
+      },
+      "without_skill": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0,
+        "tokens": 37386,
+        "duration_seconds": 299.39
+      },
+      "delta": {
+        "pass_rate": 0.0,
+        "improvement": "Tied"
+      }
+    },
+    {
+      "eval_name": "unapproved-change",
+      "with_skill": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0,
+        "tokens": 32999,
+        "duration_seconds": 259.86
+      },
+      "without_skill": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0,
+        "tokens": 27626,
+        "duration_seconds": 125.24
+      },
+      "delta": {
+        "pass_rate": 0.0,
+        "improvement": "Tied"
+      }
+    }
+  ]
+}

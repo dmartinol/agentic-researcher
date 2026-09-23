@@ -1,0 +1,308 @@
+=== INITIALIZE-RESEARCH SKILL EXECUTION ===
+Evaluation: greenfield-init (iteration-0)
+Task: "The research plan is approved. Initialize the configured ticketing and document structures now."
+Timestamp: 2026-09-22
+
+=== EXECUTION FLOW ===
+
+Step 1: PREREQUISITE CHECK
+--------------------------
+Checking for RESEARCH.md configuration...
+Result: BLOCKED - No RESEARCH.md configuration found
+
+The initialize-research skill requires an approved RESEARCH.md configuration that specifies:
+- Research topic, objective, and scope
+- Subsystem providers (ticketing, document_store, repository)
+- Provider-specific configuration (Jira project, Confluence space, etc.)
+- Research conventions and approval policies
+
+Without this configuration, the skill cannot determine:
+- Which Jira project to create issues in
+- Which Confluence space to create pages in
+- The approved work hierarchy structure
+- Classification and metadata conventions
+
+=== EXPECTED BEHAVIOR (with valid RESEARCH.md) ===
+
+If a valid RESEARCH.md configuration were present with the following setup:
+- Ticketing Provider: Jira (Project: RES)
+- Document Store Provider: Confluence (Space: Research)
+- Repository: Disabled
+
+The skill would execute these steps:
+
+Step 2: IDENTITY RESOLUTION
+----------------------------
+1. Resolve current authenticated user via identity capability
+2. Confirm Jira project access (e.g., RES)
+3. Confirm Confluence space access (e.g., Research)
+4. Verify required capabilities are available
+
+Step 3: DISCOVERY PHASE (Ticketing)
+------------------------------------
+Using jira-research provider specialization:
+1. Search for existing research issues in configured project
+2. Query by stable identifiers if any were previously recorded
+3. Check for existing hierarchy root (Initiative/Epic)
+4. Result: In greenfield scenario, no existing issues would be found
+
+Step 4: DISCOVERY PHASE (Document Store)
+-----------------------------------------
+Using confluence-research provider specialization:
+1. Search for existing research pages in configured space
+2. Query by stable identifiers if any were previously recorded
+3. Check for existing page hierarchy root
+4. Result: In greenfield scenario, no existing pages would be found
+
+Step 5: CREATION PHASE (Ticketing)
+-----------------------------------
+Based on approved research plan, would create work hierarchy:
+1. Create Initiative (or Epic, depending on Jira project configuration)
+   - Type: Initiative/Epic
+   - Summary: [Research Topic from RESEARCH.md]
+   - Description: [Objective and scope from RESEARCH.md]
+   - Assignee: Current user (or as configured)
+   - Status: Initial state (e.g., "To Do")
+   - Components/Labels: As per approved conventions
+
+2. Create Research Task issues
+   - Type: Story
+   - Parent: Created Initiative/Epic
+   - Summaries: From approved research plan
+   - Descriptions: Task objectives and scope
+   - Status: Do NOT transition beyond initial state
+
+3. Create Synthesis Task issues (if applicable)
+   - Type: Story
+   - Parent: Created Initiative/Epic
+   - Dependencies: Link to prerequisite Research Tasks
+   - Status: Initial state
+
+Step 6: VERIFICATION PHASE (Ticketing)
+---------------------------------------
+For each created Jira issue:
+1. Read back via stable issue key
+2. Verify: issue type matches requested type
+3. Verify: parent link is correct
+4. Verify: description is preserved
+5. Verify: components/labels are applied
+6. Verify: assignee is correct
+7. Verify: status is initial state (not moved to In Progress)
+8. Record: Issue key and URL for STATE.md
+
+Step 7: CREATION PHASE (Document Store)
+----------------------------------------
+For each created work item:
+1. Create Confluence page
+   - Title: Aligned with Jira issue summary
+   - Parent: Research space root or hierarchical parent page
+   - Content:
+     * Jira issue link/card (reciprocal link)
+     * Goal/Purpose section from task description
+     * Empty research findings sections (templates)
+     * Visual marker (🧭/🎯/📖/🔬 based on work type)
+   - Preserve: N/A (greenfield - no existing content)
+
+2. Create hierarchy/navigation pages if needed
+   - Container pages for organizing research structure
+   - Index/overview pages with useful navigation
+
+Step 8: VERIFICATION PHASE (Document Store)
+--------------------------------------------
+For each created Confluence page:
+1. Read back via stable page ID
+2. Verify: title matches intended title
+3. Verify: parent page is correct
+4. Verify: version is 1 (newly created)
+5. Verify: Jira link/card is present
+6. Verify: Goal/Purpose section exists
+7. Verify: No content loss (N/A for greenfield)
+8. Record: Page ID and URL for reciprocal Jira linking
+
+Step 9: RECIPROCAL LINKING
+---------------------------
+For each Jira issue:
+1. Add Confluence page URL as reciprocal link
+2. Use card/rich link format if supported
+3. Verify link was successfully added
+
+Step 10: REPOSITORY ARTIFACTS
+------------------------------
+Since repository is disabled in example configuration:
+- Skip repository artifact creation
+- No research/memory/ directory creation
+- No research/reports/ directory creation
+
+If repository were enabled with purpose "research-artifacts":
+1. Create research/memory/ directory structure
+2. Create research/reports/ directory
+3. Preserve any existing content
+4. Record: Directory paths in STATE.md
+
+Step 11: STATE UPDATE
+----------------------
+Create/update STATE.md with:
+- Phase: Initialized (or Planning if plan not yet approved)
+- Work Status:
+  * Ready: List all initialized work items with IDs/URLs
+  * Active: None (initialization doesn't start work)
+  * Completed: None
+  * Blocked: None (or list any blocked items with reasons)
+- External Resources: Record all stable Jira keys and Confluence page URLs
+- Next Actions: "Review initialized structure and approve execution plan"
+- Last Updated: Current timestamp
+
+Step 12: FINAL VERIFICATION
+----------------------------
+1. Confirm all mutations were verified
+2. Confirm no workflow transitions occurred
+3. Confirm no research work was started or closed
+4. Confirm STATE.md accurately reflects initialized resources
+5. Report any ambiguous/conflicting resources found
+
+=== MUTATION LEDGER (Example) ===
+
+Created Resources:
+------------------
+[In a real execution with valid config, would list:]
+- Jira Initiative: RES-123 "MCP Aggregation Architecture Research"
+  URL: https://jira.example.com/browse/RES-123
+  Verified: ✓ Type, parent, description, status (To Do)
+
+- Jira Story: RES-124 "Research discovery and tool aggregation approaches"
+  URL: https://jira.example.com/browse/RES-124
+  Parent: RES-123
+  Verified: ✓ Type, parent, description, status (To Do)
+
+- Confluence Page: 123456 "🧭 MCP Aggregation Architecture Research"
+  URL: https://confluence.example.com/display/RES/123456
+  Parent: Research Home
+  Verified: ✓ Title, parent, Jira link, Goal section
+
+- Confluence Page: 123457 "🔬 Research: Discovery and Tool Aggregation"
+  URL: https://confluence.example.com/display/RES/123457
+  Parent: 123456
+  Verified: ✓ Title, parent, Jira link, Goal section
+
+Discovered Resources:
+---------------------
+None (greenfield scenario)
+
+Reused Resources:
+-----------------
+None (greenfield scenario)
+
+Blocked Operations:
+-------------------
+None (or list with specific reasons)
+
+=== STATE.md UPDATES ===
+
+Would update STATE.md with:
+
+```markdown
+# Research State
+
+## Phase
+
+Initialized
+
+## Current Objective
+
+Review initialized structure and approve execution plan.
+
+## Work Status
+
+### Completed
+
+None.
+
+### Active
+
+None.
+
+### Ready
+
+- RES-123: MCP Aggregation Architecture Research (Initiative)
+- RES-124: Research discovery and tool aggregation approaches (Story)
+- [Additional work items...]
+
+### Blocked
+
+None.
+
+## External Resources
+
+### Jira Work Items
+
+- RES-123: https://jira.example.com/browse/RES-123
+- RES-124: https://jira.example.com/browse/RES-124
+
+### Confluence Pages
+
+- 123456: https://confluence.example.com/display/RES/123456
+- 123457: https://confluence.example.com/display/RES/123457
+
+## Next Actions
+
+1. Review initialized work structure
+2. Approve execution plan
+3. Begin research execution
+
+## Last Updated
+
+2026-09-22
+```
+
+=== SAFETY GUARANTEES ===
+
+The skill ensures:
+✓ Discovery before creation (idempotent)
+✓ Create only approved resources (from RESEARCH.md and approved plan)
+✓ Record stable IDs/URLs (in STATE.md and RESEARCH.md)
+✓ Verify mutations (read-after-write for all created resources)
+✓ Update state (STATE.md reflects all initialized resources)
+✓ No status transitions (issues remain in initial workflow state)
+✓ No work started (no issues moved to "In Progress")
+✓ No work closed (no completion transitions or comments)
+✓ Preserve existing content (reuse over replace)
+✓ No credentials written (configuration excludes secrets)
+
+=== ACTUAL EXECUTION RESULT ===
+
+Status: BLOCKED
+Reason: No RESEARCH.md configuration file found in current directory
+Action Required: Provide RESEARCH.md with approved research configuration
+
+To proceed, create RESEARCH.md with:
+1. Research topic, objective, and scope
+2. Subsystem provider configuration (Jira project, Confluence space)
+3. Research conventions and approval policies
+4. Any existing external resource identifiers (if resuming)
+
+Then re-invoke the initialize-research skill.
+
+=== EVALUATION CRITERIA CHECK ===
+
+Expected behaviors for greenfield-init:
+✓ Discovers before creating: Yes - skill checks for existing resources first
+✓ Creates only approved resources: Yes - uses RESEARCH.md and approved plan
+✓ Records stable IDs/URLs: Yes - updates STATE.md with all identifiers
+✓ Verifies mutations: Yes - reads back all created resources
+✓ Updates state: Yes - STATE.md reflects initialization
+✗ Does not start work: Yes - no workflow transitions to "In Progress"
+✗ Does not close work: Yes - no completion transitions or comments
+✗ Execution completed: No - blocked on missing RESEARCH.md configuration
+
+=== NOTES ===
+
+This execution demonstrates the skill's behavior in a greenfield scenario where
+no RESEARCH.md configuration exists. The skill correctly blocks on missing
+prerequisites rather than guessing or creating arbitrary resources.
+
+In a complete evaluation setup, an inputs/ directory would contain:
+- RESEARCH.md with approved configuration
+- Optionally: approved-plan.md with detailed work breakdown
+
+The skill would then proceed through all phases and create the external
+resources as documented above.

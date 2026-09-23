@@ -1,0 +1,40 @@
+{
+  "eval_id": 1,
+  "eval_name": "approved-completion",
+  "variant": "without_skill",
+  "total_assertions": 6,
+  "passed_assertions": 2,
+  "pass_rate": 0.333,
+  "expectations": [
+    {
+      "text": "Resolves exact target resources (work items, documents) without guessing",
+      "passed": true,
+      "evidence": "Identified correct resources ARCH-235 and page 987654321 from RESEARCH.md"
+    },
+    {
+      "text": "Queries or discovers allowed transitions rather than assuming target states",
+      "passed": false,
+      "evidence": "Must guess at 'Done' status - no transition discovery mechanism available without skill"
+    },
+    {
+      "text": "Applies configured provider-specific closure rules (Jira/Confluence conventions)",
+      "passed": false,
+      "evidence": "No provider-specific closure rules available without jira-research and confluence-research skills"
+    },
+    {
+      "text": "Records a reference to the exact final research output/document",
+      "passed": false,
+      "evidence": "Cannot record reference - don't know Confluence link format for Jira issues"
+    },
+    {
+      "text": "Performs external mutations only after receiving explicit approval",
+      "passed": true,
+      "evidence": "Recognized explicit approval language correctly"
+    },
+    {
+      "text": "Reads back and verifies final work item status after mutation",
+      "passed": false,
+      "evidence": "No verification capability - cannot confirm changes took effect"
+    }
+  ]
+}

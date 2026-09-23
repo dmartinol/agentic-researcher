@@ -1,0 +1,7 @@
+{
+  "eval_id": 1,
+  "eval_name": "greenfield-init",
+  "prompt": "The research plan is approved. Initialize the configured ticketing and document structures now.",
+  "expected_output": "Discovers before creating, creates only approved resources, records stable IDs/URLs, verifies mutations by reading back identity/hierarchy/metadata/links, updates state, and does not start or close research work.",
+  "assertions": []
+}

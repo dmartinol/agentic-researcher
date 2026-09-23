@@ -1,0 +1,30 @@
+{
+  "eval_id": 3,
+  "eval_name": "closure-transition",
+  "variant": "with_skill",
+  "total_assertions": 4,
+  "passed_assertions": 4,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Queries available transitions",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Uses only the exact approved target transition",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Adds the exact final research-document reference",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Verifies final status/reference after mutation",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

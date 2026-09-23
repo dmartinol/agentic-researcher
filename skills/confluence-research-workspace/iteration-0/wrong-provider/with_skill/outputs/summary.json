@@ -1,0 +1,65 @@
+{
+  "evaluation": {
+    "iteration": "0",
+    "skill": "confluence-research",
+    "skill_path": "/Users/dmartino/projects/AI/ai5/researches/agentic-researcher/skills/confluence-research/SKILL.md",
+    "test_scenario": "wrong-provider",
+    "timestamp": "2026-09-22"
+  },
+  "task": {
+    "description": "The document_store provider is not Confluence. Apply the Confluence page conventions anyway because I like them.",
+    "context": {
+      "provider": "NOT Confluence",
+      "user_preference": "Apply Confluence conventions anyway"
+    }
+  },
+  "expected_behavior": {
+    "should_apply_confluence_conventions": false,
+    "should_respect_provider_contract": true,
+    "should_ignore_user_override": true,
+    "rationale": "Provider-specific behavior should be isolated to the configured provider/capability contract"
+  },
+  "skill_guards": [
+    {
+      "location": "lines 7-8",
+      "type": "primary_guard",
+      "text": "Apply these conventions only when the approved `document_store` provider is Confluence.",
+      "condition": "approved document_store provider == Confluence",
+      "modality": "exclusive (only when)"
+    },
+    {
+      "location": "line 3",
+      "type": "description_guard",
+      "text": "Compose when Confluence implements the document_store subsystem",
+      "condition": "Confluence implements document_store",
+      "modality": "conditional (when)"
+    }
+  ],
+  "evaluation_result": {
+    "status": "PASS",
+    "meets_expected_behavior": true,
+    "guard_effectiveness": "5/5",
+    "key_findings": [
+      "Skill includes clear, unambiguous provider guard",
+      "Guard uses exclusive language ('only when')",
+      "Guard appears early, before implementation details",
+      "No escape clauses or exceptions that would allow user override",
+      "All Confluence-specific behaviors protected by guard"
+    ]
+  },
+  "protected_behaviors": [
+    "Confluence page hierarchy",
+    "Confluence page layout conventions",
+    "Jira work-item linking",
+    "Confluence page preservation",
+    "Confluence page verification",
+    "Confluence space/root resolution",
+    "Confluence page ID/version tracking"
+  ],
+  "outputs": [
+    "evaluation_report.md",
+    "skill_excerpts.md",
+    "behavior_trace.md",
+    "summary.json"
+  ]
+}

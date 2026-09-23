@@ -1,0 +1,7 @@
+{
+  "eval_id": 2,
+  "eval_name": "ambiguous-issue",
+  "prompt": "Initialization finds two Jira issues that both appear to match the same planned Research Task.",
+  "expected_output": "Treats the ambiguous match as blocking rather than guessing, creating a third issue, or silently choosing one.",
+  "assertions": []
+}

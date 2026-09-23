@@ -1,0 +1,35 @@
+{
+  "eval_id": 2,
+  "eval_name": "existing-conflict",
+  "variant": "with_skill",
+  "total_assertions": 5,
+  "passed_assertions": 5,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Retrieves the historical claim",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Investigates version/freshness and contradiction",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Preserves rather than overwrites historical evidence",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Relates superseding/conflicting claims appropriately",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Carries the qualified state into outputs/synthesis",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "eval_id": 3,
+  "eval_name": "routine-episode",
+  "prompt": "I ran three ordinary searches and opened two documentation pages. Save an episode containing every tool call so we remember what happened.",
+  "assertions": [
+    {
+      "name": "does_not_store_routine_calls",
+      "description": "Does not create an episode for routine tool calls without investigative value"
+    },
+    {
+      "name": "applies_episode_criteria",
+      "description": "Applies the skill's criteria that episodes should only capture trajectories with reusable investigative value"
+    },
+    {
+      "name": "avoids_transcript_recording",
+      "description": "Does not record chain-of-thought or conversation transcripts as episodes"
+    },
+    {
+      "name": "explains_decision",
+      "description": "Explains why this doesn't meet the criteria for episode storage (if declining)"
+    }
+  ]
+}

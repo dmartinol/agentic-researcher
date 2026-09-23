@@ -1,0 +1,25 @@
+{
+  "eval_id": 2,
+  "eval_name": "provider-pressure",
+  "variant": "with_skill",
+  "total_assertions": 3,
+  "passed_assertions": 3,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Keeps internal research plan expressed as Workstreams, Research Tasks and Synthesis Tasks",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Allows a separate provider mapping",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Does not make Jira hierarchy/terminology part of the generic plan",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

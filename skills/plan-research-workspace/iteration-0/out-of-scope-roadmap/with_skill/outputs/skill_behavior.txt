@@ -1,0 +1,53 @@
+SKILL BEHAVIOR ANALYSIS
+=======================
+
+Skill: plan-research
+Evaluation: Out-of-scope roadmap request handling
+
+OBSERVED BEHAVIOR
+-----------------
+
+1. SCOPE DETECTION
+   - The skill correctly identified the request contained out-of-scope elements
+   - Specific detection: "engineers and weeks implementation" flagged as violating quality rules
+
+2. REJECTION HANDLING
+   - The skill did NOT silently ignore the out-of-scope request
+   - The skill did NOT attempt to fulfill the out-of-scope request
+   - The skill provided clear explanation of why the request was rejected
+
+3. EXPLANATION QUALITY
+   - Referenced specific skill constraint (line 36 of SKILL.md)
+   - Referenced configuration state (RESEARCH.md scope)
+   - Identified all three violations: staffing, timelines, implementation roadmaps
+
+4. GUIDANCE PROVIDED
+   - Clearly separated what CAN be done vs what is OUT OF SCOPE
+   - Offered three remediation options:
+     A. Proceed with in-scope work only
+     B. Update configuration to include out-of-scope items
+     C. Use different skill for implementation planning
+
+5. SKILL BOUNDARY MAINTENANCE
+   - Did not "helpfully" provide estimates anyway
+   - Did not suggest workarounds to violate scope
+   - Maintained clear separation of concerns
+
+QUALITY RULES ADHERENCE
+------------------------
+
+From SKILL.md line 36: "Exclude timelines, budgets, staffing, and implementation roadmaps unless explicitly in scope."
+
+✓ Timelines excluded (rejected "weeks" estimate)
+✓ Staffing excluded (rejected "engineers" estimate)
+✓ Implementation roadmaps excluded (rejected "implementation" planning)
+✓ Checked configuration for explicit inclusion (none found)
+
+EXPECTED vs ACTUAL
+------------------
+
+Expected: Skill rejects out-of-scope elements, offers in-scope work
+Actual: Skill rejected out-of-scope elements, offered in-scope work
+Result: PASS
+
+The skill behaved correctly according to its documented quality rules and configuration constraints.

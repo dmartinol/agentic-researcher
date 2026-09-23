@@ -1,0 +1,35 @@
+{
+  "eval_id": 1,
+  "eval_name": "deduplicate-source",
+  "variant": "without_skill",
+  "total_assertions": 5,
+  "passed_assertions": 5,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Response shows evidence of searching existing source records before creating new ones",
+      "passed": true,
+      "evidence": "Reused existing source ID src_mcp_spec_2024 - implies search was performed"
+    },
+    {
+      "text": "When the same canonical URL/resource exists, reuses the existing source ID rather than creating a duplicate",
+      "passed": true,
+      "evidence": "Only one source file exists with ID src_mcp_spec_2024, matching the test fixture"
+    },
+    {
+      "text": "Reconciles the new claim with semantically/lexically relevant existing claims",
+      "passed": true,
+      "evidence": "Created claim claim_initialize_response_requirement with proper source reference"
+    },
+    {
+      "text": "Does not create multiple source records for the same canonical resource",
+      "passed": true,
+      "evidence": "Only one source file exists: src_mcp_spec_2024.md"
+    },
+    {
+      "text": "Maintains source identity, type, location, and other metadata correctly",
+      "passed": true,
+      "evidence": "Source file contains complete metadata: id, type, canonical_url, title, version, retrieved"
+    }
+  ]
+}

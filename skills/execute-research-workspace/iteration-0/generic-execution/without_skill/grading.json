@@ -1,0 +1,45 @@
+{
+  "eval_id": 1,
+  "eval_name": "generic-execution",
+  "variant": "without_skill",
+  "total_assertions": 7,
+  "passed_assertions": 2,
+  "pass_rate": 0.2857142857142857,
+  "expectations": [
+    {
+      "text": "Retrieves relevant memory first",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Performs evidence-driven investigation using generic research capabilities",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Records atomic sourced claims",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Performs contradiction/freshness checks for conclusion-critical claims",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Persists/reconciles memory",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Updates outputs/state",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Verifies without requiring a topic-specific skill",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "epic": {
+    "type": "Epic",
+    "summary": "Gateway Technology Evaluation",
+    "description": "Evaluate three gateway options to determine the most suitable solution for our requirements.",
+    "acceptance_criteria": [
+      "Complete technical assessments of all three gateway options",
+      "Comparative analysis completed with decision matrix",
+      "Final recommendation approved by stakeholders",
+      "Implementation roadmap created for selected option"
+    ],
+    "stories": [
+      {
+        "type": "Story",
+        "summary": "Assess Gateway Option A",
+        "description": "Complete technical evaluation of Gateway Option A including architecture, features, performance, and integration capabilities.",
+        "acceptance_criteria": [
+          "Architecture and design patterns documented",
+          "Feature matrix completed",
+          "Performance benchmarks identified",
+          "Integration requirements catalogued",
+          "Operational complexity assessed",
+          "Security and compliance capabilities evaluated",
+          "Technical assessment document (gateway-option-a-assessment.md) completed"
+        ],
+        "subtasks": [
+          {
+            "type": "Sub-task",
+            "summary": "Research Gateway A architecture and design patterns",
+            "description": "Investigate and document the architectural approach and core design patterns used by Gateway Option A"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Document Gateway A feature set and capabilities",
+            "description": "Create comprehensive feature matrix covering all capabilities offered by Gateway Option A"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Identify Gateway A performance benchmarks",
+            "description": "Research and document performance metrics, throughput, latency, and scalability characteristics"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Catalog Gateway A integration requirements",
+            "description": "Document integration patterns, APIs, protocols, and compatibility requirements"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Assess Gateway A operational complexity",
+            "description": "Evaluate deployment, configuration, monitoring, and maintenance requirements"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Evaluate Gateway A security and compliance",
+            "description": "Research security features, compliance certifications, and audit capabilities"
+          }
+        ]
+      },
+      {
+        "type": "Story",
+        "summary": "Assess Gateway Option B",
+        "description": "Complete technical evaluation of Gateway Option B including architecture, features, performance, and integration capabilities.",
+        "acceptance_criteria": [
+          "Architecture and design patterns documented",
+          "Feature matrix completed",
+          "Performance benchmarks identified",
+          "Integration requirements catalogued",
+          "Operational complexity assessed",
+          "Security and compliance capabilities evaluated",
+          "Technical assessment document (gateway-option-b-assessment.md) completed"
+        ],
+        "subtasks": [
+          {
+            "type": "Sub-task",
+            "summary": "Research Gateway B architecture and design patterns",
+            "description": "Investigate and document the architectural approach and core design patterns used by Gateway Option B"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Document Gateway B feature set and capabilities",
+            "description": "Create comprehensive feature matrix covering all capabilities offered by Gateway Option B"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Identify Gateway B performance benchmarks",
+            "description": "Research and document performance metrics, throughput, latency, and scalability characteristics"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Catalog Gateway B integration requirements",
+            "description": "Document integration patterns, APIs, protocols, and compatibility requirements"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Assess Gateway B operational complexity",
+            "description": "Evaluate deployment, configuration, monitoring, and maintenance requirements"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Evaluate Gateway B security and compliance",
+            "description": "Research security features, compliance certifications, and audit capabilities"
+          }
+        ]
+      },
+      {
+        "type": "Story",
+        "summary": "Assess Gateway Option C",
+        "description": "Complete technical evaluation of Gateway Option C including architecture, features, performance, and integration capabilities.",
+        "acceptance_criteria": [
+          "Architecture and design patterns documented",
+          "Feature matrix completed",
+          "Performance benchmarks identified",
+          "Integration requirements catalogued",
+          "Operational complexity assessed",
+          "Security and compliance capabilities evaluated",
+          "Technical assessment document (gateway-option-c-assessment.md) completed"
+        ],
+        "subtasks": [
+          {
+            "type": "Sub-task",
+            "summary": "Research Gateway C architecture and design patterns",
+            "description": "Investigate and document the architectural approach and core design patterns used by Gateway Option C"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Document Gateway C feature set and capabilities",
+            "description": "Create comprehensive feature matrix covering all capabilities offered by Gateway Option C"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Identify Gateway C performance benchmarks",
+            "description": "Research and document performance metrics, throughput, latency, and scalability characteristics"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Catalog Gateway C integration requirements",
+            "description": "Document integration patterns, APIs, protocols, and compatibility requirements"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Assess Gateway C operational complexity",
+            "description": "Evaluate deployment, configuration, monitoring, and maintenance requirements"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Evaluate Gateway C security and compliance",
+            "description": "Research security features, compliance certifications, and audit capabilities"
+          }
+        ]
+      },
+      {
+        "type": "Story",
+        "summary": "Comparative Analysis and Recommendation",
+        "description": "Synthesize findings from all gateway assessments into side-by-side comparison and provide data-driven recommendation.",
+        "depends_on": [
+          "Assess Gateway Option A",
+          "Assess Gateway Option B",
+          "Assess Gateway Option C"
+        ],
+        "acceptance_criteria": [
+          "Side-by-side feature comparison matrix completed",
+          "Cost-benefit analysis conducted",
+          "Risk assessment completed for each option",
+          "Clear recommendation documented with justification",
+          "Implementation roadmap created",
+          "Comparison document (gateway-comparison-and-recommendation.md) completed",
+          "Stakeholder approval obtained"
+        ],
+        "subtasks": [
+          {
+            "type": "Sub-task",
+            "summary": "Create feature comparison matrix",
+            "description": "Build comprehensive side-by-side comparison of features across all three gateway options"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Conduct cost-benefit analysis",
+            "description": "Analyze total cost of ownership and benefits for each gateway option"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Perform risk assessment for each option",
+            "description": "Identify and evaluate risks associated with adopting each gateway option"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Draft recommendation with justification",
+            "description": "Create evidence-based recommendation identifying the preferred gateway option with supporting rationale"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Create implementation roadmap for recommended option",
+            "description": "Outline high-level implementation plan for the recommended gateway"
+          },
+          {
+            "type": "Sub-task",
+            "summary": "Present findings to stakeholders",
+            "description": "Present research findings, comparison, and recommendation to stakeholders for approval"
+          }
+        ]
+      }
+    ]
+  },
+  "metadata": {
+    "parallelization": {
+      "parallel_stories": [
+        "Assess Gateway Option A",
+        "Assess Gateway Option B",
+        "Assess Gateway Option C"
+      ],
+      "sequential_stories": [
+        "Comparative Analysis and Recommendation"
+      ],
+      "note": "Stories 1-3 can execute in parallel. Story 4 requires Stories 1-3 to complete first."
+    },
+    "evidence_policy": {
+      "required_for_all_tasks": [
+        "Primary source references (official documentation)",
+        "Quantitative metrics where available",
+        "Community/industry feedback",
+        "Concrete examples or case studies",
+        "Version/date stamps for time-sensitive information"
+      ]
+    },
+    "output_artifacts": {
+      "documents": [
+        "gateway-option-a-assessment.md",
+        "gateway-option-b-assessment.md",
+        "gateway-option-c-assessment.md",
+        "gateway-comparison-and-recommendation.md"
+      ],
+      "optional_artifacts": [
+        "Configuration examples",
+        "Integration code samples",
+        "Decision matrix spreadsheet",
+        "Presentation slides"
+      ]
+    }
+  }
+}

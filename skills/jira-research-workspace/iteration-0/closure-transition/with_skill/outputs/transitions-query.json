@@ -1,0 +1,66 @@
+{
+  "scenario": "Multiple available transitions for closure",
+  "issue_key": "RES-123",
+  "current_status": "In Progress",
+  "available_transitions": [
+    {
+      "id": "31",
+      "name": "Done",
+      "to": {
+        "id": "10001",
+        "name": "Done",
+        "statusCategory": "DONE"
+      },
+      "description": "Mark work as complete"
+    },
+    {
+      "id": "41",
+      "name": "Complete",
+      "to": {
+        "id": "10002",
+        "name": "Completed",
+        "statusCategory": "DONE"
+      },
+      "description": "Complete the research task"
+    },
+    {
+      "id": "51",
+      "name": "Archive",
+      "to": {
+        "id": "10003",
+        "name": "Archived",
+        "statusCategory": "DONE"
+      },
+      "description": "Archive without completion"
+    },
+    {
+      "id": "61",
+      "name": "Close",
+      "to": {
+        "id": "10004",
+        "name": "Closed",
+        "statusCategory": "DONE"
+      },
+      "description": "Close the issue"
+    }
+  ],
+  "skill_behavior": {
+    "queries_transitions_first": true,
+    "presents_multiple_options": true,
+    "requires_explicit_selection": true,
+    "does_not_assume_transition_name": true,
+    "note": "The skill must query these transitions and select the approved target transition, not arbitrarily pick one"
+  },
+  "recommended_selection_strategy": {
+    "option_1": "Use pre-configured target status from workspace configuration",
+    "option_2": "Match against project-specific completion status conventions",
+    "option_3": "Present options to user and require explicit confirmation",
+    "selected_approach": "option_1",
+    "configured_target_status": "Completed",
+    "selected_transition": {
+      "id": "41",
+      "name": "Complete",
+      "reasoning": "Matches the configured target status 'Completed' from setup/planning phase"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "eval_id": 1,
+  "eval_name": "page-initialization",
+  "prompt": "Confluence is the approved document_store. Initialize pages for the research plan under the configured root.",
+  "assertions": [
+    {
+      "name": "discovers_before_creating",
+      "description": "Discovers/reuses pages before creation"
+    },
+    {
+      "name": "preserves_existing_content",
+      "description": "Preserves existing content"
+    },
+    {
+      "name": "applies_conventions",
+      "description": "Applies hierarchy/title/Goal-Purpose conventions"
+    },
+    {
+      "name": "links_work_items",
+      "description": "Links associated work items where configured"
+    },
+    {
+      "name": "verifies_page_properties",
+      "description": "Verifies page identity/title/parent/version"
+    }
+  ]
+}

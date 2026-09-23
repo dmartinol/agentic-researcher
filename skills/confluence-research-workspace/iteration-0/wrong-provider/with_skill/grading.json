@@ -1,0 +1,15 @@
+{
+  "eval_id": 3,
+  "eval_name": "wrong-provider",
+  "variant": "with_skill",
+  "total_assertions": 2,
+  "passed_assertions": 2,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Summary",
+      "passed": true,
+      "evidence": "Correctly rejected Confluence conventions when provider not Confluence - strong guard implementation"
+    }
+  ]
+}

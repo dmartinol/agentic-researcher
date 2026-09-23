@@ -1,0 +1,7 @@
+{
+  "eval_id": 3,
+  "eval_name": "out-of-scope-roadmap",
+  "prompt": "Plan the research and also estimate how many engineers and weeks implementation will take. Our approved RESEARCH.md explicitly excludes staffing, schedule and implementation planning.",
+  "expected_output": "Honors the approved scope and excludes staffing/timeline/implementation-roadmap work from the research plan, explicitly identifying the requested addition as outside the approved scope rather than silently adding it.",
+  "assertions": []
+}

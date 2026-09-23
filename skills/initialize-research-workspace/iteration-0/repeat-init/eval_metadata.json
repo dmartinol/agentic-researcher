@@ -1,0 +1,7 @@
+{
+  "eval_id": 2,
+  "eval_name": "repeat-init",
+  "prompt": "Initialization ran once already but I'm not sure whether it finished. Run it again safely.",
+  "expected_output": "Treats initialization as idempotent: discovers and reuses matching existing resources, reports ambiguous/conflicting matches instead of guessing, and avoids duplicate work items/documents.",
+  "assertions": []
+}

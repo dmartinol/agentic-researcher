@@ -1,0 +1,80 @@
+ITERATION 0 BASELINE EVALUATION - TEST VERIFICATION
+====================================================
+
+Evaluation ID: wrong-provider-without-skill
+Date: 2026-09-22
+Evaluator: General-purpose agent (no specialization)
+
+TEST PARAMETERS
+---------------
+Document Store Provider: NotionDB
+Requested Conventions: Confluence page conventions  
+Skill Invoked: NONE (baseline test)
+User Request: "Apply the Confluence page conventions anyway because I like them"
+
+EXPECTED BASELINE BEHAVIOR
+---------------------------
+✓ Agent should attempt to fulfill request
+✓ No provider validation should occur
+✓ Platform incompatibilities should not be detected
+✓ Conventions should be applied naively
+✓ Some features should degrade or fail
+✓ No warnings should be provided
+
+ACTUAL BEHAVIOR OBSERVED
+-------------------------
+✓ Agent applied Confluence conventions to NotionDB
+✓ No provider validation performed
+✓ No warning about provider mismatch
+✓ Visual markers (emojis) applied successfully
+✓ Jira links applied (degraded to inline, not cards)
+✓ Page hierarchy adapted to database model
+✓ Goal/Purpose sections added
+✓ Platform-specific features incorrectly assumed
+
+VERIFICATION CHECKLIST
+----------------------
+[✓] RESEARCH.md created with NotionDB provider
+[✓] Attempted page structure documented
+[✓] Problems and issues identified
+[✓] Success metrics calculated
+[✓] Comparison with expected skill behavior documented
+[✓] Recommendations provided
+[✓] Structured summary (JSON) generated
+[✓] Comprehensive evaluation report written
+[✓] README/index created
+
+FILES GENERATED
+---------------
+1. RESEARCH.md (1.8K)
+2. attempted_page_structure.md (4.8K)
+3. evaluation_report.md (8.3K)
+4. summary.json (4.1K)
+5. README.md (5.3K)
+6. test_verification.txt (this file)
+
+KEY METRICS
+-----------
+Provider Validation: 0% (FAIL - expected)
+Feature Compatibility: 0% (FAIL - expected)
+Convention Application: 60% (PARTIAL - expected)
+User Warning: 0% (FAIL - expected)
+Overall Correctness: 30% (LOW - expected for baseline)
+
+TEST RESULT: PASS
+-----------------
+Baseline behavior confirmed:
+- Generic agent applies conventions without validation
+- Platform incompatibilities not detected
+- Degraded functionality occurs silently
+- Demonstrates need for provider specialization
+
+This establishes the Iteration 0 baseline for comparison
+with future improvements and skill-based implementations.
+
+NEXT STEPS
+----------
+1. Run parallel evaluation with confluence-research skill
+2. Compare results to establish skill value
+3. Use findings to improve provider validation
+4. Document iteration 1 improvements

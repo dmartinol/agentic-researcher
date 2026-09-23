@@ -1,0 +1,44 @@
+EXECUTIVE SUMMARY: MCP Server-Side Tool Discovery
+==================================================
+
+RESEARCH QUESTION:
+Does MCP support server-side tool discovery?
+
+ANSWER:
+YES - MCP (Model Context Protocol) fully supports server-side tool discovery.
+
+KEY FINDINGS:
+
+1. PRIMARY MECHANISM
+   - tools/list JSON-RPC endpoint enables runtime tool discovery
+   - Returns paginated list of available tools with complete schemas
+
+2. DISCOVERY PROTOCOL
+   - Initialization handshake negotiates capabilities
+   - Server advertises tools, resources, and prompts
+   - Built on JSON-RPC 2.0 protocol
+
+3. WELL-KNOWN ENDPOINTS (Optional)
+   - /.well-known/mcp/server-card.json (SEP-1649)
+   - /.well-known/mcp (SEP-1960)
+   - Used by clients like Claude Desktop for pre-connection discovery
+
+4. RUNTIME ADAPTABILITY
+   - No hardcoded connections required
+   - Dynamic tool discovery at runtime
+   - Supports changing tool availability
+
+5. STRUCTURED SCHEMAS
+   - Tools defined with JSON Schema
+   - Input/output schemas provided
+   - Enables automatic validation and invocation
+
+CONCLUSION:
+MCP is specifically designed to support comprehensive server-side tool discovery,
+making it ideal for building flexible AI agent systems that can dynamically
+discover and utilize tools from various servers.
+
+CONFIDENCE: High
+Based on official MCP specifications and multiple authoritative sources.
+
+Date: September 22, 2026

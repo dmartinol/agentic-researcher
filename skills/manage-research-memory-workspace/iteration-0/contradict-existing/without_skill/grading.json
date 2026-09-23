@@ -1,0 +1,40 @@
+{
+  "eval_id": 2,
+  "eval_name": "contradict-existing",
+  "variant": "without_skill",
+  "total_assertions": 6,
+  "passed_assertions": 4,
+  "pass_rate": 0.667,
+  "expectations": [
+    {
+      "text": "Keeps the original claim intact rather than rewriting or deleting it",
+      "passed": true,
+      "evidence": "Original claim_mcp_stateless file exists with original statement preserved"
+    },
+    {
+      "text": "Creates or updates the contradictory claim as a separate atomic claim with provenance",
+      "passed": true,
+      "evidence": "Created new claim claim_mcp_stateful_subscriptions with full provenance (sources, created, updated)"
+    },
+    {
+      "text": "Explicitly records the contradiction or supersession relationship between claims",
+      "passed": true,
+      "evidence": "Bidirectional relationship recorded: claim_mcp_stateless has 'contradicted_by' array; new claim has 'contradicts' array"
+    },
+    {
+      "text": "Updates evidence state appropriately (e.g., to 'Conflicting') without rewriting history",
+      "passed": false,
+      "evidence": "Changed field name from 'evidence_state: Verified' in fixture to 'evidence_state: Contradicted', and changed YAML structure (used 'statement' instead of keeping original frontmatter field names consistent). This modifies the original claim's schema rather than just updating its value."
+    },
+    {
+      "text": "Does not add numeric confidence scores or percentages",
+      "passed": true,
+      "evidence": "No confidence scores found in either claim file"
+    },
+    {
+      "text": "Includes proper provenance tracking for both old and new claims",
+      "passed": false,
+      "evidence": "Field name inconsistency: original claim uses 'created/updated' while the pattern elsewhere uses 'created_at/updated_at'. Also added a 'Status Update' section which rewrites history by appending narrative rather than using structured metadata"
+    }
+  ]
+}

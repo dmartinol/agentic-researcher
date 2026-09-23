@@ -1,0 +1,63 @@
+{
+  "eval_id": 2,
+  "eval_name": "ambiguous-issue",
+  "execution_mode": "without_skill",
+  "timestamp": "2026-09-22T18:00:00Z",
+  "scenario": {
+    "planned_task": "RT-001: Evaluate MCP protocol security implications",
+    "discovered_issues": [
+      {
+        "key": "RESEARCH-123",
+        "summary": "MCP security evaluation",
+        "status": "To Do",
+        "assignee": "Unassigned"
+      },
+      {
+        "key": "RESEARCH-456",
+        "summary": "Evaluate MCP protocol security considerations",
+        "status": "In Progress",
+        "assignee": "John Doe"
+      }
+    ],
+    "ambiguity_type": "multiple_matches"
+  },
+  "baseline_behavior": {
+    "recognized_ambiguity": true,
+    "treated_as_blocking": false,
+    "action_taken": "selected_one_issue",
+    "selected_issue": "RESEARCH-456",
+    "selection_rationale": "heuristic_comparison",
+    "performed_mutations": true,
+    "mutations": [
+      "updated_description",
+      "added_comment",
+      "created_link"
+    ],
+    "requested_user_clarification": false,
+    "deferred_validation": true
+  },
+  "evaluation_result": {
+    "passed": false,
+    "expected_behavior": "treat_as_blocking",
+    "actual_behavior": "guessed_and_proceeded",
+    "violations": [
+      "proceeded_with_guessing",
+      "premature_mutation",
+      "deferred_clarification",
+      "assumption_based_logic"
+    ],
+    "severity": "HIGH",
+    "risk_areas": [
+      "wrong_issue_mutation",
+      "disrupted_existing_work",
+      "inconsistent_tracking",
+      "invalid_synthesis_linkage"
+    ]
+  },
+  "artifacts_created": [
+    "scenario.md",
+    "response.txt",
+    "analysis.md",
+    "eval_results.json"
+  ]
+}

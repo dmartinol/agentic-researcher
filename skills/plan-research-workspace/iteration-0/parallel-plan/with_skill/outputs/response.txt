@@ -1,0 +1,388 @@
+# Research Plan: MCP Direct Connections vs. Centralized Gateway
+
+## Overview
+This research compares two architectural approaches for Model Context Protocol (MCP) server integration: direct client-to-server connections versus a centralized gateway/proxy pattern. The research will evaluate five key dimensions: discovery, authorization, operations, observability, and portability.
+
+## Workstreams
+
+### Workstream 1: Discovery & Configuration
+**Focus**: How clients discover, configure, and connect to MCP servers
+
+#### Task 1.1: Direct Connection Discovery Analysis
+- **Summary**: Analyze discovery mechanisms in direct MCP-server connections
+- **Description**: Investigate how clients discover available MCP servers, configure connection parameters, and maintain server registries in a direct connection model. Examine client-side configuration patterns, server advertising mechanisms, and dynamic discovery protocols.
+- **Goal**: Document all discovery patterns and configuration requirements for direct connections
+- **Acceptance Criteria**:
+  - Complete inventory of discovery mechanisms
+  - Configuration schema examples from real implementations
+  - Security implications of each discovery pattern
+  - Client-side complexity assessment
+- **Evidence Requirements**:
+  - MCP specification excerpts on discovery
+  - Real-world client configuration examples
+  - Code samples from MCP implementations
+- **Execution Skill**: Generic research execution with web search and documentation analysis
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `discovery-direct.md`: Detailed analysis document
+  - Code samples in `examples/discovery/direct/`
+- **Verification**: Evidence covers at least 3 distinct discovery patterns with security analysis
+
+#### Task 1.2: Gateway-Based Discovery Analysis
+- **Summary**: Analyze discovery mechanisms in centralized gateway architectures
+- **Description**: Investigate how centralized gateways enable server discovery, including service registration, catalog management, and client-gateway interaction patterns. Examine how gateways abstract server locations and enable dynamic routing.
+- **Goal**: Document gateway discovery patterns and compare complexity vs. direct connections
+- **Acceptance Criteria**:
+  - Complete inventory of gateway discovery mechanisms
+  - Registry/catalog schema examples
+  - Dynamic routing capabilities
+  - Comparison matrix with direct connection approach
+- **Evidence Requirements**:
+  - Gateway architecture patterns from similar protocols
+  - Service mesh discovery patterns
+  - API gateway implementation examples
+- **Execution Skill**: Generic research execution with architecture analysis
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `discovery-gateway.md`: Detailed analysis document
+  - Architecture diagrams in `diagrams/discovery/`
+- **Verification**: Evidence covers service registry patterns with routing examples
+
+#### Task 1.3: Discovery Synthesis
+- **Summary**: Synthesize discovery findings into comparative analysis
+- **Description**: Compare direct and gateway discovery approaches across dimensions of complexity, flexibility, security, and operational overhead. Identify trade-offs and use-case fit.
+- **Goal**: Provide clear guidance on when each discovery approach is appropriate
+- **Acceptance Criteria**:
+  - Comparison matrix across 5+ evaluation criteria
+  - Security implications clearly articulated
+  - Use-case recommendations
+  - Migration considerations
+- **Evidence Requirements**: Findings from Tasks 1.1 and 1.2
+- **Execution Skill**: research-synthesis
+- **Dependencies**: Tasks 1.1, 1.2 (synthesis task)
+- **Expected Outputs**:
+  - `discovery-comparison.md`: Comparative analysis
+  - Decision matrix spreadsheet
+- **Verification**: All criteria from dependent tasks addressed in synthesis
+
+### Workstream 2: Authorization & Security
+**Focus**: Authentication, authorization, and security models in both approaches
+
+#### Task 2.1: Direct Connection Authorization Analysis
+- **Summary**: Analyze authorization mechanisms in direct MCP connections
+- **Description**: Research how direct client-server connections handle authentication, authorization, credential management, and security boundaries. Examine transport security, token handling, and access control patterns.
+- **Goal**: Document complete authorization lifecycle for direct connections
+- **Acceptance Criteria**:
+  - Authentication mechanisms enumerated
+  - Authorization models documented
+  - Credential storage and rotation patterns
+  - Security boundary analysis
+  - Trust model documentation
+- **Evidence Requirements**:
+  - MCP security specification sections
+  - Client credential management examples
+  - Transport security requirements
+- **Execution Skill**: Generic research execution with security focus
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `authorization-direct.md`: Security analysis document
+  - Threat model diagram
+- **Verification**: Covers authentication, authorization, and credential lifecycle
+
+#### Task 2.2: Gateway-Based Authorization Analysis
+- **Summary**: Analyze authorization mechanisms in gateway architectures
+- **Description**: Research centralized authorization patterns including gateway authentication, token brokering, credential federation, and centralized policy enforcement. Examine how gateways enable unified security policies across multiple backend servers.
+- **Goal**: Document gateway authorization patterns and centralized security benefits
+- **Acceptance Criteria**:
+  - Gateway authentication mechanisms
+  - Token brokering and federation patterns
+  - Centralized policy enforcement capabilities
+  - Identity propagation to backend servers
+  - Security boundary analysis
+- **Evidence Requirements**:
+  - API gateway security patterns
+  - OAuth2/OIDC gateway implementations
+  - Service mesh security examples
+- **Execution Skill**: Generic research execution with security architecture focus
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `authorization-gateway.md`: Security analysis document
+  - Security flow diagrams
+- **Verification**: Covers centralized auth patterns with policy enforcement examples
+
+#### Task 2.3: Authorization Synthesis
+- **Summary**: Synthesize authorization findings into security comparison
+- **Description**: Compare security models, analyzing credential sprawl vs. centralization, trust boundaries, attack surfaces, and compliance implications. Provide recommendations for different security postures.
+- **Goal**: Clear security trade-off analysis between approaches
+- **Acceptance Criteria**:
+  - Security comparison matrix
+  - Attack surface analysis for both approaches
+  - Compliance consideration summary
+  - Credential management complexity comparison
+  - Recommendations by security requirement level
+- **Evidence Requirements**: Findings from Tasks 2.1 and 2.2
+- **Execution Skill**: research-synthesis
+- **Dependencies**: Tasks 2.1, 2.2 (synthesis task)
+- **Expected Outputs**:
+  - `authorization-comparison.md`: Security comparison
+  - Threat model comparison diagram
+- **Verification**: Security trade-offs explicitly documented with recommendations
+
+### Workstream 3: Operational Patterns
+**Focus**: Runtime behavior, connection management, and operational characteristics
+
+#### Task 3.1: Direct Connection Operations Analysis
+- **Summary**: Analyze operational characteristics of direct connections
+- **Description**: Research connection pooling, lifecycle management, failure handling, retry logic, and client-side complexity in direct connection scenarios. Examine resource consumption and scaling patterns.
+- **Goal**: Document operational patterns and client-side responsibilities
+- **Acceptance Criteria**:
+  - Connection lifecycle documentation
+  - Failure modes and recovery patterns
+  - Client-side resource requirements
+  - Scaling characteristics
+  - Load balancing approaches (if applicable)
+- **Evidence Requirements**:
+  - MCP connection lifecycle specification
+  - Client implementation examples
+  - Connection pool patterns
+- **Execution Skill**: Generic research execution
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `operations-direct.md`: Operational analysis
+  - Sequence diagrams for key scenarios
+- **Verification**: Covers connection lifecycle and failure handling comprehensively
+
+#### Task 3.2: Gateway-Based Operations Analysis
+- **Summary**: Analyze operational characteristics of gateway architectures
+- **Description**: Research gateway connection management, routing algorithms, load balancing, circuit breaking, and failover capabilities. Examine how gateways abstract operational complexity from clients.
+- **Goal**: Document gateway operational patterns and complexity trade-offs
+- **Acceptance Criteria**:
+  - Gateway connection management patterns
+  - Load balancing and routing algorithms
+  - Circuit breaking and failover mechanisms
+  - Backend server health monitoring
+  - Operational complexity assessment
+- **Evidence Requirements**:
+  - API gateway operational patterns
+  - Service mesh examples
+  - Load balancer architectures
+- **Execution Skill**: Generic research execution with operations focus
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `operations-gateway.md`: Operational analysis
+  - Architecture diagrams showing operational flows
+- **Verification**: Covers routing, load balancing, and failure management
+
+#### Task 3.3: Operations Synthesis
+- **Summary**: Synthesize operational findings into complexity comparison
+- **Description**: Compare operational models analyzing where complexity lives (client vs. gateway), failure domain boundaries, scaling characteristics, and resource requirements. Provide recommendations based on operational maturity.
+- **Goal**: Clear operational trade-off analysis
+- **Acceptance Criteria**:
+  - Complexity comparison (client vs. infrastructure)
+  - Failure domain analysis
+  - Scaling characteristics comparison
+  - Resource requirement estimates
+  - Operational maturity recommendations
+- **Evidence Requirements**: Findings from Tasks 3.1 and 3.2
+- **Execution Skill**: research-synthesis
+- **Dependencies**: Tasks 3.1, 3.2 (synthesis task)
+- **Expected Outputs**:
+  - `operations-comparison.md`: Operational comparison
+  - Complexity distribution analysis
+- **Verification**: Trade-offs between client and infrastructure complexity documented
+
+### Workstream 4: Observability & Debugging
+**Focus**: Monitoring, logging, tracing, and debugging capabilities
+
+#### Task 4.1: Direct Connection Observability Analysis
+- **Summary**: Analyze observability in direct connection architectures
+- **Description**: Research distributed logging challenges, client-side monitoring requirements, debugging complexity, and correlation across multiple direct connections. Examine instrumentation requirements and observability tooling.
+- **Goal**: Document observability capabilities and limitations of direct connections
+- **Acceptance Criteria**:
+  - Logging and tracing patterns
+  - Client-side monitoring requirements
+  - Debugging workflow documentation
+  - Correlation challenges across connections
+  - Instrumentation requirements
+- **Evidence Requirements**:
+  - MCP diagnostic capabilities
+  - Client logging implementations
+  - Distributed tracing patterns
+- **Execution Skill**: Generic research execution
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `observability-direct.md`: Observability analysis
+  - Sample monitoring dashboards
+- **Verification**: Covers logging, tracing, and debugging workflows
+
+#### Task 4.2: Gateway-Based Observability Analysis
+- **Summary**: Analyze observability in gateway architectures
+- **Description**: Research centralized logging, unified tracing, gateway-level metrics, and simplified debugging through request aggregation. Examine how gateways enable unified observability across backend servers.
+- **Goal**: Document observability benefits of centralized gateway approach
+- **Acceptance Criteria**:
+  - Centralized logging capabilities
+  - Unified tracing across backend services
+  - Gateway metrics and dashboards
+  - Simplified debugging workflows
+  - Correlation and aggregation patterns
+- **Evidence Requirements**:
+  - API gateway observability features
+  - Service mesh tracing examples
+  - Centralized logging architectures
+- **Execution Skill**: Generic research execution with observability focus
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `observability-gateway.md`: Observability analysis
+  - Example dashboard configurations
+- **Verification**: Covers centralized observability patterns comprehensively
+
+#### Task 4.3: Observability Synthesis
+- **Summary**: Synthesize observability findings into comparison
+- **Description**: Compare observability capabilities analyzing distributed vs. centralized approaches, debugging complexity, operational visibility, and troubleshooting workflows. Provide recommendations based on operational requirements.
+- **Goal**: Clear observability trade-off analysis
+- **Acceptance Criteria**:
+  - Observability comparison matrix
+  - Debugging workflow comparison
+  - Tooling requirements analysis
+  - Operational visibility comparison
+  - Recommendations by scale and complexity
+- **Evidence Requirements**: Findings from Tasks 4.1 and 4.2
+- **Execution Skill**: research-synthesis
+- **Dependencies**: Tasks 4.1, 4.2 (synthesis task)
+- **Expected Outputs**:
+  - `observability-comparison.md`: Observability comparison
+  - Debugging workflow diagrams
+- **Verification**: Trade-offs in operational visibility clearly documented
+
+### Workstream 5: Portability & Migration
+**Focus**: Client portability, migration paths, and ecosystem flexibility
+
+#### Task 5.1: Direct Connection Portability Analysis
+- **Summary**: Analyze portability in direct connection models
+- **Description**: Research client-side coupling, server discovery portability, configuration management across environments, and migration complexity when changing server implementations or locations.
+- **Goal**: Document portability characteristics and coupling points
+- **Acceptance Criteria**:
+  - Client-server coupling analysis
+  - Configuration portability patterns
+  - Migration scenarios documented
+  - Environment-specific challenges
+  - Vendor/implementation lock-in assessment
+- **Evidence Requirements**:
+  - MCP client implementations
+  - Configuration management patterns
+  - Migration case studies (if available)
+- **Execution Skill**: Generic research execution
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `portability-direct.md`: Portability analysis
+  - Migration scenario documentation
+- **Verification**: Covers coupling points and migration paths
+
+#### Task 5.2: Gateway-Based Portability Analysis
+- **Summary**: Analyze portability in gateway architectures
+- **Description**: Research client decoupling through gateway abstraction, backend server flexibility, centralized migration management, and gateway portability itself. Examine how gateways enable backend changes without client modifications.
+- **Goal**: Document portability benefits and gateway-specific concerns
+- **Acceptance Criteria**:
+  - Client decoupling analysis
+  - Backend server portability
+  - Gateway migration considerations
+  - Abstraction layer benefits
+  - Gateway vendor lock-in assessment
+- **Evidence Requirements**:
+  - API gateway migration patterns
+  - Service abstraction examples
+  - Gateway portability studies
+- **Execution Skill**: Generic research execution
+- **Dependencies**: None (independent task)
+- **Expected Outputs**:
+  - `portability-gateway.md`: Portability analysis
+  - Abstraction layer documentation
+- **Verification**: Covers client decoupling and backend flexibility
+
+#### Task 5.3: Portability Synthesis
+- **Summary**: Synthesize portability findings into migration comparison
+- **Description**: Compare portability and migration characteristics, analyzing client coupling vs. gateway coupling, backend flexibility, and overall ecosystem evolution. Provide recommendations for different change frequency scenarios.
+- **Goal**: Clear portability and migration trade-off analysis
+- **Acceptance Criteria**:
+  - Portability comparison matrix
+  - Migration complexity comparison
+  - Lock-in assessment for both approaches
+  - Evolution flexibility analysis
+  - Recommendations by change frequency
+- **Evidence Requirements**: Findings from Tasks 5.1 and 5.2
+- **Execution Skill**: research-synthesis
+- **Dependencies**: Tasks 5.1, 5.2 (synthesis task)
+- **Expected Outputs**:
+  - `portability-comparison.md`: Portability comparison
+  - Migration path diagrams
+- **Verification**: Lock-in and evolution trade-offs documented
+
+### Workstream 6: Final Synthesis
+**Focus**: Overall architectural recommendation
+
+#### Task 6.1: Cross-Workstream Synthesis
+- **Summary**: Synthesize all findings into comprehensive architectural guidance
+- **Description**: Integrate findings across all five dimensions (discovery, authorization, operations, observability, portability) to provide holistic architectural recommendations. Create decision framework based on organizational maturity, scale, security requirements, and operational capabilities.
+- **Goal**: Provide actionable architectural guidance for MCP integration approach selection
+- **Acceptance Criteria**:
+  - Integrated comparison across all dimensions
+  - Decision framework with clear criteria
+  - Use-case based recommendations
+  - Migration path guidance (direct → gateway or vice versa)
+  - Cost-benefit analysis summary
+- **Evidence Requirements**: All synthesis tasks from Workstreams 1-5
+- **Execution Skill**: research-synthesis
+- **Dependencies**: Tasks 1.3, 2.3, 3.3, 4.3, 5.3 (final synthesis)
+- **Expected Outputs**:
+  - `architectural-recommendation.md`: Final recommendation document
+  - Decision framework matrix
+  - Use-case mapping guide
+- **Verification**: All five dimensions integrated with actionable recommendations
+
+## Execution Plan
+
+### Parallelization Strategy
+- **Wave 1** (Fully Parallel): Tasks 1.1, 1.2, 2.1, 2.2, 3.1, 3.2, 4.1, 4.2, 5.1, 5.2
+  - All primary research tasks are independent and can execute concurrently
+- **Wave 2** (Parallel after Wave 1): Tasks 1.3, 2.3, 3.3, 4.3, 5.3
+  - Workstream synthesis tasks depend only on their workstream's research tasks
+  - Can execute in parallel with each other
+- **Wave 3** (After Wave 2): Task 6.1
+  - Final synthesis depends on all workstream syntheses
+
+### Evidence Policy
+- All claims must be supported by primary source evidence (specifications, code, documentation)
+- Architecture patterns should reference real implementations or established patterns
+- Security analysis must include threat modeling, not just feature enumeration
+- Performance claims require measurement methodology or published benchmarks
+- Comparison matrices must show evidence sources for each cell
+
+### Quality Gates
+- Each research task must provide evidence that meets the specified evidence requirements
+- Each synthesis task must explicitly address all acceptance criteria from dependent tasks
+- Final synthesis must integrate findings across all five dimensions
+- All documents must be written in clear, neutral technical language
+- Architecture diagrams must follow consistent notation
+
+### Document Structure
+All analysis documents follow this structure:
+1. Executive Summary
+2. Scope and Methodology
+3. Findings (with evidence citations)
+4. Analysis
+5. Implications
+6. References
+
+All comparison documents follow this structure:
+1. Executive Summary
+2. Comparison Matrix
+3. Trade-off Analysis
+4. Recommendations
+5. Decision Framework
+6. References
+
+## Provider Mapping
+This is a provider-neutral research plan. No external system initialization is required for this research execution. All outputs will be stored in the local filesystem under the research workspace directory structure.
+
+## Approval Checkpoint
+This research plan is ready for review. Upon approval, research execution will proceed following the parallelization strategy outlined above.

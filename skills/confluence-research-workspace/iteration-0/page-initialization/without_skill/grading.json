@@ -1,0 +1,15 @@
+{
+  "eval_id": 1,
+  "eval_name": "page-initialization",
+  "variant": "without_skill",
+  "total_assertions": 5,
+  "passed_assertions": 1,
+  "pass_rate": 0.2,
+  "expectations": [
+    {
+      "text": "Summary",
+      "passed": false,
+      "evidence": "Only partial conventions applied. Critical failures: no discovery (would create duplicates), no content preservation (would overwrite), no verification, ~85% capability gap"
+    }
+  ]
+}

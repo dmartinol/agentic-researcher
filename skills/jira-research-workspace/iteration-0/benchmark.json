@@ -1,0 +1,102 @@
+{
+  "skill_name": "jira-research",
+  "iteration": 0,
+  "timestamp": "2026-09-23T00:35:00Z",
+  "configurations": [
+    {
+      "name": "with_skill",
+      "total_evals": 3,
+      "total_assertions": 13,
+      "passed_assertions": 13,
+      "pass_rate": 1.0,
+      "mean_tokens": 29881,
+      "stddev_tokens": 3856.5456045533806,
+      "mean_duration_seconds": 213.29333333333332,
+      "stddev_duration_seconds": 43.30650336073478
+    },
+    {
+      "name": "without_skill",
+      "total_evals": 3,
+      "total_assertions": 13,
+      "passed_assertions": 6,
+      "pass_rate": 0.46153846153846156,
+      "mean_tokens": 36089.333333333336,
+      "stddev_tokens": 7207.618839348633,
+      "mean_duration_seconds": 275.28999999999996,
+      "stddev_duration_seconds": 90.50762564557749
+    }
+  ],
+  "delta": {
+    "pass_rate_delta": 0.5384615384615384,
+    "pass_rate_improvement": "+53.8%",
+    "token_delta": -6208.333333333336,
+    "token_improvement": "-17.2%",
+    "duration_delta": -61.99666666666664,
+    "duration_improvement": "-22.5%"
+  },
+  "eval_details": [
+    {
+      "eval_name": "jira-mapping",
+      "with_skill": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0,
+        "tokens": 33153,
+        "duration_seconds": 236.98
+      },
+      "without_skill": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0,
+        "tokens": 44410,
+        "duration_seconds": 356.15
+      },
+      "delta": {
+        "pass_rate": 0.0,
+        "improvement": "Tied"
+      }
+    },
+    {
+      "eval_name": "ambiguous-issue",
+      "with_skill": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0,
+        "tokens": 25629,
+        "duration_seconds": 163.31
+      },
+      "without_skill": {
+        "passed": 1,
+        "total": 4,
+        "pass_rate": 0.25,
+        "tokens": 31772,
+        "duration_seconds": 177.52
+      },
+      "delta": {
+        "pass_rate": 0.75,
+        "improvement": "+75%"
+      }
+    },
+    {
+      "eval_name": "closure-transition",
+      "with_skill": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0,
+        "tokens": 30861,
+        "duration_seconds": 239.59
+      },
+      "without_skill": {
+        "passed": 0,
+        "total": 4,
+        "pass_rate": 0.0,
+        "tokens": 32086,
+        "duration_seconds": 292.2
+      },
+      "delta": {
+        "pass_rate": 1.0,
+        "improvement": "+100%"
+      }
+    }
+  ]
+}

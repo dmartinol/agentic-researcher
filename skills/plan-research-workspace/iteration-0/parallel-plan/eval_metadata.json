@@ -1,0 +1,7 @@
+{
+  "eval_id": 1,
+  "eval_name": "parallel-plan",
+  "prompt": "Plan research comparing direct MCP-server connections with a centralized gateway. Cover discovery, authorization, operations, observability and portability.",
+  "expected_output": "Produces provider-neutral Workstreams/Research Tasks with meaningful acceptance/evidence criteria, identifies independent tasks that can run in parallel, and adds an explicit dependent synthesis task.",
+  "assertions": []
+}

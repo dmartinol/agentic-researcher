@@ -1,0 +1,30 @@
+{
+  "eval_id": 3,
+  "eval_name": "routine-episode",
+  "variant": "without_skill",
+  "total_assertions": 4,
+  "passed_assertions": 0,
+  "pass_rate": 0.0,
+  "expectations": [
+    {
+      "text": "Does not create an episode for routine tool calls without investigative value",
+      "passed": false,
+      "evidence": "Created episode file '2026-09-22-research-session.json' containing all tool calls, which is exactly what should NOT have been done"
+    },
+    {
+      "text": "Applies the skill's criteria that episodes should only capture trajectories with reusable investigative value",
+      "passed": false,
+      "evidence": "Failed to apply criteria - stored routine tool calls (3 searches + 2 page views) as an episode despite lacking investigative value"
+    },
+    {
+      "text": "Does not record chain-of-thought or conversation transcripts as episodes",
+      "passed": false,
+      "evidence": "Recorded tool call sequence as structured data (activities array with tool names and sequence numbers)"
+    },
+    {
+      "text": "Explains decision (if declining)",
+      "passed": false,
+      "evidence": "N/A - did not decline, incorrectly created the episode"
+    }
+  ]
+}

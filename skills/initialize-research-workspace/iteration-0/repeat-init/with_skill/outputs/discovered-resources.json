@@ -1,0 +1,135 @@
+{
+  "ticketing": {
+    "provider": "jira",
+    "discovered_items": [
+      {
+        "id": "RESEARCH-123",
+        "type": "Epic",
+        "title": "Agentic Researcher Evaluation",
+        "status": "To Do",
+        "url": "https://jira.example.com/browse/RESEARCH-123",
+        "decision": "REUSED",
+        "verified": true
+      },
+      {
+        "id": "RESEARCH-124",
+        "type": "Story",
+        "title": "Setup Research Environment",
+        "status": "To Do",
+        "parent": "RESEARCH-123",
+        "url": "https://jira.example.com/browse/RESEARCH-124",
+        "decision": "REUSED",
+        "verified": true
+      },
+      {
+        "id": "RESEARCH-125",
+        "type": "Story",
+        "title": "Define Research Questions",
+        "status": "To Do",
+        "parent": "RESEARCH-123",
+        "url": "https://jira.example.com/browse/RESEARCH-125",
+        "decision": "REUSED",
+        "verified": true
+      },
+      {
+        "id": "RESEARCH-126",
+        "type": "Task",
+        "title": "Initial Investigation",
+        "status": "To Do",
+        "parent": "RESEARCH-123",
+        "expected_parent": "RESEARCH-124",
+        "url": "https://jira.example.com/browse/RESEARCH-126",
+        "decision": "FLAGGED",
+        "reason": "Hierarchy mismatch - incorrect parent linkage",
+        "verified": true
+      }
+    ],
+    "summary": {
+      "total_discovered": 4,
+      "reused": 3,
+      "flagged": 1,
+      "created": 0
+    }
+  },
+  "document_store": {
+    "provider": "confluence",
+    "discovered_items": [
+      {
+        "id": "98765",
+        "type": "Space",
+        "title": "Research Projects",
+        "url": "https://confluence.example.com/display/RESEARCH",
+        "decision": "REUSED",
+        "verified": true
+      },
+      {
+        "id": "12345",
+        "type": "Page",
+        "title": "Agentic Researcher Evaluation",
+        "parent_space": "98765",
+        "version": 3,
+        "last_modified": "2026-09-22",
+        "url": "https://confluence.example.com/pages/viewpage.action?pageId=12345",
+        "decision": "REUSED",
+        "verified": true
+      },
+      {
+        "id": "12346",
+        "type": "Page",
+        "title": "Research Plan",
+        "parent_page": "12345",
+        "version": 2,
+        "url": "https://confluence.example.com/pages/viewpage.action?pageId=12346",
+        "decision": "REUSED",
+        "verified": true
+      },
+      {
+        "id": "12347",
+        "type": "Page",
+        "title": "Initial Findings",
+        "parent_space": "98765",
+        "expected_parent_page": "12345",
+        "url": "https://confluence.example.com/pages/viewpage.action?pageId=12347",
+        "decision": "FLAGGED",
+        "reason": "Hierarchy mismatch - found in root space instead of under research page",
+        "verified": true
+      }
+    ],
+    "summary": {
+      "total_discovered": 4,
+      "reused": 3,
+      "flagged": 1,
+      "created": 0
+    }
+  },
+  "repository": {
+    "root": "/Users/dmartino/projects/AI/ai5/researches/agentic-researcher",
+    "discovered_artifacts": [
+      "skills/initialize-research-workspace/",
+      "docs/subsystem-capabilities.md",
+      "templates/STATE.md"
+    ],
+    "created_artifacts": [
+      "STATE.md"
+    ],
+    "summary": {
+      "existing_preserved": 3,
+      "new_created": 1
+    }
+  },
+  "execution_summary": {
+    "idempotency": "ACHIEVED",
+    "duplicates_created": 0,
+    "overwrites": 0,
+    "ambiguities_flagged": 2,
+    "workflow_transitions": 0,
+    "safety_guarantees": [
+      "Discovery before creation",
+      "Reuse over duplication",
+      "Preserved existing content",
+      "Reported ambiguities",
+      "Verified all resources",
+      "No unauthorized mutations"
+    ]
+  }
+}

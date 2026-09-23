@@ -1,0 +1,25 @@
+{
+  "eval_id": 3,
+  "eval_name": "blocked-dependency",
+  "variant": "without_skill",
+  "total_assertions": 3,
+  "passed_assertions": 0,
+  "pass_rate": 0.0,
+  "expectations": [
+    {
+      "text": "Does not silently fill the missing dependency with general knowledge",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Identifies the missing input",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Blocks or limits synthesis until the dependency is complete or explicitly waived",
+      "passed": false,
+      "evidence": "Expected: False"
+    }
+  ]
+}

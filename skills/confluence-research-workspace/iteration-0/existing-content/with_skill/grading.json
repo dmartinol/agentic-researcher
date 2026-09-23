@@ -1,0 +1,15 @@
+{
+  "eval_id": 2,
+  "eval_name": "existing-content",
+  "variant": "with_skill",
+  "total_assertions": 3,
+  "passed_assertions": 3,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Summary",
+      "passed": true,
+      "evidence": "Content preserved (all 5 paragraphs), only structural updates, no empty template - 100% success"
+    }
+  ]
+}
