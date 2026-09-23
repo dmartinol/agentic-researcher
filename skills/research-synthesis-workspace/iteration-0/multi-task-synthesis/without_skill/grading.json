@@ -1,0 +1,39 @@
+{
+  "eval_id": 1,
+  "eval_name": "multi-task-synthesis",
+  "configuration": "without_skill",
+  "total_assertions": 6,
+  "passed_assertions": 6,
+  "expectations": [
+    {
+      "text": "Retrieves durable claims and sources from research memory (doesn't fabricate from conversation)",
+      "passed": true,
+      "evidence": "Response cites claim IDs (claim_kafka_throughput, claim_rabbitmq_throughput, claim_sqs_encryption, claim_kafka_zookeeper_removed, claim_rabbitmq_monitoring) and sources throughout. All evidence traced to research memory artifacts."
+    },
+    {
+      "text": "Retrieves dependency task outputs (discovery, security, operations)",
+      "passed": true,
+      "evidence": "Synthesis references RT-001, RT-002, RT-003 findings. Performance section cites benchmark claims, security section references RT-002 security assessment, operations section discusses monitoring and complexity from RT-003."
+    },
+    {
+      "text": "Groups evidence by decision criterion (e.g., security, performance, operations)",
+      "passed": true,
+      "evidence": "Clear structure: '1. Performance Assessment', '2. Security Posture Evaluation', '3. Operational Complexity & Monitoring'. Each section analyzes all three options against that specific criterion."
+    },
+    {
+      "text": "Distinguishes between established evidence (Verified), reported assertions, and unresolved propositions",
+      "passed": true,
+      "evidence": "Response marks evidence quality: '[VERIFIED]' labels on kafka_throughput, rabbitmq_throughput, sqs_encryption, kafka_zookeeper_removed claims. '[REPORTED]' on rabbitmq_monitoring. Distinguishes 'Not Specified' for SQS throughput (acknowledged gap)."
+    },
+    {
+      "text": "Links conclusions back to specific claim IDs and source evidence",
+      "passed": true,
+      "evidence": "All major claims cited with evidence IDs and sources. Examples: 'claim_kafka_throughput', 'Source: Apache Kafka Performance Benchmarks 2026', 'Evidence: claim_sqs_encryption', 'Evidence: claim_rabbitmq_monitoring'."
+    },
+    {
+      "text": "Preserves limitations and unknowns explicitly (doesn't hide gaps)",
+      "passed": true,
+      "evidence": "Response acknowledges gaps: 'Amazon SQS: Not Specified' for throughput, 'No built-in encryption at rest [SECURITY GAP IDENTIFIED]' for RabbitMQ, 'No evidence found for encryption at rest capability', 'limited to AWS (no multi-cloud portability)'. Limitations surfaced, not hidden."
+    }
+  ]
+}

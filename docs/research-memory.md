@@ -79,22 +79,43 @@ Never convert an assumption into a fact merely because it appeared in previous a
 
 ## Provenance
 
-Maintain the chain:
+Maintain the evidence chain and claim relationships explicitly:
 
-```text
-CLAIM
-  -> supported by EVIDENCE
-  -> obtained from SOURCE
-  -> observed at TIME
+```mermaid
+flowchart LR
+    SRC[Source] -->|provides| EV[Evidence]
+    EV -->|supports| C1[Claim]
+    EV -. contradicts .-> C1
+    TM[Observation time] --> EV
+
+    C1 -->|contradicts| C2[Claim]
+    C1 -->|supersedes| C3[Claim]
+    C1 -->|depends on| C4[Claim]
+
+    C1 --> SYN[Synthesis]
+    C2 --> SYN
+    C3 --> SYN
+    C4 --> SYN
+    SYN --> OUT[Report / decision]
 ```
 
-Where useful, maintain relationships such as:
+The canonical filesystem keeps those durable objects inspectable and versionable:
 
-```text
-CLAIM -> contradicts -> CLAIM
-CLAIM -> supersedes -> CLAIM
-CLAIM -> depends-on -> CLAIM
+```mermaid
+flowchart TB
+    RM[research/memory/] --> CL[claims/]
+    RM --> SO[sources/]
+    RM --> EP[episodes/]
+    CL --> IDX[(Derived index / .cache)]
+    SO --> IDX
+    EP --> IDX
+    IDX -. retrieval only .-> AG[Agent]
+    CL --> AG
+    SO --> AG
+    EP --> AG
 ```
+
+Derived indexes aid retrieval but never replace the canonical research files.
 
 Research conclusions must be traceable back to evidence.
 

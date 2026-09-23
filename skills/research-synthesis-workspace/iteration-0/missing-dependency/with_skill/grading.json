@@ -1,0 +1,29 @@
+{
+  "eval_id": 3,
+  "eval_name": "missing-dependency",
+  "configuration": "with_skill",
+  "total_assertions": 4,
+  "passed_assertions": 4,
+  "expectations": [
+    {
+      "text": "Does NOT fabricate security findings from general knowledge or conversation",
+      "passed": true,
+      "evidence": "Security Criterion section explicitly states: 'Status: BLOCKED - No Evidence Available' and 'Cannot Conclude: Comparative security posture, Compliance requirements...'. No general knowledge about PostgreSQL/MongoDB security used to fill the gap. Only states what cannot be determined."
+    },
+    {
+      "text": "Identifies that the security dependency is missing",
+      "passed": true,
+      "evidence": "Prominently identified at top: 'DEPENDENCY BLOCKER > Missing Input: RT-102 Security Research (IN PROGRESS)'. Lists 5 specific questions that cannot be answered. Security criterion explicitly marked 'RT-102 INCOMPLETE'."
+    },
+    {
+      "text": "Either blocks synthesis OR explicitly limits scope to exclude security concerns",
+      "passed": true,
+      "evidence": "Synthesis explicitly blocks: 'RECOMMENDATION: DO NOT PROCEED with a database selection decision until RT-102 is complete.' Title states 'INCOMPLETE SYNTHESIS: Database Selection'. Conclusions explicitly scoped to available criteria only: 'PARTIAL CONCLUSIONS (From Available Evidence Only)'."
+    },
+    {
+      "text": "Does NOT claim completeness when dependency is missing",
+      "passed": true,
+      "evidence": "Title: 'INCOMPLETE SYNTHESIS'. Section 'INCOMPLETE RECOMMENDATION' explicitly states limitations. 'What We Cannot Conclude (1 of 3 Criteria)' section clearly identifies the gap. Recommendation is 'DO NOT PROCEED', not a complete recommendation."
+    }
+  ]
+}

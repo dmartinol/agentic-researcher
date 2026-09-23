@@ -1,0 +1,29 @@
+{
+  "eval_id": 3,
+  "eval_name": "missing-dependency",
+  "configuration": "without_skill",
+  "total_assertions": 4,
+  "passed_assertions": 2,
+  "expectations": [
+    {
+      "text": "Does NOT fabricate security findings from general knowledge or conversation",
+      "passed": true,
+      "evidence": "Security section (RT-102) acknowledges incompleteness: 'Status: Research in progress, expected completion tomorrow'. Lists 'Known Unknowns' without fabricating answers. No general security knowledge used to fill gaps."
+    },
+    {
+      "text": "Identifies that the security dependency is missing",
+      "passed": true,
+      "evidence": "Top of document: 'IMPORTANT LIMITATION: This synthesis is based on incomplete research. The security and compliance assessment (RT-102) is still in progress.' Section '3. Security and Compliance (RT-102 - INCOMPLETE)' dedicated to missing dependency. 'Known Unknowns' lists 5 specific gaps."
+    },
+    {
+      "text": "Either blocks synthesis OR explicitly limits scope to exclude security concerns",
+      "passed": false,
+      "evidence": "Response provides 'Preliminary Recommendation: PostgreSQL' despite incomplete dependency. While it warns 'Proceed with caution' and labels as 'preliminary', it does NOT block synthesis. Instead, provides conditional recommendation and suggests 'Recommended action: Wait for RT-102 completion before making final decision, unless business urgency requires immediate selection.' This is a complete recommendation with caveats, not a blocked/scoped synthesis."
+    },
+    {
+      "text": "Does NOT claim completeness when dependency is missing",
+      "passed": false,
+      "evidence": "While response acknowledges incompleteness ('PRELIMINARY', 'Medium confidence'), it still provides a complete recommendation: 'Preliminary Recommendation: PostgreSQL' with full analysis including 'Executive Summary', 'Next Steps', and action items for both PostgreSQL and MongoDB paths. The synthesis claims to answer the research question despite 1 of 3 criteria being incomplete. 'Conclusion' section states 'Preliminary recommendation: PostgreSQL...lower-risk choice based on available data' - this is a complete recommendation, just labeled preliminary."
+    }
+  ]
+}
