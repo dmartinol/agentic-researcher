@@ -4,11 +4,12 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PACKAGE = ROOT / "agentic-researcher"
 
 
 def test_manifests_are_json():
     for name in ("plugin.json", "mcp.json"):
-        json.loads((ROOT / name).read_text(encoding="utf-8"))
+        json.loads((PACKAGE / name).read_text(encoding="utf-8"))
 
 
 def test_validator_passes():
@@ -24,4 +25,4 @@ def test_validator_passes():
 
 def test_memory_templates_exist():
     for name in ("claim.md", "source.md", "episode.md"):
-        assert (ROOT / "templates" / "memory" / name).is_file()
+        assert (PACKAGE / "templates" / "memory" / name).is_file()
