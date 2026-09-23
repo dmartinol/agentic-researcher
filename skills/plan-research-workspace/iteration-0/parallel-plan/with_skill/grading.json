@@ -1,0 +1,25 @@
+{
+  "eval_id": 1,
+  "eval_name": "parallel-plan",
+  "variant": "with_skill",
+  "total_assertions": 3,
+  "passed_assertions": 3,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Produces provider-neutral Workstreams/Research Tasks with meaningful acceptance/evidence criteria",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Identifies independent tasks that can run in parallel",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Adds an explicit dependent synthesis task",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

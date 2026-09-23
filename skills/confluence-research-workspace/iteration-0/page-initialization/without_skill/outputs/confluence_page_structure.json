@@ -1,0 +1,125 @@
+{
+  "intended_pages": [
+    {
+      "title": "Research: Multi-cloud Container Orchestration Architecture",
+      "type": "research_output",
+      "parent": {
+        "type": "root_page",
+        "resolution": "Would need to resolve from RESEARCH.md configuration",
+        "note": "Without skill, unclear how to find/verify root page"
+      },
+      "content_sections": [
+        {
+          "section": "Header",
+          "content": "Basic page title - no emoji or visual markers without skill guidance"
+        },
+        {
+          "section": "Metadata",
+          "content": "Author, date - but unclear on exact format"
+        },
+        {
+          "section": "Work Item Link",
+          "content": "Plain URL link to Jira - don't know card presentation format",
+          "example": "Related Jira: https://jira.example.com/browse/ARCH-235",
+          "gap": "Skill would use Confluence rich card/macro for Jira link"
+        },
+        {
+          "section": "Objective",
+          "content": "Copied from RESEARCH.md objective section"
+        },
+        {
+          "section": "Scope",
+          "subsections": [
+            "Included items from RESEARCH.md",
+            "Excluded items from RESEARCH.md"
+          ]
+        },
+        {
+          "section": "Expected Outputs",
+          "content": "Copied from RESEARCH.md"
+        },
+        {
+          "section": "Research Findings",
+          "content": "Placeholder section for future findings",
+          "note": "Without skill, unclear on proper evidence labeling format"
+        }
+      ],
+      "missing_elements": [
+        "Goal/Purpose section with specific format",
+        "Visual markers for page type (🔬 research task)",
+        "Proper Confluence page hierarchy",
+        "Navigation elements for container pages",
+        "Evidence policy integration",
+        "Source reference format"
+      ]
+    }
+  ],
+  "api_calls_needed": [
+    {
+      "step": 1,
+      "action": "authenticate",
+      "tool": "mcp__atlassian__* (unavailable)",
+      "status": "blocked"
+    },
+    {
+      "step": 2,
+      "action": "resolve_space_and_root",
+      "parameters": {
+        "space": "from RESEARCH.md configuration",
+        "root_page": "from RESEARCH.md configuration"
+      },
+      "tool": "mcp__atlassian__get_page or similar",
+      "status": "blocked - no MCP tools"
+    },
+    {
+      "step": 3,
+      "action": "search_existing_pages",
+      "parameters": {
+        "cql": "title ~ 'Multi-cloud Container' AND space = 'ARCH'"
+      },
+      "purpose": "Discover/reuse existing pages before creation",
+      "tool": "mcp__atlassian__search_pages or similar",
+      "status": "blocked - would skip without skill guidance",
+      "risk": "May create duplicate pages"
+    },
+    {
+      "step": 4,
+      "action": "create_page",
+      "parameters": {
+        "space": "Architecture Decision Records",
+        "title": "Research: Multi-cloud Container Orchestration Architecture",
+        "parent_id": "123456789",
+        "content": "Generated from RESEARCH.md"
+      },
+      "tool": "mcp__atlassian__create_page",
+      "status": "blocked - no MCP tools"
+    },
+    {
+      "step": 5,
+      "action": "verify_page",
+      "checks": [
+        "page_id returned",
+        "title matches",
+        "parent is correct",
+        "version is 1 (new page)"
+      ],
+      "tool": "mcp__atlassian__get_page",
+      "status": "blocked - cannot verify"
+    }
+  ],
+  "execution_result": {
+    "status": "failed",
+    "reason": "No Atlassian MCP tools available",
+    "fallback": "Documented intended structure only",
+    "quality_impact": "high",
+    "gaps": [
+      "Cannot discover existing pages (risk of duplicates)",
+      "Cannot verify page properties",
+      "Missing project-specific conventions",
+      "No proper Jira card linking",
+      "No Goal/Purpose template",
+      "No visual markers/hierarchy",
+      "Cannot preserve existing content"
+    ]
+  }
+}

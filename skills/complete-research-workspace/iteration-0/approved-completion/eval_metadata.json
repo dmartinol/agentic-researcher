@@ -1,0 +1,31 @@
+{
+  "eval_id": 1,
+  "eval_name": "approved-completion",
+  "prompt": "Verification passed with no blockers. I explicitly approve completion of the research and closure of its configured work item.",
+  "assertions": [
+    {
+      "name": "resolves_exact_resources",
+      "description": "Resolves exact target resources (work items, documents) without guessing"
+    },
+    {
+      "name": "discovers_allowed_transitions",
+      "description": "Queries or discovers allowed transitions rather than assuming target states"
+    },
+    {
+      "name": "applies_provider_rules",
+      "description": "Applies configured provider-specific closure rules (Jira/Confluence conventions)"
+    },
+    {
+      "name": "records_final_output_reference",
+      "description": "Records a reference to the exact final research output/document"
+    },
+    {
+      "name": "mutates_only_after_approval",
+      "description": "Performs external mutations only after receiving explicit approval"
+    },
+    {
+      "name": "verifies_final_status",
+      "description": "Reads back and verifies final work item status after mutation"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "eval_id": 1,
+  "eval_name": "greenfield-init",
+  "variant": "without_skill",
+  "total_assertions": 7,
+  "passed_assertions": 3,
+  "pass_rate": 0.42857142857142855,
+  "expectations": [
+    {
+      "text": "Discovers before creating",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Creates only approved resources",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Records stable IDs/URLs",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Verifies mutations by reading back identity/hierarchy/metadata/links",
+      "passed": false,
+      "evidence": "Expected: False"
+    },
+    {
+      "text": "Updates state",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Does not start research work",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Does not close research work",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

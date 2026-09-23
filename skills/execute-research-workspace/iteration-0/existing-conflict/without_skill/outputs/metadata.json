@@ -1,0 +1,69 @@
+{
+  "evaluation": {
+    "scenario": "existing-conflict",
+    "mode": "baseline_without_skill",
+    "iteration": 0,
+    "date": "2026-09-22",
+    "timestamp": "2026-09-22T17:47:00Z"
+  },
+  "scenario_details": {
+    "conflict_type": "verified_old_vs_current_new",
+    "old_claim": {
+      "status": "verified",
+      "content": "capability X is unavailable",
+      "source": "older specification"
+    },
+    "new_claim": {
+      "status": "appears_to_support",
+      "content": "capability X is supported",
+      "source": "current specification"
+    }
+  },
+  "approach": {
+    "method": "ad_hoc_reasoning",
+    "skills_used": [],
+    "protocols_followed": [],
+    "heuristics_applied": [
+      "recency_bias",
+      "verification_status_weighting",
+      "safety_first"
+    ]
+  },
+  "outcomes": {
+    "decision": "lean_toward_current_with_verification_recommended",
+    "confidence": "low",
+    "uncertainty_flagged": true,
+    "memory_updated": false,
+    "conflict_resolved": false
+  },
+  "artifacts": [
+    "response.txt",
+    "decision_process.txt",
+    "observations.txt",
+    "summary.txt",
+    "metadata.json"
+  ],
+  "metrics": {
+    "total_artifacts": 5,
+    "decision_steps": 7,
+    "heuristics_used": 4,
+    "gaps_identified": 5,
+    "improvement_areas": 5
+  },
+  "comparison_notes": {
+    "baseline_characteristics": [
+      "no_systematic_protocol",
+      "high_uncertainty",
+      "defers_to_user_verification",
+      "no_memory_update_mechanism",
+      "transparent_but_inconclusive"
+    ],
+    "expected_skill_improvements": [
+      "structured_conflict_resolution",
+      "systematic_validation",
+      "memory_update_procedures",
+      "reduced_uncertainty",
+      "more_definitive_recommendations"
+    ]
+  }
+}

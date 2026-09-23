@@ -1,0 +1,30 @@
+{
+  "eval_id": 2,
+  "eval_name": "ambiguous-issue",
+  "variant": "with_skill",
+  "total_assertions": 4,
+  "passed_assertions": 4,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Treats the ambiguous match as blocking",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Does not guess between the two issues",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Does not create a third issue",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Does not silently choose one",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

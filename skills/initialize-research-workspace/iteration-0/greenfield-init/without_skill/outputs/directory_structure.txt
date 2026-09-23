@@ -1,0 +1,9 @@
+total 0
+drwxr-xr-x@ 2 dmartino  staff  64 Sep 22 18:02 memory
+drwxr-xr-x@ 2 dmartino  staff  64 Sep 22 18:02 reports
+
+/Users/dmartino/projects/AI/ai5/researches/agentic-researcher/research/memory:
+total 0
+
+/Users/dmartino/projects/AI/ai5/researches/agentic-researcher/research/reports:
+total 0

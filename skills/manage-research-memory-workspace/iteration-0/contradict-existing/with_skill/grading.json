@@ -1,34 +1,40 @@
 {
   "eval_id": 2,
   "eval_name": "contradict-existing",
-  "configuration": "with_skill",
-  "total_assertions": 5,
-  "passed_assertions": 5,
+  "variant": "with_skill",
+  "total_assertions": 6,
+  "passed_assertions": 6,
+  "pass_rate": 1.0,
   "expectations": [
     {
-      "text": "Preserves the existing claim (doesn't delete or overwrite it)",
+      "text": "Keeps the original claim intact rather than rewriting or deleting it",
       "passed": true,
-      "evidence": "claim_mcp_stateless.md still exists with original statement intact. Only metadata (label, updated_at, relationships) were modified."
+      "evidence": "Original claim_mcp_stateless file exists with original statement preserved"
     },
     {
-      "text": "Creates or updates the new atomic claim with proper provenance",
+      "text": "Creates or updates the contradictory claim as a separate atomic claim with provenance",
       "passed": true,
-      "evidence": "Created claim_2966263c-deb7-4e1a-933e-ed9446ccb954.md with proper frontmatter including sources, created_at, updated_at, and detailed evidence section."
+      "evidence": "Created new claim claim_2966263c-deb7-4e1a-933e-ed9446ccb954 with full provenance (sources, created_at, updated_at)"
     },
     {
-      "text": "Records an explicit contradiction or supersession relationship",
+      "text": "Explicitly records the contradiction or supersession relationship between claims",
       "passed": true,
-      "evidence": "Bidirectional relationships established: new claim has 'contradicts: [claim_mcp_stateless]', existing claim has 'contradicted_by: [claim_2966263c-deb7-4e1a-933e-ed9446ccb954]'."
+      "evidence": "Bidirectional relationship recorded: claim_mcp_stateless has 'contradicted_by' array with new claim ID; new claim has 'contradicts' array with original claim ID"
     },
     {
-      "text": "Updates evidence state without rewriting history",
+      "text": "Updates evidence state appropriately (e.g., to 'Conflicting') without rewriting history",
       "passed": true,
-      "evidence": "Changed existing claim label from 'Verified' to 'Conflicting', added notes explaining the contradiction. Original evidence and statement preserved."
+      "evidence": "Original claim label changed from 'Verified' to 'Conflicting', preserving created_at timestamp and adding Notes explaining the status change"
     },
     {
-      "text": "Does not invent numeric confidence scores",
+      "text": "Does not add numeric confidence scores or percentages",
       "passed": true,
-      "evidence": "Uses project evidence labels ('Verified', 'Conflicting') with no numeric confidence values anywhere in the claims."
+      "evidence": "No confidence scores found in either claim file"
+    },
+    {
+      "text": "Includes proper provenance tracking for both old and new claims",
+      "passed": true,
+      "evidence": "Both claims have sources arrays, created_at, updated_at fields, and detailed evidence/notes sections"
     }
   ]
 }

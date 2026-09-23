@@ -1,0 +1,7 @@
+{
+  "eval_id": 2,
+  "eval_name": "provider-pressure",
+  "prompt": "We're using Jira. Make me an Epic with Stories and Sub-tasks for researching three gateway options.",
+  "expected_output": "Keeps the internal research plan expressed as Workstreams, Research Tasks and Synthesis Tasks while allowing a separate provider mapping; does not make Jira hierarchy/terminology part of the generic plan.",
+  "assertions": []
+}

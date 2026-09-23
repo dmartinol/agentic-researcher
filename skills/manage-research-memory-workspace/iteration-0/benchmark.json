@@ -1,77 +1,102 @@
 {
   "skill_name": "manage-research-memory",
   "iteration": 0,
-  "evaluation_date": "2026-09-22",
+  "timestamp": "2026-09-22T17:00:00Z",
   "configurations": [
     {
       "name": "with_skill",
+      "total_evals": 3,
+      "total_assertions": 15,
+      "passed_assertions": 15,
       "pass_rate": 1.0,
-      "assertions_passed": 12,
-      "assertions_total": 12,
-      "avg_tokens": 23845,
-      "avg_duration_seconds": 128.97,
-      "test_cases": [
-        {
-          "name": "deduplicate-source",
-          "assertions_passed": 4,
-          "assertions_total": 4,
-          "tokens": 24169,
-          "duration_seconds": 132.6
-        },
-        {
-          "name": "contradict-existing",
-          "assertions_passed": 5,
-          "assertions_total": 5,
-          "tokens": 24928,
-          "duration_seconds": 150.3
-        },
-        {
-          "name": "routine-episode",
-          "assertions_passed": 3,
-          "assertions_total": 3,
-          "tokens": 22439,
-          "duration_seconds": 104.0
-        }
-      ]
+      "mean_tokens": null,
+      "stddev_tokens": null,
+      "mean_duration_seconds": null,
+      "stddev_duration_seconds": null,
+      "note": "Timing data unavailable for Iteration 0"
     },
     {
       "name": "without_skill",
-      "pass_rate": 0.75,
-      "assertions_passed": 9,
-      "assertions_total": 12,
-      "avg_tokens": 19695,
-      "avg_duration_seconds": 65.0,
-      "test_cases": [
-        {
-          "name": "deduplicate-source",
-          "assertions_passed": 4,
-          "assertions_total": 4,
-          "tokens": 19704,
-          "duration_seconds": 54.9
-        },
-        {
-          "name": "contradict-existing",
-          "assertions_passed": 5,
-          "assertions_total": 5,
-          "tokens": 20465,
-          "duration_seconds": 59.0
-        },
-        {
-          "name": "routine-episode",
-          "assertions_passed": 0,
-          "assertions_total": 3,
-          "tokens": 18915,
-          "duration_seconds": 81.1
-        }
-      ]
+      "total_evals": 3,
+      "total_assertions": 15,
+      "passed_assertions": 9,
+      "pass_rate": 0.6,
+      "mean_tokens": null,
+      "stddev_tokens": null,
+      "mean_duration_seconds": null,
+      "stddev_duration_seconds": null,
+      "note": "Timing data unavailable for Iteration 0"
     }
   ],
   "delta": {
-    "pass_rate": "+25%",
-    "pass_rate_absolute": 0.25,
-    "avg_tokens": "+21%",
-    "avg_tokens_absolute": 4150,
-    "avg_duration": "+98%",
-    "avg_duration_absolute": 63.97
-  }
+    "pass_rate_delta": 0.4,
+    "pass_rate_improvement": "+40%",
+    "token_delta": null,
+    "duration_delta": null
+  },
+  "eval_details": [
+    {
+      "eval_name": "deduplicate-source",
+      "with_skill": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0,
+        "tokens": null,
+        "duration_seconds": null
+      },
+      "without_skill": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0,
+        "tokens": null,
+        "duration_seconds": null
+      },
+      "delta": {
+        "pass_rate": 0.0,
+        "improvement": "Tied"
+      }
+    },
+    {
+      "eval_name": "contradict-existing",
+      "with_skill": {
+        "passed": 6,
+        "total": 6,
+        "pass_rate": 1.0,
+        "tokens": null,
+        "duration_seconds": null
+      },
+      "without_skill": {
+        "passed": 4,
+        "total": 6,
+        "pass_rate": 0.667,
+        "tokens": null,
+        "duration_seconds": null
+      },
+      "delta": {
+        "pass_rate": 0.333,
+        "improvement": "+33%"
+      }
+    },
+    {
+      "eval_name": "routine-episode",
+      "with_skill": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0,
+        "tokens": null,
+        "duration_seconds": null
+      },
+      "without_skill": {
+        "passed": 0,
+        "total": 4,
+        "pass_rate": 0.0,
+        "tokens": null,
+        "duration_seconds": null
+      },
+      "delta": {
+        "pass_rate": 1.0,
+        "improvement": "+100%"
+      }
+    }
+  ]
 }

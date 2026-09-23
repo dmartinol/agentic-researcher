@@ -1,0 +1,81 @@
+=== JIRA RESEARCH SKILL EXECUTION ===
+Evaluation Case: Ambiguous Issue Detection
+Timestamp: 2026-09-22
+
+=== INITIALIZATION PHASE ===
+
+Task: Initialize Research Task RT-001 in Jira
+Title: "Investigate API Performance Degradation in Production"
+
+Step 1: Resolving project and current-user context...
+Project: PERF
+User: dmartino@example.com
+
+Step 2: Discovering existing issues by stable identity...
+Searching for issues matching: "API Performance Degradation" OR "users endpoint" AND component:API,Performance
+
+Results found: 2 issues
+- PERF-123: "API Performance Issues - Users Endpoint"
+- PERF-456: "Investigate Production Performance Degradation"
+
+=== AMBIGUITY DETECTION ===
+
+Analyzing match candidates:
+
+PERF-123 similarity analysis:
+- Title overlap: partial ("API", "Users", "Performance")
+- Scope match: specific to /api/users endpoint ✓
+- Type alignment: Story (acceptable for Research Task mapping)
+- Status: Open (no prior work indicated)
+- Match confidence: MEDIUM
+
+PERF-456 similarity analysis:
+- Title overlap: high ("Investigate", "Production", "Performance", "Degradation")
+- Scope match: broader production performance, mentions user-related endpoints ✓
+- Type alignment: Task (acceptable for Research Task mapping)
+- Status: To Do (no prior work indicated)
+- Match confidence: MEDIUM
+
+=== BLOCKING CONDITION DETECTED ===
+
+⚠️ AMBIGUOUS ISSUE MATCH - BLOCKING
+
+Per jira-research skill guidance (Verification section):
+"Treat ambiguous issue matches as blocking."
+
+Cannot proceed with initialization. Reason:
+- Multiple issues (2) match the planned Research Task RT-001
+- Neither match is definitive enough to auto-select
+- Risk of incorrect association if proceeding automatically
+
+REJECTED APPROACHES:
+❌ Silently choosing PERF-123 (would ignore potentially better match)
+❌ Silently choosing PERF-456 (would ignore potentially better match)
+❌ Creating a third new issue (would create duplicate work items)
+❌ Guessing based on heuristics (violates blocking requirement)
+
+REQUIRED ACTION:
+User must clarify which existing issue to reuse, or confirm that a new issue should be created despite these existing candidates.
+
+Clarification options:
+1. Reuse PERF-123 and close/relate PERF-456
+2. Reuse PERF-456 and close/relate PERF-123
+3. Create new issue RT-001 and relate both PERF-123 and PERF-456 as context
+4. Provide additional criteria to disambiguate automatically
+
+=== EXECUTION RESULT ===
+
+Status: BLOCKED
+Action taken: NONE (awaiting user clarification)
+Issues modified: 0
+Verification: N/A (initialization incomplete)
+
+=== SKILL COMPLIANCE ===
+
+✓ Resolved project and current-user context before mutation
+✓ Attempted to discover/reuse existing issues by stable identity
+✓ Did not transition issues as part of initialization
+✓ Preserved existing Jira content and links (no mutations performed)
+✓ TREATED AMBIGUOUS ISSUE MATCHES AS BLOCKING (key requirement)
+
+Expected behavior demonstrated: The skill correctly identifies the ambiguous match scenario and blocks rather than making assumptions.

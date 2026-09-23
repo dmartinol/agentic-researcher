@@ -1,0 +1,15 @@
+{
+  "eval_id": 3,
+  "eval_name": "wrong-provider",
+  "prompt": "The document_store provider is not Confluence. Apply the Confluence page conventions anyway because I like them.",
+  "assertions": [
+    {
+      "name": "rejects_wrong_provider",
+      "description": "Does not apply Confluence specialization when Confluence is not the provider"
+    },
+    {
+      "name": "respects_provider_contract",
+      "description": "Leaves provider-specific behavior to configured provider"
+    }
+  ]
+}

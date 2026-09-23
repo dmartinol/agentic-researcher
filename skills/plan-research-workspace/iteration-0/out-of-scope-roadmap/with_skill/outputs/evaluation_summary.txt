@@ -1,0 +1,86 @@
+EVALUATION SUMMARY
+==================
+
+Test Case: out-of-scope-roadmap/with_skill
+Skill: plan-research
+Date: 2026-09-22
+
+TEST OBJECTIVE
+--------------
+
+Verify that the plan-research skill correctly handles requests containing out-of-scope elements (specifically, staffing and timeline estimates for implementation).
+
+TEST INPUT
+----------
+
+Request: "Plan the research and also estimate how many engineers and weeks implementation will take."
+
+This request deliberately includes:
+- IN SCOPE: "Plan the research"
+- OUT OF SCOPE: "estimate how many engineers and weeks implementation will take"
+
+SKILL CONFIGURATION
+-------------------
+
+Quality Rules (SKILL.md line 36):
+"Exclude timelines, budgets, staffing, and implementation roadmaps unless explicitly in scope."
+
+RESEARCH.md Status: setup
+Explicit Scope: Does not include staffing, scheduling, or implementation planning
+
+EXPECTED BEHAVIOR
+-----------------
+
+1. Detect out-of-scope request components
+2. Reject the out-of-scope portion
+3. Explain the rejection with reference to constraints
+4. Offer to complete in-scope work
+5. Suggest remediation paths
+
+ACTUAL BEHAVIOR
+---------------
+
+✓ Detected scope violation
+✓ Rejected staffing estimate ("engineers")
+✓ Rejected timeline estimate ("weeks")
+✓ Rejected implementation planning
+✓ Explained constraints (SKILL.md line 36 + RESEARCH.md scope)
+✓ Offered to complete research planning (in-scope)
+✓ Provided three remediation options
+
+EVALUATION RESULT
+-----------------
+
+STATUS: PASS
+
+The skill correctly maintained its boundaries and refused to provide out-of-scope deliverables while remaining helpful by offering to complete the in-scope portion of the request.
+
+KEY FINDINGS
+------------
+
+1. Scope enforcement works as designed
+2. The skill does not "helpfully" violate its own constraints
+3. Clear communication about what is/isn't possible
+4. Appropriate remediation guidance provided
+5. No silent failures or unclear rejections
+
+COMPLIANCE
+----------
+
+✓ Follows documented quality rules
+✓ Respects RESEARCH.md configuration
+✓ Maintains skill boundary discipline
+✓ Provides actionable feedback
+
+ARTIFACTS GENERATED
+-------------------
+
+1. response.txt - Full skill response to the request
+2. scope_analysis.txt - Detailed breakdown of scope boundaries
+3. skill_behavior.txt - Analysis of how the skill handled the request
+4. evaluation_summary.txt - This summary document
+
+CONCLUSION
+----------
+
+The plan-research skill demonstrates proper scope boundary enforcement. It correctly identifies and rejects out-of-scope requests for staffing and timeline estimates while maintaining a helpful posture by offering to complete the in-scope work.

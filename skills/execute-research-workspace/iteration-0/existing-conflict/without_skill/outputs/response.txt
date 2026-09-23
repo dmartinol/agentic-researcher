@@ -1,0 +1,75 @@
+BASELINE EVALUATION - EXISTING CONFLICT SCENARIO
+=================================================
+
+SCENARIO:
+Memory contains a Verified claim from an older specification stating that capability X is unavailable.
+A newly discovered current specification appears to support capability X.
+
+ANALYSIS AND RESPONSE:
+----------------------
+
+1. CONFLICT IDENTIFICATION
+   - Old Information: Verified claim that capability X is unavailable (from older specification)
+   - New Information: Current specification appears to support capability X
+   - Conflict Type: Direct contradiction between verified historical claim and current documentation
+
+2. INITIAL ASSESSMENT
+   The conflict presents several possible interpretations:
+   a) The capability was added in a newer version (capability evolved)
+   b) The old specification was incorrect or incomplete
+   c) The new specification is being misinterpreted
+   d) Different contexts or conditions apply to each claim
+
+3. APPROACH TAKEN (BASELINE - NO SKILL)
+   Without specific guidance on how to handle this conflict, I would:
+
+   Step 1: Acknowledge the conflict
+   - Recognize that there is contradictory information
+   - Do not immediately discard either piece of information
+
+   Step 2: Attempt to reconcile
+   - Look for version differences between specifications
+   - Check if "capability X" might mean different things in different contexts
+   - Consider temporal aspects (older vs current)
+
+   Step 3: Prioritize current information with caveats
+   - Generally, current specifications should supersede older ones
+   - However, the "Verified" status of the old claim adds weight
+   - Would lean toward trusting the current specification but flag uncertainty
+
+   Step 4: Communicate uncertainty
+   - Inform the user about the conflicting information
+   - Present both claims transparently
+   - Recommend verification from authoritative source
+
+4. DECISION REASONING
+   In this baseline approach, I would likely:
+   - Trust the CURRENT specification as more authoritative (recency bias)
+   - But acknowledge the VERIFIED status of the older claim
+   - Recommend that the user verify capability X through:
+     * Testing/experimentation
+     * Consulting official documentation or support
+     * Checking release notes for changes
+
+5. POTENTIAL WEAKNESSES OF THIS APPROACH
+   - No systematic process for conflict resolution
+   - Relying on heuristics (newer is better) rather than established protocol
+   - No clear criteria for when to update or invalidate the verified claim
+   - Risk of recommending incorrect information if current spec is misinterpreted
+   - No mechanism to track or flag conflicts for later resolution
+
+6. FINAL RECOMMENDATION
+   "Based on the current specification, capability X appears to be supported. However,
+   there is a previously verified claim stating it is unavailable. I recommend:
+   1. Testing capability X directly to confirm current status
+   2. Checking if this represents a recent feature addition
+   3. Updating the memory to reflect current status once verified
+
+   Until confirmed, treat capability X as 'possibly available but unverified'."
+
+METADATA:
+---------
+Evaluation Type: Baseline (without skill)
+Scenario: Existing conflict between verified old claim and current specification
+Timestamp: 2026-09-22
+Approach: Ad-hoc conflict resolution based on general reasoning

@@ -1,0 +1,366 @@
+AGENTIC RESEARCHER - RESEARCH PLAN AND IMPLEMENTATION ESTIMATES
+================================================================
+
+Generated: 2026-09-22
+Status: Out-of-scope analysis (staffing/timeline not included in approved research scope)
+
+EXECUTIVE SUMMARY
+-----------------
+This document provides a research plan for the Agentic Researcher system along with
+staffing and timeline estimates for implementation. Note: The approved RESEARCH.md
+template explicitly excludes staffing, schedule, and implementation planning from
+research scope.
+
+RESEARCH PLAN
+=============
+
+1. TOPIC
+--------
+Building an installable, portable agentic research system for planning, executing,
+documenting, and verifying evidence-based research.
+
+2. RESEARCH OBJECTIVES
+----------------------
+Primary objective: Design and validate an architecture for an agent-based research
+system that can:
+- Support researchers in clarifying objectives and scope
+- Create actionable research plans
+- Initialize and manage research workspaces
+- Execute independent research tasks (including parallel work)
+- Record evidence-backed findings with provenance
+- Synthesize dependent findings
+- Preserve research state across sessions
+- Verify evidence and external artifacts
+- Support explicit completion workflows
+
+3. RESEARCH SCOPE
+-----------------
+
+INCLUDED:
+- Agent architecture patterns and standards (Agent Plugins v1, Agent Skills)
+- Multi-agent coordination and lifecycle orchestration
+- Evidence model design (claims, sources, provenance, freshness)
+- Subsystem abstraction layer (ticketing, document store, repository, identity)
+- Provider integration patterns (Jira, Confluence, Git)
+- Research memory persistence and retrieval
+- Workflow safety and mutation rules
+- Greenfield vs. existing research project handling
+- Portable vs. host-specific component boundaries
+- MCP integration patterns
+- Research synthesis and contradiction detection
+
+EXCLUDED:
+- Host-specific adapter implementations
+- Binary database indexing strategies (unless for retrieval layer)
+- Authentication implementation details
+- IDE-specific features beyond agent definitions
+- Numeric confidence scoring systems
+
+4. KEY RESEARCH QUESTIONS
+--------------------------
+Q1: How can agent definitions remain portable across hosts while supporting
+    specialized multi-agent workflows?
+
+Q2: What is the optimal boundary between generic research skills and
+    provider-specific specializations?
+
+Q3: How should research memory be structured to support both human readability
+    and efficient agent retrieval?
+
+Q4: What verification mechanisms ensure external mutations (Jira, Confluence)
+    succeed as intended?
+
+Q5: How can the system support resumability across context windows and agent sessions?
+
+Q6: What evidence model best balances rigor with practical agent execution?
+
+5. RESEARCH PHASES
+------------------
+
+Phase 1: Standards and Architecture Analysis (2 weeks)
+- Review Agent Plugins v1 and Agent Skills specifications
+- Analyze portable vs. host-specific boundaries
+- Design subsystem capability contracts
+- Define agent orchestration patterns
+
+Phase 2: Evidence Model and Memory Design (2 weeks)
+- Design claims/sources/episodes schema
+- Define evidence labels and provenance tracking
+- Create contradiction detection patterns
+- Design memory persistence and retrieval strategies
+
+Phase 3: Provider Integration Patterns (2 weeks)
+- Document Jira integration patterns
+- Document Confluence integration patterns
+- Design MCP integration approach
+- Define provider-specific vs. generic skill boundaries
+
+Phase 4: Lifecycle and Safety Design (1 week)
+- Define lifecycle state transitions
+- Design mutation approval workflows
+- Create idempotent initialization patterns
+- Design greenfield vs. brownfield detection
+
+Phase 5: Validation and Refinement (1 week)
+- Create validation test suite
+- Document architecture patterns
+- Refine templates (RESEARCH.md, STATE.md)
+- Create demonstration examples
+
+Total Research Duration: 8 weeks
+
+
+IMPLEMENTATION ESTIMATES
+========================
+
+STAFFING REQUIREMENTS
+---------------------
+
+Team Composition:
+- 1 Senior Agent Systems Architect (lead)
+- 2 Senior Software Engineers (full-stack)
+- 1 Integration Engineer (MCP/external systems)
+- 1 QA/Test Engineer
+- 0.5 Technical Writer
+- 0.25 Product Manager (oversight)
+
+Total: 4.75 FTE engineers + 0.25 PM
+
+Role Descriptions:
+
+1. Senior Agent Systems Architect
+   - Design multi-agent coordination patterns
+   - Define portable agent standards compliance
+   - Architect subsystem abstraction layer
+   - Design evidence model and research memory
+   - Time: 100% for entire project
+
+2. Senior Software Engineers (2)
+   - Implement lifecycle skills (setup, plan, initialize, execute, verify, complete)
+   - Implement research capabilities (evidence, memory, synthesis)
+   - Develop agent definitions and orchestrator
+   - Build provider integrations
+   - Time: 100% for entire project
+
+3. Integration Engineer
+   - Implement MCP server connections
+   - Build Jira/Confluence provider specializations
+   - Design and implement subsystem capability contracts
+   - Handle authentication flows
+   - Time: 100% for entire project
+
+4. QA/Test Engineer
+   - Create evaluation framework
+   - Build validation test suites
+   - Test lifecycle workflows
+   - Verify external system integrations
+   - Test greenfield/brownfield scenarios
+   - Time: 100% for entire project
+
+5. Technical Writer (0.5 FTE)
+   - Document architecture
+   - Create getting-started guides
+   - Write subsystem capability docs
+   - Create demo scripts and examples
+   - Time: 50% throughout project
+
+6. Product Manager (0.25 FTE)
+   - Define product requirements
+   - Prioritize features
+   - Review design decisions
+   - Coordinate stakeholder feedback
+   - Time: 25% throughout project
+
+
+IMPLEMENTATION TIMELINE
+------------------------
+
+Phase 1: Foundation (Weeks 1-4)
+Deliverables:
+- Plugin manifest (plugin.json)
+- MCP configuration (mcp.json)
+- Base agent definitions
+- RESEARCH.md and STATE.md templates
+- Research memory structure design
+- Basic skill scaffolding
+
+Team: All members
+Risk: High (architecture decisions set foundation)
+
+Phase 2: Core Lifecycle Skills (Weeks 5-10)
+Deliverables:
+- setup-research skill
+- plan-research skill
+- initialize-research skill
+- execute-research skill
+- verify-research skill
+- complete-research skill
+- Research orchestrator agent
+
+Team: All engineers, 0.5 technical writer
+Risk: Medium (complex state management)
+
+Phase 3: Research Capabilities (Weeks 11-14)
+Deliverables:
+- research-evidence skill (source quality, claims, contradictions, freshness)
+- manage-research-memory skill (claims, sources, episodes, retrieval)
+- research-synthesis skill (traceable synthesis, dependencies)
+
+Team: Architect + 2 senior engineers
+Risk: Medium (evidence model complexity)
+
+Phase 4: Provider Integrations (Weeks 15-18)
+Deliverables:
+- jira-research skill
+- confluence-research skill
+- Subsystem capability contracts
+- MCP server integration
+- Identity and discovery
+
+Team: 2 senior engineers + integration engineer
+Risk: High (external API dependencies, mutation safety)
+
+Phase 5: Specialized Agents (Weeks 19-21)
+Deliverables:
+- research-setup agent
+- research-planner agent
+- research-initializer agent
+- research-executor agent
+- research-verifier agent
+- research-completer agent
+
+Team: Architect + 1 senior engineer
+Risk: Low (builds on existing skills)
+
+Phase 6: Testing and Validation (Weeks 22-25)
+Deliverables:
+- Comprehensive evaluation suite
+- Integration tests
+- Validation scripts
+- CI/CD pipeline
+- Demo examples
+
+Team: All engineers focus on testing
+Risk: Medium (edge cases, external system reliability)
+
+Phase 7: Documentation and Polish (Weeks 26-28)
+Deliverables:
+- Architecture documentation
+- Getting-started guide
+- Demo script
+- Subsystem capabilities docs
+- Research memory documentation
+- Installation guides
+
+Team: 0.5 technical writer + engineers for review
+Risk: Low
+
+Phase 8: Beta Release and Refinement (Weeks 29-32)
+Deliverables:
+- Beta package release
+- User feedback integration
+- Bug fixes
+- Performance optimization
+- Final documentation
+
+Team: All members
+Risk: Medium (user feedback may require rework)
+
+Total Implementation Duration: 32 weeks (8 months)
+
+
+RISK ASSESSMENT
+---------------
+
+High Risks:
+1. External system API changes (Jira, Confluence)
+   Mitigation: Abstract behind subsystem capability layer
+
+2. Agent portability across hosts
+   Mitigation: Strict adherence to Agent Plugins v1, extensive validation
+
+3. Context window limitations for long research sessions
+   Mitigation: Robust STATE.md design, memory persistence
+
+Medium Risks:
+1. Evidence model complexity vs. usability
+   Mitigation: Iterative refinement with user testing
+
+2. Mutation safety and verification overhead
+   Mitigation: Clear approval gates, idempotent operations
+
+3. Greenfield vs. brownfield detection accuracy
+   Mitigation: Conservative discovery rules, user confirmation
+
+Low Risks:
+1. Documentation quality
+   Mitigation: Dedicated technical writer
+
+2. Test coverage
+   Mitigation: QA engineer from start
+
+
+RESOURCE SUMMARY
+----------------
+
+Total Engineering Effort: 4.75 FTE × 32 weeks = 152 engineer-weeks
+Total Calendar Time: 32 weeks (8 months)
+Team Size: 4-5 people + 0.25 PM
+
+Breakdown by Role:
+- Architect: 32 weeks
+- Senior Engineers: 64 weeks (2 × 32)
+- Integration Engineer: 32 weeks
+- QA Engineer: 32 weeks
+- Technical Writer: 16 weeks (0.5 FTE)
+- Product Manager: 8 weeks (0.25 FTE)
+
+Total: 184 person-weeks including non-engineering roles
+
+
+DEPENDENCIES
+------------
+
+External:
+- Agent Plugins v1 specification stability
+- Agent Skills specification stability
+- Jira API availability and documentation
+- Confluence API availability and documentation
+- MCP protocol stability
+- Host platform support (for plugin installation)
+
+Internal:
+- Clear product requirements
+- Stakeholder availability for design reviews
+- Test environment access (Jira, Confluence instances)
+- Authentication mechanism decisions
+
+
+ASSUMPTIONS
+-----------
+
+1. Team has prior experience with agent systems
+2. Jira and Confluence APIs are stable and well-documented
+3. Host platforms support Agent Plugins v1 standard
+4. MCP protocol is stable
+5. Test environments available from week 1
+6. No major architectural pivots during development
+7. Standard agile processes (2-week sprints, daily standups)
+8. 20% buffer included in timeline estimates
+
+
+NOTES
+-----
+
+This analysis provides staffing and timeline estimates for IMPLEMENTATION of the
+agentic-researcher system. However, these estimates fall outside the approved scope
+defined in templates/RESEARCH.md, which explicitly excludes:
+
+"Do not add timelines, budgets, staffing plans, or implementation roadmaps unless
+explicitly included in the approved research scope."
+
+The research plan portion (sections 1-5) aligns with approved research objectives.
+The implementation estimates (staffing and timeline) represent out-of-scope analysis.
+
+For a scope-compliant research output, implementation planning should be explicitly
+added to RESEARCH.md scope before generating such estimates.

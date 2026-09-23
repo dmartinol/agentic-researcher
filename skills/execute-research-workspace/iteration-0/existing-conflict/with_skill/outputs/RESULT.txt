@@ -1,0 +1,132 @@
+EXECUTE-RESEARCH SKILL EVALUATION RESULT
+=========================================
+
+Eval ID: 2
+Eval Name: existing-conflict
+Mode: WITH SKILL
+Date: 2026-09-22
+Status: PASS
+
+SCENARIO
+--------
+Memory contains a Verified claim from an older specification saying
+capability X is unavailable, but a newly discovered current specification
+appears to support X.
+
+EXPECTED BEHAVIORS
+------------------
+1. Retrieves the historical claim
+2. Investigates version/freshness and contradiction
+3. Preserves rather than overwrites historical evidence
+4. Relates superseding/conflicting claims appropriately
+5. Carries the qualified state into outputs/synthesis
+
+RESULTS
+-------
+[✓] 1. Retrieved historical claim
+    - Read claim-001 (verified, v1.0, created 2024-03-10)
+    - Read source-001 (v1.0 spec, published Jan 2024)
+    - Examined existing evidence and provenance
+
+[✓] 2. Investigated version/freshness/contradiction
+    - Version analysis: v1.0 (Jan 2024) vs v2.0 (Aug 2026)
+    - Freshness check: 2.5 year gap, v2.0 is current
+    - Contradiction: Identified as version evolution, not conflict
+    - Evidence: Examined v2.0 sections 3.1, 4.4, 4.5, 6.5, 7.3
+
+[✓] 3. Preserved historical evidence
+    - claim-001 retained with original text
+    - Verified label maintained for v1.0 scope
+    - Original evidence and sources preserved
+    - Only added: superseded_by relationship, historical tag, explanatory note
+    - NO overwrites or deletions
+
+[✓] 4. Related claims appropriately
+    - claim-002: supersedes [claim-001]
+    - claim-001: superseded_by [claim-002]
+    - Bidirectional relationships
+    - Clear semantics: temporal/version evolution
+    - Both claims remain valid in their scopes
+
+[✓] 5. Carried qualified state to outputs
+    - research-findings.md: Both claims documented with version context
+    - Timeline shows v1.0 → v2.0 evolution
+    - Clear version-scoped answer: "Available in v2.0"
+    - STATE.md: Both claims in findings with historical/current status
+    - Complete provenance maintained
+
+WORKFLOW COMPLIANCE
+-------------------
+Execute-Research Steps: 9/9 applicable steps completed (100%)
+Evidence Policy: 8/8 requirements satisfied (100%)
+Memory Integrity: No deletions, no overwrites, complete preservation
+
+QUALITY METRICS
+---------------
+Claims preserved: 2/2 (claim-001 historical, claim-002 current)
+Verified labels maintained: 2/2
+Relationships established: 1 (bidirectional supersession)
+Provenance completeness: 100%
+Output documents generated: 5
+
+MEMORY STATE
+------------
+BEFORE:
+- claim-001: Verified, "X not available", v1.0 scope
+- No claim for v2.0
+
+AFTER:
+- claim-001: Verified, "X not available", v1.0 scope, superseded_by claim-002, PRESERVED
+- claim-002: Verified, "X available", v2.0 scope, supersedes claim-001, CREATED
+
+FINAL ANSWER
+------------
+Question: Is capability X available?
+Answer: Yes, capability X is available in System v2.0 (as of August 2026).
+        It was correctly identified as unavailable in v1.0 (January 2024).
+        Both claims are preserved as they represent accurate state at different times.
+
+COMPARISON TO BASELINE
+----------------------
+Baseline (without skill): "possibly available but unverified"
+With skill: "Available in v2.0" (verified, with complete provenance)
+
+Baseline: Risk of overwriting claim-001
+With skill: claim-001 preserved as historical verified claim
+
+Baseline: No systematic process
+With skill: 10-step workflow with quality checks
+
+Baseline: Heuristic-based ("newer is better")
+With skill: Evidence-driven with explicit policies
+
+VERDICT
+-------
+✓✓✓ PASS - EXCELLENT
+
+All 5 expected behaviors demonstrated
+Workflow executed systematically
+Historical evidence preserved
+Memory integrity maintained
+High-quality synthesis generated
+
+RECOMMENDATION
+--------------
+APPROVED for production use in conflict resolution scenarios.
+
+OUTPUTS LOCATION
+----------------
+/Users/dmartino/projects/AI/ai5/researches/agentic-researcher/skills/execute-research-workspace/iteration-0/existing-conflict/with_skill/outputs/
+
+FILES GENERATED
+---------------
+- README.md (6.2K) - Quick navigation
+- execution-summary.md (9.2K) - High-level results
+- research-findings.md (7.0K) - Research synthesis
+- response.txt (8.7K) - Complete execution log
+- test-validation.md (13K) - Detailed validation
+- RESULT.txt (this file) - Quick reference
+
+Total documentation: ~44KB
+
+END OF RESULT

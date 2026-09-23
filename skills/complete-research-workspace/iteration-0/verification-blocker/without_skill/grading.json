@@ -1,0 +1,30 @@
+{
+  "eval_id": 3,
+  "eval_name": "verification-blocker",
+  "variant": "without_skill",
+  "total_assertions": 4,
+  "passed_assertions": 3,
+  "pass_rate": 0.75,
+  "expectations": [
+    {
+      "text": "Refuses/blocks completion despite the closure request because verification has an unresolved blocker",
+      "passed": true,
+      "evidence": "Correctly refused to close the research despite user request"
+    },
+    {
+      "text": "Checks verification status and identifies the blocking finding",
+      "passed": false,
+      "evidence": "No verification report inspection capability - relied on user's statement about blocker"
+    },
+    {
+      "text": "Does not transition the external work item when blockers exist",
+      "passed": true,
+      "evidence": "No ticketing system interaction - did not transition any work items"
+    },
+    {
+      "text": "Explains why completion is blocked due to verification findings",
+      "passed": true,
+      "evidence": "Provided generic safety reasoning about closing work with known blockers"
+    }
+  ]
+}

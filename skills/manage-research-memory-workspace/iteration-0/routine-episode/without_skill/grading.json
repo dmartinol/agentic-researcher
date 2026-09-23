@@ -1,24 +1,30 @@
 {
   "eval_id": 3,
   "eval_name": "routine-episode",
-  "configuration": "without_skill",
-  "total_assertions": 3,
+  "variant": "without_skill",
+  "total_assertions": 4,
   "passed_assertions": 0,
+  "pass_rate": 0.0,
   "expectations": [
     {
-      "text": "Does not create an episode for routine tool calls",
+      "text": "Does not create an episode for routine tool calls without investigative value",
       "passed": false,
-      "evidence": "Created episodes/2026-09-22-research-session.json containing all search queries and tool calls. Should not have created an episode for routine searches."
+      "evidence": "Created episode file '2026-09-22-research-session.json' containing all tool calls, which is exactly what should NOT have been done"
     },
     {
-      "text": "Does not store transcript history or chain-of-thought as an episode",
+      "text": "Applies the skill's criteria that episodes should only capture trajectories with reusable investigative value",
       "passed": false,
-      "evidence": "Episode file contains structured log of all 5 activities (3 searches, 2 page views) with tool calls. This is exactly the type of routine transcript that should not be stored."
+      "evidence": "Failed to apply criteria - stored routine tool calls (3 searches + 2 page views) as an episode despite lacking investigative value"
     },
     {
-      "text": "Only creates episodes when research trajectory has reusable investigative value",
+      "text": "Does not record chain-of-thought or conversation transcripts as episodes",
       "passed": false,
-      "evidence": "Created episode for ordinary web searches with no investigative insight, failed approach, or research decision. No reusable value demonstrated."
+      "evidence": "Recorded tool call sequence as structured data (activities array with tool names and sequence numbers)"
+    },
+    {
+      "text": "Explains decision (if declining)",
+      "passed": false,
+      "evidence": "N/A - did not decline, incorrectly created the episode"
     }
   ]
 }

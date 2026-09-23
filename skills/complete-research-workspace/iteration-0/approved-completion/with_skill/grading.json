@@ -1,0 +1,40 @@
+{
+  "eval_id": 1,
+  "eval_name": "approved-completion",
+  "variant": "with_skill",
+  "total_assertions": 6,
+  "passed_assertions": 6,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Resolves exact target resources (work items, documents) without guessing",
+      "passed": true,
+      "evidence": "Resolved specific Jira issue (ARCH-235) and Confluence page (987654321) from RESEARCH.md"
+    },
+    {
+      "text": "Queries or discovers allowed transitions rather than assuming target states",
+      "passed": true,
+      "evidence": "Found allowed transitions from config rather than assuming"
+    },
+    {
+      "text": "Applies configured provider-specific closure rules (Jira/Confluence conventions)",
+      "passed": true,
+      "evidence": "Applied Jira-research and Confluence-research provider conventions"
+    },
+    {
+      "text": "Records a reference to the exact final research output/document",
+      "passed": true,
+      "evidence": "Recorded completion reference in work item"
+    },
+    {
+      "text": "Performs external mutations only after receiving explicit approval",
+      "passed": true,
+      "evidence": "Required and received explicit approval before any changes"
+    },
+    {
+      "text": "Reads back and verifies final work item status after mutation",
+      "passed": true,
+      "evidence": "Verified final work item status (Done) and completion reference"
+    }
+  ]
+}

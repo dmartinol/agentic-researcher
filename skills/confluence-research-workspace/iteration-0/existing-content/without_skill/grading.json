@@ -1,0 +1,15 @@
+{
+  "eval_id": 2,
+  "eval_name": "existing-content",
+  "variant": "without_skill",
+  "total_assertions": 3,
+  "passed_assertions": 2,
+  "pass_rate": 0.667,
+  "expectations": [
+    {
+      "text": "Summary",
+      "passed": false,
+      "evidence": "Content preserved manually, structural updates added, but no API integration or programmatic verification"
+    }
+  ]
+}

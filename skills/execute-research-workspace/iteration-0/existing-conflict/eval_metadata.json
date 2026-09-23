@@ -1,0 +1,7 @@
+{
+  "eval_id": 2,
+  "eval_name": "existing-conflict",
+  "prompt": "Execute this task. Memory already contains a Verified claim from an older specification saying capability X is unavailable, but a newly discovered current specification appears to support X.",
+  "expected_output": "Retrieves the historical claim, investigates version/freshness and contradiction, preserves rather than overwrites historical evidence, relates superseding/conflicting claims appropriately, and carries the qualified state into outputs/synthesis.",
+  "assertions": []
+}

@@ -1,0 +1,7 @@
+{
+  "eval_id": 3,
+  "eval_name": "blocked-dependency",
+  "prompt": "Execute the synthesis task now. One of its required Research Tasks is still incomplete and has not been waived.",
+  "expected_output": "Does not silently fill the missing dependency with general knowledge; identifies the missing input and blocks or limits synthesis until the dependency is complete or explicitly waived.",
+  "assertions": []
+}

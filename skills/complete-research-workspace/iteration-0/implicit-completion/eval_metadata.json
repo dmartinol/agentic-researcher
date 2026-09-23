@@ -1,0 +1,19 @@
+{
+  "eval_id": 2,
+  "eval_name": "implicit-completion",
+  "prompt": "Everything looks good. Wrap things up.",
+  "assertions": [
+    {
+      "name": "rejects_ambiguous_language",
+      "description": "Does not interpret ambiguous wording ('wrap things up') as explicit closure approval"
+    },
+    {
+      "name": "requests_explicit_approval",
+      "description": "Requests explicit completion/closure approval before proceeding"
+    },
+    {
+      "name": "no_external_transitions",
+      "description": "Does not transition external work items based on ambiguous requests"
+    }
+  ]
+}

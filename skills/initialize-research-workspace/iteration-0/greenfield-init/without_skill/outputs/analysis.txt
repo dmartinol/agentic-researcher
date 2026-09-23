@@ -1,0 +1,163 @@
+BASELINE ANALYSIS: Research Workspace Initialization Without Skill
+====================================================================
+
+EVALUATION CONTEXT:
+-------------------
+Task: "The research plan is approved. Initialize the configured ticketing and document structures now."
+Approach: Baseline (no skill)
+Scenario: Greenfield initialization (no existing research workspace)
+
+KEY FINDINGS:
+-------------
+
+1. DISCOVERY FAILURE:
+   - No systematic check for existing resources before creation
+   - Risk of overwriting existing work on subsequent runs
+   - No verification that resources don't already exist in external systems
+
+2. CONFIGURATION INCOMPLETENESS:
+   - Created RESEARCH.md from template but left configuration placeholders
+   - Cannot proceed with external initialization without:
+     * Jira project identifier
+     * Confluence space identifier
+     * Ticket/document hierarchy definitions
+     * Provider-specific conventions
+
+3. MISSING EXTERNAL INITIALIZATION:
+   - No Jira tickets created
+   - No Confluence pages created
+   - No stable IDs recorded
+   - No URLs captured
+   - Cannot verify external resource creation
+
+4. STATE TRACKING:
+   - STATE.md created and updated (POSITIVE)
+   - Documented blocked status (POSITIVE)
+   - Identified missing configuration (POSITIVE)
+   - But no structured ledger of mutations
+
+5. IDEMPOTENCY FAILURE:
+   - Re-running would fail with "file already exists" errors
+   - No merge or reconciliation logic
+   - Cannot safely retry initialization
+
+6. VERIFICATION GAPS:
+   - No read-after-write verification
+   - Cannot confirm local file creation succeeded as expected
+   - No validation of external resource identity/hierarchy/metadata
+   - No link verification
+
+7. APPROVAL BOUNDARY VIOLATIONS:
+   - Created files without confirming configuration is approved
+   - No clear separation between local and external mutations
+   - Missing approval gate before external system changes
+
+BEHAVIOR COMPARISON TO EXPECTED OUTPUT:
+----------------------------------------
+
+Expected: "Discovers before creating, creates only approved resources, records stable IDs/URLs, verifies mutations by reading back identity/hierarchy/metadata/links, updates state, and does not start or close research work."
+
+Baseline Performance:
+
+| Requirement | Met? | Evidence |
+|------------|------|----------|
+| Discovers before creating | ❌ | Created files without checking existence |
+| Creates only approved resources | ❌ | Created incomplete template without validation |
+| Records stable IDs/URLs | ❌ | No external resources = no IDs to record |
+| Verifies mutations via read-back | ❌ | No verification performed |
+| Updates state | ✓ | STATE.md created and reflects current status |
+| Does not start/close work | ✓ | Status remains in initialization phase |
+
+Score: 2/6 requirements met (33%)
+
+MISSING SKILL CAPABILITIES:
+---------------------------
+
+1. Provider Composition:
+   - No jira-research skill integration
+   - No confluence-research skill integration
+   - Missing provider-specific convention application
+
+2. Subsystem Capability Mapping:
+   - No systematic use of ticketing capabilities
+   - No systematic use of document_store capabilities
+   - No identity resolution
+   - No repository handling
+
+3. Idempotent Operations:
+   - Cannot safely re-run initialization
+   - No discovery-first approach
+   - No merge/reconciliation logic
+
+4. Verification Protocol:
+   - No read-after-write checks
+   - No identity verification
+   - No hierarchy verification
+   - No metadata verification
+   - No link verification
+
+5. Structured Mutation Ledger:
+   - No item-by-item tracking of changes
+   - Cannot produce verification report
+   - Cannot rollback on failure
+
+6. Error Handling:
+   - No detection of ambiguous matches
+   - No handling of missing parents
+   - No capability unsupported detection
+   - No link failure handling
+
+IMPACT ASSESSMENT:
+------------------
+
+CRITICAL GAPS:
+- Cannot initialize external ticketing system
+- Cannot initialize external document store
+- Cannot record or verify external resource creation
+- Cannot ensure idempotency
+
+MODERATE GAPS:
+- Incomplete local configuration
+- No provider-specific guidance
+- Missing verification protocol
+
+MINOR GAPS:
+- No structured mutation ledger
+- Limited error handling
+
+RISK ASSESSMENT:
+----------------
+
+HIGH RISK:
+- Data loss on re-run (file overwrite)
+- External systems not initialized
+- Cannot verify resource creation
+- Missing approval gates
+
+MEDIUM RISK:
+- Configuration errors not detected
+- Provider conventions not applied
+- Cannot safely resume after failure
+
+LOW RISK:
+- State tracking incomplete but present
+- Local directory structure correct
+
+CONCLUSION:
+-----------
+
+The baseline approach without the skill achieves only basic local file creation but fails on all critical requirements:
+- No external system initialization
+- No discovery/idempotency
+- No verification
+- No stable ID tracking
+
+The skill would provide essential capabilities for:
+1. Safe, idempotent initialization
+2. External system integration via MCP
+3. Provider-specific convention application
+4. Comprehensive verification
+5. Stable resource tracking
+6. Proper approval boundary handling
+
+Estimated capability gap: ~67% of expected functionality missing in baseline.

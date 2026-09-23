@@ -1,0 +1,165 @@
+QUICK REFERENCE: MCP Server-Side Tool Discovery
+================================================
+
+QUESTION: Does MCP support server-side tool discovery?
+
+ANSWER: YES ✓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRIMARY DISCOVERY METHOD
+-------------------------
+Endpoint: tools/list
+Protocol: JSON-RPC 2.0
+Transport: stdio, HTTP POST, SSE
+
+Request:
+  Method: "tools/list"
+  Params: { "cursor": "optional" }
+
+Response:
+  Returns: Array of tools with schemas
+  Pagination: Via cursor
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DISCOVERY WORKFLOW
+------------------
+1. Initialize connection (client → server)
+   - Send: protocolVersion, capabilities, clientInfo
+   - Receive: serverInfo, capabilities, instructions
+
+2. List tools (client → server)
+   - Method: tools/list
+   - Receive: Tool definitions with schemas
+
+3. Invoke tool (client → server)
+   - Method: tools/call
+   - Send: Tool name + arguments
+   - Receive: Results
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TOOL DEFINITION STRUCTURE
+--------------------------
+{
+  "name": "tool_name",
+  "description": "What the tool does",
+  "inputSchema": {
+    "type": "object",
+    "properties": { ... },
+    "required": [ ... ]
+  }
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPTIONAL DISCOVERY ENDPOINTS
+-----------------------------
+SEP-1649: /.well-known/mcp/server-card.json
+  - Human-readable metadata
+  - Full tool/resource/prompt listings
+
+SEP-1960: /.well-known/mcp
+  - Machine-readable capabilities
+  - Security policy declarations
+  - Transport configuration
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROTOCOL DETAILS
+-----------------
+Version: 2025-06-18 (current spec)
+Base: JSON-RPC 2.0
+Pagination: Supported via cursor
+Notifications: listChanged events supported
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+KEY METHODS
+-----------
+initialize         - Establish connection & negotiate capabilities
+tools/list         - Discover available tools
+tools/call         - Invoke a specific tool
+resources/list     - Discover available resources
+prompts/list       - Discover available prompts
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+IMPLEMENTATION CHECKLIST
+-------------------------
+Must Implement:
+  ✓ JSON-RPC 2.0 protocol
+  ✓ initialize method
+  ✓ tools/list method
+  ✓ tools/call method
+
+Should Implement:
+  ✓ Pagination support
+  ✓ listChanged notifications
+  ✓ Error handling
+
+May Implement:
+  □ .well-known endpoints
+  □ Multiple transports
+  □ Authentication
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DISCOVERY BENEFITS
+------------------
+✓ No hardcoded connections
+✓ Runtime tool discovery
+✓ Dynamic capability changes
+✓ Automatic schema validation
+✓ Flexible AI agent systems
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TRANSPORT OPTIONS
+-----------------
+stdio     - Standard input/output (local processes)
+HTTP POST - RESTful transport (remote servers)
+SSE       - Server-Sent Events (streaming)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EXAMPLE TOOL CALL
+-----------------
+Request:
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "tools/call",
+  "params": {
+    "name": "search",
+    "arguments": {
+      "query": "MCP documentation"
+    }
+  }
+}
+
+Response:
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [ ... ],
+    "isError": false
+  }
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+KEY RESOURCES
+--------------
+Official Spec: https://modelcontextprotocol.io/specification/2025-06-18/server/tools
+Protocol Handbook: https://mcp-find.org/blog/mcp-protocol-handbook
+Discovery Guide: https://alatirok.com/mcp-server-discovery/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CONFIDENCE: HIGH
+Based on official MCP specification and 23 authoritative sources
+
+Date: September 22, 2026

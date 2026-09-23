@@ -1,0 +1,252 @@
+TECHNICAL DETAILS: MCP Server-Side Tool Discovery
+==================================================
+
+1. JSON-RPC PROTOCOL STRUCTURE
+   ---------------------------
+
+   Request Format:
+   {
+     "jsonrpc": "2.0",
+     "id": 1,
+     "method": "tools/list",
+     "params": {
+       "cursor": "optional-cursor-value"
+     }
+   }
+
+   Response Format:
+   {
+     "jsonrpc": "2.0",
+     "id": 1,
+     "result": {
+       "tools": [
+         {
+           "name": "tool_name",
+           "description": "Tool description",
+           "inputSchema": {
+             "type": "object",
+             "properties": { ... },
+             "required": [ ... ]
+           }
+         }
+       ],
+       "nextCursor": "cursor-for-next-page"
+     }
+   }
+
+2. INITIALIZATION SEQUENCE
+   -----------------------
+
+   Step 1: Client sends initialize request
+   {
+     "jsonrpc": "2.0",
+     "id": 1,
+     "method": "initialize",
+     "params": {
+       "protocolVersion": "2025-06-18",
+       "capabilities": {
+         "tools": {},
+         "resources": {},
+         "prompts": {}
+       },
+       "clientInfo": {
+         "name": "client-name",
+         "version": "1.0.0"
+       }
+     }
+   }
+
+   Step 2: Server responds with capabilities
+   {
+     "jsonrpc": "2.0",
+     "id": 1,
+     "result": {
+       "protocolVersion": "2025-06-18",
+       "capabilities": {
+         "tools": {
+           "listChanged": true
+         },
+         "resources": {
+           "subscribe": true,
+           "listChanged": true
+         },
+         "prompts": {
+           "listChanged": true
+         },
+         "logging": {}
+       },
+       "serverInfo": {
+         "name": "server-name",
+         "version": "1.0.0"
+       }
+     }
+   }
+
+3. DISCOVERY METHODS
+   -----------------
+
+   a) tools/list - Discover available tools
+   b) resources/list - Discover available resources
+   c) prompts/list - Discover available prompts
+
+   All support pagination via cursor parameters
+
+4. TOOL INVOCATION
+   ---------------
+
+   After discovery, invoke tools via tools/call:
+
+   Request:
+   {
+     "jsonrpc": "2.0",
+     "id": 2,
+     "method": "tools/call",
+     "params": {
+       "name": "tool_name",
+       "arguments": {
+         "param1": "value1",
+         "param2": "value2"
+       }
+     }
+   }
+
+   Response:
+   {
+     "jsonrpc": "2.0",
+     "id": 2,
+     "result": {
+       "content": [ ... ],
+       "isError": false
+     }
+   }
+
+5. TRANSPORT METHODS
+   -----------------
+
+   MCP supports multiple transport mechanisms:
+
+   a) stdio (Standard Input/Output)
+      - Default for local server processes
+      - JSON-RPC messages via stdin/stdout
+
+   b) HTTP POST
+      - RESTful transport
+      - JSON-RPC over HTTP
+
+   c) Server-Sent Events (SSE)
+      - Streaming transport
+      - Supports server-initiated messages
+
+6. WELL-KNOWN DISCOVERY ENDPOINTS
+   -------------------------------
+
+   SEP-1649: Server Card
+   Location: /.well-known/mcp/server-card.json
+
+   Structure:
+   {
+     "name": "Server Name",
+     "version": "1.0.0",
+     "description": "Human-readable description",
+     "homepage": "https://server.example.com",
+     "tools": [ ... ],
+     "resources": [ ... ],
+     "prompts": [ ... ]
+   }
+
+   SEP-1960: MCP Discovery Endpoint
+   Location: /.well-known/mcp
+
+   Structure:
+   {
+     "version": "1.0",
+     "capabilities": {
+       "tools": true,
+       "resources": true,
+       "prompts": true
+     },
+     "transport": {
+       "type": "http",
+       "endpoint": "/mcp"
+     },
+     "security": {
+       "authentication": "required",
+       "methods": ["bearer"]
+     }
+   }
+
+7. CAPABILITY CHANGE NOTIFICATIONS
+   --------------------------------
+
+   Servers can notify clients when capabilities change:
+
+   Notification:
+   {
+     "jsonrpc": "2.0",
+     "method": "notifications/tools/list_changed"
+   }
+
+   This triggers clients to re-fetch the tools list
+
+8. TOOL SCHEMA DEFINITION
+   -----------------------
+
+   Tools use JSON Schema for input validation:
+
+   Example:
+   {
+     "name": "search_database",
+     "description": "Search the database for records",
+     "inputSchema": {
+       "type": "object",
+       "properties": {
+         "query": {
+           "type": "string",
+           "description": "Search query"
+         },
+         "limit": {
+           "type": "integer",
+           "minimum": 1,
+           "maximum": 100,
+           "default": 10
+         }
+       },
+       "required": ["query"]
+     }
+   }
+
+9. PROTOCOL VERSION
+   ----------------
+
+   Current specification: 2025-06-18
+
+   Key features in this version:
+   - Formalized initialization sequence
+   - Structured capability negotiation
+   - AI security enhancements
+   - Structured output support
+   - User elicitation support
+
+10. IMPLEMENTATION REQUIREMENTS
+    ---------------------------
+
+    For a compliant MCP server:
+
+    MUST implement:
+    - initialize method
+    - tools/list method
+    - tools/call method
+    - JSON-RPC 2.0 protocol
+
+    SHOULD implement:
+    - Pagination for large tool lists
+    - listChanged notifications
+    - Error handling with proper JSON-RPC error codes
+
+    MAY implement:
+    - .well-known discovery endpoints
+    - resources/list and prompts/list
+    - Multiple transport methods
+    - Authentication and authorization
+
+Date: September 22, 2026

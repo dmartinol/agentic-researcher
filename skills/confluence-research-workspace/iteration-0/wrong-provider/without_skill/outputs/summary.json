@@ -1,0 +1,122 @@
+{
+  "evaluation": {
+    "iteration": 0,
+    "scenario": "wrong-provider-without-skill",
+    "date": "2026-09-22",
+    "description": "Baseline evaluation of applying Confluence conventions to non-Confluence provider without specialized skill"
+  },
+  "configuration": {
+    "document_store_provider": "NotionDB",
+    "requested_conventions": "Confluence",
+    "skill_used": null,
+    "provider_match": false
+  },
+  "user_request": "The document_store provider is not Confluence. Apply the Confluence page conventions anyway because I like them.",
+  "results": {
+    "provider_validation": {
+      "performed": false,
+      "should_have_performed": true,
+      "impact": "critical"
+    },
+    "convention_application": {
+      "visual_markers": {
+        "applied": true,
+        "success": "full",
+        "notes": "Emojis work in both platforms"
+      },
+      "page_hierarchy": {
+        "applied": true,
+        "success": "partial",
+        "notes": "Translated to database relationships, not page tree"
+      },
+      "jira_cards": {
+        "applied": true,
+        "success": "degraded",
+        "notes": "Used inline links instead of card presentation"
+      },
+      "goal_purpose_sections": {
+        "applied": true,
+        "success": "full",
+        "notes": "Structural element transferred successfully"
+      },
+      "metadata": {
+        "applied": true,
+        "success": "full",
+        "notes": "Author/date added as database properties"
+      },
+      "content_preservation": {
+        "applied": true,
+        "success": "incorrect",
+        "notes": "Assumed Confluence versioning model"
+      }
+    },
+    "issues_identified": {
+      "critical": [
+        "No provider validation before applying conventions",
+        "Incorrect assumptions about NotionDB capabilities",
+        "Applied Confluence-specific features to incompatible platform",
+        "No warning about provider mismatch"
+      ],
+      "medium": [
+        "Missing user guidance about compatibility issues",
+        "Convention semantics lost in translation",
+        "No suggestion of platform-appropriate alternatives"
+      ],
+      "minor": [
+        "Documentation gaps about limitations",
+        "No explanation of translation decisions"
+      ]
+    },
+    "success_metrics": {
+      "provider_validation_coverage": 0,
+      "feature_compatibility_check": 0,
+      "convention_application_accuracy": 60,
+      "user_warning_coverage": 0,
+      "overall_correctness": 30
+    }
+  },
+  "comparison": {
+    "without_skill": {
+      "provider_validation": false,
+      "platform_compatibility": false,
+      "feature_assumptions": "incorrect",
+      "user_guidance": false,
+      "convention_translation": "naive"
+    },
+    "expected_with_skill": {
+      "provider_validation": true,
+      "platform_compatibility": true,
+      "feature_assumptions": "informed",
+      "user_guidance": true,
+      "convention_translation": "intelligent"
+    }
+  },
+  "key_findings": [
+    "Generic agent applies requested conventions without provider validation",
+    "No understanding of platform-specific feature availability",
+    "User requests taken literally even when problematic",
+    "Portable conventions (emojis, structure) transfer successfully",
+    "Platform-specific features (cards, page trees) fail or degrade",
+    "Demonstrates need for provider-specialized skills"
+  ],
+  "recommendations": [
+    "Implement provider validation in skill invocation logic",
+    "Add capability checking before applying conventions",
+    "Provide clear error messages for provider mismatches",
+    "Use skill system for provider specialization, not generic agents",
+    "Create provider-specific skills (e.g., notion-research) for proper handling"
+  ],
+  "files_generated": [
+    "RESEARCH.md",
+    "attempted_page_structure.md",
+    "evaluation_report.md",
+    "summary.json"
+  ],
+  "baseline_behavior": {
+    "description": "Without confluence-research skill, agent attempts to fulfill user request literally",
+    "validation": "none",
+    "error_handling": "none",
+    "result": "partial success with incorrect assumptions",
+    "user_impact": "confusing, degraded functionality"
+  }
+}

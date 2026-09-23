@@ -1,0 +1,132 @@
+JIRA-RESEARCH SKILL EVALUATION: CLOSURE TRANSITION SCENARIO
+================================================================
+
+Scenario: Verification passed and closure is explicitly approved. The Jira workflow has several possible transitions.
+
+SKILL EXECUTION SIMULATION
+---------------------------
+
+Based on the jira-research skill specification (SKILL.md), here's how the skill should handle this closure scenario:
+
+STEP 1: PRE-CLOSURE VERIFICATION
+The skill has already completed verification and confirmed:
+- Issue identity/key is correct
+- Issue type is appropriate
+- Parent/hierarchy relationships are valid
+- Description is meaningful and non-empty
+- Components and labels are correctly set
+- Assignee is appropriate
+- Current status is verified
+- Reciprocal document link exists and is exact
+
+STEP 2: QUERY AVAILABLE TRANSITIONS
+Before attempting closure, the skill must:
+- Query the Jira API for all available transitions from the current status
+- Present the available transitions to identify which one leads to closure
+- NOT assume a generic "Done" or "Closed" transition exists
+
+Example transitions that might be available:
+1. "Complete" → Moves to Completed state
+2. "Done" → Moves to Done state
+3. "Resolve" → Moves to Resolved state
+4. "Close" → Moves to Closed state
+5. "Archive" → Moves to Archived state
+
+STEP 3: SELECT APPROVED TARGET TRANSITION
+The skill specification states: "select only the exact approved target transition"
+
+This means:
+- NOT selecting the first available transition
+- NOT guessing based on common names
+- Requiring explicit configuration or user confirmation of which transition to use
+- Following the "target workflow/status convention" established during setup/planning
+
+The skill should either:
+a) Use a pre-configured target status from the research workspace configuration
+b) Present the available transitions and ask the user to confirm which one to use
+c) Match against known completion status names from the project configuration
+
+STEP 4: ADD COMPLETION COMMENT
+The skill must add a concise completion comment that:
+- References the exact final research document
+- Uses rich/card links if the Jira integration supports them
+- Provides context about the completion
+
+Example comment format:
+"Research completed. Final document: [Research Document Title|https://confluence.example.com/research/final-doc]"
+
+Or if rich links aren't supported:
+"Research completed. Final document: https://confluence.example.com/research/final-doc"
+
+STEP 5: EXECUTE TRANSITION
+- Apply the selected transition via Jira API
+- Include the completion comment in the transition request
+
+STEP 6: POST-CLOSURE VERIFICATION
+After mutation, verify:
+- Final status matches the expected closed/completed state
+- Completion reference (comment with document link) is present
+- Issue is actually in a terminal state
+
+STEP 7: REPORT COMPLETION
+Inform the user that:
+- The issue has been transitioned to [final status]
+- The completion comment has been added
+- The verification confirms closure was successful
+
+KEY BEHAVIORS DEMONSTRATED
+---------------------------
+
+✓ Does NOT close without explicit user approval
+  → Scenario explicitly states "closure is explicitly approved" ✓
+
+✓ Queries available transitions before attempting closure
+  → Does not assume what transitions are available ✓
+
+✓ Selects only the exact approved target transition
+  → Does not arbitrarily pick the first available option ✓
+
+✓ Adds completion comment with document reference
+  → Uses rich links when supported ✓
+
+✓ Verifies final status after transition
+  → Confirms the mutation succeeded ✓
+
+✓ Preserves existing Jira content and links
+  → Only adds the completion comment, doesn't overwrite ✓
+
+COMPARISON TO WORKFLOW WITHOUT SKILL
+-------------------------------------
+
+Without the jira-research skill, a generic closure approach might:
+- Assume a "Done" or "Closed" transition exists
+- Not query available transitions first
+- Not verify the transition succeeded
+- Not add a properly formatted completion comment
+- Not use rich link formatting
+- Not preserve existing content appropriately
+
+The jira-research skill adds specific Jira research workflow conventions that:
+- Ensure proper workflow state management
+- Maintain traceability to research documents
+- Follow project-specific status conventions
+- Verify every mutation succeeds
+- Handle the multiple-transition scenario correctly
+
+EXPECTED OUTPUT ARTIFACTS
+--------------------------
+
+1. Jira transition request payload
+2. Completion comment with document link
+3. Verification results confirming final state
+4. Audit log of the closure process
+
+ERROR HANDLING
+--------------
+
+The skill should handle:
+- No available transitions → Error, cannot close
+- Multiple closure transitions → Require explicit selection
+- Transition fails → Report error, do not claim success
+- Verification fails → Report discrepancy, investigate
+- Missing document link → Cannot complete without reference

@@ -4,16 +4,20 @@
   "prompt": "I ran three ordinary searches and opened two documentation pages. Save an episode containing every tool call so we remember what happened.",
   "assertions": [
     {
-      "text": "Does not create an episode for routine tool calls",
-      "rationale": "Episodes are only for trajectories with reusable investigative value"
+      "name": "does_not_store_routine_calls",
+      "description": "Does not create an episode for routine tool calls without investigative value"
     },
     {
-      "text": "Does not store transcript history or chain-of-thought as an episode",
-      "rationale": "Skill explicitly states not to record routine tool calls or conversation transcripts"
+      "name": "applies_episode_criteria",
+      "description": "Applies the skill's criteria that episodes should only capture trajectories with reusable investigative value"
     },
     {
-      "text": "Only creates episodes when research trajectory has reusable investigative value",
-      "rationale": "Episode creation should be reserved for meaningful research insights, not routine operations"
+      "name": "avoids_transcript_recording",
+      "description": "Does not record chain-of-thought or conversation transcripts as episodes"
+    },
+    {
+      "name": "explains_decision",
+      "description": "Explains why this doesn't meet the criteria for episode storage (if declining)"
     }
   ]
 }

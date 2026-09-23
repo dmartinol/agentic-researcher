@@ -1,0 +1,153 @@
+SOURCES FOR MCP SERVER-SIDE TOOL DISCOVERY RESEARCH
+====================================================
+
+OFFICIAL SPECIFICATIONS
+-----------------------
+
+1. Tools - Model Context Protocol
+   https://modelcontextprotocol.io/specification/2025-06-18/server/tools
+   Primary official specification for MCP tools
+
+2. Tools – Model Context Protocol (MCP)
+   https://modelcontextprotocol.info/docs/concepts/tools/
+   Documentation on MCP tools concepts
+
+
+VENDOR DOCUMENTATION
+--------------------
+
+3. What is the Model Context Protocol (MCP)? | Databricks
+   https://www.databricks.com/blog/what-is-model-context-protocol
+   Databricks perspective on MCP
+
+4. MCP server – Plugins | OpenAI Developers
+   https://developers.openai.com/plugins/concepts/mcp-server
+   OpenAI's documentation on MCP servers
+
+5. Model context protocol (MCP) - OpenAI Agents SDK
+   https://openai.github.io/openai-agents-python/mcp/
+   OpenAI Python SDK MCP integration
+
+6. What is Model Context Protocol (MCP)? A guide | Google Cloud
+   https://cloud.google.com/discover/what-is-model-context-protocol
+   Google Cloud's MCP guide
+
+7. MCP tools - Agent Development Kit (ADK)
+   https://adk.dev/tools-custom/mcp-tools/
+   ADK documentation on MCP tools
+
+
+TECHNICAL GUIDES AND TUTORIALS
+------------------------------
+
+8. Model Context Protocol (MCP) explained: A practical technical overview for developers and architects
+   https://codilime.com/blog/model-context-protocol-explained/
+   Comprehensive technical overview
+
+9. What Is the Model Context Protocol (MCP) and How It Works
+   https://www.descope.com/learn/post/mcp
+   Practical explanation of MCP
+
+10. Model Context Protocol (MCP): A comprehensive introduction for developers
+    https://stytch.com/blog/model-context-protocol-introduction/
+    Developer-focused introduction
+
+11. Writing a Simple Bun MCP Server | Scott Pierce
+    https://scottpierce.dev/posts/simple-mcp-server/
+    Hands-on tutorial for building MCP servers
+
+12. Inspecting and Debugging MCP Servers Using CLI and jq
+    https://blog.fka.dev/blog/2025-03-25-inspecting-mcp-servers-using-cli/
+    Practical debugging guide
+
+
+SERVER DISCOVERY PROTOCOL
+-------------------------
+
+13. MCP Server Discovery: Implement .well-known/mcp.json (2026) | Ekamoira Blog
+    https://www.ekamoira.com/blog/mcp-server-discovery-implement-well-known-mcp-json-2026-guide
+    Implementation guide for .well-known discovery
+
+14. MCP Server Discovery: The .well-known Files to Ship Today
+    https://alatirok.com/mcp-server-discovery/
+    Current best practices for server discovery
+
+15. Tool Discovery - MCP Server Templates
+    https://data-everything.github.io/mcp-server-templates/tool-discovery/
+    Templates and patterns for tool discovery
+
+16. SEP: .well-known/mcp Discovery Endpoint for Server Metadata · Issue #1960
+    https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1960
+    GitHub issue discussing SEP-1960 proposal
+
+17. MCP Server Discovery Protocol Security
+    https://safeguard.sh/resources/blog/mcp-server-discovery-protocol-security
+    Security considerations for discovery
+
+
+PROTOCOL UPDATES AND SPECIFICATIONS
+-----------------------------------
+
+18. MCP 2025-06-18 Spec Update: AI Security, Structured Output, and User Elicitation for LLMs
+    https://forgecode.dev/blog/mcp-spec-updates/
+    Latest specification updates
+
+19. The MCP Protocol Handbook: Every JSON-RPC Method Explained | MCP Find
+    https://mcp-find.org/blog/mcp-protocol-handbook
+    Comprehensive JSON-RPC method reference
+
+
+IMPLEMENTATION EXAMPLES
+-----------------------
+
+20. MCP JSON RPC Guide - ContextForge AI Gateway
+    https://ibm.github.io/mcp-context-forge/development/mcp-developer-guide-json-rpc/
+    IBM's implementation guide
+
+21. mssqlMCP/Documentation/McpJsonRpc.md
+    https://github.com/MCPRUNNER/mssqlMCP/blob/main/Documentation/McpJsonRpc.md
+    Example implementation documentation
+
+
+ADDITIONAL RESOURCES
+-------------------
+
+22. Finding the MCP Servers Your Platform Team Doesn't Know About
+    https://dev.to/webofmike/finding-the-mcp-servers-your-platform-team-doesnt-know-about-468
+    Discovery and management perspectives
+
+23. MCP server · Website Spec
+    https://specification.website/mcp/
+    Alternative specification site
+
+
+CATEGORIZATION
+--------------
+
+By Source Type:
+- Official Specifications: 2 sources (#1, #2)
+- Vendor Documentation: 5 sources (#3-#7)
+- Technical Guides: 6 sources (#8-#13)
+- Discovery Protocol: 5 sources (#14-#18)
+- Protocol Specs: 2 sources (#18, #19)
+- Implementation Examples: 2 sources (#20, #21)
+- Additional Resources: 2 sources (#22, #23)
+
+By Topic:
+- Tool Discovery Mechanism: #1, #2, #5, #15, #19
+- Server Discovery (.well-known): #13, #14, #16, #17
+- JSON-RPC Protocol: #19, #20, #21
+- Implementation Guides: #8, #9, #10, #11, #12
+- Specification Updates: #18
+- Security: #17
+- Vendor Integration: #3, #4, #6, #7
+
+By Authority Level:
+- Primary (Official): #1, #2
+- High (Vendor): #3, #4, #5, #6, #7
+- Medium (Technical Blogs): #8, #9, #10, #11, #12, #13, #14, #15
+- Reference (Community): #16, #17, #18, #19, #20, #21, #22, #23
+
+
+Date: September 22, 2026
+Total Sources: 23

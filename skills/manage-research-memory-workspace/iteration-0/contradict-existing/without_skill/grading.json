@@ -1,34 +1,40 @@
 {
   "eval_id": 2,
   "eval_name": "contradict-existing",
-  "configuration": "without_skill",
-  "total_assertions": 5,
-  "passed_assertions": 5,
+  "variant": "without_skill",
+  "total_assertions": 6,
+  "passed_assertions": 4,
+  "pass_rate": 0.667,
   "expectations": [
     {
-      "text": "Preserves the existing claim (doesn't delete or overwrite it)",
+      "text": "Keeps the original claim intact rather than rewriting or deleting it",
       "passed": true,
-      "evidence": "claim_mcp_stateless.md still exists with original statement intact. Added Status Update section but preserved original content."
+      "evidence": "Original claim_mcp_stateless file exists with original statement preserved"
     },
     {
-      "text": "Creates or updates the new atomic claim with proper provenance",
+      "text": "Creates or updates the contradictory claim as a separate atomic claim with provenance",
       "passed": true,
-      "evidence": "Created claim_mcp_stateful_subscriptions.md with proper frontmatter including sources, created/updated timestamps, and provenance section."
+      "evidence": "Created new claim claim_mcp_stateful_subscriptions with full provenance (sources, created, updated)"
     },
     {
-      "text": "Records an explicit contradiction or supersession relationship",
+      "text": "Explicitly records the contradiction or supersession relationship between claims",
       "passed": true,
-      "evidence": "Bidirectional relationships established: new claim has 'contradicts: [claim_mcp_stateless]', existing claim has 'contradicted_by: [claim_mcp_stateful_subscriptions]'."
+      "evidence": "Bidirectional relationship recorded: claim_mcp_stateless has 'contradicted_by' array; new claim has 'contradicts' array"
     },
     {
-      "text": "Updates evidence state without rewriting history",
-      "passed": true,
-      "evidence": "Changed existing claim evidence_state from 'Verified' to 'Contradicted', added Status Update section. Original evidence and statement preserved."
+      "text": "Updates evidence state appropriately (e.g., to 'Conflicting') without rewriting history",
+      "passed": false,
+      "evidence": "Changed field name from 'evidence_state: Verified' in fixture to 'evidence_state: Contradicted', and changed YAML structure (used 'statement' instead of keeping original frontmatter field names consistent). This modifies the original claim's schema rather than just updating its value."
     },
     {
-      "text": "Does not invent numeric confidence scores",
+      "text": "Does not add numeric confidence scores or percentages",
       "passed": true,
-      "evidence": "Uses project evidence labels ('Verified', 'Contradicted') with no numeric confidence values."
+      "evidence": "No confidence scores found in either claim file"
+    },
+    {
+      "text": "Includes proper provenance tracking for both old and new claims",
+      "passed": false,
+      "evidence": "Field name inconsistency: original claim uses 'created/updated' while the pattern elsewhere uses 'created_at/updated_at'. Also added a 'Status Update' section which rewrites history by appending narrative rather than using structured metadata"
     }
   ]
 }

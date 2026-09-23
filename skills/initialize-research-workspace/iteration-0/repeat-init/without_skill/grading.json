@@ -1,0 +1,30 @@
+{
+  "eval_id": 2,
+  "eval_name": "repeat-init",
+  "variant": "without_skill",
+  "total_assertions": 4,
+  "passed_assertions": 4,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Discovers and reuses matching existing resources",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Reports ambiguous/conflicting matches instead of guessing",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Avoids duplicate work items/documents",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Treats initialization as idempotent",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

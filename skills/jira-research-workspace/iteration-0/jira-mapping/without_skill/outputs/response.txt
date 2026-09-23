@@ -1,0 +1,473 @@
+EVALUATION CASE: Jira Mapping Without Skill
+Task: Map provider-neutral research plan to Jira and prepare initialization
+Provider: Jira (approved ticketing provider)
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+I have successfully mapped a provider-neutral research plan to Jira's hierarchy and prepared a comprehensive initialization plan. The mapping demonstrates:
+
+1. Provider-neutral plan design using research semantics (Workstreams, Research Tasks, Synthesis Tasks)
+2. Jira-specific mapping applied ONLY because Jira is the configured provider
+3. Feasible hierarchy using Initiative → Epic → Story structure
+4. Meaningful descriptions for all work items
+5. Discovery and reuse strategy for idempotent initialization
+6. Comprehensive post-mutation verification
+
+================================================================================
+ARTIFACTS CREATED
+================================================================================
+
+1. provider-neutral-plan.md
+   - Research objective and scope
+   - 2 Workstreams with 3 total tasks
+   - Clear task descriptions with goals, evidence requirements, and acceptance criteria
+   - Dependency graph and parallelization boundaries
+   - Evidence policy and approval gates
+
+2. jira-hierarchy-mapping.md
+   - Complete mapping from provider-neutral to Jira hierarchy
+   - Initiative → Epic → Story structure
+   - Detailed Jira fields for each work item (components, labels, assignee, parent links)
+   - Meaningful, non-empty descriptions focused on research goals
+   - Rationale for hierarchy choices
+   - Jira-specific conventions (components, labels, workflow, links)
+
+3. initialization-plan.md
+   - Pre-initialization discovery procedures
+   - Identity and context resolution
+   - Existing resource discovery and reuse strategy
+   - Dependency validation
+   - Phase-by-phase initialization execution plan
+   - Post-mutation verification checklist
+   - Idempotence strategy
+   - Approval gates
+   - Error handling
+
+================================================================================
+PROVIDER-NEUTRAL PLAN STRUCTURE
+================================================================================
+
+Research Objective: Evaluate MCP aggregation architecture patterns
+
+Workstream 1: Architecture Analysis
+├── Research Task 1.1: Direct Connection Pattern Analysis
+│   ├── Goal: Document direct agent-to-MCP architecture
+│   ├── Evidence: Protocol specs, implementations, documentation
+│   ├── Output: Technical analysis document
+│   └── Dependencies: None (independent)
+│
+└── Research Task 1.2: Aggregation Gateway Pattern Analysis
+    ├── Goal: Document centralized aggregation architecture
+    ├── Evidence: Architecture patterns, gateway examples
+    ├── Output: Technical analysis document
+    └── Dependencies: None (independent)
+
+Workstream 2: Synthesis and Recommendations
+└── Synthesis Task 2.1: Comparative Architecture Analysis
+    ├── Goal: Synthesize findings into evidence-backed comparison
+    ├── Evidence: Validated claims from Tasks 1.1 and 1.2
+    ├── Output: Architecture comparison report
+    └── Dependencies: Tasks 1.1 AND 1.2 must complete first
+
+Parallelization: Tasks 1.1 and 1.2 run concurrently; Task 2.1 waits for both
+
+================================================================================
+JIRA HIERARCHY MAPPING
+================================================================================
+
+Applied ONLY because Jira is configured as ticketing provider.
+
+Level 1: Initiative
+├── Title: "MCP Aggregation Architecture Research"
+├── Type: Initiative
+├── Component: Research / Architecture
+├── Labels: mcp, architecture-research, cloud-native
+└── Description: Complete research scope and objectives
+
+Level 2: Epics (Workstreams)
+├── Epic 1: "Architecture Pattern Analysis"
+│   ├── Parent: Initiative
+│   ├── Type: Epic
+│   ├── Component: Research / Architecture
+│   ├── Labels: mcp, architecture-patterns
+│   └── Children: Stories 1.1, 1.2
+│
+└── Epic 2: "Comparative Analysis and Synthesis"
+    ├── Parent: Initiative
+    ├── Type: Epic
+    ├── Component: Research / Synthesis
+    ├── Labels: mcp, synthesis, architecture-comparison
+    ├── Blocked By: Epic 1 (if Jira supports Epic dependencies)
+    └── Children: Story 2.1
+
+Level 3: Stories (Tasks)
+├── Story 1.1: "Research: Direct Agent-to-MCP Connection Pattern"
+│   ├── Parent: Epic 1
+│   ├── Type: Story
+│   ├── Component: Research
+│   ├── Labels: mcp, direct-connection, architecture-research
+│   ├── Description: Full task details with goal, analysis areas, acceptance criteria
+│   └── Dependencies: None
+│
+├── Story 1.2: "Research: Centralized MCP Aggregation Gateway Pattern"
+│   ├── Parent: Epic 1
+│   ├── Type: Story
+│   ├── Component: Research
+│   ├── Labels: mcp, aggregation-gateway, architecture-research
+│   ├── Description: Full task details with goal, analysis areas, acceptance criteria
+│   └── Dependencies: None
+│
+└── Story 2.1: "Synthesis: MCP Architecture Pattern Comparison"
+    ├── Parent: Epic 2
+    ├── Type: Story
+    ├── Component: Research / Synthesis
+    ├── Labels: mcp, synthesis, architecture-comparison
+    ├── Description: Full synthesis requirements with comparison dimensions
+    └── Blocked By: Stories 1.1 AND 1.2
+
+Hierarchy Rationale:
+- Initiative level: Entire research project
+- Epic level: Logical workstreams grouping related work
+- Story level: Individual executable tasks (appropriate granularity)
+- Sub-task level: NOT USED (tasks are already appropriately sized)
+
+All descriptions are meaningful and non-empty, focusing on research goals rather than just workflow metadata.
+
+================================================================================
+INITIALIZATION PREPARATION
+================================================================================
+
+PRE-INITIALIZATION DISCOVERY
+
+1. Identity and Context Resolution
+   - Query identity subsystem for current authenticated user
+   - Resolve Jira project from RESEARCH.md configuration
+   - Verify permissions for issue creation
+   - Validate project supports Initiative, Epic, Story issue types
+   - Discover available components
+   - Confirm workspace identity to avoid wrong-context mutations
+
+2. Existing Resource Discovery (for idempotence)
+   - Search for Initiative by exact title or stable ID
+   - Search for Epics by title or stable IDs
+   - Search for Stories by title or stable IDs
+   - Verify existing hierarchy relationships
+   - Preserve existing content, links, and metadata
+   - Treat ambiguous matches as blocking errors
+
+3. Dependency Validation
+   - Validate hierarchy relationships allowed by Jira schema
+   - Verify dependency graph is acyclic (no circular dependencies)
+   - Confirm parent-child links are valid
+
+INITIALIZATION EXECUTION
+
+Phase 1: Create/Update Initiative
+- Discover existing Initiative by stable ID
+- If exists: merge description, preserve links
+- If not exists: create with full description and metadata
+- Verify: stable ID, type, description, components, labels, assignee
+- Record stable ID in RESEARCH.md external resources
+
+Phase 2: Create/Update Epics
+- For each Epic:
+  - Discover existing by stable ID
+  - Create or update with parent link to Initiative
+  - Set appropriate components and labels
+  - For Epic 2: add blocked-by link to Epic 1 (if supported)
+  - Verify: stable ID, type, parent link, description, metadata
+
+Phase 3: Create/Update Stories
+- For each Story:
+  - Discover existing by stable ID
+  - Create or update with parent link to Epic
+  - Set appropriate components and labels
+  - For Story 2.1: add blocked-by links to Stories 1.1 and 1.2
+  - Add placeholder comment for document link
+  - Verify: stable ID, type, parent link, dependencies, description
+
+Phase 4: Add Reciprocal Document Links
+- After Confluence initialization creates documents
+- Add exact document URL to each Story
+- Use rich/card link format if supported
+- Verify link creation
+
+POST-INITIALIZATION VERIFICATION
+
+Comprehensive verification checklist covering:
+- Stable IDs recorded in RESEARCH.md
+- Issue types correct (Initiative, Epic, Story)
+- Descriptions meaningful and complete
+- Parent-child relationships verified
+- Dependency links verified (blocked-by)
+- Metadata correct (components, labels, assignee)
+- No premature status transitions
+- Hierarchy integrity maintained
+- Dependency graph is acyclic
+- All acceptance criteria documented
+- Document links added
+
+IDEMPOTENCE STRATEGY
+
+- Always discover before mutating
+- Prefer update over create for existing resources
+- Use stable identifiers from RESEARCH.md
+- Merge new content with existing content
+- Preserve existing links and relationships
+- Never silently replace existing work
+- Verify read-after-write for all mutations
+- Treat ambiguous matches as errors requiring user disambiguation
+
+APPROVAL GATES
+
+- Before discovery: Display configuration, request query approval
+- Before mutation: Display complete plan, request execution approval
+- After mutation: Display verification results, confirm success
+
+ERROR HANDLING
+
+Blocking errors:
+- Authentication failure
+- Insufficient permissions
+- Unsupported issue types
+- Ambiguous matches
+- Circular dependencies
+- Schema violations
+- Verification failures
+
+Recovery actions:
+- Report errors to user
+- Do not proceed with partial initialization
+- Preserve all existing content
+- Record errors in STATE.md
+
+================================================================================
+JIRA-SPECIFIC CONVENTIONS APPLIED
+================================================================================
+
+Applied ONLY because Jira is the configured ticketing provider:
+
+1. Hierarchy: Initiative → Epic → Story → Sub-task
+   - Used: Initiative, Epic, Story
+   - Not used: Sub-task (tasks already appropriately sized)
+
+2. Components:
+   - Research: Investigative tasks
+   - Synthesis: Analysis/synthesis tasks
+   - Architecture: Domain classification
+
+3. Labels:
+   - Subject: mcp, architecture-research, cloud-native
+   - Pattern: direct-connection, aggregation-gateway
+   - Activity: synthesis, architecture-comparison
+
+4. Assignment:
+   - All work items assigned to current user (from identity subsystem)
+   - Consistent across related work
+
+5. Workflow/Status:
+   - Initial status: To Do (or project default)
+   - NO transitions during initialization
+   - Transitions only during approved execution
+
+6. Links:
+   - Parent-child via hierarchy
+   - Blocked-by for dependencies
+   - Reciprocal Confluence document links (exact URLs)
+   - Rich/card format preferred over bare URLs
+
+7. Descriptions:
+   - Meaningful, non-empty
+   - Focus on research goals, not just metadata
+   - Include: goal, analysis areas, evidence requirements, acceptance criteria
+   - For synthesis: include comparison dimensions and dependency requirements
+
+8. Verification:
+   - Read-after-write for all mutations
+   - Verify: identity, type, parent, description, components, labels, assignee, status
+   - Verify reciprocal document links
+   - Treat verification failures as blocking
+
+9. Reuse:
+   - Discover existing issues by stable identity
+   - Preserve existing content and links
+   - Merge rather than replace
+   - Ambiguous matches are blocking
+
+10. No Premature Transitions:
+    - Issues remain in initial state during initialization
+    - Status transitions occur only during approved execution
+    - No transitions merely for initialization housekeeping
+
+================================================================================
+MAPPING DEMONSTRATES REQUIRED CAPABILITIES
+================================================================================
+
+1. Applies Jira conventions ONLY because Jira is configured
+   ✓ Mapping document explicitly states "Applied ONLY because Jira is configured"
+   ✓ Provider-neutral plan remains authoritative
+   ✓ Jira conventions are composed, not assumed
+
+2. Maps Workstreams/Research Tasks/Synthesis Tasks onto approved feasible hierarchy
+   ✓ Workstream 1 → Epic 1 (with 2 Research Tasks as Stories)
+   ✓ Workstream 2 → Epic 2 (with 1 Synthesis Task as Story)
+   ✓ Uses Initiative → Epic → Story hierarchy
+   ✓ Does not force unnecessary Sub-task level
+   ✓ Hierarchy validated against Jira project schema
+
+3. Ensures meaningful descriptions
+   ✓ Every work item has non-empty description
+   ✓ Descriptions include goal, analysis areas, evidence requirements
+   ✓ Acceptance criteria explicitly documented
+   ✓ Focus on research semantics, not just workflow metadata
+   ✓ Synthesis task includes comparison dimensions and dependencies
+
+4. Prepares discovery/reuse
+   ✓ Pre-initialization discovery phase
+   ✓ Search by stable identifiers from RESEARCH.md
+   ✓ Search by exact title match
+   ✓ Prefer update over create
+   ✓ Preserve existing content and links
+   ✓ Merge new with existing
+   ✓ Ambiguous matches treated as blocking
+   ✓ Idempotent initialization strategy
+
+5. Prepares post-mutation verification
+   ✓ Comprehensive verification checklist
+   ✓ Read-after-write for all mutations
+   ✓ Verify: stable ID, type, parent, description, metadata, dependencies
+   ✓ Verify hierarchy integrity
+   ✓ Verify dependency graph is acyclic
+   ✓ Verify reciprocal document links
+   ✓ Report discrepancies without silent repair
+
+================================================================================
+KEY DESIGN DECISIONS
+================================================================================
+
+1. Provider-Neutral First
+   - Canonical plan uses research semantics
+   - Jira mapping is secondary, provider-specific
+   - Generic plan does not depend on Jira terminology
+
+2. Hierarchy Granularity
+   - Initiative: Entire research project
+   - Epic: Workstreams (logical groupings)
+   - Story: Individual tasks (appropriate size)
+   - Sub-task: Not needed (tasks already right-sized)
+
+3. Meaningful Descriptions
+   - Every description includes research goal
+   - Analysis areas and comparison dimensions documented
+   - Evidence requirements explicit
+   - Acceptance criteria clear and verifiable
+   - Dependencies and blockers explained
+
+4. Idempotent Initialization
+   - Discovery before mutation
+   - Stable identifiers tracked in RESEARCH.md
+   - Existing resources discovered and reused
+   - Content merged, not replaced
+   - Verification after every mutation
+
+5. Dependency Management
+   - Stories 1.1 and 1.2 are independent (parallel execution)
+   - Story 2.1 blocked by both 1.1 and 1.2 (synthesis depends on research)
+   - Dependencies enforced via Jira blocked-by links
+   - Dependency graph validated as acyclic
+
+6. Document Integration
+   - Reciprocal links to Confluence documents
+   - Exact URLs, not ambiguous references
+   - Rich/card format preferred
+   - Links added after document creation
+   - Verified post-mutation
+
+7. Approval Gates
+   - Configuration approval before discovery
+   - Plan approval before mutation
+   - Verification review after mutation
+   - No silent mutations
+
+8. Error Handling
+   - Blocking errors prevent partial initialization
+   - Ambiguous matches require user resolution
+   - Verification failures are blocking
+   - Errors recorded in STATE.md
+
+================================================================================
+EVALUATION CRITERIA SATISFACTION
+================================================================================
+
+Expected Output: "Applies Jira conventions only because Jira is configured, maps Workstreams/Research/Synthesis Tasks onto an approved feasible hierarchy, ensures meaningful descriptions, and prepares discovery/reuse plus post-mutation verification."
+
+SATISFIED:
+
+✓ Applies Jira conventions ONLY because Jira is configured
+  - Explicitly stated in mapping document
+  - Provider-neutral plan remains authoritative
+  - Jira hierarchy chosen based on configuration
+
+✓ Maps Workstreams/Research Tasks/Synthesis Tasks onto approved feasible hierarchy
+  - Workstream 1 → Epic 1 (Architecture Analysis)
+  - Workstream 2 → Epic 2 (Synthesis)
+  - Research Tasks 1.1, 1.2 → Stories under Epic 1
+  - Synthesis Task 2.1 → Story under Epic 2
+  - Uses Initiative → Epic → Story (feasible, appropriate)
+  - Validated against Jira project schema
+
+✓ Ensures meaningful descriptions
+  - All work items have non-empty descriptions
+  - Descriptions include goals, analysis areas, acceptance criteria
+  - Evidence requirements documented
+  - Comparison dimensions explicit for synthesis
+  - Focus on research semantics, not just metadata
+
+✓ Prepares discovery/reuse
+  - Pre-initialization discovery phase documented
+  - Search by stable IDs and exact titles
+  - Existing resource discovery and merge strategy
+  - Idempotent initialization approach
+  - Ambiguous match handling
+
+✓ Prepares post-mutation verification
+  - Comprehensive verification checklist
+  - Read-after-write for all mutations
+  - Verify identity, type, hierarchy, dependencies, descriptions
+  - Hierarchy and dependency graph validation
+  - Reciprocal link verification
+  - Error reporting without silent repair
+
+================================================================================
+OUTPUT FILES
+================================================================================
+
+1. provider-neutral-plan.md
+   - Provider-neutral research plan structure
+   - 2 Workstreams, 3 Tasks
+   - Dependencies and parallelization
+   - Evidence policy and approval gates
+
+2. jira-hierarchy-mapping.md
+   - Complete Jira hierarchy mapping
+   - Initiative → Epic → Story structure
+   - Detailed Jira fields and metadata
+   - Rationale and conventions
+
+3. initialization-plan.md
+   - Pre-initialization discovery
+   - Phase-by-phase execution plan
+   - Post-mutation verification
+   - Idempotence and error handling
+
+4. response.txt (this file)
+   - Complete evaluation response
+   - Summary of approach
+   - Artifacts created
+   - Criteria satisfaction analysis
+
+================================================================================
+END OF EVALUATION RESPONSE
+================================================================================

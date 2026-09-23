@@ -1,0 +1,7 @@
+{
+  "eval_id": 1,
+  "eval_name": "jira-mapping",
+  "prompt": "Our approved ticketing provider is Jira. Map the provider-neutral research plan into the project and prepare initialization.",
+  "expected_output": "Applies Jira conventions only because Jira is configured, maps Workstreams/Research/Synthesis Tasks onto an approved feasible hierarchy, ensures meaningful descriptions, and prepares discovery/reuse plus post-mutation verification.",
+  "assertions": []
+}

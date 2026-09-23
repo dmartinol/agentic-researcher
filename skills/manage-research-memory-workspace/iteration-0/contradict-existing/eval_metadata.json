@@ -4,24 +4,28 @@
   "prompt": "Store a new finding that contradicts an existing Verified claim in memory.",
   "assertions": [
     {
-      "text": "Preserves the existing claim (doesn't delete or overwrite it)",
-      "rationale": "History should not be rewritten; old claims remain even when contradicted"
+      "name": "preserves_existing_claim",
+      "description": "Keeps the original claim intact rather than rewriting or deleting it"
     },
     {
-      "text": "Creates or updates the new atomic claim with proper provenance",
-      "rationale": "New contradicting claim needs its own record with source information"
+      "name": "creates_new_atomic_claim",
+      "description": "Creates or updates the contradictory claim as a separate atomic claim with provenance"
     },
     {
-      "text": "Records an explicit contradiction or supersession relationship",
-      "rationale": "The relationship between contradicting claims must be documented"
+      "name": "records_contradiction_relationship",
+      "description": "Explicitly records the contradiction or supersession relationship between claims"
     },
     {
-      "text": "Updates evidence state without rewriting history",
-      "rationale": "Evidence labels may change but historical record is preserved"
+      "name": "updates_evidence_state",
+      "description": "Updates evidence state appropriately (e.g., to 'Conflicting') without rewriting history"
     },
     {
-      "text": "Does not invent numeric confidence scores",
-      "rationale": "Skill specifies using project evidence labels only, no numeric confidence"
+      "name": "avoids_numeric_confidence",
+      "description": "Does not add numeric confidence scores or percentages"
+    },
+    {
+      "name": "maintains_provenance",
+      "description": "Includes proper provenance tracking for both old and new claims"
     }
   ]
 }

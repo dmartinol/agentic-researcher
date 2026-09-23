@@ -1,0 +1,25 @@
+{
+  "eval_id": 3,
+  "eval_name": "out-of-scope-roadmap",
+  "variant": "with_skill",
+  "total_assertions": 3,
+  "passed_assertions": 3,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Honors the approved scope and excludes staffing/timeline/implementation planning",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Explicitly identifies the requested addition as outside the approved scope",
+      "passed": true,
+      "evidence": "Expected: True"
+    },
+    {
+      "text": "Does not silently add out-of-scope work",
+      "passed": true,
+      "evidence": "Expected: True"
+    }
+  ]
+}

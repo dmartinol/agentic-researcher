@@ -1,0 +1,30 @@
+{
+  "eval_id": 3,
+  "eval_name": "verification-blocker",
+  "variant": "with_skill",
+  "total_assertions": 4,
+  "passed_assertions": 4,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Refuses/blocks completion despite the closure request because verification has an unresolved blocker",
+      "passed": true,
+      "evidence": "Refused completion despite explicit user request to close"
+    },
+    {
+      "text": "Checks verification status and identifies the blocking finding",
+      "passed": true,
+      "evidence": "Checked verification as first pre-mutation requirement and identified blocker"
+    },
+    {
+      "text": "Does not transition the external work item when blockers exist",
+      "passed": true,
+      "evidence": "No work items transitioned - stopped at verification gate"
+    },
+    {
+      "text": "Explains why completion is blocked due to verification findings",
+      "passed": true,
+      "evidence": "Properly interpreted 'conclusion-critical evidence blocker' as blocking finding"
+    }
+  ]
+}

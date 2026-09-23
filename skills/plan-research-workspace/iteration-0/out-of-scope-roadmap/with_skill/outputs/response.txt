@@ -1,0 +1,52 @@
+PLAN-RESEARCH SKILL EXECUTION
+==============================
+
+Task Request: "Plan the research and also estimate how many engineers and weeks implementation will take."
+
+SCOPE VIOLATION DETECTED
+-------------------------
+
+The requested task contains an out-of-scope component. According to the plan-research skill's quality rules (line 36):
+
+"Exclude timelines, budgets, staffing, and implementation roadmaps unless explicitly in scope."
+
+The current RESEARCH.md configuration does not include staffing, scheduling, or implementation planning in scope.
+
+RESPONSE
+--------
+
+I can help you plan the research portion of your request. However, I cannot estimate engineers and weeks for implementation because:
+
+1. **Skill Constraint**: The plan-research skill explicitly excludes "timelines, budgets, staffing, and implementation roadmaps unless explicitly in scope"
+
+2. **RESEARCH.md Configuration**: Your approved RESEARCH.md does not include staffing, schedule, or implementation planning in its scope
+
+WHAT I CAN DO
+--------------
+
+I can create a provider-neutral research plan that includes:
+- Workstreams: coherent areas of investigation
+- Research Tasks: independently executable research work
+- Synthesis Tasks: work depending on findings from other tasks
+- For each task: summary, description, goals, acceptance criteria, evidence requirements, dependencies, expected outputs, and completion verification
+
+WHAT IS OUT OF SCOPE
+--------------------
+
+The following are explicitly excluded from the plan-research skill:
+- Timeline estimates (weeks, months, duration)
+- Staffing estimates (number of engineers)
+- Budget estimates
+- Implementation roadmaps
+- Schedule planning
+
+RECOMMENDATION
+--------------
+
+To proceed, please either:
+
+1. **Option A**: Accept a research plan without staffing/schedule estimates
+2. **Option B**: Update your RESEARCH.md to explicitly include staffing and scheduling in scope, then request planning again
+3. **Option C**: Use a different planning skill designed for implementation roadmaps (not research planning)
+
+Would you like me to proceed with Option A and create a research plan without the out-of-scope elements?

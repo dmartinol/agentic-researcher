@@ -1,0 +1,86 @@
+JIRA CLOSURE DECISION TREE (WITHOUT SKILL)
+==========================================
+
+START: Verification passed, closure approved
+│
+├─ [Step 1] Do we have Jira credentials?
+│   ├─ NO → STOP: Request credentials from user
+│   └─ YES → Continue
+│
+├─ [Step 2] Do we have the issue key?
+│   ├─ NO → STOP: Request issue key from user
+│   └─ YES → Continue
+│
+├─ [Step 3] Can we connect to Jira API?
+│   ├─ NO → STOP: Check network/credentials/permissions
+│   └─ YES → Continue
+│
+├─ [Step 4] Fetch current issue status
+│   ├─ ERROR → STOP: Issue not found or access denied
+│   └─ SUCCESS → Continue
+│
+├─ [Step 5] Is issue already closed?
+│   ├─ YES → STOP: No action needed
+│   └─ NO → Continue
+│
+├─ [Step 6] Fetch available transitions
+│   ├─ ERROR → STOP: API error
+│   └─ SUCCESS → Continue
+│
+├─ [Step 7] How many closure transitions available?
+│   ├─ ZERO → STOP: No valid transitions (workflow issue)
+│   │
+│   ├─ ONE → [Step 8] Execute the transition
+│   │   ├─ Check if required fields needed
+│   │   │   ├─ YES → Request from user
+│   │   │   └─ NO → Continue
+│   │   ├─ Execute transition
+│   │   │   ├─ ERROR → STOP: Log error, notify user
+│   │   │   └─ SUCCESS → Verify new status
+│   │   └─ DONE
+│   │
+│   └─ MULTIPLE → [Step 8] Which transition to use?
+│       ├─ Is there a "Done" transition?
+│       │   ├─ YES → Prefer "Done"
+│       │   └─ NO → Continue
+│       │
+│       ├─ Is there a "Close" transition?
+│       │   ├─ YES → Consider "Close"
+│       │   └─ NO → Continue
+│       │
+│       ├─ Is there a "Resolve" transition?
+│       │   ├─ YES → Consider "Resolve"
+│       │   └─ NO → Continue
+│       │
+│       ├─ [DECISION POINT] Multiple options remain
+│       │   ├─ Check team documentation
+│       │   ├─ Check similar closed issues
+│       │   ├─ Present options to user
+│       │   └─ Wait for user selection
+│       │
+│       └─ [Step 9] Execute selected transition
+│           ├─ Check if required fields needed
+│           │   ├─ YES → Request from user
+│           │   └─ NO → Continue
+│           ├─ Execute transition
+│           │   ├─ ERROR → STOP: Log error, notify user
+│           │   └─ SUCCESS → Verify new status
+│           └─ DONE
+
+DECISION POINTS REQUIRING HUMAN INPUT
+======================================
+1. Jira credentials (if not cached)
+2. Issue key (if not provided)
+3. Required fields for transition (resolution, comment, etc.)
+4. Transition selection (when multiple valid options)
+5. Error recovery decisions
+
+BOTTLENECKS WITHOUT SKILL
+==========================
+- No automated credential retrieval
+- No context about team conventions
+- No default transition preferences
+- No error recovery patterns
+- Manual intervention at multiple points
+- No validation of prerequisites
+- No automated logging/audit

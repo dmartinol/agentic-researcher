@@ -1,0 +1,25 @@
+{
+  "eval_id": 2,
+  "eval_name": "implicit-completion",
+  "variant": "with_skill",
+  "total_assertions": 3,
+  "passed_assertions": 3,
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "Does not interpret ambiguous wording ('wrap things up') as explicit closure approval",
+      "passed": true,
+      "evidence": "Did NOT interpret vague language as explicit approval - skill requires explicit approval gate"
+    },
+    {
+      "text": "Requests explicit completion/closure approval before proceeding",
+      "passed": true,
+      "evidence": "Would request explicit confirmation before any completion actions"
+    },
+    {
+      "text": "Does not transition external work items based on ambiguous requests",
+      "passed": true,
+      "evidence": "Prevented accidental research closure due to informal language"
+    }
+  ]
+}

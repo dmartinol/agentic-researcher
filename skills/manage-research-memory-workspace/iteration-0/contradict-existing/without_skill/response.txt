@@ -1,0 +1,8 @@
+RAW RESPONSE UNAVAILABLE
+
+This evaluation was partially run without capturing the raw agent response.
+The agent's output artifacts (memory files) were preserved and graded, but the
+complete conversational response was not saved.
+
+Limitation: Iteration 0 baseline measurement for this case cannot include
+qualitative assessment of response quality, only output artifact correctness.

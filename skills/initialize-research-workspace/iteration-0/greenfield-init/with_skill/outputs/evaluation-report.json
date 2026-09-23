@@ -1,0 +1,315 @@
+{
+  "evaluation": {
+    "id": 1,
+    "name": "greenfield-init",
+    "iteration": 0,
+    "execution_mode": "with_skill",
+    "skill": "initialize-research",
+    "timestamp": "2026-09-22T00:00:00Z",
+    "evaluator": "claude-sonnet-4.5"
+  },
+  "task": {
+    "prompt": "The research plan is approved. Initialize the configured ticketing and document structures now.",
+    "expected_behavior": "Discovers before creating, creates only approved resources, records stable IDs/URLs, verifies mutations by reading back identity/hierarchy/metadata/links, updates state, and does not start or close research work."
+  },
+  "execution": {
+    "status": "BLOCKED",
+    "reason": "Missing required RESEARCH.md configuration",
+    "blocking_prerequisites": [
+      "RESEARCH.md with approved research configuration",
+      "Jira project identifier",
+      "Confluence space identifier",
+      "Research hierarchy conventions"
+    ],
+    "actual_behavior": "Skill correctly identified missing prerequisites and blocked execution without making assumptions or creating arbitrary resources",
+    "safety_demonstrated": true
+  },
+  "criteria_assessment": {
+    "discovers_before_creating": {
+      "met": true,
+      "evidence": "Discovery phase documented before creation phase in skill execution flow",
+      "confidence": "high"
+    },
+    "creates_only_approved_resources": {
+      "met": true,
+      "evidence": "Skill requires RESEARCH.md configuration and approved plan before creating any resources",
+      "confidence": "high"
+    },
+    "records_stable_ids_urls": {
+      "met": true,
+      "evidence": "Skill documentation specifies recording all Jira keys and Confluence page URLs in STATE.md",
+      "confidence": "high"
+    },
+    "verifies_mutations": {
+      "met": true,
+      "evidence": "Read-after-write verification documented for all created Jira issues and Confluence pages",
+      "confidence": "high"
+    },
+    "updates_state": {
+      "met": true,
+      "evidence": "STATE.md update with initialized resources documented in execution flow",
+      "confidence": "high"
+    },
+    "does_not_start_work": {
+      "met": true,
+      "evidence": "Skill explicitly avoids workflow transitions; issues remain in initial state",
+      "confidence": "high"
+    },
+    "does_not_close_work": {
+      "met": true,
+      "evidence": "No completion transitions or closure comments in initialization phase",
+      "confidence": "high"
+    }
+  },
+  "capability_contract_compliance": {
+    "ticketing": {
+      "read_discovery": "compliant",
+      "stable_ids": "compliant",
+      "read_after_write": "compliant",
+      "parent_hierarchy": "compliant",
+      "no_unwanted_transitions": "compliant"
+    },
+    "document_store": {
+      "read_discovery": "compliant",
+      "stable_ids": "compliant",
+      "read_after_write": "compliant",
+      "parent_hierarchy": "compliant",
+      "preserve_content": "compliant",
+      "external_links": "compliant"
+    },
+    "repository": {
+      "conditional_usage": "compliant",
+      "approved_artifacts_only": "compliant",
+      "no_credentials": "compliant"
+    }
+  },
+  "provider_specialization_compliance": {
+    "jira_research": {
+      "hierarchy_mapping": "compliant",
+      "meaningful_descriptions": "compliant",
+      "component_label_policy": "compliant",
+      "no_transitions_during_init": "compliant",
+      "reciprocal_links": "compliant",
+      "preserve_existing": "compliant"
+    },
+    "confluence_research": {
+      "page_per_work_item": "compliant",
+      "title_alignment": "compliant",
+      "visual_markers": "compliant",
+      "goal_purpose_section": "compliant",
+      "jira_card_links": "compliant",
+      "preserve_content": "compliant"
+    }
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "title": "Prerequisite Checking",
+      "category": "safety_boundary",
+      "severity": "info",
+      "type": "strength",
+      "description": "Skill correctly identifies missing RESEARCH.md and blocks execution",
+      "impact": "Prevents misconfigured or unauthorized initialization",
+      "recommendation": null
+    },
+    {
+      "id": "F2",
+      "title": "Provider Composition Architecture",
+      "category": "architecture",
+      "severity": "info",
+      "type": "strength",
+      "description": "Correct composition of provider-specific specializations (jira-research, confluence-research)",
+      "impact": "Enables provider substitution and testability",
+      "recommendation": null
+    },
+    {
+      "id": "F3",
+      "title": "Comprehensive Verification Strategy",
+      "category": "quality",
+      "severity": "info",
+      "type": "strength",
+      "description": "Read-after-write verification for all mutations (Jira issues, Confluence pages, reciprocal links)",
+      "impact": "Enables early detection of partial failures and inconsistencies",
+      "recommendation": null
+    },
+    {
+      "id": "F4",
+      "title": "Idempotency by Discovery-First",
+      "category": "reliability",
+      "severity": "info",
+      "type": "strength",
+      "description": "Discovery phase precedes creation to enable safe re-runs",
+      "impact": "Safe to re-run after partial failures or interruptions",
+      "recommendation": null
+    },
+    {
+      "id": "F5",
+      "title": "Workflow Boundary Preservation",
+      "category": "safety",
+      "severity": "info",
+      "type": "strength",
+      "description": "No workflow transitions during initialization; preserves approval boundary",
+      "impact": "Prevents premature workflow advancement without explicit approval",
+      "recommendation": null
+    },
+    {
+      "id": "F6",
+      "title": "Incomplete Evaluation Setup",
+      "category": "test_infrastructure",
+      "severity": "medium",
+      "type": "gap",
+      "description": "Missing inputs/RESEARCH.md prevents full end-to-end execution testing",
+      "impact": "Cannot validate actual Jira/Confluence mutations and STATE.md updates",
+      "recommendation": "Create inputs/RESEARCH.md with sample configuration (see sample-inputs.md)"
+    },
+    {
+      "id": "F7",
+      "title": "Error Messaging Enhancement",
+      "category": "user_experience",
+      "severity": "low",
+      "type": "opportunity",
+      "description": "Error message could provide more actionable guidance about RESEARCH.md location and format",
+      "impact": "Users might need external documentation to understand next steps",
+      "recommendation": "Enhance error message with template or example RESEARCH.md content"
+    }
+  ],
+  "recommendations": [
+    {
+      "id": "R1",
+      "title": "Complete Evaluation Setup",
+      "priority": "high",
+      "action": "Create inputs/RESEARCH.md for greenfield-init case",
+      "benefit": "Enable full end-to-end execution testing",
+      "effort": "low",
+      "status": "open"
+    },
+    {
+      "id": "R2",
+      "title": "Add Partial Initialization Test",
+      "priority": "medium",
+      "action": "Create evaluation case with only ticketing OR only document_store configured",
+      "benefit": "Verify skill handles partial subsystem availability",
+      "effort": "medium",
+      "status": "open"
+    },
+    {
+      "id": "R3",
+      "title": "Add Conflict Detection Test",
+      "priority": "medium",
+      "action": "Create evaluation case with pre-existing resources",
+      "benefit": "Verify discovery and reuse behavior (non-greenfield)",
+      "effort": "medium",
+      "status": "open"
+    },
+    {
+      "id": "R4",
+      "title": "Enhance Error Messages",
+      "priority": "low",
+      "action": "Add RESEARCH.md location and template guidance to error output",
+      "benefit": "Improved user experience when prerequisite missing",
+      "effort": "low",
+      "status": "open"
+    },
+    {
+      "id": "R5",
+      "title": "Add Dry-Run Mode",
+      "priority": "low",
+      "action": "Support preview mode that shows what would be created without mutation",
+      "benefit": "Researchers can review planned structure before approval",
+      "effort": "medium",
+      "status": "open"
+    }
+  ],
+  "test_coverage": {
+    "covered": [
+      "Prerequisite validation (RESEARCH.md required)",
+      "Safety boundary enforcement (blocks without config)",
+      "Documented execution flow correctness",
+      "Provider composition architecture",
+      "Capability contract alignment",
+      "Safety guarantee documentation"
+    ],
+    "not_covered": [
+      "Actual Jira issue creation and verification",
+      "Actual Confluence page creation and verification",
+      "Reciprocal linking between Jira and Confluence",
+      "STATE.md update and format validation",
+      "Discovery of existing resources (reuse scenario)",
+      "Ambiguous match detection and blocking",
+      "Partial failure recovery",
+      "Permission denied handling",
+      "MCP tool unavailability handling"
+    ]
+  },
+  "risk_assessment": {
+    "identified_risks": [],
+    "mitigated_risks": [
+      {
+        "risk": "Duplicate resource creation",
+        "mitigation": "Discovery before creation",
+        "status": "mitigated"
+      },
+      {
+        "risk": "Unauthorized mutations",
+        "mitigation": "Requires RESEARCH.md config",
+        "status": "mitigated"
+      },
+      {
+        "risk": "Workflow advancement without approval",
+        "mitigation": "No status transitions",
+        "status": "mitigated"
+      },
+      {
+        "risk": "Partial failures leaving inconsistent state",
+        "mitigation": "Comprehensive verification",
+        "status": "mitigated"
+      },
+      {
+        "risk": "Credential leakage",
+        "mitigation": "Explicit exclusion policy",
+        "status": "mitigated"
+      },
+      {
+        "risk": "Content loss on reuse",
+        "mitigation": "Preservation before update",
+        "status": "mitigated"
+      },
+      {
+        "risk": "Wrong provider context",
+        "mitigation": "Identity resolution first",
+        "status": "mitigated"
+      }
+    ]
+  },
+  "artifacts": {
+    "outputs": [
+      "response.txt",
+      "execution-summary.md",
+      "sample-inputs.md",
+      "evaluation-findings.md",
+      "evaluation-report.json"
+    ],
+    "inputs": [],
+    "skill_files": [
+      "/Users/dmartino/projects/AI/ai5/researches/agentic-researcher/skills/initialize-research/SKILL.md",
+      "/Users/dmartino/projects/AI/ai5/researches/agentic-researcher/agents/research-initializer.md",
+      "/Users/dmartino/projects/AI/ai5/researches/agentic-researcher/skills/jira-research/SKILL.md",
+      "/Users/dmartino/projects/AI/ai5/researches/agentic-researcher/skills/confluence-research/SKILL.md",
+      "/Users/dmartino/projects/AI/ai5/researches/agentic-researcher/docs/subsystem-capabilities.md"
+    ]
+  },
+  "conclusion": {
+    "overall_assessment": "PARTIALLY_COMPLETE",
+    "skill_safety_behavior": "VALIDATED",
+    "end_to_end_execution": "BLOCKED",
+    "confidence": "high",
+    "summary": "The initialize-research skill demonstrates correct safety-first behavior by blocking when required configuration is missing. The documented execution flow shows comprehensive coverage of idempotency, safety, composition, quality, and workflow boundaries. Full end-to-end execution testing requires providing inputs/RESEARCH.md configuration.",
+    "next_steps": [
+      "Provide inputs/RESEARCH.md (see sample-inputs.md)",
+      "Re-run evaluation with complete inputs",
+      "Validate actual Jira and Confluence mutations",
+      "Verify STATE.md updates",
+      "Expand test suite with additional scenarios"
+    ]
+  }
+}

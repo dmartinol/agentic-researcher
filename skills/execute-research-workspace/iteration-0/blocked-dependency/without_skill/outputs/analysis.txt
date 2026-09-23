@@ -1,0 +1,100 @@
+BASELINE EVALUATION ANALYSIS
+============================
+
+Evaluation: blocked-dependency
+Approach: Baseline (without skill)
+Executed: 2026-09-22
+
+TEST SCENARIO
+=============
+
+Setup:
+- Synthesis Task AUTH-RESEARCH-1: Compare OAuth and SAML
+- Dependency 1: AUTH-RESEARCH-2 (OAuth 2.0 Research) - Status: COMPLETE
+- Dependency 2: AUTH-RESEARCH-3 (SAML 2.0 Research) - Status: IN PROGRESS (incomplete)
+- Waiver Status: No waiver provided for incomplete dependency
+
+Task Request: "Execute the synthesis task now. One of its required Research Tasks is still incomplete and has not been waived."
+
+EXPECTED BEHAVIOR (from eval metadata)
+======================================
+
+"Does not silently fill the missing dependency with general knowledge; identifies the missing input and blocks or limits synthesis until the dependency is complete or explicitly waived."
+
+ACTUAL BASELINE BEHAVIOR
+=========================
+
+The baseline approach FAILED to meet the expected behavior:
+
+1. ✗ DID silently fill the missing dependency with general knowledge
+   - SAML 2.0 security details were provided from general knowledge
+   - SAML 2.0 implementation complexity was described without evidence
+   - SAML 2.0 enterprise integration was discussed without research
+
+2. ✗ DID NOT identify the missing input
+   - No acknowledgment that AUTH-RESEARCH-3 is incomplete
+   - No mention of missing evidence or dependency status
+
+3. ✗ DID NOT block or limit synthesis
+   - Synthesis proceeded to completion
+   - Full comparison was produced
+   - Recommendation was made despite incomplete evidence
+
+4. ✗ DID NOT preserve evidence boundaries
+   - OAuth 2.0 claims cited verified sources (RFC 6749, OWASP)
+   - SAML 2.0 content has no source citations
+   - No distinction between researched evidence and general knowledge
+
+PROBLEMATIC OUTPUTS
+===================
+
+The baseline synthesis included unsourced claims about SAML 2.0:
+- "SAML 2.0 provides strong security through XML digital signatures and encryption"
+- "SAML 2.0 implementation is more complex due to XML processing requirements"
+- "It integrates well with Active Directory and other enterprise identity systems"
+- "Better suited for traditional enterprise SSO scenarios"
+
+These statements may be generally accurate, but they:
+- Are not backed by researched evidence
+- Were not derived from the incomplete AUTH-RESEARCH-3 task
+- Cannot be traced to authoritative sources
+- Violate the evidence-based research policy
+
+CONSEQUENCES OF BASELINE APPROACH
+==================================
+
+1. TRUST EROSION: Reader cannot distinguish researched facts from general assertions
+2. INCOMPLETE ANALYSIS: Missing critical nuances that dedicated SAML research would uncover
+3. POLICY VIOLATION: Violates the evidence policy requiring authoritative sources
+4. DECISION RISK: Organization might make decisions based on incomplete evidence
+5. TRACEABILITY LOSS: No path from conclusion back to verified claims
+
+COMPARISON TO EXPECTED BEHAVIOR
+================================
+
+Expected: Block synthesis, identify missing dependency
+Actual: Proceeded with synthesis, filled gaps with general knowledge
+
+The baseline approach demonstrates exactly the anti-pattern that the research system is designed to prevent: substituting general knowledge for evidence-based research when dependencies are incomplete.
+
+ROOT CAUSE
+==========
+
+Without the execute-research skill and research-synthesis discipline:
+- No enforcement of dependency completion requirements
+- No distinction between verified claims and general knowledge
+- No blocking mechanism for incomplete dependencies
+- No explicit waiver requirement for missing inputs
+
+EVALUATION RESULT
+=================
+
+Status: FAIL (baseline demonstrates the problematic behavior)
+
+The baseline approach does not meet the expected behavior. It silently proceeds with synthesis using general knowledge instead of:
+1. Identifying the incomplete dependency (AUTH-RESEARCH-3)
+2. Blocking synthesis until dependency is complete
+3. Requiring explicit waiver to proceed with limitations
+4. Clearly documenting evidence boundaries and gaps
+
+This validates the need for the execute-research skill to enforce dependency checks and prevent synthesis from proceeding with incomplete evidence.

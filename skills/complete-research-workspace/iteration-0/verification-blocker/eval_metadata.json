@@ -1,0 +1,23 @@
+{
+  "eval_id": 3,
+  "eval_name": "verification-blocker",
+  "prompt": "Close the research now. Verification still reports an unresolved conclusion-critical evidence blocker.",
+  "assertions": [
+    {
+      "name": "refuses_premature_closure",
+      "description": "Refuses/blocks completion despite the closure request because verification has an unresolved blocker"
+    },
+    {
+      "name": "checks_verification_status",
+      "description": "Checks verification status and identifies the blocking finding"
+    },
+    {
+      "name": "no_work_item_transition",
+      "description": "Does not transition the external work item when blockers exist"
+    },
+    {
+      "name": "explains_refusal",
+      "description": "Explains why completion is blocked due to verification findings"
+    }
+  ]
+}
