@@ -4,17 +4,45 @@
 
 ## Package boundary
 
-The standards-based portable core consists of:
+The standards-based distributable package lives under `agentic-researcher/` and consists of:
 
-- `plugin.json`
-- `skills/`
-- optional `mcp.json`
+- `agentic-researcher/plugin.json`
+- `agentic-researcher/skills/`
+- optional `agentic-researcher/mcp.json`
+- `agentic-researcher/AGENTS.md` runtime host instructions
 
-The repository deliberately also contains IDE-neutral agent definitions under `agents/`. Agent Plugins v1 does not standardize agents, so these are a non-standard extension following the Markdown-agent convention used by Claude plugins and compatible hosts.
+The repository deliberately also contains IDE-neutral agent definitions under `agentic-researcher/agents/`. Agent Plugins v1 does not standardize agents, so these are a non-standard extension following the Markdown-agent convention used by Claude plugins and compatible hosts.
 
-Essential research behavior must remain available through skills. Agents specialize roles, orchestrate phases, and delegate work; they must not become the only location of critical workflow rules.
+Skills implement reusable research operations. Agents define the canonical lifecycle orchestration and delegation between those operations. On hosts exposing the installed agent definitions, the full Agentic Researcher workflow enters through `research-orchestrator`.
 
 Host-specific compatibility files are optional. Researchers must not be required to author or maintain host adapters.
+
+## Repository and runtime instruction boundary
+
+The repository root and distributable package intentionally have separate instruction files:
+
+```text
+AGENTS.md                         contributor/development instructions
+agentic-researcher/AGENTS.md      installed runtime instructions
+```
+
+The root file guides coding agents working on this source repository. It must not be shipped as the runtime behavior contract. The package-local file tells a host how to enter and coordinate Agentic Researcher after installation.
+
+On an agent-capable host, normal research intent is routed as:
+
+```text
+user research intent
+        |
+        v
+host primary agent
+        |
+        v
+research-orchestrator
+        |
+        +--> phase agents --> skills
+```
+
+Missing `RESEARCH.md` identifies a greenfield project and causes the orchestrator to begin setup; it must not be interpreted as a reason to bypass the lifecycle and perform a standalone evidence review.
 
 ## Architecture layers
 
@@ -54,11 +82,11 @@ The default profile maps ticketing to Jira and document storage to Confluence. G
 
 Jira and Confluence are first-class, opinionated defaults, but their conventions must not define the generic subsystem contract. Provider-specific behavior belongs in specialized skills/references and configured MCP capabilities.
 
-The logical capability semantics are defined in `docs/subsystem-capabilities.md`. Lifecycle skills do not depend on provider tool names.
+The logical capability semantics are defined in `agentic-researcher/docs/subsystem-capabilities.md`. Lifecycle skills do not depend on provider tool names.
 
 The default Jira/Confluence profile is composed through `skills/jira-research` and `skills/confluence-research`.
 
-The portable `mcp.json` declares Atlassian's Streamable HTTP MCP endpoint as the default integration. Agent Plugins leaves OAuth/credential handling to the client, so the package contains no credentials or portable auth profile. Alternative providers may be supplied by a host when they satisfy the required capability semantics.
+The portable `agentic-researcher/mcp.json` declares Atlassian's Streamable HTTP MCP endpoint as the default integration. Agent Plugins leaves OAuth/credential handling to the client, so the package contains no credentials or portable auth profile. Alternative providers may be supplied by a host when they satisfy the required capability semantics.
 
 No host-specific adapter is required for the default architecture.
 
@@ -114,7 +142,7 @@ The internal role decomposition remains more precise:
 
 `research-orchestrator` owns lifecycle transitions and delegation. Initialization remains a distinct approval-gated operation. Verification remains a barrier before completion.
 
-Parallel execution and synthesis dependencies are host capabilities coordinated by the orchestrator; the research semantics must remain usable on a host that only supports skills.
+Parallel execution and synthesis dependencies are coordinated by the orchestrator using host capabilities. Skills remain portable operations, but the complete multi-phase workflow requires compatible agent/orchestration support.
 
 ## Greenfield and existing projects
 
