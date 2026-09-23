@@ -4,7 +4,7 @@ Agentic Researcher provides an agent-orchestrated research workflow. These are r
 
 ## Entry point
 
-When the user asks to start, conduct, continue, resume, verify, or complete research, the host primary agent MUST delegate lifecycle control to `research-orchestrator`.
+When the user asks to conduct a substantive evidence-based research effort, or to start, continue, resume, verify, or complete a research project, the host primary agent MUST delegate lifecycle control to `research-orchestrator`. The user does not need to mention Agentic Researcher or name the orchestrator.
 
 Do not execute the research lifecycle directly from the host primary agent. Do not select lifecycle skills directly from the user's top-level research request when `research-orchestrator` is available.
 
